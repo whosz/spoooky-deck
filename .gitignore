@@ -1,0 +1,4 @@
+resources/
+audio/*.mp3
+*:Zone.Identifier
+__pycache__/
