@@ -36,7 +36,7 @@ function pixelScale() {
   root.setProperty('--cw', snapDown(72, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
   root.setProperty('--fw', snapDown(72, Math.min(pw * .5, 216)) + 'px');
   root.setProperty('--aw', snapDown(72, Math.min(pw * .4, 170)) + 'px');
-  root.setProperty('--iw', snapUp(108, pw) + 'px');
+  root.setProperty('--iw', snapDown(108, pw - 32 - 36 * u) + 'px');
   root.setProperty('--sw', Math.max(snapUp(72, pw), snapUp(128, vh) * 72 / 128) + 'px');
 }
 addEventListener('resize', () => { pixelScale(); });

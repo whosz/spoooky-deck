@@ -120,11 +120,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #music-hint.gone{opacity:0;animation:none;transition:opacity .4s}
 
 /* ekran startowy: pełnoekranowa ilustracja, tytuł u góry, hasło i przycisk u dołu */
-.intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:16px;align-items:stretch;clip-path:inset(0 -16px -16px -16px)}
-.intro-bg{position:absolute;left:50%;margin-left:calc(var(--iw) / -2);top:250px;width:var(--iw);height:auto;image-rendering:pixelated;z-index:0}
-.intro::before,.intro::after{content:"";position:absolute;left:-16px;width:calc(100% + 32px);pointer-events:none;z-index:1;image-rendering:pixelated;background-repeat:repeat-x}
-.intro::before{top:250px;height:132px;background-size:48px 132px;background-image:url(../img/ui/fade-down.png)}
-.intro::after{bottom:-16px;height:240px;background-size:48px 240px;background-image:url(../img/ui/fade-up.png)}
+.intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:14px;align-items:center;justify-content:flex-start}
 .intro-top,.intro-bottom{position:relative;z-index:2}
 .intro-top{display:grid;justify-items:center;gap:6px;padding-top:6px}
 .emblem{image-rendering:pixelated;width:64px;height:64px}
@@ -138,3 +134,11 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #scene.on{opacity:.4}
 #scene::after{content:"";position:absolute;inset:0;background:linear-gradient(#0b0d17 0,#0b0d1700 28%,#0b0d1700 55%,#0b0d17 100%)}
 @media(prefers-reduced-motion:reduce){#scene{transition:none}}
+
+/* ekran startowy: ilustracja w pikselowej ramce, bez nakładek; skala całkowita (--iw = wielokrotność 108 px) */
+.intro-art{padding:0!important;width:auto;overflow:hidden;line-height:0;display:block;background:var(--bg)}
+.intro-art img{display:block;width:var(--iw);height:auto;image-rendering:pixelated;margin-bottom:calc(var(--iw) * -67 / 108)}
+.intro-art{height:calc(var(--iw) * 120 / 108 + 32*var(--u))}
+.intro-bottom{padding-bottom:12px}
+.intro-bottom .cta{font-size:25px;min-width:200px;min-height:calc(55*var(--u))}
+.intro-top .tag{margin-top:12px}
