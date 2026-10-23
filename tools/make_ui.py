@@ -44,3 +44,18 @@ def picture_frame(path):
                 if abs(dx) + abs(dy) <= 4: c.set(cx + dx, cy + dy, BG if abs(dx) + abs(dy) == 4 else (G if abs(dx) + abs(dy) >= 2 else FL))
     c.save(path)
 picture_frame('img/ui/picture-frame.png')
+
+# pasek połysku na karcie: pikselowy, ze schodkowymi krawędziami i dither na obrzeżu (przesuwany w CSS)
+def shine(path):
+    W_, H_ = 216, 108; c = Canvas(W_, H_)
+    for y in range(H_):
+        for x in range(W_):
+            d = abs(x - (108 - (y - 54) * .6))
+            a = 0
+            if d < 4: a = 70
+            elif d < 12: a = 38
+            elif d < 15 and BAYER[y % 4][x % 4] < 8 * (15 - d) / 3: a = 38
+            if a: c.set(x, y, (255, 255, 255, a))
+    c.save(path)
+BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
+shine('img/ui/shine.png')
