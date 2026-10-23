@@ -101,3 +101,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu .cta{font-size:calc(1.53*var(--f)*var(--gs))}
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
 .menu #mute,.menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
+.menu h3{text-align:center}
