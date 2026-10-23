@@ -1,15 +1,15 @@
 /* Dead Cells: pikselowe ramki 9-slice, żar świec, font gotycki. */
-:root{--px:'Jersey 15',ui-monospace,monospace;--gothic:'Jacquarda Bastarda 9',serif;--cur:url(../img/ui/cursor.png) 0 0}
+:root{--px:'Geist Pixel',ui-monospace,monospace;--gothic:'Jacquard 12',serif;--cur:url(../img/ui/cursor.png) 0 0}
 html,body{font-family:var(--px);cursor:var(--cur),auto}
 body{background:transparent}
 a,button,select,#fan{cursor:var(--cur),pointer}
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;image-rendering:pixelated}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 45%,#000c 100%)}
-h1{font-family:var(--gothic);font-weight:400;font-size:54px;line-height:1;margin:0;color:var(--gold);letter-spacing:2px;animation:flick 3.2s steps(1) infinite}
+h1{font-family:var(--gothic);font-weight:400;font-size:48px;line-height:1;margin:0;color:var(--gold);letter-spacing:2px;animation:flick 3.2s steps(1) infinite}
 @media(min-width:440px){h1{font-size:72px}}
 @keyframes flick{0%,100%{text-shadow:0 0 18px var(--flame),0 4px 0 #000}45%{text-shadow:0 0 10px var(--flame),0 4px 0 #000}50%{text-shadow:0 0 22px var(--flame),0 4px 0 #000}}
 #bar-title,#rname,.hero h2{font-family:var(--gothic)}
-#bar-title{font-size:18px}
+#bar-title{font-size:24px}
 .hero h2{font-size:36px}
 .panel,.cta,.mini{image-rendering:pixelated;background:none;box-shadow:none;border-style:solid;border-color:transparent}
 .panel{border-width:16px;border-image:url(../img/ui/frame.png) 8 fill / 16px stretch;padding:12px 16px}
@@ -30,15 +30,16 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .tabs button{font-family:var(--px)}
 @media(prefers-reduced-motion:reduce){h1,.cta{animation:none}}
 
-/* Czcionki jak w The Cosmic Wheel Sisterhood: gotycki piksel (Jacquarda Bastarda 9) dla tytułów, cytatu, przycisków,
-   zakładek i "mówiącego" (pierwsza linia akapitu), a czysty piksel sans (Jersey 15) dla długiego tekstu i etykiet.
-   Rozmiary Bastardy są wielokrotnością 9 px. */
+/* Czcionki jak w The Cosmic Wheel Sisterhood: gotycki piksel (Jacquard 12) dla tytułów, cytatu, przycisków,
+   zakładek i "mówiącego" (pierwsza linia akapitu), a pikselowy font Geist Pixel dla długiego tekstu i etykiet.
+   Rozmiary Jacquard 12 są wielokrotnością 12 px. */
 .quote,.rows b,.cta,.tabs button,.sect,#rname,.text .lead{font-family:var(--gothic);font-weight:400}
-.quote{font-size:27px;line-height:1.35}
-.rows b{font-size:27px}
-.cta,.tabs button{font-size:27px}
+.quote{font-size:24px;line-height:1.35}
+.rows b{font-size:24px}
+.cta,.tabs button{font-size:24px}
 .cta{padding-top:2px}
-.sect,.text .lead{font-size:27px;color:var(--magic);padding-bottom:4px;border-bottom:2px solid var(--gold-d)}
+.sect,.text .lead{font-size:24px;color:var(--magic);padding-bottom:4px;border-bottom:2px solid var(--gold-d)}
 .sect{align-self:stretch}
-.text{font-size:22px;line-height:1.5}
+.text{font-size:20px;line-height:1.5}
 .text .lead{display:block;margin-bottom:12px}
+.mini{font-size:16px;letter-spacing:0}
