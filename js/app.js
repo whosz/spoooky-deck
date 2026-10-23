@@ -126,11 +126,12 @@ function pick() {
     c.style.zIndex = N - Math.round(Math.abs(d));
   });
   const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); };
-  fan.onpointerdown = e => { down = true; moved = false; startX = e.clientX; startOff = off; fan.classList.add('drag'); };
-  fan.onpointermove = e => { if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 6) moved = true; go(startOff + dx / 40); };
+  // Wybór karty na pointerup (nie na click): po przeciągnięciu pierwszy tap od razu otwiera kartę.
+  fan.onpointerdown = e => { fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = e.clientX; startOff = off; fan.classList.add('drag'); };
+  fan.onpointermove = e => { if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true; if (moved) go(startOff + dx / 40); };
   const end = () => { if (!down) return; down = false; fan.classList.remove('drag'); go(Math.round(off)); };
-  fan.onpointerup = fan.onpointercancel = fan.onpointerleave = end;
-  fan.onclick = () => { if (!moved) reveal(); };
+  fan.onpointerup = () => { const tap = down && !moved; end(); if (tap) reveal(); };
+  fan.onpointercancel = end;
   fan.onkeydown = e => {
     if (e.key === 'ArrowLeft') go(Math.round(off) + 1); else if (e.key === 'ArrowRight') go(Math.round(off) - 1);
     else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); }

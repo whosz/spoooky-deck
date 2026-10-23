@@ -10,7 +10,7 @@
 .front .nm{font-size:9cqw;line-height:1.2}
 .card.rev .front{border-color:var(--blood)}
 
-#fan{position:relative;width:calc(100% + 32px);margin:0 -16px;height:calc(var(--fw)*1.5 + 80px);overflow:visible;touch-action:pan-y;cursor:grab;user-select:none}
+#fan{position:relative;width:calc(100% + 32px);margin:0 -16px;height:calc(var(--fw)*1.5 + 80px);overflow:visible;touch-action:none;cursor:grab;user-select:none}
 #fan.drag{cursor:grabbing}
 .fcard{position:absolute;left:50%;top:48px;width:var(--fw);height:calc(var(--fw)*1.5);margin-left:calc(var(--fw)*-.5);transform-origin:50% calc(100% + var(--fw)*2.2);background:url(../img/ui/back.png) center/100% 100%;image-rendering:pixelated;filter:brightness(.45);transition:transform .25s cubic-bezier(.3,1.4,.5,1),filter .25s}
 .fcard.top{filter:brightness(1) drop-shadow(0 0 14px #ffb347cc)}
