@@ -93,3 +93,4 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 .bar{grid-template-columns:104px 1fr 104px}
 .bar-r{justify-self:end;display:flex;gap:8px}
 .mini img{height:20px;width:auto;image-rendering:pixelated;display:block}
+#s-intro{padding-top:28px}
