@@ -172,3 +172,6 @@ img{-webkit-user-drag:none;user-drag:none}
 /* pasek nawigacji: bez tła na górze strony, ciemne tło dopiero po pierwszym przewinięciu */
 .bar{background:none;transition:background .25s ease}
 .bar.scrolled{background:linear-gradient(#0b0d17f2 60%,#0b0d1700)}
+/* splash: tytuł niżej i lekko nachodzi na grafikę */
+.intro-top{margin-top:10px;position:relative;z-index:3}
+.intro.blend .intro-art{margin:-104px 0 -40px;position:relative;z-index:1}
