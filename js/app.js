@@ -212,20 +212,9 @@ const loader = $('#loader');
 loader.classList.add('hide');
 setTimeout(() => loader.remove(), 700);
 
-// PWA: rejestracja service workera i komunikat o nowej wersji (odświeżenie tylko za zgodą użytkownika).
+// PWA: service worker przejmuje stronę od razu po aktualizacji; jednorazowo przeładowujemy, żeby załadować nowe pliki.
 if ('serviceWorker' in navigator) {
-  let wanted = false;
-  const prompt = w => {
-    const t = el('div', 'toast'); const b = el('button', 'cta', ui.refresh);
-    t.append(el('span', '', ui.update), b); $('#phone').append(t);
-    b.onclick = () => { wanted = true; w.postMessage('skipWaiting'); };
-  };
-  navigator.serviceWorker.addEventListener('controllerchange', () => { if (wanted) location.reload(); });
-  navigator.serviceWorker.register('sw.js').then(reg => {
-    if (reg.waiting && navigator.serviceWorker.controller) prompt(reg.waiting);
-    reg.addEventListener('updatefound', () => {
-      const w = reg.installing;
-      w.addEventListener('statechange', () => { if (w.state === 'installed' && navigator.serviceWorker.controller) prompt(w); });
-    });
-  }).catch(() => {});
+  const had = !!navigator.serviceWorker.controller; let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (had && !reloaded) { reloaded = true; location.reload(); } });
+  navigator.serviceWorker.register('sw.js').catch(() => {});
 }
