@@ -19,3 +19,9 @@
 .emoji{image-rendering:pixelated;height:30px;width:auto;vertical-align:middle}
 .front .sym{display:grid;place-items:center}
 .front .sym .emoji{height:36cqw}
+
+/* awers: ilustracja z img/cards/<id>.png (ustawiana w JS), nakładki z numerem i nazwą */
+.front{background-size:100% 100%;background-position:center;image-rendering:pixelated}
+.front .sym{display:none}
+.front .num,.front .nm{background:#0b0d17cc;padding:2px 10px;line-height:1.2}
+.front::before{border-color:#8a6a2e99}
