@@ -18,17 +18,21 @@ export function startBg() {
     sparks = Array.from({ length: 36 }, () => ({ x: rnd(0, W), y: rnd(0, H), v: rnd(.1, .4), d: rnd(0, 6.28), c: SPARK[Math.floor(rnd(0, SPARK.length))] }));
   };
 
-  const candle = (x, t) => {
+  const candleImg = new Image(); candleImg.src = 'img/ui/candle.png';
+  const candle = (x, t) => {   // sprite świecy (AI) + animowany płomień i poświata
+    if (!candleImg.complete || !candleImg.naturalWidth) return;
+    const w = candleImg.naturalWidth, h = candleImg.naturalHeight, top = H - h, fx = x + Math.round(w * .05);
     const fl = Math.floor(2 + Math.sin(t / 130 + x) * 1 + Math.random());
-    const glow = g.createRadialGradient(x, H - 52, 2, x, H - 52, 46);
-    glow.addColorStop(0, 'rgba(255,179,71,.28)'); glow.addColorStop(1, 'rgba(255,179,71,0)');
-    g.fillStyle = glow; g.fillRect(x - 50, H - 100, 100, 100);
-    g.fillStyle = '#8a6a2e'; g.fillRect(x - 6, H - 8, 12, 8);
-    g.fillStyle = '#e8dcc0'; g.fillRect(x - 4, H - 40, 8, 34);
-    g.fillStyle = '#b8ab8c'; g.fillRect(x + 2, H - 40, 2, 34);
-    g.fillStyle = '#0b0d17'; g.fillRect(x, H - 44, 1, 4);
-    g.fillStyle = '#ff7a2e'; g.fillRect(x - 1, H - 48 - fl, 3, 4 + fl);
-    g.fillStyle = '#ffb347'; g.fillRect(x, H - 47 - fl, 1, 3 + fl);
+    const glow = g.createRadialGradient(fx, top - 4, 2, fx, top - 4, 52);
+    glow.addColorStop(0, 'rgba(255,179,71,.30)'); glow.addColorStop(1, 'rgba(255,179,71,0)');
+    g.fillStyle = glow; g.fillRect(fx - 56, top - 60, 112, 110);
+    g.drawImage(candleImg, Math.round(x - w / 2), top);
+    const sway = Math.round(Math.sin(t / 260 + x)), tip = fl > 2 ? 1 : 0;
+    const rows = (a, c, o) => a.forEach((hw, i) => { if (hw < 0) return; g.fillStyle = c; g.fillRect(fx - hw - o + (i < 2 ? sway : 0), top - 5 - tip + i - o, 2 * (hw + o) + 1, 1 + 2 * o * (i === 0 ? 1 : 0)); });
+    rows([0, 1, 2, 2, 2, 1], '#07080f', 1);                      // kontur płomienia
+    rows([0, 1, 2, 2, 2, 1], '#ff7a2e', 0);                      // zewnętrzny
+    rows([-1, 0, 1, 1, 1, 0], '#ffb347', 0);                     // środek
+    rows([-1, -1, 0, 0, 0, -1], '#fff0b0', 0);                   // rdzeń
   };
 
   const frame = t => {

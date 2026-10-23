@@ -2,7 +2,8 @@
 Token: ~/.config/spooooky/replicate.env (REPLICATE_API_TOKEN). Koszt wypisywany na koniec (ok. 0,015 USD / obraz)."""
 import os, sys, json, time, urllib.request, urllib.error
 sys.path.insert(0, os.path.dirname(__file__))
-from prompts import prompt_for
+from prompts import prompt_for, aspect_for, refs_for
+import base64
 MODEL = 'black-forest-labs/flux-2-pro'
 env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/spooooky/replicate.env')) if '=' in l)
 TOKEN = env['REPLICATE_API_TOKEN']
@@ -20,8 +21,10 @@ def call(url, data=None, headers=None):
     raise SystemExit('429 za dlugo')
 
 def generate(card_id, seed, resolution='0.5 MP'):
-    pred = call(f'https://api.replicate.com/v1/models/{MODEL}/predictions',
-                {'input': {'prompt': prompt_for(card_id), 'aspect_ratio': '2:3', 'resolution': resolution, 'output_format': 'png', 'seed': seed}}, {'Prefer': 'wait=60'})
+    inp = {'prompt': prompt_for(card_id), 'aspect_ratio': aspect_for(card_id), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
+    refs = [f"data:image/png;base64,{base64.b64encode(open(r, 'rb').read()).decode()}" for r in refs_for(card_id)]
+    if refs: inp['input_images'] = refs
+    pred = call(f'https://api.replicate.com/v1/models/{MODEL}/predictions', {'input': inp}, {'Prefer': 'wait=60'})
     while pred['status'] in ('starting', 'processing'):
         time.sleep(2); pred = call(pred['urls']['get'])
     if pred['status'] != 'succeeded': print(f"{card_id}/{seed}: {pred['status']} {str(pred.get('error'))[:90]}"); return None
