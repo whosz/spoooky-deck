@@ -23,3 +23,10 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 #actions{display:flex;flex-direction:column;align-items:center;gap:16px}
 #actions[hidden]{display:none}
 footer{position:fixed;bottom:4px;width:100%;text-align:center;font-size:12px;opacity:.6;pointer-events:none}
+@media(max-width:640px){
+html,body{font-size:15px}
+.read,.read>div:last-child{gap:28px}
+.text{line-height:1.7}
+.cta{min-height:44px;padding:8px 16px;font-size:14px}
+.panel{padding:16px}
+}
