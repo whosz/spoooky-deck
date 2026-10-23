@@ -103,3 +103,4 @@ STYLE4 = ("Detailed painterly pixel art tarot card illustration in classic Rider
           "soft warm lighting and gentle shading built from a limited palette, figures with simple expressive faces and clear hands, ornamental details and textures, "
           "clean crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt4_for(card_id): return f"{STYLE4}. Scene: {SCENES[card_id]}."
+SCENES['ar17'] = "The Star: a woman in a long flowing blue robe kneeling by a calm pond at night, pouring water from two jugs onto the land and into the pond, one huge eight-pointed golden star and seven smaller white stars in the night sky, a bird in a tree"
