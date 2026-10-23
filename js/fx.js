@@ -1,7 +1,7 @@
 // Tło: canvas o niskiej rozdzielczości (wysokość 180 px) skalowany bez wygładzania:
 // mgła, dwie świece po bokach i unoszące się iskry. Przy reduced-motion jedna statyczna klatka.
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let H = 180;   // logiczna wysokość tła; dobierana tak, by 1 piksel = całkowita liczba pikseli urządzenia
+let fogRGB = [70, 84, 130], H = 180;   // logiczna wysokość tła; dobierana tak, by 1 piksel = całkowita liczba pikseli urządzenia
 const SPARK = ['#ffb347', '#ffb347', '#d8aa48', '#f4efe6'];
 
 export function startBg() {
@@ -41,7 +41,7 @@ export function startBg() {
     g.fillStyle = '#0b0d17'; g.fillRect(0, 0, W, H);
     for (const f of fog) {
       const grd = g.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
-      grd.addColorStop(0, 'rgba(70,84,130,.16)'); grd.addColorStop(1, 'rgba(70,84,130,0)');
+      grd.addColorStop(0, `rgba(${fogRGB},.16)`); grd.addColorStop(1, `rgba(${fogRGB},0)`);
       g.fillStyle = grd; g.fillRect(f.x - f.r, f.y - f.r, f.r * 2, f.r * 2);
       f.x += f.v; if (f.x < -f.r) f.x = W + f.r; if (f.x > W + f.r) f.x = -f.r;
     }
@@ -194,3 +194,8 @@ export function startAmbient() {
   tick();
 }
 export function stopAmbient() { ambient = false; clearTimeout(ambTimer); }
+
+// Motyw tła zależny od karty: lekko zmienia kolor mgły (Buzdygany ogień, Kielichy woda, Miecze stal, Monety złoto, Wielkie fiolet, odwrócone czerwień)
+const THEMES = { wands: [200, 100, 40], cups: [40, 150, 170], swords: [110, 140, 190], pentacles: [190, 150, 60], major: [130, 70, 170], reversed: [180, 40, 60], base: [70, 84, 130] };
+export function setTheme(suit, reversed) { fogRGB = THEMES[reversed ? 'reversed' : (suit || 'major')] || THEMES.base; }
+export function resetTheme() { fogRGB = THEMES.base; }

@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient } from './fx.js';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
@@ -112,6 +112,7 @@ function reveal() {
   // Elementy .fade zerujemy bez przejścia PRZED pokazaniem ekranu (inaczej przy kolejnym losowaniu gasły i zapalały się ponownie).
   const fades = document.querySelectorAll('#s-card .fade');
   fades.forEach(f => { f.style.transition = 'none'; f.classList.remove('in'); });
+  setTheme(card.suit, reversed);
   show('s-card');
   $('#cardslot').append($('#card'));
   untilt(); untilt = tiltCard($('#cardslot'));
@@ -181,8 +182,15 @@ function pick() {
     c.style.zIndex = N - Math.round(a);
   });
   // Rozdanie: karty wylatują ze stosu na środku po kolei
-  els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.transform = 'translateY(40px) scale(.8)'; c.style.opacity = '0'; });
-  requestAnimationFrame(() => requestAnimationFrame(() => { els.forEach(c => c.style.opacity = ''); layout(); sfx('flip'); setTimeout(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); }));
+  // Tasowanie: stos kart na środku, dwie połowy przesuwają się na przemian w lewo i prawo (2 razy), potem rozdanie w wachlarz
+  const deal = () => { els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.opacity = ''; }); layout(); sfx('flip'); setTimeout(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); };
+  const stack = (dx, k) => els.forEach((c, i) => { c.style.transitionDelay = ''; c.style.transitionDuration = '.18s'; const side = (i % 2 ? 1 : -1) * k; c.style.transform = `translate(${side * dx}px, ${-i * .6}px) rotate(${side * 3}deg) scale(.82)`; c.style.opacity = '1'; });
+  els.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(40px) scale(.8)'; });
+  if (reduced) deal(); else {
+    requestAnimationFrame(() => requestAnimationFrame(() => { stack(0, 0); sfx('flip');
+      [[150, 1], [250, -1], [150, -1], [250, 1], [0, 0]].forEach(([t, k], n) => setTimeout(() => { stack(n === 4 ? 0 : 46, k); if (n < 4) sfx('tick'); }, 200 + n * 190));
+      setTimeout(() => { els.forEach(c => c.style.transitionDuration = ''); deal(); }, 1250); }));
+  }
   let lastTop = 0;
   const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); const t = Math.round(off); if (t !== lastTop) { lastTop = t; sfx('tick'); } };
   const glide = () => {   // bezwładność po puszczeniu: wachlarz dojeżdża i zatrzymuje się na najbliższej karcie
@@ -216,7 +224,7 @@ function pick() {
   fan.focus({ preventScroll: true });
 }
 
-const restart = () => { seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
+const restart = () => { resetTheme(); seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
 
 $('#enter').onclick = () => show('s-form');
 $('#form').onsubmit = e => { e.preventDefault(); enableGyro(); pick(); };

@@ -166,3 +166,4 @@ img{-webkit-user-drag:none;user-drag:none}
 /* splash: PNG z przezroczystym, pikselowym zanikaniem krawędzi (bez maski CSS) */
 .intro.blend .intro-art img{-webkit-mask-image:none;mask-image:none}
 .intro.blend .intro-art{margin:-6px 0 -40px}
+.bar{background:linear-gradient(#0b0d17b3 55%,transparent)}   /* nagłówek o 30% bardziej przezroczysty */
