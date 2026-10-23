@@ -53,3 +53,6 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu h3{font-family:var(--gothic)}
 .menu .langs .cta,.menu #mute,.menu a.cta{font-family:var(--px);font-size:20px}
 .menu .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8}
+/* ikony w nagłówku bez tła i ramki */
+.bar .mini{border:0;border-image:none;background:none;padding:0;box-shadow:none;font-size:28px;color:var(--text);text-shadow:0 2px 0 #000}
+.bar .mini:hover{filter:brightness(1.4) drop-shadow(0 0 6px var(--flame))}
