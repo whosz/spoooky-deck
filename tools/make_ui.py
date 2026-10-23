@@ -84,3 +84,20 @@ def fades():
                 if a > (BAYER[y % 4][x % 4] + .5) / 16 or a > .97: c.set(x, y, BG)
         c.save(f'img/ui/{name}.png')
 fades()
+
+# ramka przodu karty (siatka 64x96, nakładka): ciemny kontur, złota linia, przerwa, cienka złota linia wewnętrzna, ozdobne narożniki
+def cardframe(path):
+    W_, H_ = 64, 96
+    DK, G1, G2, G3 = rgb('#0b0d17'), rgb('#d8aa48'), rgb('#8a6a2e'), rgb('#f0d27a')
+    c = Canvas(W_, H_)
+    c.frame(0, 0, W_, H_, DK); c.frame(1, 1, W_ - 2, H_ - 2, G1); c.frame(2, 2, W_ - 4, H_ - 4, DK); c.frame(3, 3, W_ - 6, H_ - 6, G2)
+    # narożniki: złote "schodki" łączące linie
+    for (x, y, sx, sy) in [(0, 0, 1, 1), (W_ - 1, 0, -1, 1), (0, H_ - 1, 1, -1), (W_ - 1, H_ - 1, -1, -1)]:
+        for dx in range(1, 6): c.set(x + sx * dx, y + sy * 3, G3 if dx < 4 else G1)
+        for dy in range(1, 6): c.set(x + sx * 3, y + sy * dy, G3 if dy < 4 else G1)
+        c.set(x + sx * 1, y + sy * 1, G3); c.set(x + sx * 2, y + sy * 2, G3)
+    # środkowe zawijasy na krawędziach (małe rombiki)
+    for (x, y) in [(W_ // 2 - 1, 1), (W_ // 2, 1), (W_ // 2 - 1, H_ - 2), (W_ // 2, H_ - 2)]: c.set(x, y, G3)
+    for (x, y) in [(1, H_ // 2 - 1), (1, H_ // 2), (W_ - 2, H_ // 2 - 1), (W_ - 2, H_ // 2)]: c.set(x, y, G3)
+    c.save(path)
+cardframe('img/ui/cardframe.png')

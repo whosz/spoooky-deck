@@ -137,8 +137,8 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 
 /* ekran startowy: ilustracja w pikselowej ramce, bez nakładek; skala całkowita (--iw = wielokrotność 108 px) */
 .intro-art{padding:0!important;width:auto;overflow:hidden;line-height:0;display:block;background:var(--bg)}
-.intro-art img{display:block;width:var(--iw);height:auto;image-rendering:pixelated;margin-bottom:calc(var(--iw) * -67 / 108)}
-.intro-art{height:calc(var(--iw) * 120 / 108 + 32*var(--u))}
+.intro-art img{display:block;width:var(--iw);height:auto;image-rendering:pixelated;}
+.intro-art{height:auto}
 .intro-bottom{padding-bottom:12px}
 .intro-bottom .cta{font-size:25px;min-width:200px;min-height:calc(55*var(--u))}
 .intro-top .tag{margin-top:12px}

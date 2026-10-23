@@ -30,8 +30,7 @@ function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#me
 function toggleMenu() { paintMute(); const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
 
 // Siatka pikseli grafiki karty: domyślnie 72 (144x216, piksele podwojone); karty testowe mają natywnie 64x96 (styl retro 16 kolorów) lub 96x144.
-const GRID64 = new Set(['ar01', 'ar03', 'ar16', 'wa05']), GRID96 = new Set(['ar13', 'cu13']);
-const gridOf = id => GRID64.has(id) ? 64 : GRID96.has(id) ? 96 : 72;
+const gridOf = () => 64;   // wszystkie karty mają natywnie 64x96 (retro 16 kolorów)
 let cardAvail = { reveal: 255, read: 156 }, snapFn = (g, t) => t;
 function sizeCard() {
   if (!cur) return;
@@ -47,9 +46,9 @@ function pixelScale() {
   const snapUp = (grid, target) => grid * Math.max(1, Math.ceil(target * dpr / grid)) / dpr;           // rozmiar >= target (pokrycie)
   snapFn = snapDown; cardAvail = { reveal: Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625, read: Math.min(pw * .4, 170) };
   root.setProperty('--u', u + 'px');
-  root.setProperty('--cw', snapDown(72, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
-  root.setProperty('--fw', snapDown(72, Math.min(pw * .5, 216)) + 'px');
-  root.setProperty('--aw', snapDown(72, Math.min(pw * .4, 170)) + 'px');
+  root.setProperty('--cw', snapDown(64, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
+  root.setProperty('--fw', snapDown(64, Math.min(pw * .5, 216)) + 'px');
+  root.setProperty('--aw', snapDown(64, Math.min(pw * .4, 170)) + 'px');
   root.setProperty('--iw', snapDown(108, pw - 32 - 36 * u) + 'px');
   root.setProperty('--sw', Math.max(snapUp(72, pw), snapUp(128, vh) * 72 / 128) + 'px');
 }
@@ -96,7 +95,7 @@ function fillCard({ card, reversed }) {
   const f = c.querySelector('.front');
   const sym = el('div', 'sym'); sym.append(em(SYM[card.suit || 'major']));
   f.style.backgroundImage = `url(img/cards/${card.id}.png)`;
-  f.replaceChildren(sym, el('div', 'nm', card.name[lang]));
+  f.replaceChildren(sym, el('div', 'num', ROMAN[card.number] || String(card.number)), el('div', 'nm', card.name[lang]));
 }
 
 function reveal() {

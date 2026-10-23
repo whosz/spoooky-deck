@@ -3,6 +3,7 @@ Token: ~/.config/spooooky/replicate.env (REPLICATE_API_TOKEN). Koszt wypisywany 
 import os, sys, json, time, urllib.request, urllib.error
 sys.path.insert(0, os.path.dirname(__file__))
 from prompts import prompt_for, aspect_for, refs_for, prompt2_for, prompt3_for, prompt4_for, prompt5_for
+import prompts as _P
 import base64
 MODEL = 'black-forest-labs/flux-2-pro'
 env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/spooooky/replicate.env')) if '=' in l)
@@ -26,7 +27,7 @@ def generate(card_id, seed, resolution='0.5 MP'):
     style5 = os.environ.get('STYLE') == '5'
     style2 = os.environ.get('STYLE') in ('2', '3', '4', '5')
     if style2: resolution = os.environ.get('RES', '1 MP')
-    inp = {'prompt': (prompt5_for(card_id) if style5 else prompt4_for(card_id) if style4 else prompt3_for(card_id) if style3 else prompt2_for(card_id)) if style2 else prompt_for(card_id), 'aspect_ratio': aspect_for(card_id), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
+    inp = {'prompt': ((_P.prompt5_asset(card_id) if card_id in _P.ASSETS5 else prompt5_for(card_id)) if style5 else prompt4_for(card_id) if style4 else prompt3_for(card_id) if style3 else prompt2_for(card_id)) if style2 else prompt_for(card_id), 'aspect_ratio': (_P.ASSETS5[card_id][1] if style5 and card_id in _P.ASSETS5 else aspect_for(card_id)), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
     refs = [f"data:image/png;base64,{base64.b64encode(open(r, 'rb').read()).decode()}" for r in refs_for(card_id)]   # styl 2 opisany wyłącznie słowami, bez obrazów referencyjnych cudzych prac
     if refs: inp['input_images'] = refs
     pred = call(f'https://api.replicate.com/v1/models/{MODEL}/predictions', {'input': inp}, {'Prefer': 'wait=60'})

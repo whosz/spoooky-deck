@@ -110,3 +110,20 @@ STYLE5 = ("Early 1990s retro video game pixel art tarot card illustration, chunk
           "thick dark outlines around shapes, flat color fills with only a little ordered dithering in the background, simple faces, bold readable shapes, "
           "Rider-Waite tarot composition filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt5_for(card_id): return f"{STYLE5}. Scene: {SCENES[card_id]}."
+
+SCENES['ar01'] = ("The Magician: a young magician in a red robe standing behind a wooden table, one hand raising a wand to the sky and the other pointing down at the table, exactly one infinity symbol floating above his head, "
+                  "on the table four items: a golden cup, a sword, a wand and a golden coin, red roses and white lilies growing around")
+
+# Zasoby interfejsu w stylu 5 (retro 16 kolorów)
+_R5 = "early 1990s retro pixel art, chunky large pixels, very limited palette of about 16 colors, flat colors, thick dark outlines, minimal dithering, no text, no letters, no signature, no watermark"
+ASSETS5 = {
+    'intro': ("Retro pixel art illustration, portrait orientation: a huge glowing golden full moon surrounded by an arc of moon phases above a calm lake and dark mountains, a fan of tarot cards floating in the air in front of the moon, "
+              "deep purple and violet night sky with stars, small ringed planets and clouds, two lit candles at the bottom corners, no people, the lower third darker and mostly empty, " + _R5, '9:16'),
+    'back': ("Retro pixel art tarot card back design, perfectly symmetrical, portrait, deep navy blue background with a small star pattern, an ornate golden oval frame in the center containing a crescent moon on top, "
+             "a mystical eye in the middle and a small sun at the bottom, golden border with corner ornaments, the card fills the whole image edge to edge, " + _R5, '2:3'),
+    'bg_form': ("Retro pixel art atmospheric background, portrait orientation, dark and moody, no people: a candlelit fortune teller's room with a round table, a crystal ball and candles, purple curtains and a starry window, " + _R5, '9:16'),
+    'bg_pick': ("Retro pixel art atmospheric background, portrait orientation, dark and moody, no people: a quiet night desert under a huge moon and many stars with the silhouette of a distant temple, " + _R5, '9:16'),
+    'bg_card': ("Retro pixel art atmospheric background, portrait orientation, dark and moody, no people: a cosmic scene with large ringed planets, a purple nebula, many stars and a small floating stone island with a glowing lantern, " + _R5, '9:16'),
+    'bg_read': ("Retro pixel art atmospheric background, portrait orientation, dark and moody, no people: an old observatory interior with a brass telescope pointing through an open dome toward planets and stars, star charts on the walls, " + _R5, '9:16'),
+}
+def prompt5_asset(i): return ASSETS5[i][0]

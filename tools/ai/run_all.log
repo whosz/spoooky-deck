@@ -1,0 +1,91 @@
+ok back
+ok intro
+ok bg_form
+ok bg_pick
+ok bg_card
+ok bg_read
+ok ar00
+ok ar01
+ok ar02
+ok ar04
+ok ar05
+ok ar06
+ok ar07
+ok ar08
+ok ar09
+ok ar10
+ok ar11
+ok ar12
+ok ar13
+ok ar14
+ok ar15
+ok ar17
+ok ar18
+ok ar19
+ok ar20
+ok ar21
+ok wa01
+ok wa02
+ok wa03
+ok wa04
+ok wa06
+ok wa07
+ok wa08
+ok wa09
+ok wa10
+ok wa11
+ok wa12
+ok wa13
+ok wa14
+ok cu01
+ok cu02
+ok cu03
+ok cu04
+ok cu05
+ok cu06
+ok cu07
+ok cu08
+ok cu09
+ok cu10
+ok cu11
+ok cu12
+ok cu13
+ok cu14
+ok sw01
+ok sw02
+ok sw03
+ok sw04
+ok sw05
+ok sw06
+ok sw07
+ok sw08
+sw09/1: failed The input or output was flagged as sensitive. Please try again with different inputs. (E00
+retry sw09 1
+ok sw09
+sw10/1: failed The input or output was flagged as sensitive. Please try again with different inputs. (E00
+retry sw10 1
+ok sw10
+ok sw11
+ok sw12
+ok sw13
+ok sw14
+ok pe01
+ok pe02
+ok pe03
+ok pe04
+ok pe05
+pe06/1: failed The input or output was flagged as sensitive. Please try again with different inputs. (E00
+retry pe06 1
+pe06/2: failed The input or output was flagged as sensitive. Please try again with different inputs. (E00
+retry pe06 2
+ok pe06
+ok pe07
+ok pe08
+ok pe09
+ok pe10
+ok pe11
+ok pe12
+ok pe13
+ok pe14
+ALL_DONE 81
+FINISHED

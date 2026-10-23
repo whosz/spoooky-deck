@@ -1,5 +1,5 @@
 /* Dead Cells: pikselowe ramki 9-slice, żar świec, font gotycki. */
-:root{--px:'Geist Pixel',ui-monospace,monospace;--gothic:'Jacquard 12',serif;--cur:url(../img/ui/cursor.png) 0 0}
+:root{--px:'Geist Pixel',ui-monospace,monospace;--gothic:'Olde Tome','Jacquard 12',serif;--cur:url(../img/ui/cursor.png) 0 0}
 html,body{font-family:var(--px);cursor:var(--cur),auto}
 body{background:transparent}
 a,button,select,#fan{cursor:var(--cur),pointer}
@@ -57,6 +57,9 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .bar .mini:hover{filter:brightness(1.4) drop-shadow(0 0 6px var(--flame))}
 
 /* czyste piksele: rozmiary czcionki Jacquard 12 to całkowite wielokrotności jej siatki (12 px) w pikselach URZĄDZENIA */
-:root{--f:calc(12*var(--u))}
-#bar-title,.quote,.rows b,.cta,.tabs button,.sect,.text .lead,.menu h3,.intro-bottom .cta,.front .nm{font-size:calc(2*var(--f))}
-#rname,.ftitle,.hero h2{font-size:calc(3*var(--f))}
+:root{--f:calc(12*var(--u));--gs:1.35}   /* --gs: skala dla Olde Tome (mniejsza bryła niż Jacquard 12); dla pikselowej Jacquard ustaw 1 */
+#bar-title,.quote,.rows b,.cta,.tabs button,.sect,.text .lead,.menu h3,.intro-bottom .cta,.front .nm{font-size:calc(2*var(--f)*var(--gs))}
+#rname,.ftitle,.hero h2{font-size:calc(3*var(--f)*var(--gs))}
+/* mała karta na ekranie wróżby: mniejsza plakietka z nazwą */
+#artslot .front .nm{font-size:10.5cqw;border-width:calc(4*var(--u));border-image-width:calc(4*var(--u));padding:0 2px;width:calc(100% - 14px)}
+#artslot .front .num{font-size:calc(10*var(--u))}

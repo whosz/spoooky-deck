@@ -4,7 +4,7 @@
 .face{position:absolute;inset:0;backface-visibility:hidden;border:4px solid var(--gold);background:var(--s1);display:grid;place-items:center;text-align:center;padding:8px;font-weight:700;image-rendering:pixelated}
 .back{background:url(../img/ui/back.png) center/100% 100%;border:0}
 .front{transform:rotateY(180deg);align-content:space-between;color:var(--text)}
-.front::before{content:"";position:absolute;inset:6px;border:2px solid var(--gold-d);pointer-events:none}
+
 .front .num{color:var(--gold);font-size:12cqw}
 .front .sym{font-size:40cqw}
 .front .nm{font-size:9cqw;line-height:1.2}
@@ -45,7 +45,6 @@
 
 /* złoto: metaliczna folia na krawędzi karty przesuwa się z pochyleniem, błyski i złoty pył przy ruchu */
 #cardslot{position:relative}
-.front{border-image:linear-gradient(115deg,#6b4f1d calc(var(--sx,30%) - 60%),#b8913a calc(var(--sx,30%) - 30%),#f0d27a calc(var(--sx,30%) - 8%),#fff6c8 var(--sx,30%),#f0d27a calc(var(--sx,30%) + 8%),#b8913a calc(var(--sx,30%) + 30%),#6b4f1d calc(var(--sx,30%) + 60%)) 1}
 .glint{position:absolute;z-index:4;width:19px;height:19px;margin:-9px 0 0 -9px;pointer-events:none;animation:glint .75s steps(6) forwards}
 .glint::before,.glint::after{content:"";position:absolute;background:linear-gradient(90deg,#8a6a2e,#f0d27a 30%,#fff6c8 50%,#f0d27a 70%,#8a6a2e)}
 .glint::before{left:0;top:8px;width:19px;height:3px}
@@ -63,3 +62,9 @@
 @media(prefers-reduced-motion:reduce){.fcard,.fcard.top{animation:none;transition:none}}
 
 #cardslot.tilting{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+
+/* ramka przodu: złota pikselowa ramka podwójna (nakładka 64x96, ta sama siatka co ilustracja) + mała cyfra rzymska w lewym górnym rogu */
+.front{border:0}
+.front::before{content:"";position:absolute;inset:0;background:url(../img/ui/cardframe.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;pointer-events:none;z-index:3}
+.card.rev .front{border:0}
+.front .num{position:absolute;left:5.2cqw;top:4.6cqw;z-index:4;padding:0 calc(3*var(--u));background:#0b0d17d9;color:#f0d27a;font-family:var(--gothic);font-size:calc(16*var(--u));line-height:1.1;text-shadow:0 var(--u) 0 #000}
