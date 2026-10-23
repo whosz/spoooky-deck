@@ -1,18 +1,54 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "data/grammar.{pl,en}.json: gramatyka Tracery (symbol -> lista wariantow). Zmienne wstawiane przez oracle.js: #name#, #company#, #zodiac#, #keywords#, #meaning#, #business#, #omen#, #service#.",
+  "description": "data/grammar.{pl,en}.json: gramatyka Tracery. oracle.js wstrzykuje: name, company, zodiac, card, pos, keywords, meaning, business, omen (z zodiac.json). Puenta wybierana po usludze karty: puenta_<service>.",
   "type": "object",
-  "required": ["origin", "wezwanie", "znaczenie", "omen", "puenta", "cta"],
-  "additionalProperties": { "$ref": "#/$defs/rules" },
+  "required": [
+    "origin",
+    "wezwanie",
+    "znaczenie",
+    "cta",
+    "puenta_identity",
+    "puenta_uxui",
+    "puenta_website",
+    "puenta_startup"
+  ],
+  "additionalProperties": {
+    "$ref": "#/$defs/rules"
+  },
   "properties": {
-    "origin": { "$ref": "#/$defs/rules" },
-    "wezwanie": { "$ref": "#/$defs/rules" },
-    "znaczenie": { "$ref": "#/$defs/rules" },
-    "omen": { "$ref": "#/$defs/rules" },
-    "puenta": { "$ref": "#/$defs/rules" },
-    "cta": { "$ref": "#/$defs/rules" }
+    "origin": {
+      "$ref": "#/$defs/rules"
+    },
+    "wezwanie": {
+      "$ref": "#/$defs/rules"
+    },
+    "znaczenie": {
+      "$ref": "#/$defs/rules"
+    },
+    "cta": {
+      "$ref": "#/$defs/rules"
+    },
+    "puenta_identity": {
+      "$ref": "#/$defs/rules"
+    },
+    "puenta_uxui": {
+      "$ref": "#/$defs/rules"
+    },
+    "puenta_website": {
+      "$ref": "#/$defs/rules"
+    },
+    "puenta_startup": {
+      "$ref": "#/$defs/rules"
+    }
   },
   "$defs": {
-    "rules": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
   }
 }

@@ -1,0 +1,158 @@
+[
+ {
+  "id": "aries",
+  "name": "Baran",
+  "gen": "Barana",
+  "dat": "Baranowi",
+  "element": "fire",
+  "omens": [
+   "Baran chce działać od razu, więc firma wystartowała, zanim ktokolwiek ustalił, jak wygląda.",
+   "Baran czuje, że firma pędzi, a klienci nie nadążają za jej wizerunkiem.",
+   "W Baranie płonie niecierpliwość: każdy dzień bez dobrej strony to stracona okazja.",
+   "Baran zaczyna, nie dokończywszy. Marce przydałby się ktoś, kto domknie szczegóły."
+  ]
+ },
+ {
+  "id": "taurus",
+  "name": "Byk",
+  "gen": "Byka",
+  "dat": "Bykowi",
+  "element": "earth",
+  "omens": [
+   "Byk ceni to, co trwałe, a firma od lat wygląda tak samo.",
+   "Byk upiera się przy sprawdzonym. Klienci jednak szukają czegoś nowego.",
+   "Byk widzi jakość w produkcie, ale nie w tym, jak firma się pokazuje.",
+   "Spokój Byka maskuje obawę, że konkurencja wygląda lepiej."
+  ]
+ },
+ {
+  "id": "gemini",
+  "name": "Bliźnięta",
+  "gen": "Bliźniąt",
+  "dat": "Bliźniętom",
+  "element": "air",
+  "omens": [
+   "Bliźnięta mówią do klientów na dwa głosy i żaden nie brzmi jak firma.",
+   "Bliźnięta mają tysiąc pomysłów, a marka wciąż nie wie, kim jest.",
+   "Bliźnięta słyszą, że przekaz firmy plącze się jak echo w krypcie.",
+   "Dwoistość Bliźniąt widać w materiałach firmy: dwie wersje logo, trzy czcionki."
+  ]
+ },
+ {
+  "id": "cancer",
+  "name": "Rak",
+  "gen": "Raka",
+  "dat": "Rakowi",
+  "element": "water",
+  "omens": [
+   "Rak chroni firmę jak muszla, ale klienci nie widzą, co w niej jest.",
+   "Rak czuje więcej, niż pokazuje. Marka też ukrywa swoje najlepsze strony.",
+   "Rak boi się zmian, a to właśnie zmiana wyglądu odświeżyłaby firmę.",
+   "Rak pamięta każdego klienta, lecz firma nie daje im pamiątki wartej zapamiętania."
+  ]
+ },
+ {
+  "id": "leo",
+  "name": "Lew",
+  "gen": "Lwa",
+  "dat": "Lwu",
+  "element": "fire",
+  "omens": [
+   "Lew chce błyszczeć, ale nikt nie widzi firmy w tłumie.",
+   "Lwia duma nie wystarczy: blask marki trzeba zaprojektować.",
+   "Lew ryczy, a klienci słyszą tylko szum. Brakuje wyrazistego wizerunku.",
+   "Lew zasługuje na koronę, ale firma wciąż nosi pożyczony kapelusz."
+  ]
+ },
+ {
+  "id": "virgo",
+  "name": "Panna",
+  "gen": "Panny",
+  "dat": "Pannie",
+  "element": "earth",
+  "omens": [
+   "Panna ma wszystko dopięte, tylko klienci gubią się na stronie.",
+   "Panna dostrzega każdy błąd w firmie, więc widzi też ten w układzie strony.",
+   "Panna porządkuje procesy, a wygląd firmy czeka w kolejce od lat.",
+   "Panna zna wartość szczegółu: niedopasowane marginesy ranią ją bardziej niż klienta."
+  ]
+ },
+ {
+  "id": "libra",
+  "name": "Waga",
+  "gen": "Wagi",
+  "dat": "Wadze",
+  "element": "air",
+  "omens": [
+   "Waga waży opcje tak długo, że firma wciąż nie ma ostatecznego wyglądu.",
+   "Waga pragnie harmonii, a materiały firmy wyglądają jak z różnych epok.",
+   "Waga chce wszystkich zadowolić. Marka potrzebuje jednego, wyraźnego stylu.",
+   "Waga czuje, że coś w firmie jest nierówne, i ma rację: nie ma jej spójnego systemu wizualnego."
+  ]
+ },
+ {
+  "id": "scorpio",
+  "name": "Skorpion",
+  "gen": "Skorpiona",
+  "dat": "Skorpionowi",
+  "element": "water",
+  "omens": [
+   "Skorpion widzi pod powierzchnię i wie, że wizerunek firmy ją zdradza.",
+   "Skorpion ma w firmie sekret: jakość większą, niż pokazuje marka.",
+   "Skorpion nie ufa pozorom. Klienci też nie, gdy strona wygląda na porzuconą.",
+   "Skorpion czuje, że konkurencja kąsa, a firma nie ma jak się obronić wizerunkiem."
+  ]
+ },
+ {
+  "id": "sagittarius",
+  "name": "Strzelec",
+  "gen": "Strzelca",
+  "dat": "Strzelcowi",
+  "element": "fire",
+  "omens": [
+   "Strzelec celuje wysoko, a firma ma stronę, która nie dolatuje do klienta.",
+   "Strzelec szuka przygód, a klienci szukają jasnej oferty.",
+   "Strzelec wypuszcza strzały w każdą stronę. Marka potrzebuje jednego celu.",
+   "Strzelec obiecuje daleką podróż, lecz firma nie ma mapy dla swoich klientów."
+  ]
+ },
+ {
+  "id": "capricorn",
+  "name": "Koziorożec",
+  "gen": "Koziorożca",
+  "dat": "Koziorożcowi",
+  "element": "earth",
+  "omens": [
+   "Koziorożec wspina się po szczeblach, a firma wciąż wygląda jak początkująca.",
+   "Koziorożec liczy każdy grosz, więc wizerunek wciąż czeka na budżet.",
+   "Koziorożec buduje trwale. Marka powinna to widać, a nie tylko słychać.",
+   "Koziorożec jest poważny, ale strona firmy mówi tonem sprzed dekady."
+  ]
+ },
+ {
+  "id": "aquarius",
+  "name": "Wodnik",
+  "gen": "Wodnika",
+  "dat": "Wodnikowi",
+  "element": "air",
+  "omens": [
+   "Wodnik ma wizję przyszłości, a firma wygląda na przeszłość.",
+   "Wodnik wyprzedza epokę, tylko klienci jeszcze tego nie zauważyli.",
+   "Wodnik ceni oryginalność, więc firma nie powinna wyglądać jak wszystkie inne.",
+   "Wodnik rzuca pomysły w eter, a marka nie ma nośnika, który by je złapał."
+  ]
+ },
+ {
+  "id": "pisces",
+  "name": "Ryby",
+  "gen": "Ryb",
+  "dat": "Rybom",
+  "element": "water",
+  "omens": [
+   "Ryby płyną z prądem, a firma nie ma wizerunku, który wskazałby jej kierunek.",
+   "Ryby czują klientów, lecz nie umieją powiedzieć o firmie jednym obrazem.",
+   "Ryby marzą, a firmie brakuje kogoś, kto te marzenia narysuje.",
+   "Ryby toną we mgle własnych pomysłów. Potrzebna latarnia: jasny przekaz."
+  ]
+ }
+]

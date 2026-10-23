@@ -1,0 +1,10 @@
+{
+"origin":["#wezwanie# #znaczenie# #omen# #puenta# #cta#"],
+"wezwanie":["#name#, #zodiac#. Talia budzi się nad firmą „#company#”. Mgła rzednie, świece drżą.","Cisza, #name#. Karty szepczą o firmie „#company#” i o znaku #zodiac#.","#name#, usiądź bliżej. Talia wywołuje firmę „#company#” z mroku."],
+"znaczenie":["Wypadła karta: #card#, #pos#. Jej słowa to #keywords#. #meaning# #business#","Odkrywasz kartę #card#, #pos#. Niosą ją słowa: #keywords#. #meaning# #business#"],
+"puenta_identity":["Wyjście jest jedno: projektant identyfikacji wizualnej, który nada firmie twarz, na jaką zasługuje.","Rozwiązanie czeka u projektanta, który zbuduje markę od nowa, od logo po ostatni szczegół."],
+"puenta_uxui":["Wyjście jest jedno: projektant UX/UI, który wyprowadzi klientów z labiryntu wprost do celu.","Rozwiązanie czeka u projektanta, który ułoży ścieżkę klienta tak, by nikt się już nie zgubił."],
+"puenta_website":["Wyjście jest jedno: projektant stron www, który zbuduje drogę z pierwszego kliknięcia do sprzedaży.","Rozwiązanie czeka u projektanta, który postawi stronę godną waszej firmy."],
+"puenta_startup":["Wyjście jest jedno: projektant, który przygotuje pakiet startowy i da młodej firmie mocny początek.","Rozwiązanie czeka u projektanta, który zaprojektuje całą oprawę na dobry start."],
+"cta":["Zajrzyj do oferty whosz.pl, a jeśli chcesz zobaczyć inną przyszłość, wylosuj kolejną kartę.","Odwiedź ofertę whosz.pl. Talia zawsze ma jeszcze jedną kartę."]
+}
