@@ -13,7 +13,8 @@ const params = new URLSearchParams(location.search);
 const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let lang = params.get('lang') || store.get('sd_lang') || (navigator.language.startsWith('pl') ? 'pl' : 'en');
+// Start zawsze po polsku (angielski tylko przez przełącznik lub ?lang=en z linku).
+let lang = params.get('lang') || 'pl';
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
@@ -152,10 +153,20 @@ $('#share').onclick = async () => {
   if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
 };
 $('#lang').onclick = async () => {
-  lang = lang === 'pl' ? 'en' : 'pl'; store.set('sd_lang', lang); await load();
+  lang = lang === 'pl' ? 'en' : 'pl'; await load();
   if (cur) { cur = null; } show(screen === 's-intro' ? 's-intro' : 's-form');
 };
 
 startBg();
 await load();
 show('s-intro');
+
+// Zasłona znika przez fade dopiero, gdy fonty i obrazki ekranu startowego są gotowe (min. 400 ms, max 4 s).
+const ready = Promise.all([
+  document.fonts.load('24px "Jacquard 12"'), document.fonts.load('18px "Geist Pixel"'),
+  ...[...document.querySelectorAll('#s-intro img')].map(i => i.decode().catch(() => {})),
+]);
+await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), new Promise(r => setTimeout(r, 4000))]);
+const loader = $('#loader');
+loader.classList.add('hide');
+setTimeout(() => loader.remove(), 700);
