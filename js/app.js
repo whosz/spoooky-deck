@@ -1,5 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
+import { startBg } from './fx.js';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -112,5 +113,6 @@ const restart = () => { seed = null; history.replaceState(null, '', location.pat
 $('#again').onclick = $('#back').onclick = restart;
 $('#lang').onclick = async () => { lang = lang === 'pl' ? 'en' : 'pl'; store.set('sd_lang', lang); await load(); };
 
+startBg();
 await load();
 show('s-intro');
