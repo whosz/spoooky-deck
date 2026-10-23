@@ -1,15 +1,16 @@
-.card{position:relative;width:144px;height:216px;perspective:800px;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.6,.5,1)}
+.card{--k:2;position:relative;width:calc(144px*var(--k));height:calc(216px*var(--k));perspective:800px;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.6,.5,1)}
 .card.flip{transform:rotateY(180deg)}
 .card.rev .front{transform:rotateY(180deg) rotate(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;border:4px solid var(--gold);background:var(--s1);display:grid;place-items:center;text-align:center;padding:8px;font-weight:700}
 .back{background:repeating-linear-gradient(45deg,var(--s2) 0 8px,var(--s1) 8px 16px);border-color:var(--gold-d)}
 .front{transform:rotateY(180deg);align-content:space-between;color:var(--text)}
-.front .num{color:var(--gold);font-size:22px}
-.front .sym{font-size:56px}
-.front .nm{font-size:15px}
+.front .num{color:var(--gold);font-size:calc(11px*var(--k))}
+.front .sym{font-size:calc(28px*var(--k))}
+.front .nm{font-size:calc(7.5px*var(--k));line-height:1.2}
 .card.rev .front{border-color:var(--blood)}
-#fan{display:flex;justify-content:center;gap:-40px}
-#fan .card{margin:0 -22px;cursor:pointer;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+#fan{display:flex;justify-content:center;overflow:hidden;padding:24px 0}
+#fan .card{margin:0 -100px;cursor:pointer;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 #fan .card:nth-child(1){transform:rotate(-12deg)}#fan .card:nth-child(2){transform:rotate(-6deg)}#fan .card:nth-child(4){transform:rotate(6deg)}#fan .card:nth-child(5){transform:rotate(12deg)}
 #fan .card:hover,#fan .card:focus-visible{transform:translateY(-16px) rotate(0)}
+@media(max-width:640px){#fan .card{--k:1.5;margin:0 -95px}}
 @media(prefers-reduced-motion:reduce){.card,#fan .card{transition:none}}
