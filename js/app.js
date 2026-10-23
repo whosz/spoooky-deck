@@ -185,7 +185,7 @@ function pick() {
   show('s-pick'); startAmbient();
   $('#date').textContent = new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
   const fan = $('#fan'), N = 21, STEP = 9, mid = (N - 1) / 2;
-  fan.replaceChildren(); fan.classList.remove('picked');
+  fan.replaceChildren(); fan.classList.remove('picked'); $('#s-pick').classList.remove('picking');
   const els = Array.from({ length: N }, () => { const c = el('div', 'fcard'); c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
   let off = 0, startX = 0, startOff = 0, moved = false, down = false, vel = 0, lastX = 0, lastT = 0, raf = 0, picking = false;
   // Głębia: karty dalej od środka są mniejsze i opadają łukiem, a środkowa wyskakuje do przodu.
@@ -229,7 +229,7 @@ function pick() {
   };
   const end = () => { if (!down) return; down = false; fan.classList.remove('drag'); if (Math.abs(vel) > .003) glide(); else go(Math.round(off)); };
   const choose = () => {   // wybrana karta wzlatuje na środek, reszta opada i gaśnie, potem odkrycie
-    if (picking) return; picking = true; sfx('pick'); fan.classList.add('picked');
+    if (picking) return; picking = true; sfx('pick'); fan.classList.add('picked'); $('#s-pick').classList.add('picking');   // tytuł, data i napisy gasną, gdy karta wzlatuje
     const t = els.find(c => c.classList.contains('top')) || els[mid];
     t.style.transform = 'translateY(calc(var(--fw) * -.3)) scale(1.35)'; t.style.transitionDuration = '.45s';
     setTimeout(reveal, reduced ? 0 : 460);

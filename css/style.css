@@ -176,3 +176,7 @@ img{-webkit-user-drag:none;user-drag:none}
 .intro.blend .intro-art{margin:-104px 0 -40px;position:relative;z-index:1}
 /* ciemny pas u góry ekranów z tłem sceny usunięty (wyglądał jak tło nagłówka); zostaje tylko zaciemnienie u dołu */
 #scene::after{background:linear-gradient(#0b0d1700 0,#0b0d1700 58%,#0b0d17 100%)}
+/* po wybraniu karty tytuł, data, hasło i podpowiedź znikają, żeby nie przeświecały spod wzlatującej karty */
+#s-pick .head,#s-pick .mid,#s-pick .hint{transition:opacity .25s ease}
+#s-pick.picking .head,#s-pick.picking .mid,#s-pick.picking .hint{opacity:0}
+@media(prefers-reduced-motion:reduce){#s-pick .head,#s-pick .mid,#s-pick .hint{transition:none}}
