@@ -162,9 +162,12 @@ await load();
 show('s-intro');
 
 // Zasłona znika przez fade dopiero, gdy fonty i obrazki ekranu startowego są gotowe (min. 400 ms, max 4 s).
+// Fonty ładujemy też z polskimi znakami (osobny plik latin-ext), a emoji z góry, żeby nic nie migało po wyborze karty.
+const PL = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
+const emojiImgs = [...Object.values(SIGN), ...Object.values(ELEM), ...Object.values(SYM), '1F53A', '1F53B'].map(cp => { const i = new Image(); i.src = `img/emoji/U+${cp}.png`; return i; });
 const ready = Promise.all([
-  document.fonts.load('24px "Jacquard 12"'), document.fonts.load('18px "Geist Pixel"'),
-  ...[...document.querySelectorAll('#s-intro img')].map(i => i.decode().catch(() => {})),
+  document.fonts.load('24px "Jacquard 12"', PL), document.fonts.load('18px "Geist Pixel"', PL),
+  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs].map(i => i.decode().catch(() => {})),
 ]);
 await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), new Promise(r => setTimeout(r, 4000))]);
 const loader = $('#loader');
