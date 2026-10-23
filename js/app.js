@@ -1,6 +1,7 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
 import { startBg } from './fx.js';
+import { start as startAudio, sfx, toggleMute, isMuted } from './audio.js';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -24,7 +25,7 @@ function show(id) {
   screen = id;
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
-  $('#lang').style.visibility = id === 's-intro' ? 'visible' : 'hidden';
+  $('#lang').style.display = id === 's-intro' ? '' : 'none';
   $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
   $('#view').scrollTop = 0;
 }
@@ -86,7 +87,9 @@ function reveal() {
   $('#offer').href = OFFER;
   // Całość max 2 s: obrót 0,6 s, potem cytat, info i przycisk razem (0,5-1,3 s). Miejsce zarezerwowane, nic nie skacze.
   const t = reduced ? 0 : 1;
-  setTimeout(() => $('#card').classList.add('flip'), 50 * t);
+  sfx('pick');
+  setTimeout(() => { $('#card').classList.add('flip'); sfx('flip'); }, 50 * t);
+  setTimeout(() => sfx(reversed ? 'hitRev' : 'hit'), 300 * t);
   setTimeout(() => fades.forEach(f => f.classList.add('in')), 500 * t);
 }
 
@@ -131,7 +134,8 @@ function pick() {
     c.classList.toggle('top', top);
     c.style.zIndex = N - Math.round(Math.abs(d));
   });
-  const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); };
+  let lastTop = 0;
+  const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); const t = Math.round(off); if (t !== lastTop) { lastTop = t; sfx('tick'); } };
   // Wybór karty na pointerup (nie na click): po przeciągnięciu pierwszy tap od razu otwiera kartę.
   fan.onpointerdown = e => { fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = e.clientX; startOff = off; fan.classList.add('drag'); };
   fan.onpointermove = e => { if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true; if (moved) go(startOff + dx / 40); };
@@ -158,6 +162,13 @@ $('#share').onclick = async () => {
   if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
 };
 $('#lang').onclick = async () => { lang = lang === 'pl' ? 'en' : 'pl'; cur = null; await load(); show('s-intro'); };
+
+// Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
+const paintMute = () => { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; };
+document.addEventListener('pointerdown', startAudio, { once: true, capture: true });
+document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
+$('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
+paintMute();
 
 startBg();
 await load();
