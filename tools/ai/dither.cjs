@@ -3,8 +3,8 @@
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
 const BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]];
 (async () => {
-  const [inp, out, W = 144, H = 216, K = 32, spread = 28] = process.argv.slice(2).map((v, i) => i < 2 ? v : +v);
-  const { data } = await sharp(inp).trim({ background: '#ffffff', threshold: 14 }).resize(W, H, { kernel: 'lanczos3', fit: 'fill' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const [inp, out, W = 144, H = 216, K = 32, spread = 28, med = 0] = process.argv.slice(2).map((v, i) => i < 2 ? v : +v);   // med = promień filtra medianowego (grupuje piksele w czyste kępy)
+  const { data } = await sharp(inp).trim({ background: '#ffffff', threshold: 14 }).resize(W, H, { kernel: 'lanczos3', fit: 'fill' }).median(med || 1).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const n = W * H;
   // k-means (inicjalizacja co n/K piksel po posortowanej jasności)
   const idx = [...Array(n).keys()].sort((a, b) => (data[a * 3] + data[a * 3 + 1] + data[a * 3 + 2]) - (data[b * 3] + data[b * 3 + 1] + data[b * 3 + 2]));
