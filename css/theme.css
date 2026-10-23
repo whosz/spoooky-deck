@@ -45,3 +45,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .mini{font-size:16px;letter-spacing:0}
 .mini{display:flex;align-items:center;justify-content:center;padding:0;line-height:1;text-align:center}
 .ftitle{font-family:var(--gothic)}
+/* odwrócona karta: złota ramka jak zawsze + pikselowa czerwona poświata z twardych pierścieni (bez rozmycia) */
+.card.rev .front{border-color:var(--gold);box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a99,0 0 0 12px #b3243a55,0 0 0 16px #b3243a22;animation:revglow 1.6s steps(1) infinite}
+@keyframes revglow{50%{box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a66,0 0 0 12px #b3243a33,0 0 0 16px #b3243a11}}
+@media(prefers-reduced-motion:reduce){.card.rev .front{animation:none}}

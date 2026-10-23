@@ -36,21 +36,15 @@ def pips(c, suit, n):
     s = {2: 1.35, 3: 1.2, 4: 1.2, 5: 1.1, 6: 1.0, 7: .95, 8: .9, 9: .9, 10: .85}[n]
     for fx, fy in PIPS[n]: fn(c, 24 + fx * 96, 40 + fy * 136, s)
 
-COURT = {11: ('page', 72, 'cap'), 12: ('knight', 92, 'plume'), 13: ('queen', 106, 'crown3'), 14: ('king', 114, 'crown5')}
+COURT = {11: ('page', 96, 'cap', 'b2'), 12: ('knight', 112, 'cap', 'ink'), 13: ('queen', 122, 'crown3', 'o4'), 14: ('king', 128, 'crown5', 'y3')}
 def court(c, suit, n):
     name, (robe, trim) = SUITS[suit][0], SUITS[suit][3]
-    role, h, hat = COURT[n]
-    if n >= 13: rect(c, 34, 46, 76, 126, 'ink'); rect(c, 37, 48, 70, 124, 'v1' if n == 14 else 'n3'); c.ellipse(72, 54, 35, 12, P['n3' if n == 13 else 'v1'], True)
-    f = figure(c, 72, 172, h, robe=robe, trim=trim, hood=False, arms='up' if n < 13 else 'down', skin='k2')
-    hx, hy = f['head']
-    if hat == 'cap': poly(c, [(hx - 6, hy - 3), (hx + 6, hy - 3), (hx + 1, hy - 9)], trim); line(c, hx + 1, hy - 9, hx + 9, hy - 14, 'o4')
-    elif hat == 'plume': rect(c, hx - 6, hy - 5, 12, 5, 'y3'); rect(c, hx - 6, hy - 5, 12, 1, 'white'); poly(c, [(hx, hy - 5), (hx + 4, hy - 14), (hx + 10, hy - 8)], 'r3')
-    elif hat == 'crown3': crown(c, hx, hy - 5, 12, 3)
-    else: crown(c, hx, hy - 5, 14, 5)
-    sx, sy = f['hand_r'] if n < 13 else (f['hand_r'][0] + 6, f['hand_r'][1] - 4)
-    SYMBOL[name](c, sx + (3 if n < 13 else 4), sy - 8, .8 if n < 13 else .75)
-    if n == 12:   # płaszcz rycerza
-        poly(c, [(60, 128), (50, 172), (62, 172)], robe)
+    role, h, hat, hair = COURT[n]
+    if n >= 13: rect(c, 34, 40, 76, 136, 'ink'); rect(c, 37, 42, 70, 134, 'v1' if n == 14 else 'n3'); c.ellipse(72, 48, 35, 12, P['n3' if n == 13 else 'v1'], True)
+    f = person(c, 72, 176, h, robe=robe, trim=trim, hair=hair, beard=(n == 14), hat=hat, skin='k2', rh=(17, -h * .2), lh=(-10, 14))
+    hx, hy = f['hand_r']
+    if n == 12: poly(c, [(70, hy - h // 5), (78, hy - h // 4), (74, hy - h // 3 - 6)], 'r3')   # pióropusz
+    SYMBOL[name](c, hx + 2, hy - 12, .9 if n < 13 else .85)
 
 def render(card_id):
     suit, n = card_id[:2], int(card_id[2:]); c = card()

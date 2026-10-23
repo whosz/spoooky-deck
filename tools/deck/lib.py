@@ -177,3 +177,87 @@ def finish(c, accent=None, vig=.5):
     return c
 
 def card(): return Canvas(W, H, P['n1'])
+
+
+# ---- lepsze postacie: person() rysuje na przezroczystej warstwie, cieniuje, obrysowuje i składa na karcie ----
+FAMILIES = [['n1', 'n2', 'n3', 'n4'], ['v1', 'v2', 'v3'], ['r1', 'r2', 'r3', 'r4'], ['o1', 'o2', 'o3', 'o4', 'o5'], ['g1', 'g2', 'g3', 'g4'],
+            ['e1', 'e2', 'e3', 'e4'], ['t1', 't2', 't3', 't4'], ['s1', 's2', 's3', 's4'], ['b1', 'b2', 'b3'], ['y1', 'y2', 'y3'], ['k1', 'k2'], ['cream', 'white']]
+def tone(name, d):
+    """Odcień z tej samej rodziny: d=-1 ciemniejszy, +1 jaśniejszy."""
+    for f in FAMILIES:
+        if name in f: return f[max(0, min(len(f) - 1, f.index(name) + d))]
+    return name
+
+def composite(c, lay, outline='ink'):
+    """Składa warstwę na karcie z 1 px obrysem."""
+    for y in range(lay.h):
+        for x in range(lay.w):
+            if lay.px[y][x][3]: continue
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < lay.w and 0 <= ny < lay.h and lay.px[ny][nx][3]: c.set(x, y, P[outline]); break
+    c.paste(lay, 0, 0)
+
+def _limb(lay, x0, y0, x1, y1, name, t):
+    n = max(int(abs(x1 - x0)), int(abs(y1 - y0)), 1)
+    for i in range(n + 1):
+        x, y = x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n
+        lay.rect(round(x - t / 2), round(y - t / 2), round(t), round(t), P[name])
+
+def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=False, hood=False, lh=None, rh=None, hat=None, belt=True, eyes='o4'):
+    """Postać o wysokości h stojąca na linii base. lh/rh: pozycja dłoni (dx, dy) względem środka barków lewej/prawej ręki.
+    hat: None/'crown3'/'crown5'/'cap'/'mitre'. hood: kaptur z cieniem zamiast twarzy. Zwraca słownik z punktami dłoni i głowy."""
+    lay = Canvas(W, H)
+    hh = max(8, round(h * .15)); neck = base - h + hh; sy = neck + round(hh * .3); sw = hh * 2.3
+    wy = sy + h * .3; flare = sw * .85
+    def pl(pts, name): poly(lay, pts, name)
+    # szata: barki -> talia -> rąbek
+    pl([(cx - sw / 2, sy), (cx + sw / 2, sy), (cx + sw * .4, wy), (cx + flare, base), (cx - flare, base), (cx - sw * .4, wy)], robe)
+    # szyja i głowa
+    lay.rect(round(cx - 1), neck - 1, 3, 3, P[tone(skin, -1)])
+    hr = round(hh * .5); hy = base - h + hr
+    if hood:
+        lay.ellipse(cx, hy + 1, hr + 2, hr + 3, P[robe], True); lay.ellipse(cx, hy + 3, hr - 1, hr, P['ink'], True)
+        lay.set(round(cx - hr * .4), hy + 3, P[eyes]); lay.set(round(cx + hr * .4), hy + 3, P[eyes])
+        pl([(cx - hr - 2, hy + 2), (cx + hr + 2, hy + 2), (cx + sw / 2, sy + 2), (cx - sw / 2, sy + 2)], robe)
+    else:
+        if hair: lay.ellipse(cx, hy - 1, hr + 1, hr + 1, P[hair], True)
+        lay.ellipse(cx, hy + 1, hr - 1, hr, P[skin], True)
+        for yy in range(hy - hr, hy + hr + 1):          # cień po lewej stronie twarzy
+            for xx in range(round(cx - hr), round(cx - hr * .35)):
+                if lay.px[yy][xx][3] and tuple(lay.px[yy][xx]) == tuple(P[skin]): lay.set(xx, yy, P[tone(skin, -1)])
+        ey = hy; ex = max(2, round(hr * .45))
+        lay.set(cx - ex, ey, P['ink']); lay.set(cx + ex, ey, P['ink']); lay.set(cx - ex, ey - 1, P[tone(hair or 'b2', -1)]); lay.set(cx + ex, ey - 1, P[tone(hair or 'b2', -1)])
+        lay.set(cx, ey + 2, P[tone(skin, -1)]); lay.rect(cx - 1, ey + hr // 2 + 1, 3, 1, P['r3'])
+        if hair: lay.rect(round(cx - hr), hy - 1, 2, hr + 2, P[hair]); lay.rect(round(cx + hr - 1), hy - 1, 2, hr + 2, P[hair])
+        if beard: pl([(cx - hr + 1, hy + round(hr * .6)), (cx + hr - 1, hy + round(hr * .6)), (cx + 1, hy + hr * 2 + 3), (cx - 1, hy + hr * 2 + 3)], hair or 'y3')
+    # ręce: rękaw (2 odcinki) + dłoń
+    anchors = {}
+    for side, tgt in ((-1, lh), (1, rh)):
+        sx, sy2 = cx + side * sw / 2 * .9, sy + 2
+        ex_, ey_ = (sx + tgt[0], sy2 + tgt[1]) if tgt else (sx + side * 2, sy2 + h * .36)
+        mx, my = (sx + ex_) / 2 + side * 2, (sy2 + ey_) / 2 + 3
+        _limb(lay, sx, sy2, mx, my, robe, 4); _limb(lay, mx, my, ex_, ey_, tone(robe, 1), 4)
+        lay.ellipse(ex_, ey_, 2.2, 2.2, P[skin], True); anchors['l' if side < 0 else 'r'] = (round(ex_), round(ey_))
+    if belt: lay.rect(round(cx - sw * .42), round(wy), round(sw * .84), 2, P[trim])
+    lay.rect(round(cx - flare), base - 2, round(flare * 2), 2, P[trim])
+    # cieniowanie szaty: lewa strona ciemniejsza, prawa jaśniejsza, fałdy
+    d, l = tone(robe, -1), tone(robe, 1)
+    for y in range(sy, base):
+        for x in range(round(cx - flare - 1), round(cx + flare + 2)):
+            if tuple(lay.px[y][x]) != tuple(P[robe]): continue
+            rel = (x - cx) / max(1, flare * (.45 + .55 * (y - sy) / max(1, base - sy)))
+            if rel < -.35 or (rel < -.15 and thr(x, y) < .5): lay.set(x, y, P[d])
+            elif rel > .6 or (rel > .4 and thr(x, y) < .5): lay.set(x, y, P[l])
+    for k, fx in enumerate((-.5, -.15, .25, .6)):                     # fałdy
+        x = round(cx + fx * flare); y0 = round(wy + 2 + k % 2 * 4)
+        for y in range(y0, base - 3):
+            if tuple(lay.px[y][x]) in (tuple(P[robe]), tuple(P[l])) and (y - y0) % 7 < 5: lay.set(x, y, P[d])
+    if hat:
+        hx, htop = cx, hy - hr
+        if hat in ('crown3', 'crown5'): crown(lay, hx, htop, 14, 5 if hat == 'crown5' else 3)
+        elif hat == 'cap': poly(lay, [(hx - hr, htop + 3), (hx + hr, htop + 3), (hx + 2, htop - 6)], trim)
+        elif hat == 'mitre': poly(lay, [(hx - hr + 1, htop + 3), (hx + hr - 1, htop + 3), (hx, htop - 12)], trim); lay.rect(hx, htop - 8, 1, 6, P['white'])
+    composite(c, lay)
+    anchors.update(head=(cx, hy), hand_l=anchors['l'], hand_r=anchors['r'])
+    return anchors

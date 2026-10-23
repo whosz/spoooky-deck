@@ -52,20 +52,16 @@ def ar19():
         poly(c, [(x, 142), (x - 7, 138), (x - 3, 146)], 'e3'); poly(c, [(x + 1, 150), (x + 8, 145), (x + 4, 154)], 'e3')
         for a in range(8): disc(c, x + 5 * math.cos(a * .785) - 0, h + 5 * math.sin(a * .785), 2, 'o3')
         disc(c, x, h, 3, 'b1'); c.set(x - 1, h - 1, P['b2'])
-    # koń (blady) i dziecko
-    w = 'y3'
-    c.ellipse(72, 150, 20, 9, P['ink'], True); c.ellipse(72, 150, 19, 8, P[w], True); c.ellipse(70, 153, 14, 4, P['y2'], True)
-    poly(c, [(86, 146), (96, 124), (106, 128), (104, 140), (92, 152)], 'ink'); poly(c, [(88, 146), (97, 127), (104, 130), (102, 139), (92, 150)], w)
-    poly(c, [(96, 126), (99, 118), (101, 128)], w); c.set(102, 131, P['ink']); c.set(103, 131, P['o4'])
-    poly(c, [(86, 142), (84, 126), (94, 130)], 'y2')   # grzywa
-    for dx in (-14, -8, 8, 14): rect(c, 72 + dx, 156, 3, 20, 'ink'); rect(c, 73 + dx, 156, 1, 18, 'y3')
-    line(c, 52, 146, 46, 166, 'y2', 2)
-    # dziecko
-    disc(c, 72, 120, 6, 'ink'); disc(c, 72, 120, 5, 'k2'); c.set(70, 120, P['ink']); c.set(74, 120, P['ink'])
-    poly(c, [(72, 114), (79, 112), (76, 118)], 'o3'); disc(c, 72, 114, 2, 'o4')   # wianek
-    poly(c, [(66, 127), (78, 127), (80, 142), (64, 142)], 'ink'); poly(c, [(67, 128), (77, 128), (78, 141), (66, 141)], 'k2')
-    line(c, 66, 129, 54, 116, 'k2', 2); line(c, 78, 129, 88, 118, 'k2', 2)
-    line(c, 54, 116, 54, 96, 'b2'); poly(c, [(55, 96), (68, 99), (55, 106)], 'r3'); rect(c, 55, 96, 13, 1, 'r4')   # sztandar
+    # koń (blady, duży) i dziecko
+    w = 'cream'
+    ph = person(c, 70, 158, 84, robe='o3', trim='o5', skin='k2', hair='b2', hat='cap', lh=(-22, -30), rh=(20, -34), belt=False)
+    line(c, ph['hand_r'][0], ph['hand_r'][1] + 3, ph['hand_r'][0], 84, 'b2'); poly(c, [(ph['hand_r'][0] + 1, 84), (ph['hand_r'][0] + 16, 88), (ph['hand_r'][0] + 1, 98)], 'r3'); rect(c, ph['hand_r'][0] + 1, 84, 14, 1, 'r4')
+    c.ellipse(70, 156, 29, 13, P['ink'], True); c.ellipse(70, 156, 28, 12, P[w], True); c.ellipse(66, 160, 20, 5, P['s4'], True)
+    poly(c, [(88, 150), (100, 122), (114, 126), (112, 142), (98, 158)], 'ink'); poly(c, [(90, 150), (101, 125), (112, 128), (110, 141), (98, 155)], w)
+    poly(c, [(100, 124), (103, 114), (106, 126)], w); c.set(108, 130, P['ink']); c.set(109, 130, P['o4']); rect(c, 109, 138, 3, 2, 'y2')
+    poly(c, [(90, 148), (92, 124), (100, 128)], 'y2')   # grzywa
+    for dx in (-20, -12, 12, 20): rect(c, 70 + dx, 164, 4, 20, 'ink'); rect(c, 71 + dx, 164, 2, 18, 'y3')
+    line(c, 42, 152, 34, 176, 'y2', 3)
     return finish(c)
 
 def angel(c, cx, cy):
@@ -74,28 +70,25 @@ def angel(c, cx, cy):
         poly(c, [(cx + d * 5, cy - 4), (cx + d * 40, cy - 22), (cx + d * 44, cy - 4), (cx + d * 36, cy + 10), (cx + d * 5, cy + 12)], 'ink')
         poly(c, [(cx + d * 6, cy - 3), (cx + d * 38, cy - 19), (cx + d * 41, cy - 5), (cx + d * 34, cy + 8), (cx + d * 6, cy + 10)], 's3')
         for k in range(5): line(c, cx + d * 8, cy + 6, cx + d * (36 + k), cy - 14 + k * 5, 's4' if k % 2 else 's2')
-    poly(c, [(cx - 7, cy - 2), (cx + 7, cy - 2), (cx + 12, cy + 24), (cx - 12, cy + 24)], 'ink')
-    poly(c, [(cx - 6, cy - 1), (cx + 6, cy - 1), (cx + 10, cy + 23), (cx - 10, cy + 23)], 'cream')
-    rect(c, cx - 1, cy, 2, 22, 's3')
-    disc(c, cx, cy - 8, 6, 'ink'); disc(c, cx, cy - 8, 5, 'k2'); disc(c, cx, cy - 12, 5, 'g3'); rect(c, cx - 5, cy - 13, 10, 2, 'g4')
-    c.set(cx - 2, cy - 8, P['ink']); c.set(cx + 2, cy - 8, P['ink'])
-    line(c, cx - 6, cy + 2, cx - 20, cy - 4, 'cream', 2)   # ręka z trąbą
-    poly(c, [(cx - 19, cy - 6), (cx - 52, cy - 14), (cx - 52, cy - 2), (cx - 19, cy - 2)], 'ink')
-    poly(c, [(cx - 20, cy - 5), (cx - 50, cy - 12), (cx - 50, cy - 3), (cx - 20, cy - 3)], 'g3'); rect(c, cx - 50, cy - 12, 3, 9, 'g4')
-    poly(c, [(cx - 50, cy - 8), (cx - 50, cy + 14), (cx - 22, cy + 14), (cx - 22, cy - 6)], 'r3')   # sztandar
-    rect(c, cx - 50, cy - 8, 28, 1, 'r4'); rect(c, cx - 38, cy, 4, 12, 'g3'); rect(c, cx - 42, cy + 4, 12, 3, 'g3')
+    pa = person(c, cx, cy + 36, 62, robe='cream', trim='g3', skin='k2', hair='g3', hat=None, lh=(-18, -10), rh=(14, 10), belt=False)
+    hx, hy = pa['hand_l']
+    poly(c, [(hx - 1, hy - 3), (hx - 34, hy - 10), (hx - 34, hy + 4), (hx - 1, hy + 2)], 'ink')
+    poly(c, [(hx - 1, hy - 2), (hx - 32, hy - 8), (hx - 32, hy + 3), (hx - 1, hy + 1)], 'g3'); rect(c, hx - 33, hy - 9, 3, 13, 'g4')
+    disc(c, hx, hy, 2, 'k2')
+    poly(c, [(hx - 32, hy + 2), (hx - 32, hy + 24), (hx - 6, hy + 24), (hx - 6, hy + 2)], 'r3')   # sztandar
+    rect(c, hx - 32, hy + 2, 26, 1, 'r4'); rect(c, hx - 21, hy + 9, 4, 11, 'g3'); rect(c, hx - 25, hy + 12, 12, 3, 'g3')
 
 def ar20():
     c = card(); ramp(c, 0, 0, W, 190, ['ink', 'n3', 'v2', 'n3', 'n1'])
     glow(c, 72, 52, 60, 'g1', 1.8)
     clouds(c, 28, 72, ['s1', 'y2', 'y3'], 20, 8); clouds(c, 70, 90, ['n3', 's1', 's2'], 21, 6)
-    angel(c, 78, 50)
+    angel(c, 88, 46)
     for x, y in ((20, 100), (122, 104)): raven(c, x, y, 1, 'up')
     mountains(c, 142, 30, 'n2', 6, 5); ramp(c, 0, 142, W, H, ['n2', 'e1', 'ink'])
     for gx, h in ((14, 28), (48, 36), (90, 36), (124, 28)):   # groby
         rect(c, gx - 8, 162, 20, 20, 'ink'); rect(c, gx - 7, 163, 18, 4, 'y1'); rect(c, gx - 7, 163, 18, 1, 'y2')
-    for fx, hh, rb in ((24, 40, 'y2'), (72, 52, 'cream'), (118, 40, 'y2')):
-        f = figure(c, fx, 170, hh, robe=rb, trim='y3', hood=False, arms='up', skin='y3'); 
+    for fx, hh, rb, hr_, bd, lh, rh in ((24, 66, 'y2', 'b1', True, (-12, -28), (6, -34)), (72, 88, 'cream', 'y3', False, (-18, -26), (18, -26)), (120, 66, 'y3', 'b2', False, (-6, -34), (12, -28))):
+        person(c, fx, 174, hh, robe=rb, trim='s3', skin='s4', hair=hr_, beard=bd, lh=lh, rh=rh, belt=False)
     glow(c, 72, 120, 26, 'g2', 2.5)
     return finish(c)
 
@@ -116,13 +109,10 @@ def ar21():
     for a in (0, math.pi / 2, math.pi, -math.pi / 2): pass
     glow(c, 72, 106, 28, 'g2', 2.2)
     # tancerka
-    poly(c, [(72, 82), (80, 98), (76, 118), (62, 126), (66, 106)], 'ink')
-    poly(c, [(72, 84), (78, 98), (75, 116), (63, 124), (67, 106)], 'v3'); poly(c, [(76, 100), (88, 108), (78, 114)], 'cream')   # szarfa
-    line(c, 72, 92, 58, 80, 'k1', 2); line(c, 74, 94, 88, 104, 'k1', 2); line(c, 60, 80, 54, 78, 'g3', 1)
-    line(c, 70, 124, 62, 140, 'k1', 2); line(c, 66, 120, 80, 128, 'k1', 2)
-    disc(c, 72, 79, 6, 'ink'); disc(c, 72, 79, 5, 'k2'); disc(c, 72, 75, 4, 'b1'); c.set(70, 80, P['ink']); c.set(74, 80, P['ink'])
-    # różdżki
-    line(c, 52, 76, 54, 82, 'g3', 2); line(c, 88, 108, 94, 112, 'g3', 2)
+    pw = person(c, 72, 154, 98, robe='v3', trim='g3', skin='k2', hair='b1', lh=(-22, -20), rh=(20, 14))
+    poly(c, [(60, 104), (84, 112), (86, 120), (58, 112)], 'cream')   # szarfa
+    for k in ('hand_l', 'hand_r'):
+        x, y = pw[k]; line(c, x - 5, y + 5, x + 5, y - 5, 'g3', 2) if k == 'hand_l' else line(c, x - 3, y - 6, x + 3, y + 6, 'g3', 2)
     # cztery żywioły w rogach
     for x, y in ((24, 46), (120, 46), (24, 166), (120, 166)): disc(c, x, y, 13, 'ink'); disc(c, x, y, 12, 'n3'); c.ellipse(x, y, 12, 12, P['g2'])
     x, y = 24, 46    # ogień
