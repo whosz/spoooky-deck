@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg, revealFx, tiltCard, enableGyro } from './fx.js';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
@@ -52,7 +52,7 @@ function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, ro
 }
 
 function show(id) {
-  screen = id; setScene(id);
+  screen = id; setScene(id); if (id !== 's-pick') stopAmbient();
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
   closeMenu();
@@ -154,31 +154,53 @@ function openRead() {
 }
 
 function pick() {
-  show('s-pick');
+  show('s-pick'); startAmbient();
   $('#date').textContent = new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
   const fan = $('#fan'), N = 21, STEP = 9, mid = (N - 1) / 2;
-  fan.replaceChildren();
+  fan.replaceChildren(); fan.classList.remove('picked');
   const els = Array.from({ length: N }, () => { const c = el('div', 'fcard'); c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
-  let off = 0, startX = 0, startOff = 0, moved = false, down = false;
+  let off = 0, startX = 0, startOff = 0, moved = false, down = false, vel = 0, lastX = 0, lastT = 0, raf = 0, picking = false;
+  // Głębia: karty dalej od środka są mniejsze i opadają łukiem, a środkowa wyskakuje do przodu.
   const layout = () => els.forEach((c, i) => {
-    const d = i - mid + off, top = Math.abs(d) < 0.5;
-    c.style.transform = `rotate(${d * STEP}deg)${top ? ' translateY(calc(var(--fw) * .4425 - 24px)) scale(1.15)' : ''}`;
+    const d = i - mid + off, a = Math.abs(d), top = a < 0.5;
+    c.style.transform = `rotate(${d * STEP}deg) translateY(${(Math.min(a, 6) * Math.min(a, 6) * 1.2).toFixed(1)}px) scale(${(1 - Math.min(a, 8) * .018).toFixed(3)})${top ? ' translateY(calc(var(--fw) * .4425 - 24px)) scale(1.15)' : ''}`;
     c.classList.toggle('top', top);
-    c.style.zIndex = N - Math.round(Math.abs(d));
+    c.style.zIndex = N - Math.round(a);
   });
+  // Rozdanie: karty wylatują ze stosu na środku po kolei
+  els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.transform = 'translateY(40px) scale(.8)'; c.style.opacity = '0'; });
+  requestAnimationFrame(() => requestAnimationFrame(() => { els.forEach(c => c.style.opacity = ''); layout(); sfx('flip'); setTimeout(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); }));
   let lastTop = 0;
   const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); const t = Math.round(off); if (t !== lastTop) { lastTop = t; sfx('tick'); } };
+  const glide = () => {   // bezwładność po puszczeniu: wachlarz dojeżdża i zatrzymuje się na najbliższej karcie
+    cancelAnimationFrame(raf);
+    const step = () => {
+      vel *= .93; const next = off + vel * 16;
+      if (Math.abs(vel) < .0009 || next < -mid || next > mid) { go(Math.round(off)); fan.classList.remove('glide'); return; }
+      go(next); raf = requestAnimationFrame(step);
+    };
+    fan.classList.add('glide'); raf = requestAnimationFrame(step);
+  };
   // Wybór karty na pointerup (nie na click): po przeciągnięciu pierwszy tap od razu otwiera kartę.
-  fan.onpointerdown = e => { fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = e.clientX; startOff = off; fan.classList.add('drag'); };
-  fan.onpointermove = e => { if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true; if (moved) go(startOff + dx / 40); };
-  const end = () => { if (!down) return; down = false; fan.classList.remove('drag'); go(Math.round(off)); };
-  fan.onpointerup = () => { const tap = down && !moved; end(); if (tap) reveal(); };
+  fan.onpointerdown = e => { if (picking) return; cancelAnimationFrame(raf); fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = lastX = e.clientX; startOff = off; vel = 0; lastT = performance.now(); fan.classList.add('drag'); };
+  fan.onpointermove = e => {
+    if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true;
+    if (moved) { const now = performance.now(), dt = Math.max(1, now - lastT); vel = vel * .6 + (((e.clientX - lastX) / 40) / dt) * .4; lastX = e.clientX; lastT = now; go(startOff + dx / 40); }
+  };
+  const end = () => { if (!down) return; down = false; fan.classList.remove('drag'); if (Math.abs(vel) > .003) glide(); else go(Math.round(off)); };
+  const choose = () => {   // wybrana karta wzlatuje na środek, reszta opada i gaśnie, potem odkrycie
+    if (picking) return; picking = true; sfx('pick'); fan.classList.add('picked');
+    const t = els.find(c => c.classList.contains('top')) || els[mid];
+    t.style.transform = 'translateY(calc(var(--fw) * -.3)) scale(1.35)'; t.style.transitionDuration = '.45s';
+    setTimeout(reveal, reduced ? 0 : 460);
+  };
+  fan.onpointerup = () => { const tap = down && !moved; end(); if (tap) choose(); };
   fan.onpointercancel = end;
   fan.onkeydown = e => {
     if (e.key === 'ArrowLeft') go(Math.round(off) + 1); else if (e.key === 'ArrowRight') go(Math.round(off) - 1);
-    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(); }
   };
-  layout(); fan.focus({ preventScroll: true });
+  fan.focus({ preventScroll: true });
 }
 
 const restart = () => { seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };

@@ -81,7 +81,7 @@ function sizeTop() {
 function loopTop() {
   tg.clearRect(0, 0, top.width, top.height);
   for (const p of parts) {
-    p.x += p.vx; p.y += p.vy; p.vy += .05; p.vx *= .985; p.life--;
+    p.x += p.vx; p.y += p.vy; if (!p.amb) { p.vy += .05; p.vx *= .985; } else p.x += Math.sin((p.life + p.y) / 14) * .12; p.life--;
     tg.globalAlpha = Math.min(1, p.life / 20); tg.fillStyle = p.c;
     const s = Math.round(p.s), x = Math.round(p.x), y = Math.round(p.y);
     if (p.star) { tg.fillRect(x - s, y, 2 * s + 1, 1); tg.fillRect(x, y - s, 1, 2 * s + 1); } else tg.fillRect(x, y, s, s);
@@ -178,3 +178,18 @@ export function tiltCard(slot) {
     ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); slot.style.transition = ''; slot.classList.remove('behind');
   };
 }
+
+// ---- ambient: złote drobinki unoszące się za wachlarzem (ekran wyboru) ----
+let ambient = false, ambTimer = 0;
+export function startAmbient() {
+  if (reduced || ambient) return; ambient = true; ensureTop();
+  const tick = () => {
+    if (!ambient) return;
+    const pr = sizeTop();
+    for (let i = 0; i < 2; i++) parts.push({ x: Math.random() * top.width, y: top.height * (.55 + Math.random() * .45), vx: (Math.random() - .5) * .25, vy: -(.15 + Math.random() * .35), life: 80 + Math.random() * 90, s: 1, star: Math.random() < .1, c: GOLD[1 + Math.floor(Math.random() * 3)], amb: true });
+    if (!running) { running = true; requestAnimationFrame(loopTop); }
+    ambTimer = setTimeout(tick, 120);
+  };
+  tick();
+}
+export function stopAmbient() { ambient = false; clearTimeout(ambTimer); }
