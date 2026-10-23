@@ -55,7 +55,7 @@ export function startBg() {
   if (!reduced) requestAnimationFrame(loop);
 }
 
-// ---- efekty odkrycia karty: błysk, trzęsienie, wybuch pikselowych iskier ----
+// ---- efekty odkrycia karty: trzęsienie i wybuch pikselowych iskier ----
 const PX = 3;   // 1 piksel iskry = 3 px ekranu
 let top, tg, parts = [], running = false;
 const FLAME = ['#ffb347', '#ffe08a', '#ffffff', '#d8aa48'], BLOOD = ['#b3243a', '#e0506a', '#7a1c2c', '#ffffff'];
@@ -92,7 +92,6 @@ export function revealFx(reversed, cardEl) {
     parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - .6, life: 35 + Math.random() * 45, s: Math.random() < .2 ? 2 : 1, star: Math.random() < .15, c: cols[Math.floor(Math.random() * cols.length)] });
   }
   if (!running) { running = true; requestAnimationFrame(loopTop); }
-  const f = document.createElement('div'); f.className = 'flash' + (reversed ? ' rev' : ''); $phone().append(f); setTimeout(() => f.remove(), 420);
   const ph = $phone(); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => ph.classList.remove('shake'), 350);
 }
 
