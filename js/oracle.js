@@ -6,6 +6,7 @@ export function compose({ seed, card, reversed, name, zodiac, company, lang, gra
   const r = new Math.seedrandom('o' + seed);
   tracery.setRng(r);
   const side = reversed ? card.rev : card.up;
+  const meaning = pick(r, side.sentences[lang]);
   const service = pick(r, card.services);
   const g = tracery.createGrammar({
     ...grammar,
@@ -15,11 +16,12 @@ export function compose({ seed, card, reversed, name, zodiac, company, lang, gra
     card: [card.name[lang]],
     pos: [reversed ? ui.reversed : ui.upright],
     keywords: [side.keywords[lang].join(', ')],
-    meaning: [pick(r, side.sentences[lang])],
+    meaning: [meaning],
     business: [card.business[lang]],
     omen: [pick(r, zodiac.omens)],
     puenta: [`#puenta_${service}#`],
   });
   g.addModifiers(tracery.baseEngModifiers);
-  return ['wezwanie', 'znaczenie', 'omen', 'puenta', 'cta'].map(id => ({ id, text: g.flatten(`#${id}#`) }));
+  const parts = ['wezwanie', 'znaczenie', 'omen', 'puenta', 'cta'].map(id => ({ id, text: g.flatten(`#${id}#`) }));
+  return { parts, quote: meaning };
 }

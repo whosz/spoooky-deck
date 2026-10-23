@@ -14,14 +14,17 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lang = params.get('lang') || store.get('sd_lang') || (navigator.language.startsWith('pl') ? 'pl' : 'en');
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
-let ui, grammar, zodiac, cards, seed = params.get('s');
+let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
-const show = id => {
-  document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
-  $('#back').style.visibility = id === 's-pick' || id === 's-read' ? 'visible' : 'hidden';
-  $('#bar-title').textContent = '';
-};
 const getJSON = u => fetch(u).then(r => r.json());
+
+function show(id) {
+  screen = id;
+  document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
+  $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
+  $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
+  $('#view').scrollTop = 0;
+}
 
 async function load() {
   [ui, grammar, zodiac, cards] = await Promise.all([getJSON(`data/ui.${lang}.json`), getJSON(`data/grammar.${lang}.json`), getJSON(`data/zodiac.${lang}.json`), getJSON('data/cards.json')]);
@@ -35,14 +38,13 @@ async function load() {
   if (saved.zodiac) $('#f-zodiac').value = saved.zodiac;
 }
 
-function cardEl(c, reversed) {
-  const el = $('#card');
-  el.className = 'card' + (reversed ? ' rev' : '');
-  const f = el.querySelector('.front');
-  f.replaceChildren();
-  for (const [cls, t] of [['num', c.arcana === 'major' ? ROMAN[c.number] : c.number], ['sym', SYM[c.suit || 'major']], ['nm', c.name[lang]]]) {
-    const d = document.createElement('div'); d.className = cls; d.textContent = t; f.append(d);
-  }
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+function fillCard({ card, reversed }) {
+  const c = $('#card');
+  c.className = 'card' + (reversed ? ' rev' : '');
+  const f = c.querySelector('.front');
+  f.replaceChildren(el('div', 'num', card.arcana === 'major' ? ROMAN[card.number] : card.number), el('div', 'sym', SYM[card.suit || 'major']), el('div', 'nm', card.name[lang]));
 }
 
 function reveal() {
@@ -52,41 +54,66 @@ function reveal() {
   if (!seed) seed = newSeed(cards, hist);
   const { card, reversed } = draw(seed, cards);
   saveHistory([...hist, card.id]);
-  const parts = compose({ seed, card, reversed, name: form.name, zodiac: zodiac.find(z => z.id === form.zodiac), company: form.company, lang, grammar, ui });
-  show('s-read');
-  const text = $('#text'), actions = $('#actions');
-  text.classList.remove('in'); actions.classList.remove('in');
-  text.textContent = parts.map(p => p.text).join(' ');
-  cardEl(card, reversed);
-  $('#bar-title').textContent = card.name[lang];
   const z = zodiac.find(z => z.id === form.zodiac);
-  const info = $('#info'); info.classList.remove('in'); info.replaceChildren();
+  const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, lang, grammar, ui });
+  cur = { card, reversed, z, parts, quote };
+
+  show('s-card');
+  $('#cardslot').append($('#card'));
+  fillCard(cur);
+  $('#quote').textContent = lang === 'pl' ? `„${quote}”` : `“${quote}”`;
+  const info = $('#info'); info.replaceChildren();
   for (const [ic, lb, vl] of [
     [SYM[card.suit || 'major'], ui.arcana, card.arcana === 'major' ? ui.major : ui.minor],
     [SIGN[z.id], ui.sign, z.name],
     [ELEM[z.element], ui.element, ui[z.element]],
     [reversed ? '▼' : '▲', ui.position, reversed ? ui.reversed : ui.upright]]) {
-    const d = document.createElement('div');
-    for (const [c, t] of [['ic', ic], ['lb', lb], ['vl', vl]]) { const e = document.createElement('span'); e.className = c; e.textContent = t; d.append(e); }
-    info.append(d);
+    info.append(el('div', '', '')); const d = info.lastChild;
+    d.append(el('span', 'ic', ic), el('span', 'lb', lb), el('span', 'vl', vl));
   }
-  // Całość max 2 s: obrót 0,6 s, potem tekst, info i przyciski razem (0,5-1,3 s). Miejsce jest zarezerwowane, więc nic nie skacze.
+  const fades = document.querySelectorAll('#s-card .fade');
+  fades.forEach(f => f.classList.remove('in'));
+  $('#offer').href = OFFER;
+  // Całość max 2 s: obrót 0,6 s, potem cytat, info i przycisk razem (0,5-1,3 s). Miejsce zarezerwowane, nic nie skacze.
   const t = reduced ? 0 : 1;
   setTimeout(() => $('#card').classList.add('flip'), 50 * t);
-  setTimeout(() => { text.classList.add('in'); info.classList.add('in'); actions.classList.add('in'); }, 500 * t);
-  $('#offer').href = OFFER;
-  $('#share').onclick = async () => {
-    const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
-    if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
-  };
+  setTimeout(() => fades.forEach(f => f.classList.add('in')), 500 * t);
+}
+
+function renderTab(name) {
+  tab = name;
+  document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name));
+  const box = $('#tabtext'); box.replaceChildren();
+  const p = (t, cls) => box.append(el('p', cls, t));
+  const side = cur.reversed ? cur.card.rev : cur.card.up;
+  if (name === 'fortune') {
+    const [w, zn, om, pu, cta] = cur.parts.map(x => x.text);
+    p(w); p(zn); p(om); p(pu, 'lead'); p(cta);
+  } else if (name === 'card') {
+    p(`${cur.card.name[lang]}, ${cur.reversed ? ui.reversed : ui.upright}`, 'lead');
+    p(side.keywords[lang].join(', '));
+    side.sentences[lang].forEach(s => p(s));
+    p(cur.card.business[lang]);
+  } else {
+    p(`${cur.z.name}, ${ui[cur.z.element]}`, 'lead');
+    p(cur.parts[2].text);
+  }
+  box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
+}
+
+function openRead() {
+  show('s-read');
+  $('#artslot').append($('#card'));
+  $('#rname').textContent = cur.card.name[lang];
+  renderTab('fortune');
 }
 
 function pick() {
   show('s-pick');
   $('#date').textContent = new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
-  const fan = $('#fan'), N = 13, STEP = 9, mid = (N - 1) / 2;
+  const fan = $('#fan'), N = 21, STEP = 9, mid = (N - 1) / 2;
   fan.replaceChildren();
-  const els = Array.from({ length: N }, () => { const c = document.createElement('div'); c.className = 'fcard'; c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
+  const els = Array.from({ length: N }, () => { const c = el('div', 'fcard'); c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
   let off = 0, startX = 0, startOff = 0, moved = false, down = false;
   const layout = () => els.forEach((c, i) => {
     const d = i - mid + off, top = Math.abs(d) < 0.5;
@@ -107,11 +134,22 @@ function pick() {
   layout(); fan.focus({ preventScroll: true });
 }
 
+const restart = () => { seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
+
 $('#enter').onclick = () => show('s-form');
 $('#form').onsubmit = e => { e.preventDefault(); pick(); };
-const restart = () => { seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
-$('#again').onclick = $('#back').onclick = restart;
-$('#lang').onclick = async () => { lang = lang === 'pl' ? 'en' : 'pl'; store.set('sd_lang', lang); await load(); };
+$('#more').onclick = openRead;
+$('#again').onclick = restart;
+$('#back').onclick = () => { if (screen === 's-pick') show('s-form'); else if (screen === 's-card') restart(); else { show('s-card'); $('#cardslot').append($('#card')); } };
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => renderTab(b.dataset.tab));
+$('#share').onclick = async () => {
+  const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
+  if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
+};
+$('#lang').onclick = async () => {
+  lang = lang === 'pl' ? 'en' : 'pl'; store.set('sd_lang', lang); await load();
+  if (cur) { cur = null; } show(screen === 's-intro' ? 's-intro' : 's-form');
+};
 
 startBg();
 await load();

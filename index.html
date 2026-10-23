@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Spooooky Deck</title>
 <meta name="theme-color" content="#0b0d17">
 <link rel="stylesheet" href="css/fonts.css">
@@ -11,52 +11,73 @@
 <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
-<header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><button id="lang" class="mini" aria-label="Language">EN</button></header>
-<main>
-  <section id="s-intro" class="screen">
-    <h1 data-ui="title"></h1>
-    <p data-ui="tagline"></p>
-    <button id="enter" class="cta" data-ui="enter"></button>
-  </section>
-
-  <section id="s-form" class="screen" hidden>
-    <form id="form" class="panel">
-      <label><span data-ui="name"></span><input id="f-name" maxlength="30" autocomplete="off"></label>
-      <label><span data-ui="zodiac"></span><select id="f-zodiac"></select></label>
-      <label><span data-ui="company"></span><input id="f-company" maxlength="60" required autocomplete="off"></label>
-      <button class="cta" data-ui="draw"></button>
-    </form>
-  </section>
-
-  <section id="s-pick" class="screen" hidden>
-    <div class="head">
-      <p id="date"></p>
+<div id="phone">
+  <header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><button id="lang" class="mini" aria-label="Language">EN</button></header>
+  <main id="view">
+    <section id="s-intro" class="screen">
       <h1 data-ui="title"></h1>
-    </div>
-    <div class="mid">
-      <p data-ui="pick"></p>
-      <div class="divider"><i></i><b>◆</b><i></i></div>
-    </div>
-    <div id="fan" tabindex="0" role="listbox" aria-label="Deck"></div>
-    <p class="hint" data-ui="drag"></p>
-  </section>
-
-  <section id="s-read" class="screen" hidden>
-    <div class="read">
-      <div id="card" class="card"><div class="face back"></div><div class="face front"></div></div>
-      <div id="info"></div>
-      <div>
-        <div id="text" class="text" aria-live="polite"></div>
-        <div id="actions">
-          <a id="offer" class="cta" target="_blank" rel="noopener" data-ui="offer"></a>
-          <button id="share" class="cta alt" data-ui="share"></button>
-          <button id="again" class="cta alt" data-ui="again"></button>
-        </div>
+      <p class="tag" data-ui="tagline"></p>
+      <div class="panel hero">
+        <img src="img/ui/hero.png" alt="" width="320" height="224">
+        <h2 data-ui="heroTitle"></h2>
+        <p data-ui="heroText"></p>
+        <button id="enter" class="cta" data-ui="enter"></button>
       </div>
-    </div>
-  </section>
-</main>
-<footer><span data-ui="disclaimer"></span></footer>
+      <h3 class="sect" data-ui="howTitle"></h3>
+      <ul class="rows">
+        <li><img src="img/ui/ic-candle.png" alt=""><div><b data-ui="how1"></b><span data-ui="how1d"></span></div><i>→</i></li>
+        <li><img src="img/ui/ic-stars.png" alt=""><div><b data-ui="how2"></b><span data-ui="how2d"></span></div><i>→</i></li>
+        <li><img src="img/ui/ic-tower.png" alt=""><div><b data-ui="how3"></b><span data-ui="how3d"></span></div><i>→</i></li>
+      </ul>
+    </section>
+
+    <section id="s-form" class="screen" hidden>
+      <form id="form" class="panel">
+        <label><span data-ui="name"></span><input id="f-name" maxlength="30" autocomplete="off"></label>
+        <label><span data-ui="zodiac"></span><select id="f-zodiac"></select></label>
+        <label><span data-ui="company"></span><input id="f-company" maxlength="60" required autocomplete="off"></label>
+        <button class="cta" data-ui="draw"></button>
+      </form>
+    </section>
+
+    <section id="s-pick" class="screen" hidden>
+      <div class="head">
+        <p id="date"></p>
+        <h1 data-ui="title"></h1>
+      </div>
+      <div class="mid">
+        <p data-ui="pick"></p>
+        <div class="divider"><i></i><b>◆</b><i></i></div>
+      </div>
+      <div id="fan" tabindex="0" role="listbox" aria-label="Deck"></div>
+      <p class="hint" data-ui="drag"></p>
+    </section>
+
+    <section id="s-card" class="screen" hidden>
+      <div id="cardslot"><div id="card" class="card"><div class="face back"></div><div class="face front"></div></div></div>
+      <p id="quote" class="quote fade"></p>
+      <div id="info" class="fade"></div>
+      <button id="more" class="cta fade" data-ui="more"></button>
+    </section>
+
+    <section id="s-read" class="screen" hidden>
+      <div id="artslot"></div>
+      <h2 id="rname"></h2>
+      <div class="tabs" role="tablist">
+        <button role="tab" data-tab="fortune" data-ui="tabFortune"></button>
+        <button role="tab" data-tab="card" data-ui="tabCard"></button>
+        <button role="tab" data-tab="sign" data-ui="tabSign"></button>
+      </div>
+      <div id="tabtext" class="text" aria-live="polite"></div>
+      <div id="actions">
+        <a id="offer" class="cta" target="_blank" rel="noopener" data-ui="offer"></a>
+        <button id="share" class="cta alt" data-ui="share"></button>
+        <button id="again" class="cta alt" data-ui="again"></button>
+      </div>
+    </section>
+    <footer><span data-ui="disclaimer"></span></footer>
+  </main>
+</div>
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
 <script type="module" src="js/app.js"></script>

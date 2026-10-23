@@ -1,7 +1,7 @@
 {
  "title": "Spooooky Deck",
- "tagline": "An oracle for companies",
- "enter": "Enter the fog (click enables sound)",
+ "tagline": "Find out the secrets of your company's future.",
+ "enter": "Enter the fog",
  "name": "Name",
  "zodiac": "Zodiac sign",
  "company": "The company you work at",
@@ -26,5 +26,18 @@
  "fire": "Fire",
  "earth": "Earth",
  "air": "Air",
- "water": "Water"
+ "water": "Water",
+ "heroTitle": "Business tarot",
+ "heroText": "Draw a card, the deck does the rest.",
+ "howTitle": "How it works",
+ "how1": "Fill in your details",
+ "how1d": "Name, zodiac sign and company",
+ "how2": "Pick a card",
+ "how2d": "One of 78, upright or reversed",
+ "how3": "Read the fortune",
+ "how3d": "Always with a good punchline",
+ "more": "See the fortune",
+ "tabFortune": "Fortune",
+ "tabCard": "Card",
+ "tabSign": "Sign"
 }

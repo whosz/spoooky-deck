@@ -32,3 +32,15 @@ icon('img/ui/ic-candle.png', ["................", ".......Y........", "......YOY
 icon('img/ui/ic-stars.png', ["................", "..Y.............", ".YYY.....Y......", "..Y.....YYY.....", "...M.....Y......", "....M...M.......", ".....M.M........", "......M...Y.....", "......M..YYY....", ".....M....Y.....", "....M...........", "...YM...........", "..YYY...........", "...Y............", "................", "................"], {'Y': G, 'M': GD})
 icon('img/ui/ic-tower.png', ["................", "....B.B.B.B.....", "....BBBBBBB.....", "....BSSSSSB.....", "....BSWSSSB.....", "....BSSSSSB.....", "....BSSSSSB.....", "....BSSWSSB.....", "....BSSSSSB.....", "....BSSSSSB.....", "....BSDDSSB.....", "....BSDDSSB.....", "...BBBBBBBBB....", "...BGGGGGGGB....", "...BBBBBBBBB....", "................"], {'B': GD, 'S': S2, 'W': FL, 'D': BG, 'G': G})
 print('ok')
+
+# ramka obrazu dla okna telefonu na desktopie: 36x36, slice 12, wyswietlana 2x (24 px)
+def picture_frame(path):
+    n = 36; c = Canvas(n, n)
+    layers = [BG, GD, GD, G, G, GD, BG, S2, S2, GD, BG]
+    for i, col in enumerate(layers): c.frame(i, i, n - 2 * i, n - 2 * i, col)
+    for (cx, cy) in [(6, 6), (n - 7, 6), (6, n - 7), (n - 7, n - 7)]:   # romby w rogach
+        for dy in range(-4, 5):
+            for dx in range(-4, 5):
+                if abs(dx) + abs(dy) <= 4: c.set(cx + dx, cy + dy, BG if abs(dx) + abs(dy) == 4 else (G if abs(dx) + abs(dy) >= 2 else FL))
+    c.save(path)
+picture_frame('img/ui/picture-frame.png')

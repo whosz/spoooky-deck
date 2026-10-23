@@ -39,7 +39,7 @@ export function startBg() {
       g.fillStyle = grd; g.fillRect(f.x - f.r, f.y - f.r, f.r * 2, f.r * 2);
       f.x += f.v; if (f.x < -f.r) f.x = W + f.r; if (f.x > W + f.r) f.x = -f.r;
     }
-    candle(22, t); candle(W - 22, t);
+    if (innerWidth >= 700) { candle(22, t); candle(W - 22, t); }
     for (const s of sparks) {
       g.fillStyle = s.c; g.globalAlpha = .4 + .6 * Math.abs(Math.sin(t / 400 + s.d));
       g.fillRect(Math.round(s.x), Math.round(s.y), 1, 1);

@@ -1,7 +1,7 @@
 {
  "title": "Spooooky Deck",
- "tagline": "Wyrocznia dla firm",
- "enter": "Wejdź w mgłę (klik włącza dźwięk)",
+ "tagline": "Poznaj sekrety przyszłości swojej firmy.",
+ "enter": "Wejdź w mgłę",
  "name": "Imię",
  "zodiac": "Znak zodiaku",
  "company": "Firma, w której pracujesz",
@@ -26,5 +26,18 @@
  "fire": "Ogień",
  "earth": "Ziemia",
  "air": "Powietrze",
- "water": "Woda"
+ "water": "Woda",
+ "heroTitle": "Tarot dla firm",
+ "heroText": "Wylosuj kartę, resztę zrobi talia.",
+ "howTitle": "Jak to działa",
+ "how1": "Wpisz dane",
+ "how1d": "Imię, znak zodiaku i firma",
+ "how2": "Wybierz kartę",
+ "how2d": "Jedna z 78, prosta lub odwrócona",
+ "how3": "Poznaj wróżbę",
+ "how3d": "Zawsze z dobrą puentą",
+ "more": "Zobacz wróżbę",
+ "tabFortune": "Wróżba",
+ "tabCard": "Karta",
+ "tabSign": "Znak"
 }
