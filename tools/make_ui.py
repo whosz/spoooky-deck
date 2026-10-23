@@ -1,7 +1,7 @@
 """python3 tools/make_ui.py: generuje img/ui/* (ramki 9-slice, kursor, ikony pol) w palecie z STYLE.md."""
 import sys; sys.path.insert(0, 'tools')
 from pixel import Canvas, rgb
-BG, S1, S2, GD, G, FL, MG, TX, BL = map(rgb, ['#0b0d17', '#161a2a', '#222842', '#8a6a2e', '#d8aa48', '#ffb347', '#b794f6', '#e8dcc0', '#b3243a'])
+BG, S1, S2, GD, G, FL, MG, TX, BL = map(rgb, ['#0b0d17', '#161a2a', '#222842', '#8a6a2e', '#d8aa48', '#ffb347', '#f4efe6', '#e8dcc0', '#b3243a'])
 
 def frame9(path, size, fill, accent):
     """Ramka 9-slice: czarny kontur, zloto, wewnetrzna linia i nity w rogach; slice = 8."""
@@ -19,7 +19,7 @@ def frame9(path, size, fill, accent):
 frame9('img/ui/frame.png', 24, S1, G)
 frame9('img/ui/btn.png', 24, FL, G)
 frame9('img/ui/btn-alt.png', 24, S2, GD)
-frame9('img/ui/btn-magic.png', 24, MG, G)
+frame9('img/ui/btn-white.png', 24, MG, G)
 
 # kursor: strzalka 12x12 skalowana x2 (24x24)
 cur = Canvas(12, 12)

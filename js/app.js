@@ -5,9 +5,10 @@ import { startBg } from './fx.js';
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
 const ROMAN = ['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI'];
-const SIGN = { aries:'♈', taurus:'♉', gemini:'♊', cancer:'♋', leo:'♌', virgo:'♍', libra:'♎', scorpio:'♏', sagittarius:'♐', capricorn:'♑', aquarius:'♒', pisces:'♓' };
-const ELEM = { fire:'🔥', earth:'🌍', air:'💨', water:'💧' };
-const SYM = { wands: '🔥', cups: '💧', swords: '⚔', pentacles: '✦', major: '☾' };
+// Emoji: pikselowe PNG z SerenityOS (BSD-2, img/emoji/LICENSE), nazwane kodem Unicode.
+const SIGN = { aries:'2648', taurus:'2649', gemini:'264A', cancer:'264B', leo:'264C', virgo:'264D', libra:'264E', scorpio:'264F', sagittarius:'2650', capricorn:'2651', aquarius:'2652', pisces:'2653' };
+const ELEM = { fire:'1F525', earth:'1F30D', air:'1F4A8', water:'1F4A7' };
+const SYM = { wands: '1F525', cups: '1F377', swords: '2694', pentacles: '1FA99', major: '1F319' };
 const params = new URLSearchParams(location.search);
 const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,13 +39,15 @@ async function load() {
   if (saved.zodiac) $('#f-zodiac').value = saved.zodiac;
 }
 
+const em = cp => { const i = document.createElement('img'); i.className = 'emoji'; i.src = `img/emoji/U+${cp}.png`; i.alt = ''; return i; };
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 
 function fillCard({ card, reversed }) {
   const c = $('#card');
   c.className = 'card' + (reversed ? ' rev' : '');
   const f = c.querySelector('.front');
-  f.replaceChildren(el('div', 'num', card.arcana === 'major' ? ROMAN[card.number] : card.number), el('div', 'sym', SYM[card.suit || 'major']), el('div', 'nm', card.name[lang]));
+  const sym = el('div', 'sym'); sym.append(em(SYM[card.suit || 'major']));
+  f.replaceChildren(el('div', 'num', card.arcana === 'major' ? ROMAN[card.number] : card.number), sym, el('div', 'nm', card.name[lang]));
 }
 
 function reveal() {
@@ -67,9 +70,10 @@ function reveal() {
     [SYM[card.suit || 'major'], ui.arcana, card.arcana === 'major' ? ui.major : ui.minor],
     [SIGN[z.id], ui.sign, z.name],
     [ELEM[z.element], ui.element, ui[z.element]],
-    [reversed ? '▼' : '▲', ui.position, reversed ? ui.reversed : ui.upright]]) {
+    [reversed ? '1F53B' : '1F53A', ui.position, reversed ? ui.reversed : ui.upright]]) {
     info.append(el('div', '', '')); const d = info.lastChild;
-    d.append(el('span', 'ic', ic), el('span', 'lb', lb), el('span', 'vl', vl));
+    const icon = el('span', 'ic'); icon.append(em(ic));
+    d.append(icon, el('span', 'lb', lb), el('span', 'vl', vl));
   }
   const fades = document.querySelectorAll('#s-card .fade');
   fades.forEach(f => f.classList.remove('in'));

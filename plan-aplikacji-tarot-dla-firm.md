@@ -122,7 +122,7 @@ Interfejs ma wyglądać jak menu mrocznej gry pixel art: ciemna, zamglona przest
 | Ramki | `#8a6a2e` i `#d8aa48` złoto | ramki paneli, przyciski, karta |
 | Światło | `#ffb347` płomień świecy | główny przycisk, poświata, aktywne pole |
 | Akcent grozy | `#b3243a` krwista czerwień | odwrócona karta, ostrzeżenia, złe omeny |
-| Akcent magii | `#b794f6` jasny fiolet | iskry, cząsteczki, link do oferty |
+| Akcent magii | `#f4efe6` jasna biel | iskry, cząsteczki, link do oferty |
 | Tekst | `#e8dcc0` pergamin | treść wróżby, etykiety |
 
 Kontrast tekstu do tła ma być co najmniej 4,5 : 1. Pergamin na granatowej czerni spełnia to z zapasem.

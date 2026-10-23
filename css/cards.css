@@ -16,3 +16,6 @@
 .fcard.top{filter:drop-shadow(0 0 14px #ffb347cc)}
 #fan.drag .fcard{transition:none}
 @media(prefers-reduced-motion:reduce){.card,.fcard{transition:none}}
+.emoji{image-rendering:pixelated;height:30px;width:auto;vertical-align:middle}
+.front .sym{display:grid;place-items:center}
+.front .sym .emoji{height:36cqw}
