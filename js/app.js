@@ -2,7 +2,7 @@ import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
 import { startBg, revealFx, tiltCard } from './fx.js';
 import { shareImage } from './share.js';
-import { start as startAudio, sfx, toggleMute, isMuted } from './audio.js';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -22,9 +22,9 @@ let untilt = () => {};
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
 // Menu (hamburger): język, dźwięk, informacje o twórcy.
-function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; $('#mute span').textContent = ui ? (isMuted() ? ui.soundOff : ui.soundOn) : ''; }
+function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; $('#mute span').textContent = ui ? (isMuted() ? ui.soundOff : ui.soundOn) + (audioError() ? ` (${audioError()})` : '') : ''; }
 function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }
-function toggleMenu() { const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
+function toggleMenu() { paintMute(); const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
 
 const getJSON = u => fetch(u).then(r => r.json());
 

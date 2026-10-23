@@ -9,15 +9,20 @@ const PRESETS = {  // parametry zzfx(volume, randomness, frequency, attack, sust
   hitRev: [[1, , 55, .02, .25, .6, 2, 3, -3, , , , , .3, , .2, , .9, .3], [.4, , 196, .02, .2, .6, 3, 1.5, -1, , , , , , , , .12, .7, .2]],
 };
 const get = () => { try { return localStorage.getItem('sd_mute') === '1'; } catch { return false; } };
-let muted = get(), music = null, started = false;
+let muted = get(), music = null, started = false, lastErr = '';
 
 export const isMuted = () => muted;
+export const audioError = () => lastErr;   // do diagnozy w menu
 
 // Wywoływane przy każdym geście: iOS/Safari wymaga play() wewnątrz click/touchend, więc ponawiamy, aż muzyka ruszy.
 export function start() {
   try { zzfxX.resume(); } catch {}
-  if (!started) { started = true; music = new Audio('audio/candlelit-tarot.mp3'); music.loop = true; music.volume = .45; }
-  if (!muted && music.paused) music.play().catch(() => {});
+  if (!started) {
+    started = true; music = new Audio('audio/candlelit-tarot.mp3'); music.loop = true; music.volume = .45;
+    music.addEventListener('error', () => { lastErr = 'media error ' + (music.error && music.error.code); });
+    music.addEventListener('playing', () => { lastErr = ''; });
+  }
+  if (!muted && music.paused) music.play().catch(e => { if (e.name !== 'NotAllowedError') lastErr = e.name; });
 }
 
 export function toggleMute() {
