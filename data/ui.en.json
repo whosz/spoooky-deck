@@ -54,5 +54,6 @@
  "shareImage": "Save image",
  "menuLicenses": "Credits and licenses",
  "licensesText": "Fonts: Jacquard 12 and Geist Pixel (OFL). Emoji: SerenityOS. Sound: ZzFX. Randomness: seedrandom. Readings: Tracery.",
- "licensesLink": "Full licenses"
+ "licensesLink": "Full licenses",
+ "musicHint": "Tap the screen to start the music"
 }

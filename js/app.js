@@ -178,7 +178,10 @@ document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => 
 // Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
 for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, startAudio, { capture: true });
 $('#share-img').onclick = () => cur && shareImage({ ...cur, company: $('#f-company').value, lang, ui });
-$('#menu-btn').onclick = toggleMenu; $('#menu-back').onclick = closeMenu;
+$('#menu-btn').onclick = toggleMenu;
+// Podpowiedź o muzyce znika po pierwszym geście (przeglądarki nie pozwalają grać wcześniej) albo gdy dźwięk jest wyciszony.
+if (isMuted()) $('#music-hint').remove();
+else for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, () => $('#music-hint')?.remove(), { once: true, capture: true }); $('#menu-back').onclick = closeMenu;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
