@@ -141,6 +141,7 @@ export function tiltCard(slot) {
   const apply = () => {
     const delta = Math.abs(ry - lastRy) + Math.abs(rx - lastRx), now = performance.now(); lastRy = ry; lastRx = rx;
     if (delta > 1.4 && now - lastGlint > 130) { lastGlint = now; glint(slot); goldDust(slot.querySelector('.card'), 3); }
+    slot.classList.toggle('tilting', Math.abs(ry) > .2 || Math.abs(rx) > .2);   // przy zerowym pochyleniu brak transformacji 3D = ostre piksele
     slot.style.setProperty('--ry', ry.toFixed(1) + 'deg'); slot.style.setProperty('--rx', rx.toFixed(1) + 'deg');
     slot.style.setProperty('--sx', (50 + Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
     const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // widok od tyłu: pokazujemy rewers
@@ -175,7 +176,7 @@ export function tiltCard(slot) {
   return () => {
     document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro); clearTimeout(idle);
     slot.removeEventListener('pointerdown', down); slot.removeEventListener('pointermove', dmove); slot.removeEventListener('pointerup', up); slot.removeEventListener('pointercancel', up);
-    ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); slot.style.transition = ''; slot.classList.remove('behind');
+    ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); slot.style.transition = ''; slot.classList.remove('behind', 'tilting');
   };
 }
 

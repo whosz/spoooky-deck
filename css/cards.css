@@ -27,9 +27,9 @@
 .front::before{border-color:#8a6a2e99}
 
 /* ruch spoczynkowy: kołysanie + pochylenie za kursorem + połysk */
-#cardslot{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));animation:bob 3.6s steps(1) infinite;transition:transform .15s}
+#cardslot{animation:bob 3.6s steps(1) infinite;transition:transform .15s}
 /* spoczynek bez obrotu (obrót rozmywa piksele): unoszenie co 3 px, a pochylenie tylko podczas ruchu */
-@keyframes bob{0%{translate:0 0}25%{translate:0 -3px}50%{translate:0 -6px}75%{translate:0 -3px}100%{translate:0 0}}
+@keyframes bob{0%{translate:0 0}25%{translate:0 calc(-3*var(--u))}50%{translate:0 calc(-6*var(--u))}75%{translate:0 calc(-3*var(--u))}100%{translate:0 0}}
 @media(prefers-reduced-motion:reduce){#cardslot{animation:none;transform:none}}
 #cardslot{touch-action:none;cursor:grab}
 #cardslot.grab{cursor:grabbing}
@@ -61,3 +61,5 @@
 #fan.picked .fcard:not(.top){transform:translateY(60px) scale(.7)!important;opacity:0;transition:transform .4s ease,opacity .35s ease}
 #fan.picked .fcard.top{animation:none;filter:brightness(1.25) drop-shadow(0 0 24px #ffd36acc)}
 @media(prefers-reduced-motion:reduce){.fcard,.fcard.top{animation:none;transition:none}}
+
+#cardslot.tilting{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}

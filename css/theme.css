@@ -55,3 +55,8 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* ikony w nagłówku bez tła i ramki */
 .bar .mini{border:0;border-image:none;background:none;padding:0;box-shadow:none;font-size:28px;color:var(--text);text-shadow:0 2px 0 #000}
 .bar .mini:hover{filter:brightness(1.4) drop-shadow(0 0 6px var(--flame))}
+
+/* czyste piksele: rozmiary czcionki Jacquard 12 to całkowite wielokrotności jej siatki (12 px) w pikselach URZĄDZENIA */
+:root{--f:calc(12*var(--u))}
+#bar-title,.quote,.rows b,.cta,.tabs button,.sect,.text .lead,.menu h3,.intro-bottom .cta,.front .nm{font-size:calc(2*var(--f))}
+#rname,.ftitle,.hero h2{font-size:calc(3*var(--f))}
