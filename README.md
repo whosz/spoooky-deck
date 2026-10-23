@@ -1,4 +1,4 @@
-# Spooooky Deck
+# Spoooky Deck
 
 Mroczna, pikselowa wyrocznia tarota dla firm. Wpisujesz imię, znak zodiaku i firmę, losujesz kartę z talii 78 kart, a wróżba zawsze kończy się wnioskiem, że firmie przyda się projektant.
 

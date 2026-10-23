@@ -1,4 +1,4 @@
-# BRIEF: Spooooky Deck
+# BRIEF: Spoooky Deck
 
 Mroczna pikselowa wyrocznia tarota dla firm. Wejście: imię (≤30 znaków), znak zodiaku (12), firma (≤60). Losowanie 1 z 78 kart, prosta lub odwrócona (~30%). Wróżba o firmie zawsze kończy się wnioskiem: potrzebny projektant. Na końcu link do https://whosz.pl/offer/ (UTM) i kolejne losowanie.
 

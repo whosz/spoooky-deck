@@ -1,6 +1,6 @@
 {
- "title": "Spooooky Deck",
- "tagline": "Poznaj sekrety przyszłości swojej firmy.",
+ "title": "Spoooky Deck",
+ "tagline": "Losuj · Czytaj · Zaufaj intuicji",
  "enter": "Wejdź w mgłę",
  "name": "Imię",
  "zodiac": "Znak zodiaku",
@@ -28,7 +28,7 @@
  "air": "Powietrze",
  "water": "Woda",
  "heroTitle": "Tarot dla firm",
- "heroText": "Wylosuj kartę, resztę zrobi talia.",
+ "heroText": "Wylosuj kartę, a talia powie, co czeka Twoją firmę.",
  "howTitle": "Jak to działa",
  "how1": "Wpisz dane",
  "how1d": "Imię, znak zodiaku i firma",
@@ -55,5 +55,7 @@
  "menuLicenses": "Autorzy i licencje",
  "licensesText": "Muzyka: wygenerowana przez Suno AI. Fonty: Jacquard 12 i Geist Pixel (OFL). Emoji: SerenityOS. Dźwięk: ZzFX. Losowanie: seedrandom. Wróżby: Tracery.",
  "licensesLink": "Pełne licencje",
- "musicHint": "Dotknij ekranu, aby włączyć muzykę"
+ "musicHint": "Dotknij ekranu, aby włączyć muzykę",
+ "introH1": "Poznaj przyszłość",
+ "introH2": "swojej firmy"
 }

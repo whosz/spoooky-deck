@@ -1,7 +1,8 @@
-# Spooooky Deck: Apache (działa w głównej domenie i w podkatalogu, bo ścieżki są względne)
+# Spoooky Deck: Apache (działa w głównej domenie i w podkatalogu, bo ścieżki są względne)
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType font/woff2 .woff2
+  AddType font/ttf .ttf
   AddType audio/mpeg .mp3
   AddType application/javascript .js
 </IfModule>
@@ -16,7 +17,7 @@
     Header set Cache-Control "no-cache"
   </FilesMatch>
   # Obrazki, fonty i muzyka: doba (service worker i tak trzyma kopię offline)
-  <FilesMatch "\.(png|woff2|mp3)$">
+  <FilesMatch "\.(png|woff2|ttf|mp3)$">
     Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
   Header always set X-Content-Type-Options "nosniff"

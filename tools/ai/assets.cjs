@@ -14,4 +14,7 @@ const BACK = process.env.BACK || 'back_1', CANDLE = process.env.CANDLE || 'candl
   if (fs.existsSync(`tools/ai/raw/${HERO}.png`)) {
     await sharp(`tools/ai/raw/${HERO}.png`).resize(144, 96, { kernel: 'nearest', fit: 'fill' }).png({ palette: true, colours: 32, dither: 0 }).toFile('img/ui/hero.png'); console.log('hero');
   }
+  const INTRO = process.env.INTRO || 'intro_1', BG = { form: process.env.BG_FORM || 'bg_form_1', pick: process.env.BG_PICK || 'bg_pick_1', card: process.env.BG_CARD || 'bg_card_1', read: process.env.BG_READ || 'bg_read_1' };
+  if (fs.existsSync(`tools/ai/raw/${INTRO}.png`)) { await sharp(`tools/ai/raw/${INTRO}.png`).resize(108, 187, { kernel: 'nearest', fit: 'fill' }).png({ palette: true, colours: 48, dither: 0 }).toFile('img/ui/intro.png'); console.log('intro'); }
+  for (const [k, f] of Object.entries(BG)) if (fs.existsSync(`tools/ai/raw/${f}.png`)) { await sharp(`tools/ai/raw/${f}.png`).resize(72, 128, { kernel: 'nearest', fit: 'fill' }).png({ palette: true, colours: 32, dither: 0 }).toFile(`img/ui/bg-${k}.png`); console.log('bg', k); }
 })();

@@ -4,3 +4,4 @@ __pycache__/
 tools/deck/_*.png
 tools/ai/raw/
 tools/ai/out/
+fonts/CrossStitch-*.ttf

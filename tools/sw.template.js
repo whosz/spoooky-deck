@@ -1,4 +1,4 @@
-// Service worker Spooooky Deck. Plik sw.js jest generowany przez tools/build_sw.py (wersja = skrót zawartości plików).
+// Service worker Spoooky Deck. Plik sw.js jest generowany przez tools/build_sw.py (wersja = skrót zawartości plików).
 const VERSION = '__VERSION__';
 const CACHE = 'spooooky-' + VERSION;
 const FILES = __FILES__;

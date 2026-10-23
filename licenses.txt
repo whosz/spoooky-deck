@@ -1,4 +1,4 @@
-Spooooky Deck - Autorzy i licencje / Credits and licenses
+Spoooky Deck - Autorzy i licencje / Credits and licenses
 
 Aplikacja: Mateusz Staniszewski, https://whosz.pl
 Ilustracje kart, ikony interfejsu i tło: własne, generowane skryptami w tools/.
@@ -61,3 +61,6 @@ SOFTWARE.
 Copyright 2019 David Bau. Licencja MIT (tekst jak w ZzFX powyżej, z innym właścicielem praw): https://github.com/davidbau/seedrandom
 === Tracery (Apache-2.0) ===
 Kate Compton. Pełny tekst licencji: https://www.apache.org/licenses/LICENSE-2.0 , projekt: https://github.com/galaxykate/tracery
+
+=== Cross Stitch (Levi Szekeres, dafont.com) ===
+Użyta w tytule "Spoooky Deck". Licencja: darmowa do projektów osobistych i organizacji non-profit; użycie komercyjne wymaga licencji (https://www.loremipsum.ro/). Plik fontu nie jest dołączony do repozytorium.

@@ -3,26 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spooooky Deck</title>
+<title>Spoooky Deck</title>
 <meta name="theme-color" content="#0b0d17">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="img/icons/icon-192.png">
 <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Spooooky Deck">
+<meta name="apple-mobile-web-app-title" content="Spoooky Deck">
 <link rel="preload" href="fonts/jacquard12-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=50">
-<link rel="stylesheet" href="css/style.css?v=50">
-<link rel="stylesheet" href="css/cards.css?v=50">
-<link rel="stylesheet" href="css/theme.css?v=50">
+<link rel="stylesheet" href="css/fonts.css?v=56">
+<link rel="stylesheet" href="css/style.css?v=56">
+<link rel="stylesheet" href="css/cards.css?v=56">
+<link rel="stylesheet" href="css/theme.css?v=56">
 </head>
 <body>
 <div id="phone">
   <div id="loader" aria-hidden="true"><img src="img/ui/ic-candle.png" alt="" class="flame" width="64" height="64"></div>
+  <div id="scene" aria-hidden="true"></div>
   <header class="bar"><button id="back" class="mini" aria-label="Back"><svg viewBox="0 0 9 7" width="27" height="21" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true"><path d="M3 0h2v1H3zM2 1h3v1H2zM1 2h8v1H1zM0 3h9v1H0zM1 4h8v1H1zM2 5h3v1H2zM3 6h2v1H3z"/></svg></button><span id="bar-title"></span><button id="menu-btn" class="mini" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span class="burger"><i></i><i></i><i></i></span></button></header>
   <div id="menu-back" hidden></div>
   <aside id="menu" class="menu" hidden>
@@ -39,22 +40,19 @@
     <a class="cta alt" href="licenses.txt" target="_blank" rel="noopener" data-ui="licensesLink"></a>
   </aside>
   <main id="view">
-    <section id="s-intro" class="screen">
-      <h1 data-ui="title"></h1>
-      <p class="tag" data-ui="tagline"></p>
-      <p id="music-hint" class="hint" data-ui="musicHint"></p>
-      <div class="panel hero">
-        <img src="img/ui/hero.png" alt="" width="320" height="213">
-        <h2 data-ui="heroTitle"></h2>
-        <p data-ui="heroText"></p>
-        <button id="enter" class="cta" data-ui="enter"></button>
+    <section id="s-intro" class="screen intro">
+      <img class="intro-bg" src="img/ui/intro.png" alt="">
+      <div class="intro-top">
+        <img class="emblem" src="img/ui/emblem.png" alt="" width="64" height="64">
+        <h1 data-ui="title"></h1>
+        <p class="tag" data-ui="tagline"></p>
+        <p id="music-hint" class="hint" data-ui="musicHint"></p>
       </div>
-      <h3 class="sect" data-ui="howTitle"></h3>
-      <ul class="rows">
-        <li><img src="img/ui/ic-candle.png" alt=""><div><b data-ui="how1"></b><span data-ui="how1d"></span></div></li>
-        <li><img src="img/ui/ic-stars.png" alt=""><div><b data-ui="how2"></b><span data-ui="how2d"></span></div></li>
-        <li><img src="img/ui/ic-tower.png" alt=""><div><b data-ui="how3"></b><span data-ui="how3d"></span></div></li>
-      </ul>
+      <div class="intro-bottom">
+        <h2 class="headline"><span data-ui="introH1"></span> <em data-ui="introH2"></em></h2>
+        <p data-ui="heroText"></p>
+        <button id="enter" class="cta wide"><img class="em" src="img/emoji/U+1F319.png" alt=""><span data-ui="enter"></span><span class="go"><svg viewBox="0 0 9 7" width="18" height="14" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true"><path d="M4 0h2v1H4zM4 1h3v1H4zM0 2h8v1H0zM0 3h9v1H0zM0 4h8v1H0zM4 5h3v1H4zM4 6h2v1H4z"/></svg></span></button>
+      </div>
     </section>
 
     <section id="s-form" class="screen" hidden>
@@ -110,6 +108,6 @@
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
 <script src="js/vendor/zzfx.js"></script>
-<script type="module" src="js/app.js?v=50"></script>
+<script type="module" src="js/app.js?v=56"></script>
 </body>
 </html>

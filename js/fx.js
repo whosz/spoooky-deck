@@ -99,6 +99,26 @@ export function revealFx(reversed, cardEl) {
   const ph = $phone(); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => ph.classList.remove('shake'), 350);
 }
 
+// ---- złote iskry i błyski na krawędziach karty podczas ruchu ----
+const GOLD = ['#8a6a2e', '#d8aa48', '#f0d27a', '#fff6c8'];
+function goldDust(cardEl, n) {
+  if (reduced || !cardEl) return;
+  ensureTop(); const pr = sizeTop(), cr = cardEl.getBoundingClientRect();
+  for (let i = 0; i < n; i++) {
+    const side = Math.floor(Math.random() * 4), t = Math.random();
+    const x = (side === 0 ? cr.left + t * cr.width : side === 1 ? cr.right : side === 2 ? cr.left + t * cr.width : cr.left) - pr.left;
+    const y = (side === 0 ? cr.top : side === 1 ? cr.top + t * cr.height : side === 2 ? cr.bottom : cr.top + t * cr.height) - pr.top;
+    parts.push({ x: x / PX, y: y / PX, vx: (Math.random() - .5) * .8, vy: -Math.random() * .6, life: 28 + Math.random() * 22, s: 1, star: Math.random() < .2, c: GOLD[1 + Math.floor(Math.random() * 3)] });
+  }
+  if (!running) { running = true; requestAnimationFrame(loopTop); }
+}
+function glint(slot) {
+  const g = document.createElement('i'); g.className = 'glint';
+  const side = Math.floor(Math.random() * 4), t = (8 + Math.random() * 84).toFixed(0) + '%';
+  g.style.left = side === 1 ? '100%' : side === 3 ? '0' : t; g.style.top = side === 0 ? '0' : side === 2 ? '100%' : t;
+  slot.append(g); setTimeout(() => g.remove(), 750);
+}
+
 // ---- pochylanie karty za kursorem lub żyroskopem i połysk ----
 let gyroOk = false;
 // Na iOS zgodę na ruch urządzenia trzeba wywołać w geście użytkownika (np. wysłanie formularza); na Androidzie nie jest potrzebna.
@@ -112,7 +132,10 @@ export async function enableGyro() {
 export function tiltCard(slot) {
   if (reduced) return () => {};
   let ry = 0, rx = 0, drag = null;
+  let lastRy = 0, lastRx = 0, lastGlint = 0;
   const apply = () => {
+    const delta = Math.abs(ry - lastRy) + Math.abs(rx - lastRx), now = performance.now(); lastRy = ry; lastRx = rx;
+    if (delta > 1.4 && now - lastGlint > 130) { lastGlint = now; glint(slot); goldDust(slot.querySelector('.card'), 3); }
     slot.style.setProperty('--ry', ry.toFixed(1) + 'deg'); slot.style.setProperty('--rx', rx.toFixed(1) + 'deg');
     slot.style.setProperty('--sx', (50 + Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
     const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // widok od tyłu: pokazujemy rewers

@@ -1,4 +1,4 @@
-# Plan aplikacji: Spooooky Deck
+# Plan aplikacji: Spoooky Deck
 
 23 października 2026 · Mateusz Staniszewski
 
@@ -271,7 +271,7 @@ Proponuję sześć etapów. Po każdym dostajesz coś, co da się obejrzeć i oc
 - [ ] Pod jakim adresem stanie aplikacja (np. `whosz.pl/tarot/` albo osobna domena)? Jaki serwer: Apache czy Nginx?
 - [ ] Czy wersja angielska ma być od razu, czy później?
 - [ ] Czy kontakt ma prowadzić tylko do `whosz.pl/offer/`, czy też do formularza kontaktowego lub maila `hello@whosz.pl`?
-- [x] Nazwa aplikacji: **Spooooky Deck**.
+- [x] Nazwa aplikacji: **Spoooky Deck**.
 
 ## Podział pracy między modele
 

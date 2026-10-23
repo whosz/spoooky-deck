@@ -73,3 +73,12 @@ for _id, _scene in {
     'bg_read': "an old occult library with tall bookshelves, a glowing hanging lantern and cobwebs",
 }.items():
     ASSETS[_id] = ("16-bit pixel art atmospheric background, portrait orientation, dark and moody, soft low contrast, no people: " + _scene + ", deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')
+
+ASSETS['intro2'] = ("16-bit pixel art illustration, portrait orientation: a mystical night landscape, a huge glowing golden full moon surrounded by an arc of moon phases, "
+                    "a fan of tarot cards floating in the air in front of the moon glowing with golden light, below it a silhouette of mountains and a calm lake reflecting the moon, "
+                    "small ringed planets and many stars in a deep purple and violet sky with soft clouds, two lit candles with crystals at the bottom corners, "
+                    "no people, no humans, no characters, the lower third darker and mostly empty, " + _PX + ", purple violet gold and cream colors", '9:16')
+ASSETS['bg_card2'] = ("16-bit pixel art atmospheric background, portrait orientation, dark and moody, soft low contrast, no people: a cosmic scene with large ringed planets, a swirling purple nebula, "
+                      "many stars and a small floating stone island with a glowing lantern, deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')
+ASSETS['bg_read2'] = ("16-bit pixel art atmospheric background, portrait orientation, dark and moody, soft low contrast, no people: an old observatory interior with a large brass telescope pointing through an open dome toward planets and stars, "
+                      "astrolabes and star charts on the walls, deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')

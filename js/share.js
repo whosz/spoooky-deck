@@ -10,14 +10,14 @@ function wrap(g, text, maxW) {
 }
 
 export async function makeShareImage({ card, reversed, quote, company, lang, ui }) {
-  await Promise.all([document.fonts.load('72px "Jacquard 12"', 'ąćęłńóśźż'), document.fonts.load('40px "Geist Pixel"', 'ąćęłńóśźż')]);
+  await Promise.all([document.fonts.load('72px "Jacquard 12"', 'ąćęłńóśźż'), document.fonts.load('96px "Cross Stitch"'), document.fonts.load('40px "Geist Pixel"', 'ąćęłńóśźż')]);
   const art = await loadImg(`img/cards/${card.id}.png`);
   const c = document.createElement('canvas'); c.width = 1080; c.height = 1920;
   const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
   g.fillStyle = BG; g.fillRect(0, 0, 1080, 1920);
   for (let i = 0; i < 90; i++) { g.fillStyle = i % 3 ? '#ffb34766' : '#e8dcc055'; g.fillRect(Math.floor(((i * 7919) % 1080) / 6) * 6, Math.floor(((i * 104729) % 1920) / 6) * 6, 6, 6); }
   g.strokeStyle = GOLD; g.lineWidth = 12; g.strokeRect(30, 30, 1020, 1860);
-  g.textAlign = 'center'; g.fillStyle = GOLD; g.font = '96px "Jacquard 12"'; g.fillText('Spooooky Deck', 540, 170);
+  g.textAlign = 'center'; g.fillStyle = GOLD; g.font = '96px "Cross Stitch"'; g.fillText('Spoooky Deck', 540, 170);
   // karta 5x (720x1080), odwrócona = obrót o 180 stopni
   g.save(); g.translate(540, 250 + 540); if (reversed) g.rotate(Math.PI); g.drawImage(art, -360, -540, 720, 1080); g.restore();
   g.strokeStyle = reversed ? '#b3243a' : GOLD; g.lineWidth = 12; g.strokeRect(174, 244, 732, 1092);
@@ -33,7 +33,7 @@ export async function makeShareImage({ card, reversed, quote, company, lang, ui 
 }
 
 export async function shareImage(data) {
-  const blob = await makeShareImage(data), file = new File([blob], 'spooooky-deck.png', { type: 'image/png' });
+  const blob = await makeShareImage(data), file = new File([blob], 'spoooky-deck.png', { type: 'image/png' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file], title: data.ui.title }); return; } catch (e) { if (e.name === 'AbortError') return; } }
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'spooooky-deck.png'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'spoooky-deck.png'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 }

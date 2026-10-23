@@ -41,3 +41,13 @@
 .front .nm{width:calc(100% - 20px);border:8px solid transparent;border-image:url(../img/ui/frame.png) 8 fill / 8px stretch;image-rendering:pixelated;background:none;padding:4px 6px;font-family:'Jacquard 12',serif;font-size:11cqw;line-height:1.1;color:#f0d27a;text-shadow:0 2px 0 #000;font-weight:400}
 /* karty nie są zaznaczalne (nazwa, plakietka) */
 #cardslot,.card,.fcard,#artslot{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+
+/* złoto: metaliczna folia na krawędzi karty przesuwa się z pochyleniem, błyski i złoty pył przy ruchu */
+#cardslot{position:relative}
+.front{border-image:linear-gradient(115deg,#6b4f1d calc(var(--sx,30%) - 60%),#b8913a calc(var(--sx,30%) - 30%),#f0d27a calc(var(--sx,30%) - 8%),#fff6c8 var(--sx,30%),#f0d27a calc(var(--sx,30%) + 8%),#b8913a calc(var(--sx,30%) + 30%),#6b4f1d calc(var(--sx,30%) + 60%)) 1}
+.glint{position:absolute;z-index:4;width:19px;height:19px;margin:-9px 0 0 -9px;pointer-events:none;animation:glint .75s steps(6) forwards}
+.glint::before,.glint::after{content:"";position:absolute;background:linear-gradient(90deg,#8a6a2e,#f0d27a 30%,#fff6c8 50%,#f0d27a 70%,#8a6a2e)}
+.glint::before{left:0;top:8px;width:19px;height:3px}
+.glint::after{left:8px;top:0;width:3px;height:19px;background:linear-gradient(0deg,#8a6a2e,#f0d27a 30%,#fff6c8 50%,#f0d27a 70%,#8a6a2e)}
+@keyframes glint{0%{transform:scale(0)}35%{transform:scale(1) rotate(0)}100%{transform:scale(0) rotate(45deg)}}
+@media(prefers-reduced-motion:reduce){.glint{display:none}}

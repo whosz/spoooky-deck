@@ -59,3 +59,16 @@ def shine(path):
     c.save(path)
 BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
 shine('img/ui/shine.png')
+
+# godło nad tytułem ekranu startowego: półksiężyc z gwiazdą i promieniami (32x32)
+def emblem(path):
+    import math
+    c = Canvas(32, 32)
+    for i in range(24):
+        a = i * math.pi / 12; r0, r1 = 12, 15 if i % 2 else 13
+        c.line(round(16 + r0 * math.cos(a)), round(16 + r0 * math.sin(a)), round(16 + r1 * math.cos(a)), round(16 + r1 * math.sin(a)), G)
+    c.ellipse(16, 16, 9, 9, TX, True); c.ellipse(19, 14, 8, 8, rgb('#0b0d17'), True)
+    for d in range(-2, 3): c.set(21 + d, 16, FL); c.set(21, 16 + d, FL)
+    c.set(21, 16, rgb('#ffffff'))
+    c.save(path)
+emblem('img/ui/emblem.png')

@@ -28,8 +28,16 @@ function toggleMenu() { paintMute(); const open = $('#menu').hidden; $('#menu').
 
 const getJSON = u => fetch(u).then(r => r.json());
 
+const SCENES = { 's-form': 'form', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
+let sceneTimer;
+function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, rozjaśnienie)
+  const el = $('#scene'), k = SCENES[id]; clearTimeout(sceneTimer);
+  el.classList.remove('on');
+  if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.classList.add('on'); }, 260);
+}
+
 function show(id) {
-  screen = id;
+  screen = id; setScene(id);
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
   closeMenu();
@@ -205,7 +213,7 @@ const PL = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
 const emojiImgs = [...Object.values(SIGN), ...Object.values(ELEM), ...Object.values(SYM), '1F53A', '1F53B'].map(cp => { const i = new Image(); i.src = `img/emoji/U+${cp}.png`; return i; });
 const ready = Promise.all([
   document.fonts.load('24px "Jacquard 12"', PL), document.fonts.load('18px "Geist Pixel"', PL),
-  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs].map(i => i.decode().catch(() => {})),
+  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs, ...['form', 'pick', 'card', 'read'].map(k => { const i = new Image(); i.src = `img/ui/bg-${k}.png`; return i; })].map(i => i.decode().catch(() => {})),
 ]);
 await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), new Promise(r => setTimeout(r, 4000))]);
 const loader = $('#loader');
