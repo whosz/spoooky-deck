@@ -57,9 +57,18 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .bar .mini:hover{filter:brightness(1.4) drop-shadow(0 0 6px var(--flame))}
 
 /* czyste piksele: rozmiary czcionki Jacquard 12 to całkowite wielokrotności jej siatki (12 px) w pikselach URZĄDZENIA */
-:root{--f:calc(12*var(--u));--gs:1.35}   /* --gs: skala dla Olde Tome (mniejsza bryła niż Jacquard 12); dla pikselowej Jacquard ustaw 1 */
+:root{--f:calc(12*var(--u));--gs:1.6}   /* --gs: skala dla Olde Tome (mniejsza bryła niż Jacquard 12); dla pikselowej Jacquard ustaw 1 */
 #bar-title,.quote,.rows b,.cta,.tabs button,.sect,.text .lead,.menu h3,.intro-bottom .cta,.front .nm{font-size:calc(2*var(--f)*var(--gs))}
 #rname,.ftitle,.hero h2{font-size:calc(3*var(--f)*var(--gs))}
 /* mała karta na ekranie wróżby: mniejsza plakietka z nazwą */
 #artslot .front .nm{font-size:10.5cqw;border-width:calc(4*var(--u));border-image-width:calc(4*var(--u));padding:0 2px;width:calc(100% - 14px)}
 #artslot .front .num{font-size:calc(10*var(--u))}
+/* przyciski i zakładki: nieco mniejsze od nagłówków, żeby mieściły się w jednej linii */
+.cta,.tabs button,.intro-bottom .cta{font-size:calc(1.85*var(--f)*var(--gs));white-space:nowrap}
+.tabs button{font-size:calc(1.7*var(--f)*var(--gs))}
+.quote{font-size:calc(2*var(--f)*var(--gs))}
+.quote{font-size:calc(1.55*var(--f)*var(--gs));line-height:1.3}
+#bar-title{font-size:calc(1.6*var(--f)*var(--gs))}
+.front .nm{font-size:calc(1.3*var(--f)*var(--gs));line-height:1.1}
+#artslot .front .nm{font-size:10cqw}
+.rows b,.menu h3,.sect,.text .lead{font-size:calc(1.7*var(--f)*var(--gs))}
