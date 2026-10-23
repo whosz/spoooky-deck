@@ -169,3 +169,6 @@ img{-webkit-user-drag:none;user-drag:none}
 .bar{background:linear-gradient(#0b0d17b3 55%,transparent)}   /* nagłówek o 30% bardziej przezroczysty */
 
 #s-pick .mid{padding-bottom:calc(var(--fw) * .16 + 28px)}   /* miejsce na uniesioną, powiększoną kartę, żeby nie zasłaniała linii pod napisem */
+/* pasek nawigacji: bez tła na górze strony, ciemne tło dopiero po pierwszym przewinięciu */
+.bar{background:none;transition:background .25s ease}
+.bar.scrolled{background:linear-gradient(#0b0d17f2 60%,#0b0d1700)}

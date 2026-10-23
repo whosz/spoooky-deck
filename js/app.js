@@ -21,6 +21,7 @@ if (!['pl', 'en'].includes(lang)) lang = 'pl';
 let untilt = () => {}, preview = null;
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
+$('#view').addEventListener('scroll', () => $('.bar').classList.toggle('scrolled', $('#view').scrollTop > 2), { passive: true });
 document.addEventListener('selectstart', e => { if (!e.target.closest?.('input, textarea, select')) e.preventDefault(); });
 document.addEventListener('dragstart', e => e.preventDefault());
 
@@ -70,7 +71,7 @@ function show(id) {
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
   closeMenu();
   $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
-  $('#view').scrollTop = 0;
+  $('#view').scrollTop = 0; $('.bar').classList.remove('scrolled');
 }
 
 async function load() {
