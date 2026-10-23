@@ -23,9 +23,9 @@ const fs = require('fs');
   .c2{transform:translate(70px,26px) rotate(0deg);left:140px}.c3{left:96px;transform:translate(-0px,0)}
   .t{position:absolute;left:520px;top:150px;right:60px;color:#d8aa48}
   h1{font:400 112px/1 CS;margin:0 0 28px;text-shadow:0 6px 0 #000,0 0 40px #ffb34777}
-  p{font:400 46px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
+  p{font:400 42px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
   </style><div class=bg></div><div class=sh></div><div class=c2></div><div class=card></div>
-  <div class=t><h1>Spoooky Deck</h1><p>Dotknij, aby wybrać kartę</p></div>`;
+  <div class=t><h1>Spoooky Deck</h1><p>Losuj · Czytaj · Zaufaj intuicji</p></div>`;
   fs.writeFileSync('tools/_share.html', html);
   const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1200, height: 630 } });
   await p.goto('http://localhost:8123/tools/_share.html'); await p.waitForTimeout(1500);
