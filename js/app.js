@@ -29,9 +29,9 @@ function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' :
 function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }
 function toggleMenu() { paintMute(); const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
 
-// Siatka pikseli grafiki karty: domyślnie 72 (144x216, piksele podwojone); nowe karty testowe mają 96x144 (natywnie).
-const GRID96 = new Set(['ar01', 'ar13', 'wa05', 'cu13']);
-const gridOf = id => GRID96.has(id) ? 96 : 72;
+// Siatka pikseli grafiki karty: domyślnie 72 (144x216, piksele podwojone); karty testowe mają natywnie 64x96 (styl retro 16 kolorów) lub 96x144.
+const GRID64 = new Set(['ar01', 'ar03', 'ar16', 'wa05']), GRID96 = new Set(['ar13', 'cu13']);
+const gridOf = id => GRID64.has(id) ? 64 : GRID96.has(id) ? 96 : 72;
 let cardAvail = { reveal: 255, read: 156 }, snapFn = (g, t) => t;
 function sizeCard() {
   if (!cur) return;

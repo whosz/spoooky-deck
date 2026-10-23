@@ -104,3 +104,9 @@ STYLE4 = ("Detailed painterly pixel art tarot card illustration in classic Rider
           "clean crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt4_for(card_id): return f"{STYLE4}. Scene: {SCENES[card_id]}."
 SCENES['ar17'] = "The Star: a woman in a long flowing blue robe kneeling by a calm pond at night, pouring water from two jugs onto the land and into the pond, one huge eight-pointed golden star and seven smaller white stars in the night sky, a bird in a tree"
+
+# Styl 5 ("retro 16-kolorowy, jak gry z lat 90."): grube piksele, mała paleta, ciemne kontury, płaskie wypełnienia
+STYLE5 = ("Early 1990s retro video game pixel art tarot card illustration, chunky large pixels, very limited palette of about 16 colors, vivid saturated colors, "
+          "thick dark outlines around shapes, flat color fills with only a little ordered dithering in the background, simple faces, bold readable shapes, "
+          "Rider-Waite tarot composition filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
+def prompt5_for(card_id): return f"{STYLE5}. Scene: {SCENES[card_id]}."
