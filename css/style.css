@@ -88,7 +88,5 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 @keyframes lf{50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){#loader .flame{animation:none}#loader{transition:none}}
 .hero h2{text-shadow:none;filter:none;color:#fff}
-.langs{display:flex;gap:12px;justify-content:center;margin-top:4px}
-.langs .cta{min-width:80px;padding:6px 10px}
 .ftitle{margin:0;font-weight:400;font-size:36px;line-height:1.1;color:var(--text)}
 .fintro{margin:0;max-width:320px;font-size:18px;opacity:.85}
