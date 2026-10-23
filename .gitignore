@@ -5,3 +5,4 @@ tools/deck/_*.png
 tools/ai/raw/
 tools/ai/out/
 fonts/CrossStitch-*.ttf
+tools/ai/dith/
