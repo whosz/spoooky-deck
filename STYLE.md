@@ -7,7 +7,7 @@
 | Ramki | `#8a6a2e`, `#d8aa48` |
 | Światło (CTA, aktywne) | `#ffb347` |
 | Groza (odwrócona karta) | `#b3243a` |
-| Magia (iskry, link oferty) | `#3fd0c9` |
+| Magia (iskry, link oferty) | `#b794f6` |
 | Tekst | `#e8dcc0` |
 
 Fonty (woff2, lokalnie): nagłówki Jacquarda Bastarda 9, treść Pixelify Sans. Sprawdzić ąęśćźżłóń.

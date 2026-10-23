@@ -1,7 +1,7 @@
 """python3 tools/make_ui.py: generuje img/ui/* (ramki 9-slice, kursor, ikony pol) w palecie z STYLE.md."""
 import sys; sys.path.insert(0, 'tools')
 from pixel import Canvas, rgb
-BG, S1, S2, GD, G, FL, MG, TX, BL = map(rgb, ['#0b0d17', '#161a2a', '#222842', '#8a6a2e', '#d8aa48', '#ffb347', '#3fd0c9', '#e8dcc0', '#b3243a'])
+BG, S1, S2, GD, G, FL, MG, TX, BL = map(rgb, ['#0b0d17', '#161a2a', '#222842', '#8a6a2e', '#d8aa48', '#ffb347', '#b794f6', '#e8dcc0', '#b3243a'])
 
 def frame9(path, size, fill, accent):
     """Ramka 9-slice: czarny kontur, zloto, wewnetrzna linia i nity w rogach; slice = 8."""

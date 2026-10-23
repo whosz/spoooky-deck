@@ -2,7 +2,7 @@
 // mgła, dwie świece po bokach i unoszące się iskry. Przy reduced-motion jedna statyczna klatka.
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const H = 180;
-const SPARK = ['#ffb347', '#ffb347', '#d8aa48', '#3fd0c9'];
+const SPARK = ['#ffb347', '#ffb347', '#d8aa48', '#b794f6'];
 
 export function startBg() {
   const c = document.createElement('canvas');

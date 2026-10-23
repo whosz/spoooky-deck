@@ -1,4 +1,4 @@
-:root{--bg:#0b0d17;--s1:#161a2a;--s2:#222842;--gold:#d8aa48;--gold-d:#8a6a2e;--flame:#ffb347;--blood:#b3243a;--magic:#3fd0c9;--text:#e8dcc0;
+:root{--bg:#0b0d17;--s1:#161a2a;--s2:#222842;--gold:#d8aa48;--gold-d:#8a6a2e;--flame:#ffb347;--blood:#b3243a;--magic:#b794f6;--text:#e8dcc0;
   --pw:100vw;--ph:100dvh;--cw:calc(min(calc(var(--pw)*.78),340px,calc((var(--ph) - 400px)/1.5))*.8625);--fw:min(calc(var(--pw)*.3),138px)}
 *{box-sizing:border-box}
 html{background:var(--bg)}
