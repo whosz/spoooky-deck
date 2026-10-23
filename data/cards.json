@@ -1,22 +1,5088 @@
 [
-{"id":"ar06","arcana":"major","number":6,"name":{"pl":"Kochankowie","en":"The Lovers"},
- "up":{"keywords":{"pl":["wybór","spójność","więź"],"en":["choice","harmony","bond"]},"sentences":{"pl":["Stoisz przed wyborem, który zdefiniuje, kim jest wasza marka.","Dwie połówki w końcu chcą wyglądać jak jedna całość."],"en":["You stand before a choice that will define who your brand is.","Two halves at last want to look like one whole."]}},
- "rev":{"keywords":{"pl":["rozdźwięk","niespójność","wahanie"],"en":["discord","inconsistency","doubt"]},"sentences":{"pl":["Firma mówi jednym głosem, a wygląda jak trzy różne.","Klienci nie wiedzą, komu właściwie zaufali."],"en":["The company speaks with one voice and looks like three.","Clients cannot tell whom they have actually trusted."]}},
- "business":{"pl":"Wasza marka potrzebuje jednego, spójnego oblicza.","en":"Your brand needs one coherent face."},"services":["identity"]},
-{"id":"ar07","arcana":"major","number":7,"name":{"pl":"Rydwan","en":"The Chariot"},
- "up":{"keywords":{"pl":["pęd","wola","zwycięstwo"],"en":["drive","will","victory"]},"sentences":{"pl":["Firma rusza z miejsca i chce jechać szybciej, niż pozwala droga.","Dwa sfinksy ciągną w tę samą stronę. To rzadkie."],"en":["The company lurches forward and wants to ride faster than the road allows.","Two sphinxes pull in one direction. That is rare."]}},
- "rev":{"keywords":{"pl":["chaos","utrata kontroli","zastój"],"en":["chaos","lost control","stall"]},"sentences":{"pl":["Wodze wypadły z ręki, a konie ciągną w przeciwne strony.","Pędzicie, ale nikt nie umie was znaleźć w sieci."],"en":["The reins slipped and the horses pull apart.","You race ahead, yet nobody can find you online."]}},
- "business":{"pl":"Wasz wóz potrzebuje drogi: strony, która prowadzi klienta do celu.","en":"Your chariot needs a road: a site that leads clients to the goal."},"services":["website"]},
-{"id":"ar16","arcana":"major","number":16,"name":{"pl":"Wieża","en":"The Tower"},
- "up":{"keywords":{"pl":["nagła zmiana","upadek starego","olśnienie"],"en":["sudden change","old order falls","revelation"]},"sentences":{"pl":["Piorun trafia w to, co wyglądało na trwałe.","Stare fasady pękają, a pod nimi widać, czego brakowało."],"en":["Lightning strikes what looked permanent.","Old facades crack and show what was missing underneath."]}},
- "rev":{"keywords":{"pl":["opór","odwlekanie","tląca się katastrofa"],"en":["resistance","delay","smouldering ruin"]},"sentences":{"pl":["Zmiana puka od dawna, a wy trzymacie drzwi zamknięte.","Mury się trzymają tylko dlatego, że nikt ich nie dotyka."],"en":["Change has been knocking for ages and you keep the door shut.","The walls hold only because nobody touches them."]}},
- "business":{"pl":"Czas postawić nową wieżę: odświeżoną identyfikację wizualną.","en":"Time to raise a new tower: a fresh visual identity."},"services":["identity"]},
-{"id":"ar17","arcana":"major","number":17,"name":{"pl":"Gwiazda","en":"The Star"},
- "up":{"keywords":{"pl":["nadzieja","odnowa","kierunek"],"en":["hope","renewal","direction"]},"sentences":{"pl":["Po burzy nad firmą zapala się jedno jasne światło.","Początek jest mały, ale wskazuje stronę, w którą warto iść."],"en":["After the storm one bright light kindles over the company.","The start is small, yet it points where to go."]}},
- "rev":{"keywords":{"pl":["zwątpienie","zgaszone światło","mgła"],"en":["doubt","dimmed light","fog"]},"sentences":{"pl":["Gwiazda gaśnie, bo nikt nie widzi, co firma ma do zaoferowania.","Nadzieja jest, brakuje tylko mapy."],"en":["The star dims because nobody sees what the company offers.","Hope is there, only the map is missing."]}},
- "business":{"pl":"Młoda firma potrzebuje pakietu startowego, który da jej twarz.","en":"A young company needs a launch package that gives it a face."},"services":["startup"]},
-{"id":"pe05","arcana":"minor","suit":"pentacles","number":5,"name":{"pl":"Piątka Monet","en":"Five of Pentacles"},
- "up":{"keywords":{"pl":["niedostatek","chłód","wykluczenie"],"en":["want","cold","exclusion"]},"sentences":{"pl":["Klienci mijają okno, w którym pali się światło.","Zimą nawet dobra oferta potrzebuje ciepłego wejścia."],"en":["Clients pass a window where a light is burning.","In winter even a good offer needs a warm entrance."]}},
- "rev":{"keywords":{"pl":["powrót","pomoc","odwilż"],"en":["return","help","thaw"]},"sentences":{"pl":["Drzwi do kościoła w końcu się uchylają.","Klienci wracają, jeśli tylko znajdą drogę do środka."],"en":["The church door finally opens a crack.","Clients return, if only they can find the way in."]}},
- "business":{"pl":"Ktoś musi poprawić to, jak klient przechodzi przez waszą stronę: UX i UI.","en":"Someone must fix how clients move through your site: UX and UI."},"services":["uxui"]}
+ {
+  "id": "ar00",
+  "arcana": "major",
+  "number": 0,
+  "name": {
+   "pl": "Głupiec",
+   "en": "The Fool"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "początek",
+     "ufność",
+     "nowa droga"
+    ],
+    "en": [
+     "beginning",
+     "trust",
+     "new road"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Krok w nieznane już zrobiony, a strach jakoś nie nadszedł.",
+     "Pomysł jest świeży, a plan dopiero się rysuje."
+    ],
+    "en": [
+     "A step into the unknown is taken, and fear has not turned up.",
+     "The idea is fresh, and the plan is still being drawn."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "lekkomyślność",
+     "brak planu",
+     "naiwność"
+    ],
+    "en": [
+     "recklessness",
+     "no plan",
+     "naivety"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Skok bez patrzenia pod nogi, a ludzie przyglądają się z boku.",
+     "Wszystko wygląda świeżo, lecz bez planu łatwo zgubić kierunek."
+    ],
+    "en": [
+     "A leap with no look at the ground, and onlookers wince.",
+     "Everything looks fresh, but without a plan the direction is easily lost."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Przed kolejnym krokiem przyda się pakiet startowy dla młodej firmy.",
+   "en": "Before the next step, a young company could use a launch package."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "ar01",
+  "arcana": "major",
+  "number": 1,
+  "name": {
+   "pl": "Mag",
+   "en": "The Magician"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "umiejętność",
+     "sprawczość",
+     "skupienie"
+    ],
+    "en": [
+     "skill",
+     "agency",
+     "focus"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Narzędzia leżą na stole, a firma wie, jak po nie sięgnąć.",
+     "Każdy element marki zadziała, gdy trafi na swoje miejsce."
+    ],
+    "en": [
+     "Tools lie on the table, and the company knows how to reach for them.",
+     "Every brand element works once it lands in its place."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "manipulacja",
+     "zmarnowany potencjał",
+     "blef"
+    ],
+    "en": [
+     "manipulation",
+     "wasted potential",
+     "bluff"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Obietnice cudów kończą się pustym pudełkiem w rękach klienta.",
+     "Sztuczki działają raz, a zaufanie znika za drugim razem."
+    ],
+    "en": [
+     "Promises of miracles end in an empty box in the client's hands.",
+     "Tricks work once, and trust disappears the second time."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dobre pomysły czekają na spójną identyfikację wizualną, która je uwiarygodni.",
+   "en": "Good ideas are waiting for a coherent visual identity to make them credible."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar02",
+  "arcana": "major",
+  "number": 2,
+  "name": {
+   "pl": "Najwyższa Kapłanka",
+   "en": "The High Priestess"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "intuicja",
+     "ukryta wiedza",
+     "cierpliwość"
+    ],
+    "en": [
+     "intuition",
+     "hidden knowledge",
+     "patience"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Za zamkniętymi drzwiami leży wiedza o klientach, której nikt nie spisał.",
+     "Cisza w zespole bywa mądrzejsza od hałasu w kampaniach."
+    ],
+    "en": [
+     "Behind closed doors lies knowledge about clients that nobody has written down.",
+     "Silence in the team can be wiser than noise in campaigns."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "ukryte intencje",
+     "tajemnica",
+     "sekrety w szufladzie"
+    ],
+    "en": [
+     "hidden motives",
+     "secrecy",
+     "secrets in a drawer"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dane leżą w szufladzie, a decyzje zapadają na czuja.",
+     "Zbyt wiele tajemnic sprawia, że klienci zaczynają zgadywać."
+    ],
+    "en": [
+     "Data sits in a drawer while decisions are made by gut feeling.",
+     "Too many secrets make clients start guessing."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wiedza, której strona jeszcze nie pokazuje, czeka na przemyślany UX i UI.",
+   "en": "Knowledge your site does not yet show is waiting for thoughtful UX and UI."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar03",
+  "arcana": "major",
+  "number": 3,
+  "name": {
+   "pl": "Cesarzowa",
+   "en": "The Empress"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "obfitość",
+     "wzrost",
+     "troska"
+    ],
+    "en": [
+     "abundance",
+     "growth",
+     "nurture"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wszystko kwitnie, a z każdej grządki wyrasta coś nowego.",
+     "Klienci chętnie wracają tam, gdzie czują się zauważeni."
+    ],
+    "en": [
+     "Everything blossoms, and something new grows from every bed.",
+     "Clients gladly return where they feel noticed."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przesyt",
+     "zaniedbanie",
+     "jałowość"
+    ],
+    "en": [
+     "excess",
+     "neglect",
+     "barrenness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ogród zarasta chwastami, bo nikt nie pamięta o podlewaniu.",
+     "Dużo się dzieje, ale nowi klienci nie mają dokąd wejść."
+    ],
+    "en": [
+     "Weeds take the garden because nobody remembers to water it.",
+     "A lot happens, yet new clients have nowhere to step in."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Pora na stronę www, która zaprosi nowych klientów do środka.",
+   "en": "Time for a website that invites new clients inside."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "ar04",
+  "arcana": "major",
+  "number": 4,
+  "name": {
+   "pl": "Cesarz",
+   "en": "The Emperor"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "porządek",
+     "struktura",
+     "stabilność"
+    ],
+    "en": [
+     "order",
+     "structure",
+     "stability"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Fundamenty są mocne, a każda cegła leży równo.",
+     "Reguły są jasne, więc klienci wiedzą, czego się spodziewać."
+    ],
+    "en": [
+     "Strong foundations are laid, and every brick sits level.",
+     "The rules are clear, so clients know what to expect."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "sztywność",
+     "kontrola na siłę",
+     "rozpad ładu"
+    ],
+    "en": [
+     "rigidity",
+     "forced control",
+     "broken order"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zasady są tak ciasne, że zespół przestaje się nimi przejmować.",
+     "Zbyt duża kontrola odstrasza klientów, zanim zdążą cokolwiek kupić."
+    ],
+    "en": [
+     "Rules this tight make the team stop caring about them.",
+     "Too much control scares clients away before they buy anything."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Potrzeba porządku: spójnego systemu wizualnego, który powtarza się w każdym miejscu.",
+   "en": "What is needed is order: a consistent visual system that repeats everywhere."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar05",
+  "arcana": "major",
+  "number": 5,
+  "name": {
+   "pl": "Najwyższy Kapłan",
+   "en": "The Hierophant"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "tradycja",
+     "standardy",
+     "zaufanie instytucji"
+    ],
+    "en": [
+     "tradition",
+     "standards",
+     "institutional trust"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klienci szukają znajomych zasad i wiarygodnego głosu.",
+     "Dobre konwencje oszczędzają czas, bo wszyscy wiedzą, czego się spodziewać."
+    ],
+    "en": [
+     "Clients look for familiar rules and a credible voice.",
+     "Good conventions save time because everyone knows what to expect."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "bunt przeciw normom",
+     "zerwanie konwencji",
+     "nieprzystawalność"
+    ],
+    "en": [
+     "rebellion",
+     "broken convention",
+     "mismatch"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dawne zasady poszły do kosza, a klienci gubią się w nowym języku.",
+     "Modny wygląd bez wiarygodności szybko okazuje się pustą dekoracją."
+    ],
+    "en": [
+     "Old rules have been thrown out, and clients lose their way in the new language.",
+     "A trendy look without credibility quickly turns into empty decoration."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Firma potrzebuje identyfikacji, która mówi językiem branży, ale brzmi po swojemu.",
+   "en": "Your brand needs an identity that speaks the industry's language yet still sounds like itself."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar06",
+  "arcana": "major",
+  "number": 6,
+  "name": {
+   "pl": "Kochankowie",
+   "en": "The Lovers"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "wybór",
+     "spójność",
+     "więź"
+    ],
+    "en": [
+     "choice",
+     "harmony",
+     "bond"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stoisz przed wyborem, który zdefiniuje, kim jest wasza marka.",
+     "Dwie połówki w końcu chcą wyglądać jak jedna całość."
+    ],
+    "en": [
+     "You stand before a choice that will define who your brand is.",
+     "Two halves at last want to look like one whole."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "rozdźwięk",
+     "niespójność",
+     "wahanie"
+    ],
+    "en": [
+     "discord",
+     "inconsistency",
+     "doubt"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Marka mówi jednym głosem, a wygląda jak trzy różne.",
+     "Klienci nie wiedzą, komu właściwie zaufali."
+    ],
+    "en": [
+     "A single voice wears three different faces.",
+     "Clients cannot tell whom they have actually trusted."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Marce brakuje jednego, spójnego oblicza.",
+   "en": "Your brand needs one coherent face."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar07",
+  "arcana": "major",
+  "number": 7,
+  "name": {
+   "pl": "Rydwan",
+   "en": "The Chariot"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "pęd",
+     "wola",
+     "zwycięstwo"
+    ],
+    "en": [
+     "drive",
+     "will",
+     "victory"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wóz rusza z miejsca i chce jechać szybciej, niż pozwala droga.",
+     "Dwa sfinksy ciągną w tę samą stronę. To rzadkie."
+    ],
+    "en": [
+     "The chariot lurches forward and wants to ride faster than the road allows.",
+     "Two sphinxes pull in one direction. That is rare."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "chaos",
+     "utrata kontroli",
+     "zastój"
+    ],
+    "en": [
+     "chaos",
+     "lost control",
+     "stall"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wodze wypadły z ręki, a konie ciągną w przeciwne strony.",
+     "Pędzicie, ale nikt nie umie was znaleźć w sieci."
+    ],
+    "en": [
+     "Reins slip, and the horses pull apart.",
+     "You race ahead, yet nobody can find you online."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wasz wóz potrzebuje drogi: strony, która prowadzi klienta do celu.",
+   "en": "Your chariot needs a road: a site that leads clients to the goal."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "ar08",
+  "arcana": "major",
+  "number": 8,
+  "name": {
+   "pl": "Siła",
+   "en": "Strength"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "cierpliwość",
+     "spokojna siła",
+     "odwaga"
+    ],
+    "en": [
+     "patience",
+     "calm strength",
+     "courage"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Spokojny głos bywa słyszany lepiej niż krzyk.",
+     "Łagodna wytrwałość w końcu zdobywa zaufanie najbardziej nieufnych klientów."
+    ],
+    "en": [
+     "A calm voice is often heard better than a shout.",
+     "Gentle persistence eventually wins over even the most guarded clients."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "niepewność",
+     "słabość",
+     "wybuch"
+    ],
+    "en": [
+     "doubt",
+     "weakness",
+     "outburst"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zespół robi się opryskliwy, a klienci uciekają od napięcia.",
+     "Głośna reklama bez treści męczy ludzi bardziej, niż ich przekonuje."
+    ],
+    "en": [
+     "Tempers sharpen on the team, and clients flee the tension.",
+     "Loud ads with no substance tire people more than they persuade them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Mocny produkt zasługuje na UX, który spokojnie poprowadzi klienta do końca.",
+   "en": "Clients should be guided calmly to the end, and a strong product deserves UX that does it."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar09",
+  "arcana": "major",
+  "number": 9,
+  "name": {
+   "pl": "Pustelnik",
+   "en": "The Hermit"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "namysł",
+     "wewnętrzna prawda",
+     "spokój"
+    ],
+    "en": [
+     "reflection",
+     "inner truth",
+     "stillness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Latarnia pali się w ciszy, a firma wraca do swojej istoty.",
+     "Warto zapytać klientów, czego naprawdę szukają, zanim ruszy kolejna kampania."
+    ],
+    "en": [
+     "A lantern burns in silence while the company returns to its core.",
+     "It is worth asking clients what they really seek before the next campaign starts."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "izolacja",
+     "samotność",
+     "zamknięcie"
+    ],
+    "en": [
+     "isolation",
+     "loneliness",
+     "shutting out"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zamknięci w biurze, nie słyszycie, co mówią klienci.",
+     "Ukryta strona bez kontaktu z ludźmi nie przyciągnie nikogo."
+    ],
+    "en": [
+     "Locked in the office, you cannot hear what clients say.",
+     "A hidden website with no contact with people draws nobody in."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Warto spokojnie przejrzeć stronę i ścieżki klientów: tu przyda się porządny UX i UI.",
+   "en": "It is worth calmly reviewing the site and its paths: solid UX and UI would help here."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar10",
+  "arcana": "major",
+  "number": 10,
+  "name": {
+   "pl": "Koło Fortuny",
+   "en": "Wheel of Fortune"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "zwrot",
+     "szansa",
+     "cykl"
+    ],
+    "en": [
+     "turning point",
+     "chance",
+     "cycle"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wiatr zmienia kierunek i nagle klienci szukają właśnie was.",
+     "Każdy cykl kończy się czymś nowym, o ile ktoś zdąży to zauważyć."
+    ],
+    "en": [
+     "Wind changes direction, and suddenly clients are searching for you.",
+     "Every cycle ends with something new, if someone is ready to notice it."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "pech",
+     "spadek",
+     "przypadek"
+    ],
+    "en": [
+     "bad luck",
+     "decline",
+     "coincidence"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Koło stanęło, a sprzedaż zjeżdża w dół bez wyraźnego powodu.",
+     "Zamiast przygotować stronę na kolejny obrót, czekacie na szczęście."
+    ],
+    "en": [
+     "A stalled wheel, and sales slide down for no clear reason.",
+     "Instead of readying the website for the next turn, you wait for luck."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Koło się obraca, więc czas na stronę, która złapie nadarzającą się okazję.",
+   "en": "With the wheel turning, a website that catches the opportunity is overdue."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "ar11",
+  "arcana": "major",
+  "number": 11,
+  "name": {
+   "pl": "Sprawiedliwość",
+   "en": "Justice"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "równowaga",
+     "uczciwość",
+     "sprawiedliwy osąd"
+    ],
+    "en": [
+     "balance",
+     "fairness",
+     "fair verdict"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Waga stoi prosto, a klienci wiedzą, czego mogą się spodziewać.",
+     "Jasne zasady i uczciwe ceny budują zaufanie szybciej niż reklamy."
+    ],
+    "en": [
+     "With the scales level, clients know what to expect.",
+     "Clear rules and honest prices build trust faster than advertising."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "nierówność",
+     "krzywda",
+     "przekręt"
+    ],
+    "en": [
+     "unfairness",
+     "harm",
+     "foul play"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Waga przechyla się w jedną stronę, a klienci to widzą.",
+     "Ukryte opłaty i nieuczciwe obietnice wracają do firmy jak bumerang."
+    ],
+    "en": [
+     "The scales lean to one side, and clients can see it.",
+     "Hidden fees and dishonest promises come back to the company like a boomerang."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Każdy kanał powinien mówić tym samym językiem, a to wymaga spójnej identyfikacji wizualnej.",
+   "en": "Every channel should speak the same language, and that takes a coherent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar12",
+  "arcana": "major",
+  "number": 12,
+  "name": {
+   "pl": "Wisielec",
+   "en": "The Hanged Man"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "zawieszenie",
+     "nowa perspektywa",
+     "cierpliwe czekanie"
+    ],
+    "en": [
+     "suspension",
+     "new perspective",
+     "patient waiting"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ruch zostaje wstrzymany, by zobaczyć to, czego wcześniej nie było widać.",
+     "Zmiana punktu widzenia bywa bolesna, ale odsłania prostsze drogi."
+    ],
+    "en": [
+     "Everything pauses so you can see what went unnoticed before.",
+     "A change of viewpoint can sting, yet it reveals simpler paths."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "stagnacja",
+     "bezcelowe poświęcenie",
+     "uwięzienie"
+    ],
+    "en": [
+     "stagnation",
+     "pointless sacrifice",
+     "entrapment"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Czekanie nie ma końca, a projekty stoją w miejscu.",
+     "Ciągłe dokładanie budżetu do starych rozwiązań nikogo nie przybliża do celu."
+    ],
+    "en": [
+     "The waiting never ends, and projects stand still.",
+     "Endlessly pouring budget into old solutions brings nobody closer to the goal."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Spojrzenie na stronę oczami klienta zacznie się od rzetelnego UX i UI.",
+   "en": "Seeing the site through the client's eyes starts with solid UX and UI."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar13",
+  "arcana": "major",
+  "number": 13,
+  "name": {
+   "pl": "Śmierć",
+   "en": "Death"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "koniec rozdziału",
+     "przemiana",
+     "nowy początek"
+    ],
+    "en": [
+     "closing chapter",
+     "transformation",
+     "new beginning"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stare nawyki cicho odchodzą, robiąc miejsce na coś świeżego.",
+     "Koniec bywa łagodny, a czasem tylko otwiera drzwi."
+    ],
+    "en": [
+     "Old habits quietly leave, making room for something fresh.",
+     "An ending can be gentle, and sometimes it simply opens a door."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "opór przed zmianą",
+     "zastój",
+     "utknięcie w przeszłości"
+    ],
+    "en": [
+     "resistance to change",
+     "stagnation",
+     "stuck in the past"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stare logo wciąż się trzyma, choć nikt go już nie poznaje.",
+     "Przeszłość stoi w progu i nie wpuszcza nowego wizerunku."
+    ],
+    "en": [
+     "An old logo still hangs on, though nobody recognizes it anymore.",
+     "The past blocks the doorway and keeps the new image out."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Stary wizerunek trzeba odłożyć na półkę, a w jego miejsce zaprojektować nową identyfikację wizualną.",
+   "en": "Shelve the old image and design a new visual identity in its place."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar14",
+  "arcana": "major",
+  "number": 14,
+  "name": {
+   "pl": "Umiarkowanie",
+   "en": "Temperance"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "umiar",
+     "wyważenie",
+     "płynne łączenie"
+    ],
+    "en": [
+     "moderation",
+     "balance",
+     "smooth blending"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Każdy składnik dostaje dokładnie tyle miejsca, ile potrzebuje.",
+     "Dwa różne światy łączą się gładko, gdy ktoś pilnuje proporcji."
+    ],
+    "en": [
+     "Each ingredient gets exactly the space it needs.",
+     "Two different worlds blend smoothly when someone watches the proportions."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przesada",
+     "nadmiar",
+     "nierównowaga"
+    ],
+    "en": [
+     "excess",
+     "overdoing it",
+     "imbalance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wszystkiego jest za dużo, a przekaz tonie w szumie.",
+     "Kolory i obietnice mieszają się bez żadnego pomysłu."
+    ],
+    "en": [
+     "There is far too much of everything, and the message drowns in noise.",
+     "Colors and promises get mixed with no clear idea behind them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Składniki są dobrze wymieszane, ale proporcje wyważy dopiero projektant UX i UI.",
+   "en": "Ingredients blend well, but a UX and UI designer is needed to balance the proportions."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar15",
+  "arcana": "major",
+  "number": 15,
+  "name": {
+   "pl": "Diabeł",
+   "en": "The Devil"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "łańcuchy",
+     "uzależnienie",
+     "pokusa"
+    ],
+    "en": [
+     "chains",
+     "dependence",
+     "temptation"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Od lat płacicie za narzędzie wybrane kiedyś w pośpiechu.",
+     "Tymczasowy szablon dawno przestał być wyborem, a stał się więzieniem."
+    ],
+    "en": [
+     "For years you have paid for a tool chosen in a hurry.",
+     "A template meant to be temporary long ago became a cage."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zrzucenie kajdan",
+     "wyjście z pułapki",
+     "własny styl"
+    ],
+    "en": [
+     "shaking off chains",
+     "way out of the trap",
+     "own style"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Szablon odchodzi w niepamięć, a marka mówi własnym głosem.",
+     "Projekt robiony na miarę kosztuje dziś więcej, ale uwalnia od lat kompromisów."
+    ],
+    "en": [
+     "The template is gone, and the brand speaks in its own voice.",
+     "A custom design may cost more today, yet it frees you from years of compromise."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Cudzy szablon trzyma was w miejscu, więc potrzebna jest własna identyfikacja wizualna.",
+   "en": "A borrowed template is holding you back, and your own visual identity would set you free."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar16",
+  "arcana": "major",
+  "number": 16,
+  "name": {
+   "pl": "Wieża",
+   "en": "The Tower"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nagła zmiana",
+     "upadek starego",
+     "olśnienie"
+    ],
+    "en": [
+     "sudden change",
+     "old order falls",
+     "revelation"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Piorun trafia w to, co wyglądało na trwałe.",
+     "Stare fasady pękają, a pod nimi widać, czego brakowało."
+    ],
+    "en": [
+     "Lightning strikes what looked permanent.",
+     "Old facades crack and show what was missing underneath."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "opór",
+     "odwlekanie",
+     "tląca się katastrofa"
+    ],
+    "en": [
+     "resistance",
+     "delay",
+     "smouldering ruin"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zmiana puka od dawna, a wy trzymacie drzwi zamknięte.",
+     "Mury się trzymają tylko dlatego, że nikt ich nie dotyka."
+    ],
+    "en": [
+     "Change has been knocking for ages and you keep the door shut.",
+     "The walls hold only because nobody touches them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Czas postawić nową wieżę: odświeżoną identyfikację wizualną.",
+   "en": "Time to raise a new tower: a fresh visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "ar17",
+  "arcana": "major",
+  "number": 17,
+  "name": {
+   "pl": "Gwiazda",
+   "en": "The Star"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nadzieja",
+     "odnowa",
+     "kierunek"
+    ],
+    "en": [
+     "hope",
+     "renewal",
+     "direction"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Po burzy nad firmą zapala się jedno jasne światło.",
+     "Początek jest mały, ale wskazuje stronę, w którą warto iść."
+    ],
+    "en": [
+     "After the storm one bright light kindles over the company.",
+     "The start is small, yet it points where to go."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zwątpienie",
+     "zgaszone światło",
+     "mgła"
+    ],
+    "en": [
+     "doubt",
+     "dimmed light",
+     "fog"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Gwiazda gaśnie, bo nikt nie widzi, co firma ma do zaoferowania.",
+     "Nadzieja jest, brakuje tylko mapy."
+    ],
+    "en": [
+     "A star dims because nobody sees what the company offers.",
+     "Hope is there, only the map is missing."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Młodej firmie przyda się pakiet startowy, który da jej twarz.",
+   "en": "Give a young company its face with a launch package."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "ar18",
+  "arcana": "major",
+  "number": 18,
+  "name": {
+   "pl": "Księżyc",
+   "en": "The Moon"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "złudzenie",
+     "lęk",
+     "mgła"
+    ],
+    "en": [
+     "illusion",
+     "anxiety",
+     "fog"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "W mroku widać kształty, które mogą okazać się cieniami.",
+     "Klienci zgadują, czym się zajmujecie, bo nikt tego nie powiedział wprost."
+    ],
+    "en": [
+     "Shapes in the dark may turn out to be shadows.",
+     "Clients keep guessing what you do, because nobody has said it plainly."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "jasność",
+     "rozwiewanie mgły",
+     "prawda"
+    ],
+    "en": [
+     "clarity",
+     "lifting fog",
+     "truth"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Mgła opada i klienci w końcu rozumieją, co dla nich robicie.",
+     "Lęk przed krytyką słabnie, gdy wreszcie widać, co firma naprawdę oferuje."
+    ],
+    "en": [
+     "Fog lifts, and clients finally understand what you do for them.",
+     "Fear of criticism fades once the company's real offer is visible."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Przejrzysty UX i UI rozjaśni klientom, czym się zajmujecie.",
+   "en": "Clients will see what you do once UX and UI are clear."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "ar19",
+  "arcana": "major",
+  "number": 19,
+  "name": {
+   "pl": "Słońce",
+   "en": "The Sun"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "radość",
+     "sukces",
+     "jasność"
+    ],
+    "en": [
+     "joy",
+     "success",
+     "clarity"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dobre wyniki widać z daleka, a ludzie chcą je zobaczyć z bliska.",
+     "Wszystko układa się tak, że marka może wreszcie pokazać się światu."
+    ],
+    "en": [
+     "Good results are visible from afar, and people want to see them up close.",
+     "Everything lines up so the brand can finally show itself to the world."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przygaszenie",
+     "opóźniony blask",
+     "przesyt"
+    ],
+    "en": [
+     "dimmed glow",
+     "delayed success",
+     "overexposure"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Blask firmy przygasa, bo jej obecność w sieci wygląda na porzuconą.",
+     "Sukces przychodzi później, bo firma zbyt długo czeka na swoją chwilę."
+    ],
+    "en": [
+     "A glow fades because the company's online presence looks abandoned.",
+     "Success arrives late, since the company has waited too long for its moment."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dobre wyniki czekają na mocną stronę www, która pokaże je światu.",
+   "en": "Good results are waiting for a strong website to show them to the world."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "ar20",
+  "arcana": "major",
+  "number": 20,
+  "name": {
+   "pl": "Sąd Ostateczny",
+   "en": "Judgement"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "odrodzenie",
+     "powołanie",
+     "rozliczenie"
+    ],
+    "en": [
+     "rebirth",
+     "calling",
+     "reckoning"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Przychodzi chwila rozliczenia, w której stare materiały trafiają pod lupę.",
+     "Z tego rozliczenia może wyjść nowa, odświeżona marka."
+    ],
+    "en": [
+     "A moment of reckoning arrives, and old materials are held up to the light.",
+     "From that reckoning a fresh, renewed brand can rise."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "unikanie oceny",
+     "głuchota",
+     "zwłoka"
+    ],
+    "en": [
+     "avoiding review",
+     "deafness",
+     "delay"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stare materiały leżą nietknięte, a wszyscy udają, że wszystko gra.",
+     "Sygnały od klientów wciąż napływają, a odpowiedzi nadal brak."
+    ],
+    "en": [
+     "Old materials lie untouched while everyone pretends all is well.",
+     "Signals from customers keep arriving, yet nobody answers them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Stare materiały pora wymienić na gruntownie odświeżony pakiet startowy.",
+   "en": "Old materials are due for a thorough refresh and a new launch package."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "ar21",
+  "arcana": "major",
+  "number": 21,
+  "name": {
+   "pl": "Świat",
+   "en": "The World"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "spełnienie",
+     "całość",
+     "dojrzałość"
+    ],
+    "en": [
+     "completion",
+     "wholeness",
+     "maturity"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Każdy element firmy wreszcie pasuje do reszty i tworzy całość.",
+     "Projekty się domykają, a klienci przechodzą przez firmę z łatwością."
+    ],
+    "en": [
+     "Every part of the company finally fits the rest and forms a whole.",
+     "Projects come together, and clients move through the firm with ease."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "niedomknięcie",
+     "szukanie skrótów",
+     "pustka"
+    ],
+    "en": [
+     "loose ends",
+     "shortcuts",
+     "emptiness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zaczęto wiele rzeczy, a żadnej nie dokończono.",
+     "Strona i logo żyją osobno, bez wspólnego rytmu."
+    ],
+    "en": [
+     "Many things get started, and none gets finished.",
+     "The site and the logo live apart, with no shared rhythm."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Całość czeka na domknięcie: spójną identyfikację wizualną i stronę www.",
+   "en": "Everything is waiting to be closed with a coherent visual identity and a website."
+  },
+  "services": [
+   "identity",
+   "website"
+  ]
+ },
+ {
+  "id": "wa01",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 1,
+  "name": {
+   "pl": "As Buzdyganów",
+   "en": "Ace of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "iskra",
+     "nowy pomysł",
+     "start"
+    ],
+    "en": [
+     "spark",
+     "new idea",
+     "beginning"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Z jednej myśli rodzi się coś, co może odmienić całą firmę.",
+     "Ogień zapala się w zespole i czeka na pierwszy krok."
+    ],
+    "en": [
+     "From a single thought something grows that could change the whole company.",
+     "A fire lights up in the team and waits for the first step."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "brak zapału",
+     "przestój",
+     "pusta iskra"
+    ],
+    "en": [
+     "lost spark",
+     "standstill",
+     "empty flame"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pomysł leży w szufladzie, bo nikt nie zrobił pierwszego kroku.",
+     "Zapał gaśnie, zanim zdąży przerodzić się w projekt."
+    ],
+    "en": [
+     "An idea sits in a drawer because nobody has taken the first step.",
+     "Enthusiasm fades before it can become a project."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Świeży pomysł dostanie rozpęd od pakietu startowego z identyfikacją wizualną.",
+   "en": "A fresh idea will get its momentum from a launch package with a visual identity."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "wa02",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 2,
+  "name": {
+   "pl": "Dwójka Buzdyganów",
+   "en": "Two of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "plan",
+     "wybór",
+     "horyzont"
+    ],
+    "en": [
+     "plan",
+     "choice",
+     "horizon"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stoicie na granicy i studiujecie mapę nowych rynków.",
+     "Dwie drogi są już znane, a decyzja wisi w powietrzu."
+    ],
+    "en": [
+     "You stand at a border and study a map of new markets.",
+     "Two paths are already known, and the decision hangs in the air."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "niepewność",
+     "brak planu",
+     "strach przed zmianą"
+    ],
+    "en": [
+     "uncertainty",
+     "no plan",
+     "fear of change"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Mapa leży rozłożona, a nikt nie wie, dokąd iść.",
+     "Znany teren wydaje się lepszy od szukania nowej drogi."
+    ],
+    "en": [
+     "A map lies open, yet nobody knows which way to go.",
+     "Familiar ground feels better than searching for a new road."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Plany rozwoju zyskają na przejrzystej stronie www.",
+   "en": "Growth plans gain from a clear website."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "wa03",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 3,
+  "name": {
+   "pl": "Trójka Buzdyganów",
+   "en": "Three of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "rozwój",
+     "zasięg",
+     "współpraca"
+    ],
+    "en": [
+     "growth",
+     "reach",
+     "partnership"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Statki płyną w dalekie strony, a firma czeka na zamówienia z zagranicy.",
+     "Partnerzy patrzą z daleka i chcą wiedzieć, kim jesteście."
+    ],
+    "en": [
+     "Ships sail toward distant shores while the company waits for orders from abroad.",
+     "Partners watch from afar and want to know who you are."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przeszkody",
+     "opóźnienie",
+     "zawiedzione plany"
+    ],
+    "en": [
+     "obstacles",
+     "delay",
+     "thwarted plans"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Statki stoją w porcie, a plany rozwiewa wiatr.",
+     "Brak widoczności sprawia, że nikt z daleka nie zauważa firmy."
+    ],
+    "en": [
+     "Ships stay in port, and the plans drift away with the wind.",
+     "Lacking visibility, nobody notices the company from afar."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Na nowe rynki prowadzi wielojęzyczna strona www.",
+   "en": "New markets open through a multilingual website."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "wa04",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 4,
+  "name": {
+   "pl": "Czwórka Buzdyganów",
+   "en": "Four of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "stabilność",
+     "świętowanie",
+     "wspólnota"
+    ],
+    "en": [
+     "stability",
+     "celebration",
+     "community"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pod dachem na mocnych słupach świętuje się spokojny rok.",
+     "Klienci wracają tam, gdzie czują się jak u siebie w domu."
+    ],
+    "en": [
+     "Under a roof on strong posts, a calm year is celebrated.",
+     "Clients return to where they feel at home."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "niestabilność",
+     "brak wsparcia",
+     "napięcie w domu"
+    ],
+    "en": [
+     "instability",
+     "no support",
+     "tension at home"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Słupy się chwieją, bo marka nie ma wspólnego fundamentu.",
+     "Zespół świętuje w osobnych pokojach i nie umie uzgodnić, co pokazać klientom."
+    ],
+    "en": [
+     "Posts sway where the brand has no shared foundation.",
+     "The team celebrates in separate rooms and cannot agree what to show clients."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Na stabilnych podstawach warto oprzeć spójną identyfikację wizualną.",
+   "en": "Solid foundations are a good place to build a consistent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "wa05",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 5,
+  "name": {
+   "pl": "Piątka Buzdyganów",
+   "en": "Five of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "rywalizacja",
+     "spór",
+     "tarcie"
+    ],
+    "en": [
+     "rivalry",
+     "dispute",
+     "friction"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Każdy z zespołu ciągnie w swoją stronę i nikt nie chce ustąpić.",
+     "Konkurencja patrzy zza płotu, a wy kłócicie się o szczegóły."
+    ],
+    "en": [
+     "Every member of the team pulls their own way and nobody wants to yield.",
+     "Rivals watch from over the fence while you argue about details."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "ustępstwo",
+     "zawieszenie broni",
+     "wyciszenie sporu"
+    ],
+    "en": [
+     "concession",
+     "truce",
+     "settled dispute"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Część kijów opada i zespół zaczyna słuchać siebie nawzajem.",
+     "Spór cichnie, gdy wszyscy zgadzają się na jeden kierunek."
+    ],
+    "en": [
+     "Some sticks drop and the team begins to listen to each other.",
+     "Disputes quiet once everyone agrees on one direction."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Każdy w zespole widzi markę inaczej, więc potrzebujecie wspólnej identyfikacji wizualnej.",
+   "en": "Everyone on the team sees the brand differently, so you need a shared visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "wa06",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 6,
+  "name": {
+   "pl": "Szóstka Buzdyganów",
+   "en": "Six of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "triumf",
+     "uznanie",
+     "pewność siebie"
+    ],
+    "en": [
+     "triumph",
+     "recognition",
+     "confidence"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Na czele parady jedzie zespół, a klienci witają go z uznaniem.",
+     "Dobre opinie szybko krążą po sieci i budują zaufanie."
+    ],
+    "en": [
+     "At the head of the parade rides the team, greeted by clients with respect.",
+     "Good reviews spread quickly and build trust."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "próżność",
+     "brak uznania",
+     "upadek z wysokości"
+    ],
+    "en": [
+     "vanity",
+     "unnoticed",
+     "fall from grace"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wokół słychać tylko własne pochwały, a klienci po cichu odeszli.",
+     "Sukces nie dociera szerzej, bo nikt go nie pokazał."
+    ],
+    "en": [
+     "Only your own praise is heard, and clients have quietly left.",
+     "Success never reaches a wider audience, because nobody showed it."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Sukcesy z przeszłości zasługują na czytelną stronę www, która je pokaże.",
+   "en": "Past successes deserve a clear website that displays them."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "wa07",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 7,
+  "name": {
+   "pl": "Siódemka Buzdyganów",
+   "en": "Seven of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "obrona",
+     "wytrwałość",
+     "wyzwanie"
+    ],
+    "en": [
+     "defence",
+     "endurance",
+     "challenge"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Na szczycie wzgórza trwa obrona miejsca przed nowymi graczami.",
+     "Rywale wspinają się bliżej, a wy trzymacie pozycję mocno."
+    ],
+    "en": [
+     "On the hilltop, a place is defended against newcomers.",
+     "Rivals climb closer, yet you hold your position firmly."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "rezygnacja",
+     "przytłoczenie",
+     "chwiejna pozycja"
+    ],
+    "en": [
+     "giving up",
+     "overwhelm",
+     "shaky position"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Kije wypadają z rąk, bo zespół nie wie już, o co walczy.",
+     "Obrona wszystkiego naraz kosztuje z każdym dniem więcej sił."
+    ],
+    "en": [
+     "Sticks slip from hands because the team no longer knows what it fights for.",
+     "Defending everything at once costs more strength each day."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Obrona pozycji na rynku wymaga mocnej identyfikacji wizualnej.",
+   "en": "Defending a market position takes a strong visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "wa08",
+  "arcana": "minor",
+  "suit": "wands",
+  "number": 8,
+  "name": {
+   "pl": "Ósemka Buzdyganów",
+   "en": "Eight of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "szybkość",
+     "wiadomości",
+     "ruch"
+    ],
+    "en": [
+     "speed",
+     "news",
+     "momentum"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wiadomości lecą szybciej, niż firma zdąży je przeczytać.",
+     "Projekt nabiera tempa i w kilka dni wszystko wskakuje na swoje miejsce."
+    ],
+    "en": [
+     "Messages fly faster than the company can read them.",
+     "The project gains speed and within days everything falls into place."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zwłoka",
+     "chaos",
+     "zwolnienie"
+    ],
+    "en": [
+     "delay",
+     "chaos",
+     "slowdown"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wiadomości utknęły w drodze i nikt nie wie, co się dzieje.",
+     "Pośpiech zamienia się w chaos, gdy strona ładuje się zbyt wolno."
+    ],
+    "en": [
+     "Messages got stuck on the road, and nobody knows what is happening.",
+     "Haste turns into chaos when the site loads too slowly."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Szybkie tempo lubi lekką stronę www, najlepiej w pakiecie startowym.",
+   "en": "Moving fast calls for a light, responsive website, ideally inside a launch package."
+  },
+  "services": [
+   "website",
+   "startup"
+  ]
+ },
+ {
+  "id": "wa09",
+  "arcana": "minor",
+  "number": 9,
+  "suit": "wands",
+  "name": {
+   "pl": "Dziewiątka Buzdyganów",
+   "en": "Nine of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "wytrwałość",
+     "odwaga",
+     "ostatni bastion"
+    ],
+    "en": [
+     "resilience",
+     "courage",
+     "last stand"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Po wielu zmianach wciąż trzymacie się na nogach.",
+     "Ostatnia linia obrony jest mocna, ale ktoś musi ją w końcu odciążyć."
+    ],
+    "en": [
+     "After many changes, you are still on your feet.",
+     "Its last line of defence is strong, but someone must finally share the load."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "wyczerpanie",
+     "nieufność",
+     "upór"
+    ],
+    "en": [
+     "exhaustion",
+     "distrust",
+     "stubbornness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Obrona stała się celem samym w sobie, a klienci czują dystans.",
+     "Ciągle sprawdzacie, czy ktoś was nie oszuka, i zapominacie o tych, którzy przychodzą."
+    ],
+    "en": [
+     "Defence has become the goal itself, and clients can feel the distance.",
+     "You keep checking who might cheat you and forget the people who come in."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wasz zmęczony zespół potrzebuje prostej ścieżki dla klienta: UX i UI, które odciążą ludzi.",
+   "en": "Your tired team needs a simple path for clients: UX and UI that take the load off people."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "wa10",
+  "arcana": "minor",
+  "number": 10,
+  "suit": "wands",
+  "name": {
+   "pl": "Dziesiątka Buzdyganów",
+   "en": "Ten of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "ciężar",
+     "przeciążenie",
+     "odpowiedzialność"
+    ],
+    "en": [
+     "burden",
+     "overload",
+     "responsibility"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Cały ciężar spadł na jedną parę barków, a firma zwalnia.",
+     "Projekty się piętrzą, a klienci czekają na efekty, których nie widać."
+    ],
+    "en": [
+     "All the weight has landed on one pair of shoulders, and the company slows down.",
+     "Projects pile up while clients wait for results they cannot yet see."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zrzucenie ciężaru",
+     "delegowanie",
+     "ulga"
+    ],
+    "en": [
+     "letting go",
+     "delegation",
+     "relief"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ktoś w końcu odkłada część stosu i zespół znów może oddychać.",
+     "Warto podzielić zadania, zanim ciężar przygniecie wszystkich."
+    ],
+    "en": [
+     "Someone finally sets part of the pile down and the team can breathe again.",
+     "It is time to share the tasks before the weight crushes everyone."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Ręczna robota zjada wasz zespół, a strona mogłaby przejąć część zapytań.",
+   "en": "Manual work is drowning your team, and a site could take over part of the enquiries."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "wa11",
+  "arcana": "minor",
+  "number": 11,
+  "suit": "wands",
+  "name": {
+   "pl": "Paź Buzdyganów",
+   "en": "Page of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "entuzjazm",
+     "świeży pomysł",
+     "posłaniec"
+    ],
+    "en": [
+     "enthusiasm",
+     "fresh idea",
+     "messenger"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Młody pomysł rusza w świat z iskrą w oku i nowiną dla klientów.",
+     "Ciekawość prowadzi, a pierwsza wiadomość może otworzyć wiele drzwi."
+    ],
+    "en": [
+     "A young idea sets off with a spark in its eye and news for clients.",
+     "Curiosity leads the way, and a first message can open many doors."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zwlekanie",
+     "brak kierunku",
+     "niedojrzały pomysł"
+    ],
+    "en": [
+     "procrastination",
+     "no direction",
+     "half-formed idea"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pomysł leży w szufladzie, a wiadomość dla klientów nigdy nie wychodzi.",
+     "Entuzjazm gaśnie, zanim ktokolwiek zdąży go zobaczyć."
+    ],
+    "en": [
+     "An idea sits in a drawer while the message never leaves the building.",
+     "Enthusiasm fades before anyone has a chance to see it."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Świeży pomysł potrzebuje pakietu startowego, żeby wyjść z szuflady na świat.",
+   "en": "A fresh idea needs a launch package to leave the drawer and meet the world."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "wa12",
+  "arcana": "minor",
+  "number": 12,
+  "suit": "wands",
+  "name": {
+   "pl": "Rycerz Buzdyganów",
+   "en": "Knight of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "pęd",
+     "pasja",
+     "przygoda"
+    ],
+    "en": [
+     "rush",
+     "passion",
+     "adventure"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Z ogniem w oczach ruszacie w drogę i zaskakujecie otoczenie.",
+     "Wszystko dzieje się szybko, a klienci ledwo nadążają za tempem."
+    ],
+    "en": [
+     "You set out with a fire that catches everyone off guard.",
+     "Things move fast, and clients can barely keep up with the pace."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "pośpiech",
+     "nieprzemyślana decyzja",
+     "rozproszenie"
+    ],
+    "en": [
+     "haste",
+     "reckless move",
+     "scattered focus"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Działacie tak szybko, że zapominacie, dokąd naprawdę zmierzacie.",
+     "Każdy kierunek wygląda dobrze, więc żaden nie prowadzi do celu."
+    ],
+    "en": [
+     "You move so quickly that you forget where you are actually heading.",
+     "Every direction looks good, so none of them leads anywhere."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wasz zapał potrzebuje ramy: spójnej identyfikacji wizualnej, która nada pędowi kierunek.",
+   "en": "Your zeal needs a frame: a coherent visual identity that gives the rush a direction."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "wa13",
+  "arcana": "minor",
+  "number": 13,
+  "suit": "wands",
+  "name": {
+   "pl": "Królowa Buzdyganów",
+   "en": "Queen of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "pewność siebie",
+     "ciepło",
+     "determinacja"
+    ],
+    "en": [
+     "confidence",
+     "warmth",
+     "determination"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wasza marka wie, kim jest, i nie boi się tego pokazać.",
+     "Przyciąga ludzi jak ognisko w chłodny wieczór."
+    ],
+    "en": [
+     "Your brand knows who it is and is not shy about showing it.",
+     "It draws people in like a hearth on a cold night."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zazdrość",
+     "wymagający ton",
+     "utrata wiary w siebie"
+    ],
+    "en": [
+     "jealousy",
+     "demanding tone",
+     "lost self-belief"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wzrok biegnie ku konkurencji zamiast ku własnym klientom.",
+     "Wewnętrzne wątpliwości przykrywa wielki gest, który nikogo nie przekonuje."
+    ],
+    "en": [
+     "Eyes follow rivals instead of your own clients.",
+     "Inner doubt hides behind big gestures that convince nobody."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Ciepło i pewność waszego charakteru zasługują na identyfikację wizualną, która je odda.",
+   "en": "Your character deserves a visual identity that carries its warmth and confidence."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "wa14",
+  "arcana": "minor",
+  "number": 14,
+  "suit": "wands",
+  "name": {
+   "pl": "Król Buzdyganów",
+   "en": "King of Wands"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "wizja",
+     "przywództwo",
+     "przedsiębiorczość"
+    ],
+    "en": [
+     "vision",
+     "leadership",
+     "enterprise"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Plan sięga na lata, a ludzie idą za nim ku wspólnemu celowi.",
+     "Decyzje zapadają szybko, a ich skutki widać na całym rynku."
+    ],
+    "en": [
+     "The plan reaches years ahead, and people follow it toward one goal.",
+     "Decisions land quickly, and their effects show across the whole market."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "dominacja",
+     "impulsywność",
+     "nadużycie władzy"
+    ],
+    "en": [
+     "domineering",
+     "impulsive",
+     "abuse of power"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Szef krzyczy głośniej niż rynek i nikt nie chce mu przeszkadzać.",
+     "Zespół milczy, a klienci zaczynają szukać innej drogi."
+    ],
+    "en": [
+     "A boss shouts louder than the market, and nobody dares to interrupt.",
+     "Silence settles over the team, and clients start looking for another way in."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wizja firmy potrzebuje strony, która zamieni wielki plan w drogę do sprzedaży.",
+   "en": "Such a vision needs a website that turns the plan into a path to sales."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "cu01",
+  "arcana": "minor",
+  "number": 1,
+  "suit": "cups",
+  "name": {
+   "pl": "As Kielichów",
+   "en": "Ace of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nowe uczucie",
+     "początek bliskości",
+     "intuicja"
+    ],
+    "en": [
+     "new affection",
+     "emotional start",
+     "intuition"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klienci zaczynają się przywiązywać, zanim poznają całą ofertę.",
+     "Wasze wartości mogą być pierwszym, co ludzie zapamiętają."
+    ],
+    "en": [
+     "Clients begin to feel attached before they have seen the whole offer.",
+     "Your values may be the first thing people remember."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zablokowane emocje",
+     "pustka",
+     "odcięcie"
+    ],
+    "en": [
+     "blocked feelings",
+     "emptiness",
+     "withdrawal"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Marka trzyma wartości pod kluczem, więc nikt się do niej nie przywiązuje.",
+     "Kielich stoi pusty, a ludzie przechodzą obok bez słowa."
+    ],
+    "en": [
+     "Values stay locked away, so nobody grows attached to the brand.",
+     "An empty cup stands there, and people walk past without a word."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wasza marka potrzebuje identyfikacji, która opowie wartości z emocją.",
+   "en": "Your brand needs an identity that tells your values with feeling."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "cu02",
+  "arcana": "minor",
+  "number": 2,
+  "suit": "cups",
+  "name": {
+   "pl": "Dwójka Kielichów",
+   "en": "Two of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "partnerstwo",
+     "wzajemność",
+     "równowaga"
+    ],
+    "en": [
+     "partnership",
+     "mutual regard",
+     "balance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dwie strony patrzą na siebie z sympatią i chcą coś wspólnie zbudować.",
+     "Umowa daje obu stronom to, czego naprawdę potrzebują."
+    ],
+    "en": [
+     "Two sides look at each other with warmth and want to build something together.",
+     "The deal gives each party what it actually needs."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "rozstanie",
+     "brak porozumienia",
+     "zerwana więź"
+    ],
+    "en": [
+     "split",
+     "miscommunication",
+     "broken bond"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Umowa się rozsypała, bo jedna strona mówiła innym językiem.",
+     "Klienci czują chłód, gdy komunikacja przestaje działać w obie strony."
+    ],
+    "en": [
+     "A deal fell apart because one side spoke a different language.",
+     "Clients feel the chill when communication stops flowing both ways."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Współpraca potrzebuje wspólnego języka: UX i UI, które połączą klientów z ofertą.",
+   "en": "A partnership needs a shared language: UX and UI that connect clients with the offer."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "cu03",
+  "arcana": "minor",
+  "number": 3,
+  "suit": "cups",
+  "name": {
+   "pl": "Trójka Kielichów",
+   "en": "Three of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "świętowanie",
+     "wspólnota",
+     "przyjaźń"
+    ],
+    "en": [
+     "celebration",
+     "community",
+     "friendship"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zespół i klienci cieszą się razem z każdego sukcesu.",
+     "Społeczność wokół marki rośnie, bo ludzie chcą do niej należeć."
+    ],
+    "en": [
+     "Team and clients celebrate every win together.",
+     "A community around the brand grows because people want to belong."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przesada",
+     "plotki",
+     "wycofanie z grupy"
+    ],
+    "en": [
+     "excess",
+     "gossip",
+     "withdrawal"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Świętowanie jest tak głośne, że nikt nie słucha klientów.",
+     "Plotka krąży szybciej niż komunikat, a grupa cicho się rozpada."
+    ],
+    "en": [
+     "The celebrating is so loud that nobody listens to clients.",
+     "Rumour travels faster than any official word, and the group quietly splits."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Społeczność potrzebuje strony, na którą nowi ludzie trafią bez zgubienia się.",
+   "en": "Newcomers should find their place in the community without getting lost, and that takes a good website."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "cu04",
+  "arcana": "minor",
+  "number": 4,
+  "suit": "cups",
+  "name": {
+   "pl": "Czwórka Kielichów",
+   "en": "Four of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "apatia",
+     "zamyślenie",
+     "przegapiona szansa"
+    ],
+    "en": [
+     "apathy",
+     "reflection",
+     "missed chance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Z założonymi rękami łatwo przegapić ofertę tuż przed nosem.",
+     "Klient wyciąga rękę, a wy patrzycie w swój kielich."
+    ],
+    "en": [
+     "With folded arms it is easy to miss the offer right under your nose.",
+     "A client reaches out while you stare into your own cup."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "nowa świadomość",
+     "akceptacja",
+     "ponowne zaangażowanie"
+    ],
+    "en": [
+     "new awareness",
+     "acceptance",
+     "re-engagement"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wreszcie zauważacie szansę, którą ktoś od dawna wam podsuwa.",
+     "Wystarczy jeden ruch, by znów zacząć rozmawiać z klientami."
+    ],
+    "en": [
+     "You finally notice the chance someone has been holding out to you.",
+     "A single move is enough to start talking with clients again."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Lepszy kontakt z klientem zacznie się od prostego UX i UI, które zachęcą do działania.",
+   "en": "Better contact with clients starts with simple UX and UI that invite them to act."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "cu05",
+  "arcana": "minor",
+  "number": 5,
+  "suit": "cups",
+  "name": {
+   "pl": "Piątka Kielichów",
+   "en": "Five of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "strata",
+     "żal",
+     "skupienie na tym, co zniknęło"
+    ],
+    "en": [
+     "loss",
+     "regret",
+     "focus on the spilt"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Jedna porażka przesłoniła wszystkie dobre wyniki firmy.",
+     "Patrzycie na rozlane wino i zapominacie o dwóch kielichach, które wciąż stoją."
+    ],
+    "en": [
+     "One failure has hidden every good result the company has earned.",
+     "You stare at the spilt wine and forget the two cups still standing."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "odzyskiwanie sił",
+     "pogodzenie się",
+     "ruszenie dalej"
+    ],
+    "en": [
+     "recovery",
+     "acceptance",
+     "moving on"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Przestajecie płakać nad rozlaniem i zaczynacie liczyć, co zostało.",
+     "Stare porażki bledną, gdy na ich miejsce wchodzą nowe projekty."
+    ],
+    "en": [
+     "You stop mourning the spill and start counting what is left.",
+     "Old setbacks fade as new projects take their place."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Po porażce przyda się pakiet startowy, który zamknie stary rozdział.",
+   "en": "After a setback, a launch package can close the old chapter and open a new one."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "cu06",
+  "arcana": "minor",
+  "number": 6,
+  "suit": "cups",
+  "name": {
+   "pl": "Szóstka Kielichów",
+   "en": "Six of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "sentyment",
+     "dawne dobre czasy",
+     "prezent"
+    ],
+    "en": [
+     "nostalgia",
+     "old roots",
+     "gift"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wracają wartości, które kiedyś zbudowały zaufanie.",
+     "Klienci pamiętają początki i wracają do nich z sympatią."
+    ],
+    "en": [
+     "Values that once built trust come back into reach.",
+     "Clients remember the early days and return to them with fondness."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "utknięcie w przeszłości",
+     "życie wspomnieniami",
+     "ponowne połączenie"
+    ],
+    "en": [
+     "stuck in the past",
+     "living on memories",
+     "reconnection"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wspomnienia żyją, a nowi klienci nie znają tej historii.",
+     "Opowiedzenie tej historii dziś może znów połączyć markę z ludźmi."
+    ],
+    "en": [
+     "Old memories live on while new clients never hear the story.",
+     "Telling that story clearly today can reconnect the brand with them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Waszą historię warto opowiedzieć na nowo: spójną identyfikacją i stroną, która ją pokaże.",
+   "en": "Telling your story afresh takes a consistent identity and a site that shows it."
+  },
+  "services": [
+   "identity",
+   "website"
+  ]
+ },
+ {
+  "id": "cu07",
+  "arcana": "minor",
+  "number": 7,
+  "suit": "cups",
+  "name": {
+   "pl": "Siódemka Kielichów",
+   "en": "Seven of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "wybór",
+     "fantazja",
+     "złudzenia"
+    ],
+    "en": [
+     "choices",
+     "fantasy",
+     "illusion"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Przed firmą leży siedem pomysłów i każdy wygląda jak wygrana.",
+     "Część z nich to tylko mgła, której nie warto gonić."
+    ],
+    "en": [
+     "Seven ideas lie before the company, and each one looks like a win.",
+     "Some are only mist that is not worth chasing."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "jasność",
+     "wybór drogi",
+     "trzeźwy plan"
+    ],
+    "en": [
+     "clarity",
+     "choosing a path",
+     "sober plan"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Mgła opada i firma widzi jedną drogę, którą naprawdę da się przejść.",
+     "Czas wybrać kierunek i przestać ważyć resztę."
+    ],
+    "en": [
+     "Mist lifts, and one path appears that can actually be walked.",
+     "It is time to pick one direction and stop weighing the rest."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Pomysł potrzebuje jasnego planu: pakietu startowego, który wybierze jedną drogę.",
+   "en": "Time to give the idea a clear plan: a launch package that picks one path."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "cu08",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 8,
+  "name": {
+   "pl": "Ósemka Kielichów",
+   "en": "Eight of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "odejście",
+     "rozczarowanie",
+     "poszukiwanie głębi"
+    ],
+    "en": [
+     "walking away",
+     "disappointment",
+     "search for depth"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Za wami zostaje projekt, który przestał cieszyć.",
+     "Szukacie czegoś głębszego niż kolejna kampania na szybki zysk."
+    ],
+    "en": [
+     "A project that stopped delighting you stays behind.",
+     "You are searching for something deeper than another quick campaign."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "strach przed zmianą",
+     "błądzenie",
+     "stagnacja"
+    ],
+    "en": [
+     "fear of change",
+     "drifting",
+     "stagnation"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Marka trzyma się starego logo, bo boi się zrobić krok w bok.",
+     "Od miesięcy wszystko krąży wokół tych samych pomysłów i nic z nich nie wynika."
+    ],
+    "en": [
+     "A brand clings to an old logo because it fears one step sideways.",
+     "For months everything circles the same ideas and nothing comes of them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Zanim firma ruszy dalej, przyda jej się odświeżony wizerunek: spójna identyfikacja wizualna.",
+   "en": "Before moving on, the company could use a fresh image: a coherent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "cu09",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 9,
+  "name": {
+   "pl": "Dziewiątka Kielichów",
+   "en": "Nine of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "spełnienie",
+     "zadowolenie",
+     "obfitość"
+    ],
+    "en": [
+     "wish granted",
+     "contentment",
+     "abundance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klienci chwalą firmę, a wykresy rosną tak, jak od dawna chciała.",
+     "Stół jest zastawiony, a goście wracają po dokładkę."
+    ],
+    "en": [
+     "Clients praise the company and the charts climb toward what it hoped for.",
+     "The table is set and guests come back for seconds."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zarozumiałość",
+     "przesyt",
+     "niespełnione życzenie"
+    ],
+    "en": [
+     "smugness",
+     "excess",
+     "unmet wish"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Sukces uderzył firmie do głowy i nikt nie patrzy już na klienta.",
+     "Witryna chwali się wynikami, których nikt nie może sprawdzić."
+    ],
+    "en": [
+     "Success has gone to the company's head and nobody watches the customer anymore.",
+     "A site boasts results that nobody can check."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Sukcesy czekają na czytelną stronę www, która je zaprezentuje.",
+   "en": "Wins like these call for a clear website to present them."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "cu10",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 10,
+  "name": {
+   "pl": "Dziesiątka Kielichów",
+   "en": "Ten of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "harmonia",
+     "wspólnota",
+     "lojalność"
+    ],
+    "en": [
+     "harmony",
+     "community",
+     "loyalty"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zespół i klienci mówią językiem tych samych wartości.",
+     "Marka stała się miejscem, do którego ludzie chętnie wracają."
+    ],
+    "en": [
+     "Team and clients speak the language of the same values.",
+     "People gladly return to this brand, as to a favourite place."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "rozłam",
+     "napięcie w zespole",
+     "osłabiona wspólnota"
+    ],
+    "en": [
+     "rift",
+     "team tension",
+     "weakened community"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Działy ciągną w różne strony, a klienci czują ten chłód.",
+     "Wspólna opowieść o firmie rozsypała się na kilka krótkich wersji."
+    ],
+    "en": [
+     "Departments pull in different directions and clients feel the chill.",
+     "The shared story of the company has splintered into several short versions."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wspólnota potrzebuje jednego obrazu, który ją spina: spójnej identyfikacji wizualnej.",
+   "en": "A community needs one picture that binds it: a coherent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "cu11",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 11,
+  "name": {
+   "pl": "Paź Kielichów",
+   "en": "Page of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nowa wiadomość",
+     "ciekawość",
+     "kreatywny pomysł"
+    ],
+    "en": [
+     "fresh message",
+     "curiosity",
+     "creative idea"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Na skrzynce firmy pojawia się list, którego nikt się nie spodziewał.",
+     "Pomysł jest świeży, a jego serce jest po właściwej stronie."
+    ],
+    "en": [
+     "A letter nobody expected lands in the company's inbox.",
+     "The idea is fresh, and its heart is in the right place."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "niedojrzałość",
+     "rozproszenie",
+     "pomysł bez planu"
+    ],
+    "en": [
+     "immaturity",
+     "scatter",
+     "plan-less idea"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Co tydzień nowy pomysł, a żaden nie dociera do klienta.",
+     "Entuzjazm jest, lecz nikt nie porządkuje tych notatek."
+    ],
+    "en": [
+     "A new idea every week, and none of them reaches the client.",
+     "The enthusiasm is there, but nobody sorts the scribbled notes."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dobre pomysły czekają na pakiet startowy, który wprowadzi je w porządek.",
+   "en": "Good ideas need a launch package to put them in order."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "cu12",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 12,
+  "name": {
+   "pl": "Rycerz Kielichów",
+   "en": "Knight of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "zaproszenie",
+     "urok",
+     "oferta"
+    ],
+    "en": [
+     "invitation",
+     "charm",
+     "offer"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klientom wychodzi naprzeciw propozycja, której trudno odmówić.",
+     "Ton komunikacji jest ciepły, a obietnica wyraźnie zarysowana."
+    ],
+    "en": [
+     "Clients are met with an offer that is hard to refuse.",
+     "Its tone is warm and its promise clearly drawn."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zmienność",
+     "przesadna obietnica",
+     "kaprys"
+    ],
+    "en": [
+     "moodiness",
+     "overpromise",
+     "whim"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dziś krzyczy o promocji, jutro znika z mediów bez słowa.",
+     "Obietnice na stronie są piękne, ale produkt ich nie dotrzymuje."
+    ],
+    "en": [
+     "Today it shouts about a promotion, tomorrow it vanishes without a word.",
+     "The promises on the site are lovely, but the product does not keep them."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Urok to za mało: obietnice potrzebują spójnego wizerunku i strony, która je dowiezie.",
+   "en": "Charm is not enough: the promises need a coherent image and a website that delivers them."
+  },
+  "services": [
+   "identity",
+   "website"
+  ]
+ },
+ {
+  "id": "cu13",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 13,
+  "name": {
+   "pl": "Królowa Kielichów",
+   "en": "Queen of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "empatia",
+     "intuicja",
+     "troska"
+    ],
+    "en": [
+     "empathy",
+     "intuition",
+     "care"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Słuchacie klientów i wyczuwacie, czego im brakuje, zanim zapytają.",
+     "Każdy ekran przypomina dobrą rozmowę przy kawie."
+    ],
+    "en": [
+     "You listen to clients and sense what they lack before they ask.",
+     "Every screen feels like a good conversation over coffee."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "nadwrażliwość",
+     "przywiązanie",
+     "chwiejność"
+    ],
+    "en": [
+     "oversensitivity",
+     "clinging",
+     "unsteadiness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Troska o opinie jest tak duża, że żadna decyzja nie zapada.",
+     "Klienci gubią się na ścieżce, bo ktoś ciągle ją przerabia."
+    ],
+    "en": [
+     "Worry over opinions runs so deep that no decision gets made.",
+     "Clients lose their way because someone keeps reworking the path."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Bliskość z klientem zacznie się od projektu UX, który uczyni kontakt prostym.",
+   "en": "Staying close to clients starts with UX work that makes contact simple."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "cu14",
+  "arcana": "minor",
+  "suit": "cups",
+  "number": 14,
+  "name": {
+   "pl": "Król Kielichów",
+   "en": "King of Cups"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "dojrzałość",
+     "spokój",
+     "wiarygodność"
+    ],
+    "en": [
+     "maturity",
+     "calm",
+     "reliability"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Marka mówi spokojnie i nie musi nikogo przekrzykiwać.",
+     "Doświadczenie utrzymuje ją w równowadze nawet przy dużym ruchu."
+    ],
+    "en": [
+     "The brand speaks calmly and never needs to shout over anyone.",
+     "Experience keeps it balanced even when traffic runs high."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "manipulacja",
+     "wahania nastroju",
+     "chłód"
+    ],
+    "en": [
+     "manipulation",
+     "mood swings",
+     "coldness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Spokój bywa fasadą, a pod nią kryje się nerwowe sterowanie klientami.",
+     "Komunikat zmienia się z tygodnia na tydzień i nikt nie wie, czego się trzymać."
+    ],
+    "en": [
+     "Calm can be a facade, and beneath it lies nervous steering of clients.",
+     "The message shifts from week to week and nobody knows what to hold on to."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dojrzały głos marki potrzebuje identyfikacji wizualnej, która go ustabilizuje.",
+   "en": "What helps here is a visual identity that steadies the brand's mature voice."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "sw01",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 1,
+  "name": {
+   "pl": "As Mieczy",
+   "en": "Ace of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "klarowność",
+     "przełom",
+     "prawda"
+    ],
+    "en": [
+     "clarity",
+     "breakthrough",
+     "truth"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "W końcu widać, co naprawdę chcecie powiedzieć klientom.",
+     "Jedno jasne zdanie przecina gęstą mgłę w komunikacji."
+    ],
+    "en": [
+     "At last it is clear what you truly want to tell your clients.",
+     "One clear sentence cuts through the thick fog of your messages."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zamęt",
+     "nadmiar słów",
+     "nieostrożne cięcie"
+    ],
+    "en": [
+     "confusion",
+     "too many words",
+     "careless cut"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Komunikat tonie w gąszczu haseł i nikt nie wie, co firma sprzedaje.",
+     "Ostre słowa potrafią zranić, zanim ktokolwiek zrozumie ofertę."
+    ],
+    "en": [
+     "A message sinks in a jungle of slogans, and nobody knows what is sold.",
+     "Sharp words can wound before anyone understands the offer."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Ostry przekaz trzeba uporządkować na czytelnej stronie www.",
+   "en": "Ordering a sharp message on a readable website is the next task."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "sw02",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 2,
+  "name": {
+   "pl": "Dwójka Mieczy",
+   "en": "Two of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "impas",
+     "wahanie",
+     "zasłonięte oczy"
+    ],
+    "en": [
+     "stalemate",
+     "indecision",
+     "blindfold"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stoicie między dwiema drogami i żadnej nie widać wyraźnie.",
+     "Oczy są zasłonięte, a decyzja odkłada się z miesiąca na miesiąc."
+    ],
+    "en": [
+     "You stand between two roads and see neither clearly.",
+     "Eyes are covered, and the decision slips from month to month."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przeciążenie",
+     "chaos informacji",
+     "ujawniona prawda"
+    ],
+    "en": [
+     "overload",
+     "information chaos",
+     "revealed truth"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zbyt wiele danych zalewa zespół i wszystko wygląda tak samo.",
+     "Opaska spada, a pod nią widać, że klient od dawna wybiera gdzie indziej."
+    ],
+    "en": [
+     "Too much data floods the team until everything looks the same.",
+     "When the blindfold slips, it shows that clients have long chosen elsewhere."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wybory się piętrzą, więc klientom przyda się UX i UI, które ułatwią decyzję.",
+   "en": "Choices keep piling up, so clients could use UX and UI that make deciding easier."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "sw03",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 3,
+  "name": {
+   "pl": "Trójka Mieczy",
+   "en": "Three of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "bolesna prawda",
+     "strata",
+     "rozczarowanie"
+    ],
+    "en": [
+     "painful truth",
+     "loss",
+     "disappointment"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Recenzja, której nikt nie chciał czytać, trafia prosto w serce kampanii.",
+     "Słabe wyniki pokazują dokładnie, gdzie strona gubi klientów."
+    ],
+    "en": [
+     "A review nobody wanted to read hits the heart of the campaign.",
+     "Weak numbers show exactly where the site loses its clients."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "gojenie",
+     "wybaczenie",
+     "nowy początek"
+    ],
+    "en": [
+     "healing",
+     "forgiveness",
+     "fresh start"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Rana się zasklepia, a zespół uczy się na własnych błędach.",
+     "Klienci wracają, bo firma przyznała się do potknięcia."
+    ],
+    "en": [
+     "A wound closes, and the team learns from its own mistakes.",
+     "Clients come back because someone owned up to the stumble."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Po kryzysie trzeba przeprojektować ścieżkę klienta: UX i UI, które odbudują zaufanie.",
+   "en": "After a setback the client path needs redesigning: UX and UI that rebuild trust."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "sw04",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 4,
+  "name": {
+   "pl": "Czwórka Mieczy",
+   "en": "Four of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "odpoczynek",
+     "wycofanie",
+     "cisza"
+    ],
+    "en": [
+     "rest",
+     "retreat",
+     "stillness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Po premierze zamykacie drzwi i na chwilę przestajecie mówić.",
+     "Cisza jest potrzebna, żeby zebrać siły na kolejny ruch."
+    ],
+    "en": [
+     "After the launch you shut the door and stop talking for a while.",
+     "Silence is needed to gather strength for the next move."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "wyczerpanie",
+     "niepokój",
+     "powrót do pracy"
+    ],
+    "en": [
+     "exhaustion",
+     "restlessness",
+     "back to work"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Odpoczynek się przeciąga, a zespół wraca do biura bez energii.",
+     "Strona stoi uśpiona, a klienci zdążyli przejść do konkurencji."
+    ],
+    "en": [
+     "The rest drags on and the team returns to the office without energy.",
+     "The site sleeps while clients have already wandered off to rivals."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Najpierw przerwa, a potem odświeżona strona, która znów zacznie pracować.",
+   "en": "First a break, then a refreshed website that starts working again."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "sw05",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 5,
+  "name": {
+   "pl": "Piątka Mieczy",
+   "en": "Five of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "pusta wygrana",
+     "konflikt",
+     "rywalizacja"
+    ],
+    "en": [
+     "hollow win",
+     "conflict",
+     "rivalry"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Przetarg wygrany, a klienci odchodzą z niesmakiem.",
+     "Zwycięstwo smakuje dobrze tylko przez chwilę."
+    ],
+    "en": [
+     "The bid is won, yet clients leave with a bitter taste.",
+     "Victory tastes sweet only for a moment."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "pojednanie",
+     "naprawa relacji",
+     "uraza"
+    ],
+    "en": [
+     "reconciliation",
+     "repair",
+     "resentment"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ktoś wyciąga rękę i zaprasza klientów do rozmowy.",
+     "Dawne spory schodzą na dalszy plan, a marka znów wygląda przyjaźnie."
+    ],
+    "en": [
+     "Someone extends a hand and invites clients to talk.",
+     "Old quarrels fade and the brand looks friendly again."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Spójna identyfikacja pokaże, że wygrywacie uczciwie, a nie na siłę.",
+   "en": "Show that you win fairly, not by force: a coherent identity can do that."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "sw06",
+  "arcana": "minor",
+  "suit": "swords",
+  "number": 6,
+  "name": {
+   "pl": "Szóstka Mieczy",
+   "en": "Six of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "przejście",
+     "spokojniejsze wody",
+     "nowy rynek"
+    ],
+    "en": [
+     "transition",
+     "calmer waters",
+     "new market"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Płyniecie z trudnego miejsca ku spokojniejszym wodom.",
+     "Łódź jest przeładowana, lecz kierunek wydaje się dobry."
+    ],
+    "en": [
+     "You sail from a hard place toward calmer waters.",
+     "The boat is loaded heavy, yet the direction feels right."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "utknięcie",
+     "bagaż",
+     "powolna zmiana"
+    ],
+    "en": [
+     "stuck",
+     "baggage",
+     "slow change"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Łódź ugrzęzła na mieliźnie, bo stary bagaż nie chce zejść z pokładu.",
+     "Plan przeprowadzki leży w szufladzie od roku."
+    ],
+    "en": [
+     "A boat sits on a sandbar because old baggage will not leave the deck.",
+     "The relocation plan has lain in a drawer for a year."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Zmiana rynku wymaga pakietu startowego, który przeniesie was na nowe wody.",
+   "en": "Changing markets calls for a launch package that carries you onto new waters."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "sw07",
+  "arcana": "minor",
+  "number": 7,
+  "suit": "swords",
+  "name": {
+   "pl": "Siódemka Mieczy",
+   "en": "Seven of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "podchody",
+     "zatajenie",
+     "wymijanie prawdy"
+    ],
+    "en": [
+     "sneaking",
+     "concealment",
+     "evasion"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Część oferty chowa się w cieniu, a klienci jej nie widzą.",
+     "Za fasadą spokojnego biura kryje się bałagan, którego nikt nie pokazuje."
+    ],
+    "en": [
+     "Part of the offer hides in shadow, and clients never see it.",
+     "Behind a calm front office lies a mess that nobody shows."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "wyrzuty sumienia",
+     "wyjście na jaw",
+     "powrót prawdy"
+    ],
+    "en": [
+     "remorse",
+     "coming to light",
+     "truth returns"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Prawda w końcu wychodzi na jaw i klienci chcą wiedzieć, co naprawdę oferujecie.",
+     "Mówienie wprost teraz jest lepsze niż tłumaczenie się później."
+    ],
+    "en": [
+     "At last the truth comes out, and clients want to know what you really offer.",
+     "Speaking plainly now is better than explaining later."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Atuty, które dziś giną w cieniu, pokaże czytelna strona www.",
+   "en": "Strengths now hidden in the shadows need a clear website to bring them out."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "sw08",
+  "arcana": "minor",
+  "number": 8,
+  "suit": "swords",
+  "name": {
+   "pl": "Ósemka Mieczy",
+   "en": "Eight of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "uwięzienie",
+     "ograniczenia",
+     "bezsilność"
+    ],
+    "en": [
+     "entrapment",
+     "self-imposed limits",
+     "helplessness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Na nogach wiszą kajdany, których tak naprawdę nikt nie zakładał.",
+     "Opaska na oczach wygląda groźnie, ale da się ją zdjąć."
+    ],
+    "en": [
+     "Chains hang on you that nobody actually put on.",
+     "A blindfold looks tight, yet it can be taken off."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "uwolnienie",
+     "nowa perspektywa",
+     "pierwszy krok"
+    ],
+    "en": [
+     "release",
+     "new perspective",
+     "first step"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ktoś w końcu zdejmuje opaskę i widzi drzwi, które były otwarte od dawna.",
+     "Jeden krok wystarczy, żeby zobaczyć rynek z innej strony."
+    ],
+    "en": [
+     "Someone finally removes the blindfold and sees doors that were open all along.",
+     "A single step is enough to see the market from another side."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Produkt błądzi w labiryncie ekranów, więc potrzeba UX i UI, które wskażą drogę.",
+   "en": "A product lost in a maze of screens needs UX and UI that show the way."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "sw09",
+  "arcana": "minor",
+  "number": 9,
+  "suit": "swords",
+  "name": {
+   "pl": "Dziewiątka Mieczy",
+   "en": "Nine of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "lęk",
+     "nieprzespane noce",
+     "złe przeczucie"
+    ],
+    "en": [
+     "anxiety",
+     "sleepless nights",
+     "dread"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dział sprzedaży nie śpi, bo każdy mail wydaje się katastrofą.",
+     "Ciemne myśli o klientach krążą po biurze nawet po zamknięciu."
+    ],
+    "en": [
+     "Sales people lie awake because every email feels like a disaster.",
+     "Dark thoughts about clients circle the office long after closing time."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "ulga",
+     "zaufanie do siebie",
+     "koniec obaw"
+    ],
+    "en": [
+     "relief",
+     "self-trust",
+     "end of worry"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Świt przynosi ulgę, bo większość obaw okazuje się tylko cieniem.",
+     "Ktoś wreszcie prosi o pomoc, zamiast dźwigać wszystko sam."
+    ],
+    "en": [
+     "Dawn brings relief, since most fears turn out to be only shadows.",
+     "Someone finally asks for help instead of carrying everything alone."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Przejrzysta strona www zdejmie z zespołu ciągłe pytania klientów.",
+   "en": "Clients' constant questions would ease with a clear website."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "sw10",
+  "arcana": "minor",
+  "number": 10,
+  "suit": "swords",
+  "name": {
+   "pl": "Dziesiątka Mieczy",
+   "en": "Ten of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "bolesny koniec",
+     "zdrada",
+     "dno"
+    ],
+    "en": [
+     "painful ending",
+     "betrayal",
+     "rock bottom"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Stara umowa kończy się ciosem, który wszyscy czuli od miesięcy.",
+     "Najgorsze mogło już minąć, choć od klientów ucichły ostatnie wiadomości."
+    ],
+    "en": [
+     "An old arrangement ends with a blow everyone felt for months.",
+     "The worst may be behind you, yet the last messages from clients have gone quiet."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "odbicie",
+     "regeneracja",
+     "przetrwanie"
+    ],
+    "en": [
+     "recovery",
+     "regeneration",
+     "survival"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dno jest za wami, bo zaufanie odbudowuje się krok po kroku.",
+     "Nowa strona może być pierwszym kamieniem w odbudowie zaufania."
+    ],
+    "en": [
+     "Rock bottom is behind you, since trust is rebuilt one step at a time.",
+     "A new site can be the first stone in rebuilding that trust."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Po ciosie przyda się odświeżona strona i pakiet startowy, żeby zacząć od nowa.",
+   "en": "After the blow, a refreshed website and a launch package can help you start over."
+  },
+  "services": [
+   "website",
+   "startup"
+  ]
+ },
+ {
+  "id": "sw11",
+  "arcana": "minor",
+  "number": 11,
+  "suit": "swords",
+  "name": {
+   "pl": "Paź Mieczy",
+   "en": "Page of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "ciekawość",
+     "nowe pomysły",
+     "czujność"
+    ],
+    "en": [
+     "curiosity",
+     "fresh ideas",
+     "vigilance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Młody zespół wypytuje rynek o wszystko, co dotąd było tajemnicą.",
+     "Ktoś w firmie zauważa szczegół, który inni przegapili."
+    ],
+    "en": [
+     "A young team quizzes the market about everything that was once a secret.",
+     "Someone at the firm notices a detail the others missed."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "plotki",
+     "pośpiech",
+     "złośliwość"
+    ],
+    "en": [
+     "gossip",
+     "haste",
+     "spite"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Informacje krążą po branży szybciej, niż ktoś zdąży je sprawdzić.",
+     "Złośliwa recenzja pojawia się, zanim firma zdąży odpowiedzieć."
+    ],
+    "en": [
+     "Information circulates faster than anyone can verify it.",
+     "A spiteful review appears before the company has time to reply."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Plotki ucisza spójna identyfikacja wizualna, która pokaże, kim jesteście.",
+   "en": "Quiet the rumours and show who you are with a consistent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "sw12",
+  "arcana": "minor",
+  "number": 12,
+  "suit": "swords",
+  "name": {
+   "pl": "Rycerz Mieczy",
+   "en": "Knight of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "działanie",
+     "ambicja",
+     "pośpiech"
+    ],
+    "en": [
+     "action",
+     "ambition",
+     "haste"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Szturm na rynek rusza z hukiem i bez oglądania się za siebie.",
+     "Plany są ostre jak brzytwa, ale nie każdy ruch został przemyślany."
+    ],
+    "en": [
+     "Charging at the market loudly, you never look back.",
+     "Plans are sharp as a razor, yet not every move was thought through."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "brawura",
+     "nieuwaga",
+     "rozproszenie"
+    ],
+    "en": [
+     "recklessness",
+     "carelessness",
+     "scattered energy"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zapał jest ogromny, ale kierunek ginie w natłoku nowych zadań.",
+     "Kolejne zrywy zaczynają się bez planu i kończą w połowie drogi."
+    ],
+    "en": [
+     "Energy is huge, but direction gets lost among new tasks.",
+     "Each new sprint starts without a plan and ends halfway."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Ambicja biegnie szybciej niż strona, więc potrzeba strony www, która za nią nadąży.",
+   "en": "Ambition outruns the current website, so a new one that keeps pace is needed."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "sw13",
+  "arcana": "minor",
+  "number": 13,
+  "suit": "swords",
+  "name": {
+   "pl": "Królowa Mieczy",
+   "en": "Queen of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "jasne myślenie",
+     "szczerość",
+     "niezależność"
+    ],
+    "en": [
+     "clear thinking",
+     "honesty",
+     "independence"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Mówi się otwarcie, co widać, bez upiększania rzeczywistości.",
+     "Dystans do modnych trendów pozwala jej myśleć po swojemu."
+    ],
+    "en": [
+     "Things are said plainly, with no polishing of reality.",
+     "Distance from fashionable trends lets it think for itself."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "gorycz",
+     "chłód",
+     "surowość"
+    ],
+    "en": [
+     "bitterness",
+     "coldness",
+     "harshness"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ostre słowa w komunikacji odstraszają klientów, którzy szukali ciepła.",
+     "Szczerość zamienia się w chłód, a rozmowy kończą się, zanim się zaczną."
+    ],
+    "en": [
+     "Sharp words in the messages drive away clients who wanted warmth.",
+     "Honesty turns cold, and conversations end before they begin."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Mocne zdanie w chłodnym wizerunku? Pomoże spójna identyfikacja wizualna.",
+   "en": "Strong opinions in a cold-looking image? A consistent visual identity will help."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "sw14",
+  "arcana": "minor",
+  "number": 14,
+  "suit": "swords",
+  "name": {
+   "pl": "Król Mieczy",
+   "en": "King of Swords"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "autorytet",
+     "prawda",
+     "trzeźwy osąd"
+    ],
+    "en": [
+     "authority",
+     "truth",
+     "sound judgement"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Branża słucha głosu, który płynie z doświadczenia.",
+     "Każda decyzja jest przemyślana, a wnioski są zapisane wprost."
+    ],
+    "en": [
+     "A voice the industry listens to speaks from experience.",
+     "Every decision is weighed, and the conclusions are written down plainly."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "manipulacja",
+     "tyrania",
+     "nadużycie władzy"
+    ],
+    "en": [
+     "manipulation",
+     "tyranny",
+     "abuse of power"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Autorytet zamienia się w kontrolę, a klienci czują, że są prowadzeni.",
+     "Ładne słowa maskują zimną gotowość do wykorzystania ludzi."
+    ],
+    "en": [
+     "Authority hardens into control, and clients feel steered rather than served.",
+     "Pretty words hide a cold willingness to exploit people."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Autorytet, którego strona nie pokazuje, potrzebuje UX i UI wyeksponujących ekspertyzę.",
+   "en": "Authority the site does not show needs UX and UI that highlight expertise."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "pe01",
+  "arcana": "minor",
+  "number": 1,
+  "suit": "pentacles",
+  "name": {
+   "pl": "As Monet",
+   "en": "Ace of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nowa szansa",
+     "początek dobrobytu",
+     "materializacja"
+    ],
+    "en": [
+     "new chance",
+     "start of prosperity",
+     "manifestation"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ktoś podaje wam monetę, a to dopiero początek większego zysku.",
+     "Dobry pomysł ma już fundamenty, więc wystarczy go zbudować."
+    ],
+    "en": [
+     "Someone offers a coin, and this is only the start of something larger.",
+     "A good idea already has its foundations, so it only needs building."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "stracona okazja",
+     "przeoczenie",
+     "zbyt wolno"
+    ],
+    "en": [
+     "missed chance",
+     "oversight",
+     "too slow"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Szansa przechodzi obok, bo nikt nie zauważył jej w drzwiach.",
+     "Monety leżą w kurzu, a konkurencja zbiera plony."
+    ],
+    "en": [
+     "A chance walks past because nobody noticed it at the door.",
+     "Coins gather dust while competitors harvest the field."
+    ]
+   }
+  },
+  "business": {
+   "pl": "U progu nowego rynku pierwszych klientów przyciągnie strona www.",
+   "en": "At the threshold of a new market, a website will draw in the first clients."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "pe02",
+  "arcana": "minor",
+  "number": 2,
+  "suit": "pentacles",
+  "name": {
+   "pl": "Dwójka Monet",
+   "en": "Two of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "równowaga",
+     "żonglowanie",
+     "elastyczność"
+    ],
+    "en": [
+     "balance",
+     "juggling",
+     "adaptability"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Dwa projekty naraz to żonglerka, w której ledwo utrzymuje się rytm.",
+     "Nieskończona wstęga łączy oba zadania, ale każde zaczyna ciążyć."
+    ],
+    "en": [
+     "Two projects at once make a juggling act that barely keeps its rhythm.",
+     "An endless ribbon links both tasks, yet each one grows heavy."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "przeciążenie",
+     "chaos",
+     "brak planu"
+    ],
+    "en": [
+     "overload",
+     "disorder",
+     "no plan"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Zadania piętrzą się na biurku, a nikt nie wie, co jest pilne.",
+     "Rytm się rozsypał i każdy ratuje, co może."
+    ],
+    "en": [
+     "Tasks pile up on the desk and nobody knows what is urgent.",
+     "The rhythm has collapsed and everyone saves whatever they can."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Uporządkowany UX i UI pokaże klientom i zespołowi, co dalej.",
+   "en": "Tidy UX and UI will show clients and staff what comes next."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "pe03",
+  "arcana": "minor",
+  "number": 3,
+  "suit": "pentacles",
+  "name": {
+   "pl": "Trójka Monet",
+   "en": "Three of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "współpraca",
+     "rzemiosło",
+     "umiejętności"
+    ],
+    "en": [
+     "teamwork",
+     "craft",
+     "skill"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Architekt, kamieniarz i klient siedzą przy jednym stole.",
+     "Każdy dokłada cegiełkę, a efekt wygląda jak jedna całość."
+    ],
+    "en": [
+     "An architect, a mason and a client sit at one table.",
+     "Each one adds a stone, and the result looks like a single whole."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "brak współpracy",
+     "przeciętność",
+     "połowiczny wysiłek"
+    ],
+    "en": [
+     "poor teamwork",
+     "mediocrity",
+     "half effort"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Każdy robi swoje, ale nikt nie patrzy na efekt całości.",
+     "Projekt dobrze wygląda w teorii, a w praktyce rozjeżdża się w szczegółach."
+    ],
+    "en": [
+     "Everyone does their part, yet nobody looks at the whole result.",
+     "A project looks fine on paper and falls apart in every detail."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dobrzy ludzie potrzebują spójnej identyfikacji wizualnej, która połączy ich wysiłki.",
+   "en": "Good people need a coherent visual identity that ties their efforts together."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "pe04",
+  "arcana": "minor",
+  "number": 4,
+  "suit": "pentacles",
+  "name": {
+   "pl": "Czwórka Monet",
+   "en": "Four of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "kontrola",
+     "ostrożność",
+     "przywiązanie"
+    ],
+    "en": [
+     "control",
+     "caution",
+     "attachment"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pieniądze są trzymane tak mocno, że nic nie może się ruszyć.",
+     "Skarbiec ma trzy zamki, a gości nikt nie zaprasza do środka."
+    ],
+    "en": [
+     "Money is clutched so tightly that nothing can move.",
+     "A vault has three locks, yet no guests are invited inside."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "chciwość",
+     "gromadzenie",
+     "lęk przed stratą"
+    ],
+    "en": [
+     "greed",
+     "hoarding",
+     "fear of loss"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pieniądze płyną, ale firma nie chce wydać ich na to, co przyniesie zwrot.",
+     "Ostrożność zamienia się w mur, za którym klient nie widzi waszej oferty."
+    ],
+    "en": [
+     "Money flows in, yet the company refuses to spend it on what brings returns.",
+     "Caution turns into a wall that hides your offer from clients."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Strach przed inwestowaniem w siebie leczy pakiet startowy z jasnym planem.",
+   "en": "Fear of investing in yourself has a cure: a launch package with a clear plan."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "pe05",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 5,
+  "name": {
+   "pl": "Piątka Monet",
+   "en": "Five of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "niedostatek",
+     "chłód",
+     "wykluczenie"
+    ],
+    "en": [
+     "want",
+     "cold",
+     "exclusion"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klienci mijają okno, w którym pali się światło.",
+     "Zimą nawet dobra oferta potrzebuje ciepłego wejścia."
+    ],
+    "en": [
+     "Clients pass a window where a light is burning.",
+     "In winter even a good offer needs a warm entrance."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "powrót",
+     "pomoc",
+     "odwilż"
+    ],
+    "en": [
+     "return",
+     "help",
+     "thaw"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Drzwi do kościoła w końcu się uchylają.",
+     "Klienci wracają, jeśli tylko znajdą drogę do środka."
+    ],
+    "en": [
+     "A church door finally opens a crack.",
+     "Clients return, if only they can find the way in."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Ktoś musi poprawić to, jak klient przechodzi przez waszą stronę: UX i UI.",
+   "en": "Someone must fix how clients move through your site: UX and UI."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "pe06",
+  "arcana": "minor",
+  "number": 6,
+  "suit": "pentacles",
+  "name": {
+   "pl": "Szóstka Monet",
+   "en": "Six of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "hojność",
+     "wymiana",
+     "dawanie"
+    ],
+    "en": [
+     "generosity",
+     "exchange",
+     "giving"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Klienci dostają więcej, niż się spodziewali, i to procentuje.",
+     "Waga w dłoni przechyla się w stronę tych, którzy dzielą się wiedzą."
+    ],
+    "en": [
+     "Clients get more than they expected, and that pays back.",
+     "In the hand, the scales tip toward those who share what they know."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "warunki",
+     "dług",
+     "jednostronność"
+    ],
+    "en": [
+     "strings attached",
+     "debt",
+     "one-sided giving"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pomoc przychodzi z ukrytymi warunkami, które klienci szybko wyczuwają.",
+     "Szala wychyla się na jedną stronę, a klienci w końcu odchodzą zmęczeni."
+    ],
+    "en": [
+     "Help arrives with hidden conditions that clients sense at once.",
+     "One pan of the scales sinks, and clients eventually walk away tired."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wartość oddawaną klientom trzeba pokazać na przejrzystej stronie.",
+   "en": "Value given to clients should be visible on a transparent website."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "pe07",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 7,
+  "name": {
+   "pl": "Siódemka Monet",
+   "en": "Seven of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "cierpliwość",
+     "dojrzewanie",
+     "ocena wzrostu",
+     "plon"
+    ],
+    "en": [
+     "patience",
+     "ripening",
+     "growth review",
+     "harvest"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Czekacie na plon, który dopiero dojrzewa w ziemi.",
+     "Ktoś cicho liczy każdą roślinę i pyta, co naprawdę rośnie."
+    ],
+    "en": [
+     "You are waiting for a harvest still ripening in the soil.",
+     "Someone quietly counts every plant and asks what truly grows."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zniecierpliwienie",
+     "zmarnowany wysiłek",
+     "brak plonu",
+     "pusta ziemia"
+    ],
+    "en": [
+     "impatience",
+     "wasted effort",
+     "no yield",
+     "barren soil"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Pieniądze trafiają w ziemię, a plon nie chce wyrosnąć.",
+     "Klienci przechodzą obok pola, bo nikt nie wskazał im drogi."
+    ],
+    "en": [
+     "Money goes into the soil, yet the harvest refuses to grow.",
+     "Clients walk past the field because nobody pointed the way."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Siew się udał, a strona www pomoże zebrać klientów.",
+   "en": "The sowing went well, and a website will help gather the clients."
+  },
+  "services": [
+   "website"
+  ]
+ },
+ {
+  "id": "pe08",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 8,
+  "name": {
+   "pl": "Ósemka Monet",
+   "en": "Eight of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "rzemiosło",
+     "wytrwałość",
+     "praktyka",
+     "skupienie"
+    ],
+    "en": [
+     "craft",
+     "perseverance",
+     "practice",
+     "focus"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ktoś po raz kolejny wyrzeźbi tę samą monetę, tym razem lepiej.",
+     "Praca w cieniu bywa najcenniejszą nauką."
+    ],
+    "en": [
+     "Someone carves the same coin once more, this time with greater skill.",
+     "Work done in the shadows often teaches the most valuable lessons."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "mierność",
+     "powtarzanie",
+     "przeciągający się warsztat",
+     "brak polotu"
+    ],
+    "en": [
+     "mediocrity",
+     "repetition",
+     "endless workshop",
+     "lost spark"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Wszystko wykonane poprawnie, ale nic nie zapada w pamięć.",
+     "Warsztat pracuje od lat, a klienci wciąż nie wiedzą, kto za nim stoi."
+    ],
+    "en": [
+     "Everything is done correctly, yet nothing lingers in memory.",
+     "The workshop has run for years, and clients still do not know who stands behind it."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Rzemiosło jest dopracowane, ale brakuje mu spójnej identyfikacji wizualnej.",
+   "en": "The craft is refined, but it still lacks a consistent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "pe09",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 9,
+  "name": {
+   "pl": "Dziewiątka Monet",
+   "en": "Nine of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "niezależność",
+     "dostatek",
+     "spokój",
+     "samowystarczalność"
+    ],
+    "en": [
+     "independence",
+     "abundance",
+     "calm",
+     "self-reliance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ogród, w którym stoicie, uprawiliście i osłoniliście sami.",
+     "Spokój przychodzi wtedy, gdy nie trzeba nikogo prosić o pomoc."
+    ],
+    "en": [
+     "You stand in a garden you planted and shielded yourselves.",
+     "Calm arrives when nobody has to ask for help."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zależność",
+     "pozorny przepych",
+     "nadmierne wydatki",
+     "pusty blask"
+    ],
+    "en": [
+     "dependency",
+     "false luxury",
+     "overspending",
+     "hollow shine"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Ogród wygląda bogato, ale korzenie wiszą na cudzym murze.",
+     "Przepych na zewnątrz nie zastąpi klientowi jasnej drogi do zakupu."
+    ],
+    "en": [
+     "The garden looks rich, yet its roots hang on someone else's wall.",
+     "Outward luxury cannot replace a clear path to purchase for clients."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Wszystko jest na miejscu, ale klienci nie wiedzą, jak z tego korzystać: potrzebny UX i UI.",
+   "en": "Everything is in place, but clients do not know how to use it: UX and UI are required."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "pe10",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 10,
+  "name": {
+   "pl": "Dziesiątka Monet",
+   "en": "Ten of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "dziedzictwo",
+     "trwałość",
+     "rodzinny majątek",
+     "pokolenia"
+    ],
+    "en": [
+     "legacy",
+     "endurance",
+     "family wealth",
+     "generations"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Brama rodowej posiadłości stoi otworem dla kolejnych pokoleń.",
+     "Marka zbudowana z myślą o latach zyska zaufanie na długo."
+    ],
+    "en": [
+     "The gate of the family estate stands open for generations to come.",
+     "A brand built with decades in mind earns trust that lasts."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "spór rodzinny",
+     "odziedziczone długi",
+     "krótki zysk",
+     "pęknięta brama"
+    ],
+    "en": [
+     "family feud",
+     "inherited debt",
+     "short gain",
+     "cracked gate"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Spory o majątek przesłaniają to, co miało przetrwać.",
+     "Zysk zebrany dziś może zostawić następnym pokoleniom rachunek."
+    ],
+    "en": [
+     "Quarrels over the estate hide what was meant to endure.",
+     "Profit taken today may leave the next generation a bill."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Rodzinne dziedzictwo zasługuje na identyfikację wizualną, która przetrwa kolejne pokolenia.",
+   "en": "The family legacy deserves a visual identity that outlasts generations."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "pe11",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 11,
+  "name": {
+   "pl": "Paź Monet",
+   "en": "Page of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "nowa okazja",
+     "nauka",
+     "ambicja",
+     "wiadomość"
+    ],
+    "en": [
+     "new chance",
+     "learning",
+     "ambition",
+     "message"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Posłaniec przynosi wiadomość o okazji, której nikt się nie spodziewał.",
+     "Dopiero się uczycie, ale każdy krok notujecie z uwagą."
+    ],
+    "en": [
+     "A messenger brings word of a chance nobody expected.",
+     "You are only learning, yet you note every step with care."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "brak postępu",
+     "odkładanie",
+     "przegapiona szansa",
+     "rozproszenie"
+    ],
+    "en": [
+     "no progress",
+     "procrastination",
+     "missed chance",
+     "distraction"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Lista pomysłów rośnie, ale żaden z nich nie dochodzi do skutku.",
+     "Okazja przechodzi obok, a firma wciąż czeka na właściwy moment."
+    ],
+    "en": [
+     "The list of ideas grows, yet none of them gets done.",
+     "The chance passes by while the company still waits for the right moment."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Na początek drogi przyda się pakiet startowy, który da pierwszą twarz.",
+   "en": "At the start of the road, a launch package gives you a first face."
+  },
+  "services": [
+   "startup"
+  ]
+ },
+ {
+  "id": "pe12",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 12,
+  "name": {
+   "pl": "Rycerz Monet",
+   "en": "Knight of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "rzetelność",
+     "rutyna",
+     "odpowiedzialność",
+     "powolny postęp"
+    ],
+    "en": [
+     "reliability",
+     "routine",
+     "responsibility",
+     "slow progress"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Rycerz jedzie powoli, ale zawsze dociera tam, gdzie obiecał.",
+     "Zaufanie rośnie krok po kroku, bez szukania skrótów."
+    ],
+    "en": [
+     "A knight rides slowly, yet always arrives where he promised.",
+     "Trust grows step by step, with no shortcuts."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "stagnacja",
+     "nuda",
+     "upór",
+     "zawieszenie"
+    ],
+    "en": [
+     "stagnation",
+     "boredom",
+     "stubbornness",
+     "limbo"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Koń stoi w miejscu, a jeźdźca ogarnia znużenie.",
+     "Klienci przestają zauważać firmę, bo nic nowego się nie dzieje."
+    ],
+    "en": [
+     "A horse stands still and the rider sinks into weariness.",
+     "Clients stop noticing the company because nothing new happens."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Solidna praca wymaga porządku: UX i UI, które nie pozwolą klientom zgubić się w nudzie.",
+   "en": "Steady work needs order: UX and UI that keep clients from drifting away."
+  },
+  "services": [
+   "uxui"
+  ]
+ },
+ {
+  "id": "pe13",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 13,
+  "name": {
+   "pl": "Królowa Monet",
+   "en": "Queen of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "troska",
+     "praktyczność",
+     "bezpieczeństwo",
+     "gościnność"
+    ],
+    "en": [
+     "care",
+     "practicality",
+     "safety",
+     "hospitality"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Królowa siedzi w ogrodzie pełnym kwiatów i wita każdego gościa.",
+     "Dom marki jest ciepły, a klient czuje się tu bezpiecznie."
+    ],
+    "en": [
+     "The queen sits in a garden full of flowers and greets every guest.",
+     "The brand's home feels warm, and clients feel safe inside it."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "zaborczość",
+     "zazdrość",
+     "przesada",
+     "brak równowagi"
+    ],
+    "en": [
+     "possessiveness",
+     "jealousy",
+     "excess",
+     "imbalance"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Troska zamienia się w kontrolę, a klienci zaczynają odchodzić.",
+     "Własne podwórko jest tak zadbane, że zapomina się o gościach."
+    ],
+    "en": [
+     "Care turns into control, and clients start slipping away.",
+     "The yard is tended so carefully that the guests are forgotten."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Troska o klientów zasługuje na ciepłą, spójną identyfikację wizualną.",
+   "en": "Care for clients deserves a warm, consistent visual identity."
+  },
+  "services": [
+   "identity"
+  ]
+ },
+ {
+  "id": "pe14",
+  "arcana": "minor",
+  "suit": "pentacles",
+  "number": 14,
+  "name": {
+   "pl": "Król Monet",
+   "en": "King of Pentacles"
+  },
+  "up": {
+   "keywords": {
+    "pl": [
+     "majątek",
+     "przywództwo",
+     "dyscyplina",
+     "dojrzałość"
+    ],
+    "en": [
+     "wealth",
+     "leadership",
+     "discipline",
+     "maturity"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Król siedzi na tronie z monetą w dłoni, spokojny o jutro.",
+     "Pozycję zbudowano pracą i cierpliwością."
+    ],
+    "en": [
+     "The king sits on his throne with a coin in hand, calm about tomorrow.",
+     "The position was built with patience and steady work."
+    ]
+   }
+  },
+  "rev": {
+   "keywords": {
+    "pl": [
+     "chciwość",
+     "obsesja statusu",
+     "chaos finansowy",
+     "materializm"
+    ],
+    "en": [
+     "greed",
+     "status obsession",
+     "financial chaos",
+     "materialism"
+    ]
+   },
+   "sentences": {
+    "pl": [
+     "Władca liczy złoto, ale nie widzi, jak firma pustoszeje.",
+     "Pozycja staje się ważniejsza od klientów, a rachunki giną w cieniu."
+    ],
+    "en": [
+     "The ruler counts gold yet fails to see the company emptying out.",
+     "Status matters more than clients, and the figures slip into shadow."
+    ]
+   }
+  },
+  "business": {
+   "pl": "Dojrzała pozycja wymaga wizerunku, który jej dorówna: spójnej identyfikacji i strony.",
+   "en": "A mature position needs an image to match: a coherent identity and a site."
+  },
+  "services": [
+   "identity",
+   "website"
+  ]
+ }
 ]

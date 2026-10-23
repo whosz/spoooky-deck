@@ -1,10 +1,57 @@
 {
-"origin":["#wezwanie# #znaczenie# #omen# #puenta# #cta#"],
-"wezwanie":["#name#, #zodiac#. Talia budzi się nad firmą „#company#”. Mgła rzednie, świece drżą.","Cisza, #name#. Karty szepczą o firmie „#company#” i o znaku #zodiac#.","#name#, usiądź bliżej. Talia wywołuje firmę „#company#” z mroku."],
-"znaczenie":["Wypadła karta: #card#, #pos#. Jej słowa to #keywords#. #meaning# #business#","Odkrywasz kartę #card#, #pos#. Niosą ją słowa: #keywords#. #meaning# #business#"],
-"puenta_identity":["Wyjście jest jedno: projektant identyfikacji wizualnej, który nada firmie twarz, na jaką zasługuje.","Rozwiązanie czeka u projektanta, który zbuduje markę od nowa, od logo po ostatni szczegół."],
-"puenta_uxui":["Wyjście jest jedno: projektant UX/UI, który wyprowadzi klientów z labiryntu wprost do celu.","Rozwiązanie czeka u projektanta, który ułoży ścieżkę klienta tak, by nikt się już nie zgubił."],
-"puenta_website":["Wyjście jest jedno: projektant stron www, który zbuduje drogę z pierwszego kliknięcia do sprzedaży.","Rozwiązanie czeka u projektanta, który postawi stronę godną waszej firmy."],
-"puenta_startup":["Wyjście jest jedno: projektant, który przygotuje pakiet startowy i da młodej firmie mocny początek.","Rozwiązanie czeka u projektanta, który zaprojektuje całą oprawę na dobry start."],
-"cta":["Zajrzyj do oferty whosz.pl, a jeśli chcesz zobaczyć inną przyszłość, wylosuj kolejną kartę.","Odwiedź ofertę whosz.pl. Talia zawsze ma jeszcze jedną kartę."]
+"origin": [
+"#wezwanie# #znaczenie# #omen# #puenta# #cta#"
+],
+"aura": [
+"Mgła rzednie, świece drżą.",
+"Z kąta komnaty patrzy kruk.",
+"Płomienie schylają się ku kartom.",
+"W oknie gaśnie latarnia.",
+"Gdzieś w mroku skrzypi stara szafa.",
+"Knot trzaska, a cienie wydłużają się na ścianie."
+],
+"wezwanie": [
+"#name#, #zodiac#. Talia budzi się nad firmą „#company#”. #aura#",
+"#name#, cisza. Karty szepczą o firmie „#company#” i o znaku #zodiac#. #aura#",
+"#name#, usiądź bliżej. Talia wywołuje firmę „#company#” z mroku. #aura#",
+"#name#, witaj. Znak #zodiac# i firma „#company#” przywołały dziś całą talię. #aura#",
+"#name#, zapal świecę. Karty od dawna czekają na wieści o „#company#”, a znak #zodiac# im sprzyja. #aura#",
+"#name#, #zodiac#. Powiedz tylko jedno: „#company#”. Resztę zdradzą karty. #aura#"
+],
+"znaczenie": [
+"Wypadła karta #card#, pozycja #pos#. Jej słowa to #keywords#. #meaning# #business#",
+"Odkrywasz kartę #card#, pozycja #pos#. Niosą ją słowa: #keywords#. #meaning# #business#",
+"Na stole leży karta #card#, pozycja #pos#. Szepcze: #keywords#. #meaning# #business#",
+"Talia wskazuje kartę #card#, pozycja #pos#. Jej hasła to #keywords#. #meaning# #business#"
+],
+"puenta_identity": [
+"Wyjście jest jedno: projektant identyfikacji wizualnej, który nada firmie twarz, na jaką zasługuje.",
+"Rozwiązanie czeka u projektanta, który zbuduje markę od nowa, od logo po ostatni szczegół.",
+"Karty są zgodne: potrzebny jest projektant, który zamieni rozproszone znaki w jedną rozpoznawalną markę.",
+"Ratunek ma imię projektanta, który uczesze wizerunek firmy i nada mu stały, mocny rysunek."
+],
+"puenta_uxui": [
+"Wyjście jest jedno: projektant UX/UI, który wyprowadzi klientów z labiryntu wprost do celu.",
+"Rozwiązanie czeka u projektanta, który ułoży ścieżkę klienta tak, by nikt się już nie zgubił.",
+"Karty są zgodne: potrzebny jest projektant UX/UI, który zdejmie z klientów trud szukania drogi.",
+"Ratunek leży u projektanta, który przeprowadzi użytkownika przez firmę krok po kroku, bez potknięć."
+],
+"puenta_website": [
+"Wyjście jest jedno: projektant stron www, który zbuduje drogę od pierwszego kliknięcia do sprzedaży.",
+"Rozwiązanie czeka u projektanta, który postawi stronę godną waszej firmy.",
+"Karty są zgodne: potrzebny jest projektant, który da firmie stronę, a klientom powód, by zostali.",
+"Ratunek jest blisko: projektant www zamieni zagubionych przechodniów w klientów."
+],
+"puenta_startup": [
+"Wyjście jest jedno: projektant, który przygotuje pakiet startowy i da młodej firmie mocny początek.",
+"Rozwiązanie czeka u projektanta, który zaprojektuje całą oprawę na dobry start.",
+"Karty są zgodne: potrzebny jest projektant, który pomoże firmie wystartować z gotową marką.",
+"Ratunek ma kształt pakietu startowego, a ten narysuje dla was projektant."
+],
+"cta": [
+"Zajrzyj do oferty whosz.pl, a jeśli chcesz zobaczyć inną przyszłość, wylosuj kolejną kartę.",
+"Odwiedź ofertę whosz.pl. Talia zawsze ma jeszcze jedną kartę.",
+"Oferta whosz.pl czeka. Jeśli ciekawi cię inna przyszłość, wyciągnij następną kartę.",
+"Napisz do whosz.pl, a dla pewności zapytaj talię jeszcze raz."
+]
 }
