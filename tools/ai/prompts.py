@@ -89,3 +89,9 @@ STYLE2 = ("Rich detailed modern high-resolution pixel art illustration, painterl
           "layered dark silhouettes in the foreground for depth, fine pixel details, clean crisp pixel edges, renaissance tarot card composition filling the whole image, "
           "no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt2_for(card_id): return f"{STYLE2}. Scene: {SCENES[card_id]}."
+
+# Styl 3 ("16-bit z ditheringiem"): opis słowami, bez obrazów referencyjnych
+STYLE3 = ("16-bit video game pixel art tarot card illustration in classic Rider-Waite composition, bold saturated colors (orange, red, yellow, sky blue, purple, green), "
+          "gradients and glowing light made with visible ordered dithering patterns of tiny dots, thick dark outlines around figures, figures with blank faceless skin-colored faces, "
+          "rich detailed backgrounds, crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
+def prompt3_for(card_id): return f"{STYLE3}. Scene: {SCENES[card_id]}."
