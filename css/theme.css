@@ -93,3 +93,5 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
 .menu #mute{font-size:calc(1.4*var(--f) + 2px)}
 .menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
+/* nagłówek formularza o ok. 20% mniejszy */
+.ftitle{font-size:calc(2.4*var(--f)*var(--gs))}
