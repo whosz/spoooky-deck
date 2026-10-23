@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "data/zodiac.{pl,en}.json. Pola nom/gen/dat wymagane tylko w PL.",
+  "type": "array",
+  "minItems": 12,
+  "maxItems": 12,
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "element", "omens"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "enum": ["aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"] },
+      "name": { "type": "string", "minLength": 1 },
+      "gen": { "type": "string" },
+      "dat": { "type": "string" },
+      "element": { "enum": ["fire", "earth", "air", "water"] },
+      "omens": { "type": "array", "minItems": 4, "maxItems": 6, "items": { "type": "string", "minLength": 1 } }
+    }
+  }
+}
