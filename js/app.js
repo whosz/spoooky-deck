@@ -180,6 +180,7 @@ function pick() {
     c.style.transform = `rotate(${d * STEP}deg) translateY(${(Math.min(a, 6) * Math.min(a, 6) * 1.2).toFixed(1)}px) scale(${(1 - Math.min(a, 8) * .018).toFixed(3)})${top ? ' translateY(calc(var(--fw) * .4425 - 24px)) scale(1.15)' : ''}`;
     c.classList.toggle('top', top);
     c.style.zIndex = N - Math.round(a);
+    c.style.opacity = a > 4.6 ? '0' : '';   // dalekie karty chowamy (ich dolne krawędzie tworzyły paski w tle)
   });
   // Rozdanie: karty wylatują ze stosu na środku po kolei
   // Tasowanie: stos kart na środku, dwie połowy przesuwają się na przemian w lewo i prawo (2 razy), potem rozdanie w wachlarz
