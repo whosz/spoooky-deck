@@ -70,3 +70,9 @@
 .front .num{position:absolute;left:5.2cqw;top:4.6cqw;z-index:4;padding:0 calc(3*var(--u));background:#0b0d17d9;color:#f0d27a;font-family:var(--gothic);font-size:calc(16*var(--u));line-height:1.1;text-shadow:0 var(--u) 0 #000}
 /* tasowanie: karty bez cieni, poświat i przyciemnienia (inaczej nakładające się cienie tworzą żółte paski) */
 #fan.shuffling .fcard{filter:none!important;box-shadow:none!important;animation:none!important}
+/* poświata wybranej karty bez filter:drop-shadow (jego obcięcie dawało żółte poziome paski): gradient radialny na pseudoelemencie */
+.fcard.top,#fan.picked .fcard.top{filter:none}
+.fcard::before{content:"";position:absolute;inset:-18% -26%;background:radial-gradient(ellipse at center,#ffb347a0 0,#ffb34755 38%,#ffb34700 70%);opacity:0;transition:opacity .3s;pointer-events:none;z-index:-1}
+.fcard.top::before{opacity:1}
+#fan.picked .fcard.top::before{background:radial-gradient(ellipse at center,#ffd36ad0 0,#ffd36a66 40%,#ffd36a00 72%)}
+#fan.shuffling .fcard::before{opacity:0!important}
