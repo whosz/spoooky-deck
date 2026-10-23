@@ -82,3 +82,10 @@ ASSETS['bg_card2'] = ("16-bit pixel art atmospheric background, portrait orienta
                       "many stars and a small floating stone island with a glowing lantern, deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')
 ASSETS['bg_read2'] = ("16-bit pixel art atmospheric background, portrait orientation, dark and moody, soft low contrast, no people: an old observatory interior with a large brass telescope pointing through an open dome toward planets and stars, "
                       "astrolabes and star charts on the walls, deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')
+
+# Styl 2 ("bogaty pixel art"): opis wyłącznie słowami (bez obrazów referencyjnych); wyższa rozdzielczość
+STYLE2 = ("Rich detailed modern high-resolution pixel art illustration, painterly atmospheric lighting, a glowing light source with a soft luminous halo, "
+          "dramatic dusk color palette of deep purple, magenta, pink, orange and gold, smooth color gradients built from many small pixel bands, "
+          "layered dark silhouettes in the foreground for depth, fine pixel details, clean crisp pixel edges, renaissance tarot card composition filling the whole image, "
+          "no text, no letters, no numbers, no border, no frame, no signature, no watermark")
+def prompt2_for(card_id): return f"{STYLE2}. Scene: {SCENES[card_id]}."
