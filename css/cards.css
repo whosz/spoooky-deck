@@ -68,3 +68,5 @@
 .front::before{content:"";position:absolute;inset:0;background:url(../img/ui/cardframe.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;pointer-events:none;z-index:3}
 .card.rev .front{border:0}
 .front .num{position:absolute;left:5.2cqw;top:4.6cqw;z-index:4;padding:0 calc(3*var(--u));background:#0b0d17d9;color:#f0d27a;font-family:var(--gothic);font-size:calc(16*var(--u));line-height:1.1;text-shadow:0 var(--u) 0 #000}
+/* tasowanie: karty bez cieni, poświat i przyciemnienia (inaczej nakładające się cienie tworzą żółte paski) */
+#fan.shuffling .fcard{filter:none!important;box-shadow:none!important;animation:none!important}
