@@ -51,11 +51,11 @@ function reveal() {
   text.classList.remove('in'); actions.classList.remove('in'); actions.hidden = true;
   text.textContent = parts.map(p => p.text).join(' ');
   cardEl(card, reversed);
-  // Całość max 3 s: obrót 0,8 s, tekst 0,9-2,1 s, przyciski 2,2-2,8 s.
+  // Całość max 2 s: obrót 0,6 s, tekst 0,5-1,3 s, przyciski 1,3-1,9 s.
   const t = reduced ? 0 : 1;
   setTimeout(() => $('#card').classList.add('flip'), 50 * t);
-  setTimeout(() => text.classList.add('in'), 900 * t);
-  setTimeout(() => { actions.hidden = false; requestAnimationFrame(() => actions.classList.add('in')); }, 2200 * t);
+  setTimeout(() => text.classList.add('in'), 500 * t);
+  setTimeout(() => { actions.hidden = false; requestAnimationFrame(() => actions.classList.add('in')); }, 1300 * t);
   $('#offer').href = OFFER;
   $('#share').onclick = async () => {
     const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;

@@ -1,4 +1,4 @@
-.card{--k:2;position:relative;width:calc(144px*var(--k));height:calc(216px*var(--k));perspective:800px;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.6,.5,1)}
+.card{--k:2;position:relative;width:calc(144px*var(--k));height:calc(216px*var(--k));perspective:800px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
 .card.flip{transform:rotateY(180deg)}
 .card.rev .front{transform:rotateY(180deg) rotate(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;border:4px solid var(--gold);background:var(--s1);display:grid;place-items:center;text-align:center;padding:8px;font-weight:700}
