@@ -11,7 +11,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let lang = params.get('lang') || store.get('sd_lang') || (navigator.language.startsWith('pl') ? 'pl' : 'en');
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
-let ui, grammar, zodiac, cards, seed = params.get('s'), timer;
+let ui, grammar, zodiac, cards, seed = params.get('s');
 
 const show = id => { document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id); };
 const getJSON = u => fetch(u).then(r => r.json());
@@ -38,15 +38,6 @@ function cardEl(c, reversed) {
   }
 }
 
-function typewrite(text, done) {
-  const el = $('#text'); clearInterval(timer);
-  if (reduced) { el.textContent = text; return done(); }
-  let i = 0;
-  const finish = () => { clearInterval(timer); el.textContent = text; el.onclick = null; done(); };
-  el.onclick = finish;
-  timer = setInterval(() => { el.textContent = text.slice(0, ++i); if (i >= text.length) finish(); }, 25);
-}
-
 function reveal() {
   const form = { name: $('#f-name').value, zodiac: $('#f-zodiac').value, company: $('#f-company').value };
   store.set('sd_form', JSON.stringify(form));
@@ -55,10 +46,16 @@ function reveal() {
   const { card, reversed } = draw(seed, cards);
   saveHistory([...hist, card.id]);
   const parts = compose({ seed, card, reversed, name: form.name, zodiac: zodiac.find(z => z.id === form.zodiac), company: form.company, lang, grammar, ui });
-  show('s-read'); $('#actions').hidden = true; $('#text').textContent = '';
+  show('s-read');
+  const text = $('#text'), actions = $('#actions');
+  text.classList.remove('in'); actions.classList.remove('in'); actions.hidden = true;
+  text.textContent = parts.map(p => p.text).join(' ');
   cardEl(card, reversed);
-  setTimeout(() => $('#card').classList.add('flip'), 50);
-  setTimeout(() => typewrite(parts.map(p => p.text).join(' '), () => { $('#actions').hidden = false; }), reduced ? 0 : 900);
+  // Całość max 3 s: obrót 0,8 s, tekst 0,9-2,1 s, przyciski 2,2-2,8 s.
+  const t = reduced ? 0 : 1;
+  setTimeout(() => $('#card').classList.add('flip'), 50 * t);
+  setTimeout(() => text.classList.add('in'), 900 * t);
+  setTimeout(() => { actions.hidden = false; requestAnimationFrame(() => actions.classList.add('in')); }, 2200 * t);
   $('#offer').href = OFFER;
   $('#share').onclick = async () => {
     const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
