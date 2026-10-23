@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 78,
+  "maxItems": 78,
+  "items": {
+    "type": "object",
+    "required": ["id", "arcana", "number", "name", "up", "rev", "business", "services"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^(ar(0[0-9]|1[0-9]|2[01])|(wa|cu|sw|pe)(0[1-9]|1[0-4]))$" },
+      "arcana": { "enum": ["major", "minor"] },
+      "suit": { "enum": ["wands", "cups", "swords", "pentacles"] },
+      "number": { "type": "integer", "minimum": 0, "maximum": 21 },
+      "name": { "$ref": "#/$defs/i18n" },
+      "up": { "$ref": "#/$defs/side" },
+      "rev": { "$ref": "#/$defs/side" },
+      "business": { "$ref": "#/$defs/i18n" },
+      "services": {
+        "type": "array", "minItems": 1, "maxItems": 2,
+        "items": { "enum": ["identity", "uxui", "website", "startup"] }
+      }
+    }
+  },
+  "$defs": {
+    "i18n": {
+      "type": "object", "required": ["pl", "en"], "additionalProperties": false,
+      "properties": { "pl": { "type": "string", "minLength": 1 }, "en": { "type": "string", "minLength": 1 } }
+    },
+    "side": {
+      "type": "object", "required": ["keywords", "sentences"], "additionalProperties": false,
+      "properties": {
+        "keywords": {
+          "type": "object", "required": ["pl", "en"],
+          "properties": {
+            "pl": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string" } },
+            "en": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string" } }
+          }
+        },
+        "sentences": {
+          "type": "object", "required": ["pl", "en"],
+          "properties": {
+            "pl": { "type": "array", "minItems": 2, "maxItems": 3, "items": { "type": "string" } },
+            "en": { "type": "array", "minItems": 2, "maxItems": 3, "items": { "type": "string" } }
+          }
+        }
+      }
+    }
+  }
+}
