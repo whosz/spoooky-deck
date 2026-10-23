@@ -175,7 +175,7 @@ document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => 
 });
 
 // Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
-document.addEventListener('pointerdown', startAudio, { once: true, capture: true });
+for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, startAudio, { capture: true });
 $('#menu-btn').onclick = toggleMenu; $('#menu-back').onclick = closeMenu;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });

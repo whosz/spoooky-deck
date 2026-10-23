@@ -13,11 +13,11 @@ let muted = get(), music = null, started = false;
 
 export const isMuted = () => muted;
 
+// Wywoływane przy każdym geście: iOS/Safari wymaga play() wewnątrz click/touchend, więc ponawiamy, aż muzyka ruszy.
 export function start() {
-  if (started) return; started = true;
   try { zzfxX.resume(); } catch {}
-  music = new Audio('audio/candlelit-tarot.mp3'); music.loop = true; music.volume = .45;
-  if (!muted) music.play().catch(() => {});
+  if (!started) { started = true; music = new Audio('audio/candlelit-tarot.mp3'); music.loop = true; music.volume = .45; }
+  if (!muted && music.paused) music.play().catch(() => {});
 }
 
 export function toggleMute() {
