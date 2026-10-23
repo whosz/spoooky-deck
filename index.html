@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/cards.css">
 </head>
 <body>
-<button id="lang" class="mini" aria-label="Language">EN</button>
+<header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><button id="lang" class="mini" aria-label="Language">EN</button></header>
 <main>
   <section id="s-intro" class="screen">
     <h1 data-ui="title"></h1>
@@ -27,13 +27,22 @@
   </section>
 
   <section id="s-pick" class="screen" hidden>
-    <p data-ui="pick"></p>
-    <div id="fan"></div>
+    <div class="head">
+      <p id="date"></p>
+      <h1 data-ui="title"></h1>
+    </div>
+    <div class="mid">
+      <p data-ui="pick"></p>
+      <div class="divider"><i></i><b>◆</b><i></i></div>
+    </div>
+    <div id="fan" tabindex="0" role="listbox" aria-label="Deck"></div>
+    <p class="hint" data-ui="drag"></p>
   </section>
 
   <section id="s-read" class="screen" hidden>
     <div class="read">
       <div id="card" class="card"><div class="face back"></div><div class="face front"></div></div>
+      <div id="info"></div>
       <div>
         <div id="text" class="text" aria-live="polite"></div>
         <div id="actions" hidden>
