@@ -49,3 +49,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .card.rev .front{border-color:var(--gold);box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a99,0 0 0 12px #b3243a55,0 0 0 16px #b3243a22;animation:revglow 1.6s steps(1) infinite}
 @keyframes revglow{50%{box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a66,0 0 0 12px #b3243a33,0 0 0 16px #b3243a11}}
 @media(prefers-reduced-motion:reduce){.card.rev .front{animation:none}}
+.menu{border:16px solid transparent;border-image:url(../img/ui/frame.png) 8 fill / 16px stretch;image-rendering:pixelated}
+.menu h3{font-family:var(--gothic)}
+.menu .langs .cta,.menu #mute,.menu a.cta{font-family:var(--px);font-size:20px}
+.menu .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8}

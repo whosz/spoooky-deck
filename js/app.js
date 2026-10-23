@@ -19,13 +19,18 @@ let lang = params.get('lang') || 'pl';
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
+// Menu (hamburger): język, dźwięk, informacje o twórcy.
+function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; $('#mute span').textContent = ui ? (isMuted() ? ui.soundOff : ui.soundOn) : ''; }
+function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }
+function toggleMenu() { const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
+
 const getJSON = u => fetch(u).then(r => r.json());
 
 function show(id) {
   screen = id;
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
-  $('#lang').style.display = $('#mute').style.display = id === 's-intro' ? '' : 'none';
+  closeMenu();
   $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
   $('#view').scrollTop = 0;
 }
@@ -34,7 +39,8 @@ async function load() {
   [ui, grammar, zodiac, cards] = await Promise.all([getJSON(`data/ui.${lang}.json`), getJSON(`data/grammar.${lang}.json`), getJSON(`data/zodiac.${lang}.json`), getJSON('data/cards.json')]);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-ui]').forEach(e => e.textContent = ui[e.dataset.ui]);
-  $('#lang').textContent = lang === 'pl' ? 'EN' : 'PL';
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  paintMute();
   $('#f-zodiac').replaceChildren(...zodiac.map(z => new Option(z.name, z.id)));
   const saved = JSON.parse(store.get('sd_form') || '{}');
   $('#f-name').value = saved.name || '';
@@ -161,14 +167,17 @@ $('#share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
   if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
 };
-$('#lang').onclick = async () => { lang = lang === 'pl' ? 'en' : 'pl'; cur = null; await load(); show('s-intro'); };
+document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => {
+  if (b.dataset.lang === lang) return;
+  lang = b.dataset.lang; cur = null; const was = screen; await load(); show(was === 's-intro' ? 's-intro' : 's-form'); toggleMenu();
+});
 
 // Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
-const paintMute = () => { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; };
 document.addEventListener('pointerdown', startAudio, { once: true, capture: true });
+$('#menu-btn').onclick = toggleMenu; $('#menu-back').onclick = closeMenu;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
-paintMute();
 
 startBg();
 await load();

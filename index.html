@@ -9,15 +9,26 @@
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=23">
-<link rel="stylesheet" href="css/style.css?v=23">
-<link rel="stylesheet" href="css/cards.css?v=23">
-<link rel="stylesheet" href="css/theme.css?v=23">
+<link rel="stylesheet" href="css/fonts.css?v=24">
+<link rel="stylesheet" href="css/style.css?v=24">
+<link rel="stylesheet" href="css/cards.css?v=24">
+<link rel="stylesheet" href="css/theme.css?v=24">
 </head>
 <body>
 <div id="phone">
   <div id="loader" aria-hidden="true"><img src="img/ui/ic-candle.png" alt="" class="flame" width="64" height="64"></div>
-  <header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><span class="bar-r"><button id="lang" class="mini" aria-label="Language">EN</button><button id="mute" class="mini" aria-label="Sound"><img src="img/emoji/U+1F50A.png" alt=""></button></span></header>
+  <header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><button id="menu-btn" class="mini" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span class="burger"><i></i><i></i><i></i></span></button></header>
+  <div id="menu-back" hidden></div>
+  <aside id="menu" class="menu" hidden>
+    <h3 data-ui="menuLang"></h3>
+    <div class="langs" role="group"><button class="cta alt" data-lang="pl" aria-pressed="true">PL</button><button class="cta alt" data-lang="en" aria-pressed="false">EN</button></div>
+    <h3 data-ui="menuSound"></h3>
+    <button id="mute" class="cta alt"><img src="img/emoji/U+1F50A.png" alt=""><span></span></button>
+    <h3 data-ui="menuAuthor"></h3>
+    <p data-ui="authorText"></p>
+    <a class="cta alt" href="https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=menu" target="_blank" rel="noopener">whosz.pl</a>
+    <a class="cta alt" href="mailto:hello@whosz.pl">hello@whosz.pl</a>
+  </aside>
   <main id="view">
     <section id="s-intro" class="screen">
       <h1 data-ui="title"></h1>
@@ -88,6 +99,6 @@
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
 <script src="js/vendor/zzfx.js"></script>
-<script type="module" src="js/app.js?v=23"></script>
+<script type="module" src="js/app.js?v=24"></script>
 </body>
 </html>

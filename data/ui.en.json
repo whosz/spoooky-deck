@@ -41,5 +41,12 @@
  "tabCard": "Card",
  "tabSign": "Sign",
  "formTitle": "Introduce yourself to the deck",
- "formText": "Give your name, zodiac sign and the company you work for. Your details stay on your device."
+ "formText": "Give your name, zodiac sign and the company you work for. Your details stay on your device.",
+ "menuLang": "Language",
+ "menuSound": "Sound",
+ "soundOn": "On",
+ "soundOff": "Off",
+ "menuAuthor": "Creator",
+ "authorText": "Mateusz Staniszewski, designer and front-end developer. For 15 years I have designed digital products, including for Egnyte, Zonal and nexos.ai. Today I make logos, brand identities and websites for startups and local businesses.",
+ "menuClose": "Close menu"
 }

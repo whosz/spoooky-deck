@@ -41,5 +41,12 @@
  "tabCard": "Karta",
  "tabSign": "Znak",
  "formTitle": "Przedstaw się talii",
- "formText": "Podaj imię, znak zodiaku i firmę, w której pracujesz. Dane zostają na Twoim urządzeniu."
+ "formText": "Podaj imię, znak zodiaku i firmę, w której pracujesz. Dane zostają na Twoim urządzeniu.",
+ "menuLang": "Język",
+ "menuSound": "Dźwięk",
+ "soundOn": "Włączony",
+ "soundOff": "Wyłączony",
+ "menuAuthor": "Twórca",
+ "authorText": "Mateusz Staniszewski, projektant i front-end developer. Od 15 lat projektuję produkty cyfrowe, między innymi dla Egnyte, Zonal i nexos.ai. Dziś robię logo, identyfikacje i strony dla startupów i lokalnych firm.",
+ "menuClose": "Zamknij menu"
 }
