@@ -21,6 +21,9 @@ if (!['pl', 'en'].includes(lang)) lang = 'pl';
 let untilt = () => {}, preview = null;
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
+document.addEventListener('selectstart', e => { if (!e.target.closest?.('input, textarea, select')) e.preventDefault(); });
+document.addEventListener('dragstart', e => e.preventDefault());
+
 // Menu (hamburger): język, dźwięk, informacje o twórcy.
 function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; $('#mute span').textContent = ui ? (isMuted() ? ui.soundOff : ui.soundOn) + (audioError() ? ` (${audioError()})` : '') : ''; }
 function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }

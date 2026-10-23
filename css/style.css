@@ -142,3 +142,10 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 .intro-bottom{padding-bottom:12px}
 .intro-bottom .cta{font-size:25px;min-width:200px;min-height:calc(55*var(--u))}
 .intro-top .tag{margin-top:12px}
+
+/* nic na stronie nie jest zaznaczalne (poza polami formularza); bez niebieskiego podświetlenia przy dotknięciu */
+*{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+::selection{background:transparent}
+input::selection{background:#d8aa4866}
+img{-webkit-user-drag:none;user-drag:none}
