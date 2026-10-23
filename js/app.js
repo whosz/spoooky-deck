@@ -64,6 +64,9 @@ function reveal() {
   const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, lang, grammar, ui });
   cur = { card, reversed, z, parts, quote };
 
+  // Elementy .fade zerujemy bez przejścia PRZED pokazaniem ekranu (inaczej przy kolejnym losowaniu gasły i zapalały się ponownie).
+  const fades = document.querySelectorAll('#s-card .fade');
+  fades.forEach(f => { f.style.transition = 'none'; f.classList.remove('in'); });
   show('s-card');
   $('#cardslot').append($('#card'));
   fillCard(cur);
@@ -78,8 +81,8 @@ function reveal() {
     const icon = el('span', 'ic'); icon.append(em(ic));
     d.append(icon, el('span', 'lb', lb), el('span', 'vl', vl));
   }
-  const fades = document.querySelectorAll('#s-card .fade');
-  fades.forEach(f => f.classList.remove('in'));
+  void document.body.offsetWidth;
+  fades.forEach(f => f.style.transition = '');
   $('#offer').href = OFFER;
   // Całość max 2 s: obrót 0,6 s, potem cytat, info i przycisk razem (0,5-1,3 s). Miejsce zarezerwowane, nic nie skacze.
   const t = reduced ? 0 : 1;
