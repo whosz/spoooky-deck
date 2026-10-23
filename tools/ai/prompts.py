@@ -138,3 +138,13 @@ BACKS = {
  'backD': _B + "Mystic emerald green and gold: two ornate golden hands holding a crescent moon and a sun above a keyhole, symmetrical floral ornaments, hanging lanterns and stars.",
 }
 for _k, _v in BACKS.items(): ASSETS5[_k] = (_v, '2:3')
+
+# Warianty ekranu startowego (styl 5): ilustracja ma ciemne, rozmyte brzegi i wtapia się w granatowe tło #0b0d17
+_I = ("Retro early-1990s pixel art, chunky pixels, limited palette of about 16 colors, thick dark outlines, no text, no letters, no signature, no watermark, portrait. "
+      "The scene is vignetted: the top, bottom and side edges fade smoothly into solid very dark navy (#0b0d17) so it blends into a dark background, with no frame or border. ")
+INTROS = {
+ 'introA': _I + "A huge glowing golden full moon with an arc of moon phases above dark mountains and a calm lake, a fan of tarot cards floating in front of the moon, stars and small ringed planets.",
+ 'introB': _I + "A mystical fortune teller's table at night seen from the front with a glowing crystal ball, a fan of tarot cards, lit candles, drifting stars and a crescent moon behind curtains of dark purple mist.",
+ 'introC': _I + "A lone mysterious dark silhouette of a hill with an old tower under a swirling sky of stars, a giant moon, and tarot cards floating in the air glowing with golden light, no people.",
+}
+for _k, _v in INTROS.items(): ASSETS5[_k] = (_v, '9:16')

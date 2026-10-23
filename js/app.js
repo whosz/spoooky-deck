@@ -245,6 +245,8 @@ document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .ta
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
 
 pixelScale();
+// Podgląd wariantów ekranu startowego: ?intro=A|B|C|O
+{ const v = params.get('intro'); if (v) { $('.intro').classList.add('blend'); $('.intro-art img').src = `img/ui/intro-${v}.png`; } }
 startBg();
 await load();
 show('s-intro');

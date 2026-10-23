@@ -47,15 +47,16 @@
  "soundOn": "Włączony",
  "soundOff": "Wyłączony",
  "menuAuthor": "Twórca",
- "authorText": "Mateusz Staniszewski, projektant i front-end developer. Od 15 lat projektuję produkty cyfrowe, między innymi dla Egnyte, Zonal i nexos.ai. Dziś robię logo, identyfikacje i strony dla startupów i lokalnych firm.",
+ "authorText": "Mateusz Staniszewski 2026",
  "menuClose": "Zamknij menu",
  "update": "Nowa talia jest gotowa.",
  "refresh": "Odśwież",
  "shareImage": "Zapisz obrazek",
  "menuLicenses": "Autorzy i licencje",
- "licensesText": "Muzyka: wygenerowana przez Suno AI. Fonty: Jacquard 12 i Geist Pixel (OFL). Emoji: SerenityOS. Dźwięk: ZzFX. Losowanie: seedrandom. Wróżby: Tracery.",
+ "licensesText": "Muzyka: wygenerowana przez Suno AI. Fonty: Olde Tome, Cross Stitch i Geist Pixel. Emoji: SerenityOS. Dźwięk: ZzFX. Losowanie: seedrandom. Wróżby: Tracery.",
  "licensesLink": "Pełne licencje",
  "musicHint": "Dotknij ekranu, aby włączyć muzykę",
  "introH1": "Poznaj przyszłość",
- "introH2": "swojej firmy"
+ "introH2": "swojej firmy",
+ "sayHi": "Przywitaj się"
 }

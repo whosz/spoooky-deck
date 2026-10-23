@@ -50,7 +50,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 @media(prefers-reduced-motion:reduce){.card.rev .front{animation:none}}
 .menu{border:calc(16*var(--u)) solid transparent;border-image:url(../img/ui/frame.png) 8 fill / calc(16*var(--u)) stretch;image-rendering:pixelated}
 .menu h3{font-family:var(--gothic)}
-.menu .langs .cta,.menu #mute,.menu a.cta{font-family:var(--px);font-size:20px}
+.menu .langs .cta,.menu #mute{font-family:var(--px)}
 .menu .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8}
 /* ikony w nagłówku bez tła i ramki */
 .bar .mini{border:0;border-image:none;background:none;padding:0;box-shadow:none;font-size:28px;color:var(--text);text-shadow:0 2px 0 #000}
@@ -72,3 +72,13 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .front .nm{font-size:calc(1.3*var(--f)*var(--gs));line-height:1.1}
 #artslot .front .nm{font-size:10cqw}
 .rows b,.menu h3,.sect,.text .lead{font-size:calc(1.7*var(--f)*var(--gs))}
+
+/* menu: pełna szerokość, przyciski jak w reszcie aplikacji (ramka 9-slice, żar) */
+.menu{padding:10px 8px 14px}
+.menu .cta{font-family:var(--gothic);font-size:calc(1.7*var(--f)*var(--gs));animation:ember 2.4s steps(2) infinite}
+.menu .cta.alt{animation:none}
+.menu .langs .cta[aria-pressed=true]{animation:ember 2.4s steps(2) infinite}
+.menu .langs .cta{font-family:var(--px);font-size:calc(1.6*var(--f))}
+.menu #mute{font-family:var(--px);font-size:calc(1.4*var(--f))}
+.menu #sayhi{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8;font-family:var(--gothic);animation:ember 2.4s steps(2) infinite}
+.menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}
