@@ -18,7 +18,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Start zawsze po polsku (angielski tylko przez przełącznik lub ?lang=en z linku).
 let lang = params.get('lang') || 'pl';
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
-let untilt = () => {};
+let untilt = () => {}, preview = null;
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
 // Menu (hamburger): język, dźwięk, informacje o twórcy.
@@ -67,7 +67,7 @@ function reveal() {
   store.set('sd_form', JSON.stringify(form));
   const hist = loadHistory();
   if (!seed) seed = newSeed(cards, hist);
-  const { card, reversed } = draw(seed, cards);
+  const { card, reversed } = preview ? { card: cards.find(c => c.id === preview.id), reversed: preview.rev } : draw(seed, cards);
   saveHistory([...hist, card.id]);
   const z = zodiac.find(z => z.id === form.zodiac);
   const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, lang, grammar, ui });
@@ -189,6 +189,15 @@ $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
 startBg();
 await load();
 show('s-intro');
+// Podgląd karty do kontroli talii: ?card=ar00 (opcjonalnie &rev=1) od razu pokazuje wybraną kartę.
+{
+  const id = params.get('card');
+  if (id && cards.some(c => c.id === id)) {
+    preview = { id, rev: params.get('rev') === '1' };
+    if (!$('#f-company').value) $('#f-company').value = 'Test'; if (!$('#f-name').value) $('#f-name').value = 'Anna';
+    reveal();
+  }
+}
 
 // Zasłona znika przez fade dopiero, gdy fonty i obrazki ekranu startowego są gotowe (min. 400 ms, max 4 s).
 // Fonty ładujemy też z polskimi znakami (osobny plik latin-ext), a emoji z góry, żeby nic nie migało po wyborze karty.
