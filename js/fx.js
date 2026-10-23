@@ -95,14 +95,33 @@ export function revealFx(reversed, cardEl) {
   const ph = $phone(); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => ph.classList.remove('shake'), 350);
 }
 
-// ---- pochylanie karty za kursorem i połysk ----
+// ---- pochylanie karty za kursorem lub żyroskopem i połysk ----
+let gyroOk = false;
+// Na iOS zgodę na ruch urządzenia trzeba wywołać w geście użytkownika (np. wysłanie formularza); na Androidzie nie jest potrzebna.
+export async function enableGyro() {
+  if (reduced || gyroOk || !('DeviceOrientationEvent' in window)) return;
+  const D = window.DeviceOrientationEvent;
+  if (typeof D.requestPermission === 'function') { try { if (await D.requestPermission() !== 'granted') return; } catch { return; } }
+  gyroOk = true;
+}
+
 export function tiltCard(slot) {
   if (reduced) return () => {};
-  const move = e => {
-    const r = slot.getBoundingClientRect();
-    const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (innerWidth / 2))), dy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
+  const set = (dx, dy) => {   // dx, dy w zakresie -1..1
     slot.style.setProperty('--ry', (dx * 12).toFixed(1) + 'deg'); slot.style.setProperty('--rx', (-dy * 9).toFixed(1) + 'deg'); slot.style.setProperty('--sx', (50 + dx * 60).toFixed(0) + '%');
   };
-  document.addEventListener('pointermove', move);
-  return () => { document.removeEventListener('pointermove', move); slot.style.removeProperty('--ry'); slot.style.removeProperty('--rx'); };
+  const clamp = v => Math.max(-1, Math.min(1, v));
+  const move = e => {
+    const r = slot.getBoundingClientRect();
+    set(clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
+  };
+  let base = null, cx = 0, cy = 0;
+  const gyro = e => {   // pozycja neutralna = ułożenie telefonu przy odkryciu karty; wygładzanie
+    if (!gyroOk || e.gamma == null || e.beta == null) return;
+    if (!base) base = { b: e.beta, g: e.gamma };
+    const tx = clamp((e.gamma - base.g) / 30), ty = clamp((e.beta - base.b) / 30);
+    cx += (tx - cx) * .25; cy += (ty - cy) * .25; set(cx, cy);
+  };
+  document.addEventListener('pointermove', move); window.addEventListener('deviceorientation', gyro);
+  return () => { document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro); ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); };
 }

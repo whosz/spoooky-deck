@@ -118,3 +118,4 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #music-hint{margin:-8px 0 0;font-size:16px;opacity:.75;animation:hint 1.6s ease-in-out infinite alternate}
 @keyframes hint{from{opacity:.45}to{opacity:.9}}
 @media(prefers-reduced-motion:reduce){#music-hint{animation:none}}
+#music-hint.gone{opacity:0;animation:none;transition:opacity .4s}

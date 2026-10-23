@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg, revealFx, tiltCard } from './fx.js';
+import { startBg, revealFx, tiltCard, enableGyro } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
@@ -161,7 +161,7 @@ function pick() {
 const restart = () => { seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
 
 $('#enter').onclick = () => show('s-form');
-$('#form').onsubmit = e => { e.preventDefault(); pick(); };
+$('#form').onsubmit = e => { e.preventDefault(); enableGyro(); pick(); };
 $('#more').onclick = openRead;
 $('#again').onclick = restart;
 $('#back').onclick = () => { if (screen === 's-pick') show('s-form'); else if (screen === 's-card') restart(); else { show('s-card'); $('#cardslot').append($('#card')); } };
@@ -179,9 +179,9 @@ document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => 
 for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, startAudio, { capture: true });
 $('#share-img').onclick = () => cur && shareImage({ ...cur, company: $('#f-company').value, lang, ui });
 $('#menu-btn').onclick = toggleMenu;
-// Podpowiedź o muzyce znika po pierwszym geście (przeglądarki nie pozwalają grać wcześniej) albo gdy dźwięk jest wyciszony.
-if (isMuted()) $('#music-hint').remove();
-else for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, () => $('#music-hint')?.remove(), { once: true, capture: true }); $('#menu-back').onclick = closeMenu;
+// Podpowiedź o muzyce gaśnie po pierwszym geście (zostaje w układzie, żeby nic nie przeskoczyło pod palcem) (przeglądarki nie pozwalają grać wcześniej) albo gdy dźwięk jest wyciszony.
+if (isMuted()) $('#music-hint').classList.add('gone');
+else for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, () => $('#music-hint').classList.add('gone'), { once: true, capture: true }); $('#menu-back').onclick = closeMenu;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
