@@ -47,3 +47,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .ftitle{font-family:var(--gothic)}
 .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8;animation:ember 2.4s steps(2) infinite}
 @media(prefers-reduced-motion:reduce){.langs .cta{animation:none}}
+.langs .cta{font-family:var(--px);font-size:20px}
