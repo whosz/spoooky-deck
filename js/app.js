@@ -32,7 +32,7 @@ async function load() {
   [ui, grammar, zodiac, cards] = await Promise.all([getJSON(`data/ui.${lang}.json`), getJSON(`data/grammar.${lang}.json`), getJSON(`data/zodiac.${lang}.json`), getJSON('data/cards.json')]);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-ui]').forEach(e => e.textContent = ui[e.dataset.ui]);
-  $('#lang').textContent = lang === 'pl' ? 'EN' : 'PL';
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   $('#f-zodiac').replaceChildren(...zodiac.map(z => new Option(z.name, z.id)));
   const saved = JSON.parse(store.get('sd_form') || '{}');
   $('#f-name').value = saved.name || '';
@@ -152,10 +152,10 @@ $('#share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
   if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
 };
-$('#lang').onclick = async () => {
-  lang = lang === 'pl' ? 'en' : 'pl'; await load();
-  if (cur) { cur = null; } show(screen === 's-intro' ? 's-intro' : 's-form');
-};
+document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => {
+  if (b.dataset.lang === lang) return;
+  lang = b.dataset.lang; cur = null; await load(); show('s-intro');
+});
 
 startBg();
 await load();

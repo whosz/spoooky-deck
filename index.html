@@ -9,15 +9,15 @@
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=11">
-<link rel="stylesheet" href="css/style.css?v=11">
-<link rel="stylesheet" href="css/cards.css?v=11">
-<link rel="stylesheet" href="css/theme.css?v=11">
+<link rel="stylesheet" href="css/fonts.css?v=12">
+<link rel="stylesheet" href="css/style.css?v=12">
+<link rel="stylesheet" href="css/cards.css?v=12">
+<link rel="stylesheet" href="css/theme.css?v=12">
 </head>
 <body>
 <div id="phone">
   <div id="loader" aria-hidden="true"><img src="img/ui/ic-candle.png" alt="" class="flame" width="64" height="64"></div>
-  <header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><button id="lang" class="mini" aria-label="Language">EN</button></header>
+  <header class="bar"><button id="back" class="mini" aria-label="Back">✕</button><span id="bar-title"></span><span></span></header>
   <main id="view">
     <section id="s-intro" class="screen">
       <h1 data-ui="title"></h1>
@@ -27,6 +27,7 @@
         <h2 data-ui="heroTitle"></h2>
         <p data-ui="heroText"></p>
         <button id="enter" class="cta" data-ui="enter"></button>
+        <div class="langs" role="group" aria-label="Language"><button data-lang="pl" aria-pressed="true">PL</button><button data-lang="en" aria-pressed="false">EN</button></div>
       </div>
       <h3 class="sect" data-ui="howTitle"></h3>
       <ul class="rows">
@@ -85,6 +86,6 @@
 </div>
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
-<script type="module" src="js/app.js?v=11"></script>
+<script type="module" src="js/app.js?v=12"></script>
 </body>
 </html>
