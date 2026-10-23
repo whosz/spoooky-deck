@@ -250,7 +250,7 @@ Przy muzyce z generatora AI sprawdź regulamin narzędzia: czy pozwala na użyci
 - Muzyka: gotowy plik `resources/Candlelit Tarot.mp3`, bez kompresji, bez sprawdzania licencji (użytek prywatny). Plik nie trafia do publicznego repozytorium (`.gitignore`).
 - Adres: `whosz.pl/tarot/`, Apache.
 - Język: PL i EN od razu.
-- Kontrola tekstu: każdy tekst użytkowy (wróżby, UI, README) przechodzi przez skill [blader/humanizer](https://github.com/blader/humanizer) (MIT, w `.claude/skills/humanizer/`). Skill jest pisany pod angielski, więc dla polskich tekstów to tylko wskazówka, a ostatnie słowo ma przegląd Opusa (etap 2d).
+- Kontrola tekstu: teksty użytkowe (wróżby, UI, README) przechodzą przez skille: polskie przez [humanizer-pl](https://github.com/mateuszkozlowski/codex-humanizer-pl) (MIT, `.claude/skills/humanizer-pl/`), angielskie przez [blader/humanizer](https://github.com/blader/humanizer) (MIT, `.claude/skills/humanizer/`). Ostatnie słowo ma przegląd Opusa (etap 2d).
 - Repozytorium: publiczne na GitHubie.
 
 ## Etapy prac i otwarte pytania

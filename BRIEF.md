@@ -8,5 +8,5 @@ Zasady:
 - Dane użytkownika tylko jako `textContent`, nic nie wychodzi na serwer ani do linku. Link ma tylko ziarno `?s=`.
 - Styl: Dead Cells (granat, złoto, świece), animacje jak Balatro (sprężyste, błysk). Paleta w `STYLE.md`.
 - Szanuj `prefers-reduced-motion`. Kontrast tekstu ≥ 4,5:1. Przyciski ≥ 44 px.
-- Teksty użytkowe sprawdza skill `humanizer` (`.claude/skills/humanizer/`).
+- Teksty użytkowe sprawdzają skille: `humanizer-pl` dla polskich, `humanizer` dla angielskich (`.claude/skills/`). Bielik/Ollama pomijamy.
 - Muzyka: `audio/Candlelit Tarot.mp3`, start po pierwszym kliknięciu, przycisk wyciszenia.
