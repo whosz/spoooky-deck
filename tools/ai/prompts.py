@@ -50,3 +50,11 @@ SCENES.update({
     'ar20': "Judgement: a large angel in the clouds blowing a golden trumpet with a flag, below people with raised arms rising from boats on a calm sea, mountains behind",
     'ar21': "The World: a dancing figure wrapped in a scarf inside a large green laurel wreath holding two wands, in the four corners a winged man, an eagle, a lion and a bull, blue sky",
 })
+
+SCENES.update({
+    'wa05': "Five of Wands: five young men in a field playfully clashing wooden staffs against each other in a friendly mock fight, blue sky",
+    'cu05': "Five of Cups: a cloaked figure in black standing with head bowed looking at three spilled golden cups on the ground, two upright cups standing behind him, a river and a bridge and a castle in the distance",
+    'sw07': "Seven of Swords: a man in a hat tiptoeing away from a camp carrying five swords in his arms, two swords stuck in the ground behind him, tents in the background",
+    'pe05': "Five of Pentacles: two poor travelers in ragged clothes walking in the snow past a lit stained glass church window with five golden pentacles",
+    'cu13': "Queen of Cups: a queen seated on an ornate throne by the sea holding an ornate golden covered cup, a crown, the waves behind her",
+})
