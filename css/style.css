@@ -127,15 +127,9 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 .intro-top{display:grid;justify-items:center;gap:6px;padding-top:6px}
 .emblem{image-rendering:pixelated;width:64px;height:64px}
 .intro-top .tag{font-size:19px;opacity:.95;text-shadow:0 2px 0 #000}
-.intro-top .hint{margin:0;font-size:15px}
-.intro-bottom{display:grid;gap:12px;text-align:left;padding-bottom:4px}
-.headline{margin:0;font-weight:400;font-size:48px;line-height:1.02;color:var(--text);text-shadow:0 3px 0 #000}
-.headline em{font-style:normal;color:var(--gold)}
-.intro-bottom p{margin:0;font-size:19px;text-shadow:0 2px 0 #000;opacity:.95}
-.cta.wide{width:100%;display:flex;align-items:center;gap:12px;justify-content:space-between;padding:6px 8px}
-.cta.wide .em{height:26px;width:auto;image-rendering:pixelated}
-.cta.wide .go{display:grid;place-items:center;width:36px;height:36px;background:#0b0d17;color:var(--text)}
-.cta.wide>span:nth-child(2){flex:1;text-align:center}
+.intro-bottom{display:grid;gap:14px;justify-items:center;text-align:center;padding-bottom:18px}
+.intro-bottom p{margin:0;max-width:300px;font-size:19px;text-shadow:0 2px 0 #000;opacity:.95}
+.intro-bottom .hint{font-size:15px;opacity:.8}
 
 /* tła kolejnych kroków: stonowane, pod treścią */
 #scene{position:absolute;inset:0;background-size:cover;background-position:center;image-rendering:pixelated;opacity:0;transition:opacity .5s ease;pointer-events:none}
