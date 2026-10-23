@@ -59,5 +59,10 @@
  "introH1": "Poznaj przyszłość",
  "introH2": "swojej firmy",
  "sayHi": "Przywitaj się",
- "required": "Uzupełnij to pole"
+ "required": "Uzupełnij to pole",
+ "menuApp": "Aplikacja",
+ "install": "Zainstaluj na telefonie",
+ "installIos": "Na iPhonie: dotknij Udostępnij, potem „Do ekranu początkowego”.",
+ "installOther": "Otwórz menu przeglądarki i wybierz „Zainstaluj aplikację” lub „Dodaj do ekranu głównego”.",
+ "installed": "Aplikacja zainstalowana"
 }

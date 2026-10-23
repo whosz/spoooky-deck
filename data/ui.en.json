@@ -59,5 +59,10 @@
  "introH1": "Discover the future",
  "introH2": "of your company",
  "sayHi": "Say hi",
- "required": "Please fill in this field"
+ "required": "Please fill in this field",
+ "menuApp": "App",
+ "install": "Install on your phone",
+ "installIos": "On iPhone: tap Share, then “Add to Home Screen”.",
+ "installOther": "Open your browser menu and choose “Install app” or “Add to Home Screen”.",
+ "installed": "App installed"
 }

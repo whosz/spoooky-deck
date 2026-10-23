@@ -102,3 +102,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
 .menu #mute,.menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
 .menu h3{text-align:center}
+#app-sec{display:grid;gap:12px}
+#install{font-family:var(--px);font-size:calc(1.4*var(--f) + 2px)}
+#install-hint{margin:0;text-align:center;font-size:18px;opacity:.9}
+#app-sec h3{margin-top:22px}

@@ -166,7 +166,6 @@ img{-webkit-user-drag:none;user-drag:none}
 /* splash: PNG z przezroczystym, pikselowym zanikaniem krawędzi (bez maski CSS) */
 .intro.blend .intro-art img{-webkit-mask-image:none;mask-image:none}
 .intro.blend .intro-art{margin:-6px 0 -40px}
-.bar{background:linear-gradient(#0b0d17b3 55%,transparent)}   /* nagłówek o 30% bardziej przezroczysty */
 
 #s-pick .mid{padding-bottom:calc(var(--fw) * .16 + 28px)}   /* miejsce na uniesioną, powiększoną kartę, żeby nie zasłaniała linii pod napisem */
 /* pasek nawigacji: bez tła na górze strony, ciemne tło dopiero po pierwszym przewinięciu */
@@ -175,3 +174,5 @@ img{-webkit-user-drag:none;user-drag:none}
 /* splash: tytuł niżej i lekko nachodzi na grafikę */
 .intro-top{margin-top:10px;position:relative;z-index:3}
 .intro.blend .intro-art{margin:-104px 0 -40px;position:relative;z-index:1}
+/* ciemny pas u góry ekranów z tłem sceny usunięty (wyglądał jak tło nagłówka); zostaje tylko zaciemnienie u dołu */
+#scene::after{background:linear-gradient(#0b0d1700 0,#0b0d1700 58%,#0b0d17 100%)}

@@ -25,6 +25,19 @@ $('#view').addEventListener('scroll', () => $('.bar').classList.toggle('scrolled
 document.addEventListener('selectstart', e => { if (!e.target.closest?.('input, textarea, select')) e.preventDefault(); });
 document.addEventListener('dragstart', e => e.preventDefault());
 
+// Instalacja: Chrome/Android przez beforeinstallprompt, iOS i reszta przez podpowiedź; w zainstalowanej aplikacji przycisk jest ukryty.
+let installEvt = null;
+const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+if (standalone) $('#app-sec').hidden = true;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
+addEventListener('appinstalled', () => { $('#app-sec').hidden = true; installEvt = null; });
+$('#install').onclick = async () => {
+  const hint = $('#install-hint');
+  if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; return; }
+  hint.textContent = /iphone|ipad|ipod/i.test(navigator.userAgent) ? ui.installIos : ui.installOther;
+  hint.hidden = false;
+};
+
 // Menu (hamburger): język, dźwięk, informacje o twórcy.
 function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' : '1F50A'}.png`; $('#mute span').textContent = ui ? (isMuted() ? ui.soundOff : ui.soundOn) + (audioError() ? ` (${audioError()})` : '') : ''; }
 function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }

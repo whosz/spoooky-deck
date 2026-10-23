@@ -30,10 +30,10 @@
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=114">
-<link rel="stylesheet" href="css/style.css?v=114">
-<link rel="stylesheet" href="css/cards.css?v=114">
-<link rel="stylesheet" href="css/theme.css?v=114">
+<link rel="stylesheet" href="css/fonts.css?v=117">
+<link rel="stylesheet" href="css/style.css?v=117">
+<link rel="stylesheet" href="css/cards.css?v=117">
+<link rel="stylesheet" href="css/theme.css?v=117">
 </head>
 <body>
 <div id="phone">
@@ -46,6 +46,11 @@
     <div class="langs" role="group"><button class="cta alt" data-lang="pl" aria-pressed="true">Polski</button><button class="cta alt" data-lang="en" aria-pressed="false">English</button></div>
     <h3 data-ui="menuSound"></h3>
     <button id="mute" class="cta alt"><img src="img/emoji/U+1F50A.png" alt=""><span></span></button>
+    <div id="app-sec">
+      <h3 data-ui="menuApp"></h3>
+      <button id="install" class="cta alt" data-ui="install"></button>
+      <p id="install-hint" hidden></p>
+    </div>
     <h3 data-ui="menuAuthor"></h3>
     <p data-ui="authorText"></p>
     <a id="sayhi" class="cta alt" href="https://www.whosz.pl" target="_blank" rel="noopener" data-ui="sayHi"></a>
@@ -121,6 +126,6 @@
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
 <script src="js/vendor/zzfx.js"></script>
-<script type="module" src="js/app.js?v=114"></script>
+<script type="module" src="js/app.js?v=117"></script>
 </body>
 </html>
