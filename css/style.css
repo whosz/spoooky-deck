@@ -92,7 +92,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 .bar{grid-template-columns:104px 1fr 104px}
 .bar-r{justify-self:end;display:flex;gap:8px}
 .mini img{height:20px;width:auto;image-rendering:pixelated;display:block}
-#s-intro{padding-top:28px}
+#s-intro{padding-top:0}
 /* hamburger i menu */
 .burger{display:grid;gap:4px;justify-items:center}
 .burger i{display:block;width:22px;height:3px;background:var(--text)}
@@ -122,7 +122,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 /* ekran startowy: pełnoekranowa ilustracja, tytuł u góry, hasło i przycisk u dołu */
 .intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:14px;align-items:center;justify-content:flex-start}
 .intro-top,.intro-bottom{position:relative;z-index:2}
-.intro-top{display:grid;justify-items:center;gap:6px;padding-top:6px}
+.intro-top{display:grid;justify-items:center;gap:6px;padding-top:0;margin-top:-34px}
 .emblem{image-rendering:pixelated;width:64px;height:64px}
 .intro-top .tag{font-size:19px;opacity:.95;text-shadow:0 2px 0 #000}
 .intro-bottom{display:grid;gap:14px;justify-items:center;text-align:center;padding-bottom:18px}
