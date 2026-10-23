@@ -25,7 +25,7 @@ function show(id) {
   screen = id;
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
-  $('#lang').style.display = id === 's-intro' ? '' : 'none';
+  $('#lang').style.display = $('#mute').style.display = id === 's-intro' ? '' : 'none';
   $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
   $('#view').scrollTop = 0;
 }
