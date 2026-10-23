@@ -1,5 +1,4 @@
 resources/
-audio/*.mp3
 *:Zone.Identifier
 __pycache__/
 tools/deck/_*.png

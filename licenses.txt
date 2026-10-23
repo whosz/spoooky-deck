@@ -2,7 +2,7 @@ Spooooky Deck - Autorzy i licencje / Credits and licenses
 
 Aplikacja: Mateusz Staniszewski, https://whosz.pl
 Ilustracje kart, ikony interfejsu i tło: własne, generowane skryptami w tools/.
-Muzyka: Candlelit Tarot (dostarczona przez autora aplikacji).
+Muzyka: Candlelit Tarot, wygenerowana przez Suno AI (https://suno.com) na zlecenie autora aplikacji. Warunki użycia zależą od planu Suno właściciela konta.
 
 === Fonty (SIL Open Font License 1.1, https://openfontlicense.org) ===
 Jacquard 12 - Sarah Cadigan-Fried; Geist Pixel - Vercel. Pobrane z Google Fonts.

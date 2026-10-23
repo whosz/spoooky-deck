@@ -7,3 +7,7 @@ Czyste pliki statyczne (HTML, CSS, JS), bez backendu i bez buildu. PWA, PL + EN.
 Status: w budowie. Plan: [plan-aplikacji-tarot-dla-firm.md](plan-aplikacji-tarot-dla-firm.md).
 
 Autor: [whosz.pl](https://whosz.pl)
+
+## Muzyka
+
+Plik `audio/candlelit-tarot.mp3` (Candlelit Tarot) został wygenerowany przez Suno AI. Warunki użycia (np. komercyjne) zależą od planu Suno, z którego korzystał autor aplikacji.
