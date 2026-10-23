@@ -127,3 +127,14 @@ ASSETS5 = {
     'bg_read': ("Retro pixel art atmospheric background, portrait orientation, dark and moody, no people: an old observatory interior with a brass telescope pointing through an open dome toward planets and stars, star charts on the walls, " + _R5, '9:16'),
 }
 def prompt5_asset(i): return ASSETS5[i][0]
+
+# Warianty rewersu (styl 5): ożywienie, ta sama estetyka co karty
+_B = ("Retro early-1990s pixel art tarot card back design, portrait, perfectly symmetrical, chunky pixels, limited palette of about 16 colors, thick dark outlines, "
+      "ornate golden frame border with corner ornaments, the card fills the whole image edge to edge, no text, no letters, no signature, no watermark. ")
+BACKS = {
+ 'backA': _B + "Deep purple and navy background with a large radiant golden sun face in the center surrounded by a ring of twelve zodiac-like symbols and a crescent moon above and below, rays of light, small stars.",
+ 'backB': _B + "Rich burgundy red and gold: a central mystical open eye inside a golden triangle with rays, surrounded by a wreath of vines with roses and stars, sparkling stars in the corners.",
+ 'backC': _B + "Night sky theme in teal, deep blue and gold: the eight phases of the moon arranged in a circle around a golden eight-pointed star, constellations and tiny stars in the background.",
+ 'backD': _B + "Mystic emerald green and gold: two ornate golden hands holding a crescent moon and a sun above a keyhole, symmetrical floral ornaments, hanging lanterns and stars.",
+}
+for _k, _v in BACKS.items(): ASSETS5[_k] = (_v, '2:3')
