@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg } from './fx.js';
+import { startBg, revealFx, tiltCard } from './fx.js';
 import { start as startAudio, sfx, toggleMute, isMuted } from './audio.js';
 
 const $ = s => document.querySelector(s);
@@ -17,6 +17,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Start zawsze po polsku (angielski tylko przez przełącznik lub ?lang=en z linku).
 let lang = params.get('lang') || 'pl';
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
+let untilt = () => {};
 let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
 // Menu (hamburger): język, dźwięk, informacje o twórcy.
@@ -76,6 +77,7 @@ function reveal() {
   fades.forEach(f => { f.style.transition = 'none'; f.classList.remove('in'); });
   show('s-card');
   $('#cardslot').append($('#card'));
+  untilt(); untilt = tiltCard($('#cardslot'));
   fillCard(cur);
   $('#quote').textContent = lang === 'pl' ? `„${quote}”` : `“${quote}”`;
   const info = $('#info'); info.replaceChildren();
@@ -95,7 +97,7 @@ function reveal() {
   const t = reduced ? 0 : 1;
   sfx('pick');
   setTimeout(() => { $('#card').classList.add('flip'); sfx('flip'); }, 50 * t);
-  setTimeout(() => sfx(reversed ? 'hitRev' : 'hit'), 300 * t);
+  setTimeout(() => { sfx(reversed ? 'hitRev' : 'hit'); revealFx(reversed, $('#card')); }, 300 * t);
   setTimeout(() => fades.forEach(f => f.classList.add('in')), 500 * t);
 }
 

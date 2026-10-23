@@ -25,3 +25,9 @@
 .front .sym{display:none}
 .front .num,.front .nm{background:#0b0d17cc;padding:2px 10px;line-height:1.2}
 .front::before{border-color:#8a6a2e99}
+
+/* ruch spoczynkowy: kołysanie + pochylenie za kursorem + połysk */
+#cardslot{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));animation:sway 4.5s ease-in-out infinite alternate;transition:transform .15s}
+@keyframes sway{from{rotate:-1.2deg}to{rotate:1.2deg}}
+.front::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent calc(var(--sx,30%) - 16%),#ffffff2e calc(var(--sx,30%) - 16%),#ffffff2e var(--sx,30%),transparent var(--sx,30%))}
+@media(prefers-reduced-motion:reduce){#cardslot{animation:none;transform:none}}
