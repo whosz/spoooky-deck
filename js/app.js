@@ -70,7 +70,7 @@ function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
   closeMenu();
-  $('#bar-title').textContent = id === 's-card' && cur ? cur.card.name[lang] : '';
+  $('#bar-title').textContent = '';   // nazwa karty jest na plakietce, nie w nagłówku
   $('#view').scrollTop = 0; $('.bar').classList.remove('scrolled');
 }
 
