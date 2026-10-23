@@ -115,3 +115,4 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 @keyframes shake{0%{transform:translate(0)}15%{transform:translate(-5px,3px)}30%{transform:translate(5px,-3px)}45%{transform:translate(-4px,-2px)}60%{transform:translate(3px,3px)}80%{transform:translate(-2px,1px)}100%{transform:translate(0)}}
 #back{justify-self:start;width:48px}
 #menu-btn{justify-self:end;width:48px}
+.bar{grid-template-columns:48px 1fr 48px}
