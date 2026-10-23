@@ -58,5 +58,6 @@
  "musicHint": "Tap the screen to start the music",
  "introH1": "Discover the future",
  "introH2": "of your company",
- "sayHi": "Say hi"
+ "sayHi": "Say hi",
+ "required": "Please fill in this field"
 }

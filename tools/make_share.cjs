@@ -1,0 +1,34 @@
+// node tools/make_share.cjs: favicon (16/32/48 + .ico) z rewersu karty oraz grafika do udostępniania linku (img/og.png 1200x630).
+const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
+const { chromium } = require('/home/matt/work/agency-portfolio/node_modules/playwright');
+const fs = require('fs');
+(async () => {
+  // favicon: środkowy kwadrat rewersu 64x64 (słońce), skalowany bez wygładzania
+  const crop = await sharp('img/ui/back.png').extract({ left: 0, top: 16, width: 64, height: 64 }).toBuffer();
+  const sizes = [16, 32, 48], pngs = [];
+  for (const s of sizes) { const b = await sharp(crop).resize(s, s, { kernel: 'nearest' }).png().toBuffer(); pngs.push(b); if (s === 32) fs.writeFileSync('img/icons/favicon-32.png', b); if (s === 16) fs.writeFileSync('img/icons/favicon-16.png', b); }
+  const head = Buffer.alloc(6); head.writeUInt16LE(0, 0); head.writeUInt16LE(1, 2); head.writeUInt16LE(pngs.length, 4);
+  let off = 6 + 16 * pngs.length; const dir = [];
+  pngs.forEach((b, i) => { const e = Buffer.alloc(16); e[0] = sizes[i]; e[1] = sizes[i]; e.writeUInt16LE(1, 4); e.writeUInt16LE(32, 6); e.writeUInt32LE(b.length, 8); e.writeUInt32LE(off, 12); dir.push(e); off += b.length; });
+  fs.writeFileSync('favicon.ico', Buffer.concat([head, ...dir, ...pngs]));
+  // grafika udostępniania: tło ekranu wyboru + rewers karty + tytuł i hasło (render w Chromium)
+  const html = `<!doctype html><meta charset=utf-8><style>
+  @font-face{font-family:CS;src:url(http://localhost:8123/fonts/CrossStitch-Regular.ttf)}
+  @font-face{font-family:GP;src:url(http://localhost:8123/fonts/geistpixel-latin.woff2)}
+  html,body{margin:0;width:1200px;height:630px;background:#0b0d17;overflow:hidden;font-family:GP;image-rendering:pixelated}
+  .bg{position:absolute;inset:0;background:url(http://localhost:8123/img/ui/bg-pick.png) center 30%/1224px auto no-repeat;image-rendering:pixelated}
+  .sh{position:absolute;inset:0;background:linear-gradient(90deg,#0b0d17f0 0,#0b0d17aa 45%,#0b0d1740 100%)}
+  .card{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;image-rendering:pixelated;box-shadow:0 18px 0 #0008}
+  .c2,.c3{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;opacity:.55;filter:brightness(.6)}
+  .c2{transform:translate(70px,26px) rotate(0deg);left:140px}.c3{left:96px;transform:translate(-0px,0)}
+  .t{position:absolute;left:520px;top:150px;right:60px;color:#d8aa48}
+  h1{font:400 112px/1 CS;margin:0 0 28px;text-shadow:0 6px 0 #000,0 0 40px #ffb34777}
+  p{font:400 46px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
+  </style><div class=bg></div><div class=sh></div><div class=c2></div><div class=card></div>
+  <div class=t><h1>Spoooky Deck</h1><p>Dotknij, aby wybrać kartę</p></div>`;
+  fs.writeFileSync('tools/_share.html', html);
+  const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1200, height: 630 } });
+  await p.goto('http://localhost:8123/tools/_share.html'); await p.waitForTimeout(1500);
+  await p.screenshot({ path: 'img/og.png' }); await b.close(); fs.unlinkSync('tools/_share.html');
+  console.log('ok');
+})();

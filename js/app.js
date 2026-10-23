@@ -233,7 +233,13 @@ function pick() {
 const restart = () => { resetTheme(); seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
 
 $('#enter').onclick = () => show('s-form');
-$('#form').onsubmit = e => { e.preventDefault(); enableGyro(); pick(); };
+$('#form').onsubmit = e => {
+  e.preventDefault();
+  // oba pola wymagane (także bez samych spacji): komunikat przeglądarki + podświetlenie pierwszego pustego
+  const empty = ['#f-name', '#f-company'].map($).find(i => !i.value.trim());
+  if (empty) { empty.setCustomValidity(ui.required); empty.reportValidity(); empty.oninput = () => empty.setCustomValidity(''); return; }
+  enableGyro(); pick();
+};
 $('#more').onclick = openRead;
 $('#again').onclick = restart;
 $('#back').onclick = () => { if (screen === 's-pick') show('s-form'); else if (screen === 's-card') restart(); else { show('s-card'); $('#cardslot').append($('#card')); sizeCard(); } };

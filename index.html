@@ -6,7 +6,22 @@
 <title>Spoooky Deck</title>
 <meta name="theme-color" content="#0b0d17">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="img/icons/icon-192.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16.png">
+<meta name="description" content="Mroczna, pikselowa wyrocznia tarota dla firm. Wylosuj kartę i sprawdź, co czeka Twoją firmę.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spoooky Deck">
+<meta property="og:title" content="Spoooky Deck">
+<meta property="og:description" content="Dotknij, aby wybrać kartę. Pikselowa wyrocznia tarota dla firm.">
+<meta property="og:url" content="https://whosz.pl/tarot/">
+<meta property="og:image" content="https://whosz.pl/tarot/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Spoooky Deck">
+<meta name="twitter:description" content="Dotknij, aby wybrać kartę. Pikselowa wyrocznia tarota dla firm.">
+<meta name="twitter:image" content="https://whosz.pl/tarot/img/og.png">
 <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -15,10 +30,10 @@
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=111">
-<link rel="stylesheet" href="css/style.css?v=111">
-<link rel="stylesheet" href="css/cards.css?v=111">
-<link rel="stylesheet" href="css/theme.css?v=111">
+<link rel="stylesheet" href="css/fonts.css?v=112">
+<link rel="stylesheet" href="css/style.css?v=112">
+<link rel="stylesheet" href="css/cards.css?v=112">
+<link rel="stylesheet" href="css/theme.css?v=112">
 </head>
 <body>
 <div id="phone">
@@ -57,9 +72,9 @@
       <h2 class="ftitle" data-ui="formTitle"></h2>
       <p class="fintro" data-ui="formText"></p>
       <form id="form" class="panel">
-        <label><span data-ui="name"></span><input id="f-name" maxlength="30" autocomplete="off"></label>
+        <label><span data-ui="name"></span><input id="f-name" maxlength="30" autocomplete="off" required pattern=".*\S.*"></label>
         <label><span data-ui="zodiac"></span><select id="f-zodiac"></select></label>
-        <label><span data-ui="company"></span><input id="f-company" maxlength="60" required autocomplete="off"></label>
+        <label><span data-ui="company"></span><input id="f-company" maxlength="60" required pattern=".*\S.*" autocomplete="off"></label>
         <button class="cta" data-ui="draw"></button>
       </form>
     </section>
@@ -106,6 +121,6 @@
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
 <script src="js/vendor/zzfx.js"></script>
-<script type="module" src="js/app.js?v=111"></script>
+<script type="module" src="js/app.js?v=112"></script>
 </body>
 </html>
