@@ -31,3 +31,7 @@
 @keyframes sway{from{rotate:-1.2deg}to{rotate:1.2deg}}
 .front::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent calc(var(--sx,30%) - 16%),#ffffff2e calc(var(--sx,30%) - 16%),#ffffff2e var(--sx,30%),transparent var(--sx,30%))}
 @media(prefers-reduced-motion:reduce){#cardslot{animation:none;transform:none}}
+#cardslot{touch-action:none;cursor:grab}
+#cardslot.grab{cursor:grabbing}
+#cardslot.behind .front{visibility:hidden}
+#cardslot.behind .back{backface-visibility:visible}

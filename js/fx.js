@@ -107,21 +107,40 @@ export async function enableGyro() {
 
 export function tiltCard(slot) {
   if (reduced) return () => {};
-  const set = (dx, dy) => {   // dx, dy w zakresie -1..1
-    slot.style.setProperty('--ry', (dx * 12).toFixed(1) + 'deg'); slot.style.setProperty('--rx', (-dy * 9).toFixed(1) + 'deg'); slot.style.setProperty('--sx', (50 + dx * 60).toFixed(0) + '%');
+  let ry = 0, rx = 0, drag = null;
+  const apply = () => {
+    slot.style.setProperty('--ry', ry.toFixed(1) + 'deg'); slot.style.setProperty('--rx', rx.toFixed(1) + 'deg');
+    slot.style.setProperty('--sx', (50 + Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
+    const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // widok od tyłu: pokazujemy rewers
   };
+  const set = (dx, dy) => { ry = dx * 12; rx = -dy * 9; apply(); };   // dx, dy w zakresie -1..1
   const clamp = v => Math.max(-1, Math.min(1, v));
   const move = e => {
+    if (drag) return;
     const r = slot.getBoundingClientRect();
     set(clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
   };
   let base = null, cx = 0, cy = 0;
   const gyro = e => {   // pozycja neutralna = ułożenie telefonu przy odkryciu karty; wygładzanie
-    if (!gyroOk || e.gamma == null || e.beta == null) return;
+    if (drag || !gyroOk || e.gamma == null || e.beta == null) return;
     if (!base) base = { b: e.beta, g: e.gamma };
     const tx = clamp((e.gamma - base.g) / 30), ty = clamp((e.beta - base.b) / 30);
     cx += (tx - cx) * .25; cy += (ty - cy) * .25; set(cx, cy);
   };
+  // Przytrzymanie i przeciąganie obraca kartę swobodnie (także tyłem); po puszczeniu sprężyście wraca do najbliższego ułożenia.
+  const down = e => { drag = { x: e.clientX, y: e.clientY, ry, rx }; slot.setPointerCapture(e.pointerId); slot.classList.add('grab'); slot.style.transition = 'none'; };
+  const dmove = e => { if (!drag) return; ry = drag.ry + (e.clientX - drag.x) * .6; rx = Math.max(-40, Math.min(40, drag.rx - (e.clientY - drag.y) * .4)); apply(); };
+  const up = () => {
+    if (!drag) return; drag = null; slot.classList.remove('grab');
+    slot.style.transition = 'transform .7s cubic-bezier(.3,1.5,.5,1)';
+    ry = Math.round(ry / 360) * 360; rx = 0; apply();
+    setTimeout(() => { if (drag) return; slot.style.transition = 'none'; ry = 0; apply(); void slot.offsetWidth; slot.style.transition = ''; }, 760);
+  };
+  slot.addEventListener('pointerdown', down); slot.addEventListener('pointermove', dmove); slot.addEventListener('pointerup', up); slot.addEventListener('pointercancel', up);
   document.addEventListener('pointermove', move); window.addEventListener('deviceorientation', gyro);
-  return () => { document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro); ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); };
+  return () => {
+    document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro);
+    slot.removeEventListener('pointerdown', down); slot.removeEventListener('pointermove', dmove); slot.removeEventListener('pointerup', up); slot.removeEventListener('pointercancel', up);
+    ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); slot.style.transition = ''; slot.classList.remove('behind');
+  };
 }
