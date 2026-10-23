@@ -9,10 +9,10 @@
 <link rel="preload" href="fonts/jacquard12-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geistpixel-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=12">
-<link rel="stylesheet" href="css/style.css?v=12">
-<link rel="stylesheet" href="css/cards.css?v=12">
-<link rel="stylesheet" href="css/theme.css?v=12">
+<link rel="stylesheet" href="css/fonts.css?v=14">
+<link rel="stylesheet" href="css/style.css?v=14">
+<link rel="stylesheet" href="css/cards.css?v=14">
+<link rel="stylesheet" href="css/theme.css?v=14">
 </head>
 <body>
 <div id="phone">
@@ -27,7 +27,7 @@
         <h2 data-ui="heroTitle"></h2>
         <p data-ui="heroText"></p>
         <button id="enter" class="cta" data-ui="enter"></button>
-        <div class="langs" role="group" aria-label="Language"><button data-lang="pl" aria-pressed="true">PL</button><button data-lang="en" aria-pressed="false">EN</button></div>
+        <div class="langs" role="group" aria-label="Language"><button class="cta alt" data-lang="pl" aria-pressed="true">PL</button><button class="cta alt" data-lang="en" aria-pressed="false">EN</button></div>
       </div>
       <h3 class="sect" data-ui="howTitle"></h3>
       <ul class="rows">
@@ -38,6 +38,8 @@
     </section>
 
     <section id="s-form" class="screen" hidden>
+      <h2 class="ftitle" data-ui="formTitle"></h2>
+      <p class="fintro" data-ui="formText"></p>
       <form id="form" class="panel">
         <label><span data-ui="name"></span><input id="f-name" maxlength="30" autocomplete="off"></label>
         <label><span data-ui="zodiac"></span><select id="f-zodiac"></select></label>
@@ -86,6 +88,6 @@
 </div>
 <script src="js/vendor/seedrandom.min.js"></script>
 <script src="js/vendor/tracery.js"></script>
-<script type="module" src="js/app.js?v=12"></script>
+<script type="module" src="js/app.js?v=14"></script>
 </body>
 </html>

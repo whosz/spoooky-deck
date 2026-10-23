@@ -39,5 +39,7 @@
  "more": "Zobacz wróżbę",
  "tabFortune": "Wróżba",
  "tabCard": "Karta",
- "tabSign": "Znak"
+ "tabSign": "Znak",
+ "formTitle": "Przedstaw się talii",
+ "formText": "Karty wróżą o konkretnej firmie i o tym, kto pyta. Podaj imię, znak zodiaku i nazwę firmy, w której pracujesz. Dane zostają na Twoim urządzeniu."
 }

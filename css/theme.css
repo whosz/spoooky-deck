@@ -44,3 +44,6 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .text .lead{display:block;margin-bottom:12px}
 .mini{font-size:16px;letter-spacing:0}
 .mini{display:flex;align-items:center;justify-content:center;padding:0;line-height:1;text-align:center}
+.ftitle{font-family:var(--gothic)}
+.langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8;animation:ember 2.4s steps(2) infinite}
+@media(prefers-reduced-motion:reduce){.langs .cta{animation:none}}
