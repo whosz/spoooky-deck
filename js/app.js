@@ -26,6 +26,21 @@ function paintMute() { $('#mute img').src = `img/emoji/U+${isMuted() ? '1F507' :
 function closeMenu() { $('#menu').hidden = $('#menu-back').hidden = true; $('#menu-btn').setAttribute('aria-expanded', 'false'); }
 function toggleMenu() { paintMute(); const open = $('#menu').hidden; $('#menu').hidden = $('#menu-back').hidden = !open; $('#menu-btn').setAttribute('aria-expanded', String(open)); }
 
+// Skala pikseli: wszystkie grafiki pikselowe powiększamy o całkowitą liczbę pikseli URZĄDZENIA (inaczej piksele wychodzą nierówne).
+function pixelScale() {
+  const dpr = devicePixelRatio || 1, root = document.documentElement.style, v = $('#view');
+  const pw = v.clientWidth, vh = v.clientHeight, n = Math.max(1, Math.round(dpr)), u = n / dpr;
+  const snapDown = (grid, target) => grid * Math.max(1, Math.floor(target * dpr / grid + .25)) / dpr;   // rozmiar <= ~target, wielokrotność siatki
+  const snapUp = (grid, target) => grid * Math.max(1, Math.ceil(target * dpr / grid)) / dpr;           // rozmiar >= target (pokrycie)
+  root.setProperty('--u', u + 'px');
+  root.setProperty('--cw', snapDown(72, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
+  root.setProperty('--fw', snapDown(72, Math.min(pw * .5, 216)) + 'px');
+  root.setProperty('--aw', snapDown(72, Math.min(pw * .4, 170)) + 'px');
+  root.setProperty('--iw', snapUp(108, pw) + 'px');
+  root.setProperty('--sw', Math.max(snapUp(72, pw), snapUp(128, vh) * 72 / 128) + 'px');
+}
+addEventListener('resize', () => { pixelScale(); });
+
 const getJSON = u => fetch(u).then(r => r.json());
 
 const SCENES = { 's-form': 'form', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
@@ -194,6 +209,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu();
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
 
+pixelScale();
 startBg();
 await load();
 show('s-intro');

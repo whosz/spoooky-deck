@@ -1,7 +1,7 @@
 // Tło: canvas o niskiej rozdzielczości (wysokość 180 px) skalowany bez wygładzania:
 // mgła, dwie świece po bokach i unoszące się iskry. Przy reduced-motion jedna statyczna klatka.
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const H = 180;
+let H = 180;   // logiczna wysokość tła; dobierana tak, by 1 piksel = całkowita liczba pikseli urządzenia
 const SPARK = ['#ffb347', '#ffb347', '#d8aa48', '#f4efe6'];
 
 export function startBg() {
@@ -13,7 +13,9 @@ export function startBg() {
   const rnd = (a, b) => a + Math.random() * (b - a);
 
   const size = () => {
-    W = c.width = Math.max(100, Math.round(H * innerWidth / innerHeight)); c.height = H;
+    const dpr = devicePixelRatio || 1, kd = Math.max(1, Math.round(innerHeight * dpr / 180));   // pikseli urządzenia na piksel tła
+    W = c.width = Math.max(100, Math.ceil(innerWidth * dpr / kd)); H = c.height = Math.ceil(innerHeight * dpr / kd);
+    c.style.width = W * kd / dpr + 'px'; c.style.height = H * kd / dpr + 'px';
     fog = Array.from({ length: 7 }, () => ({ x: rnd(0, W), y: rnd(H * .4, H), r: rnd(40, 90), v: rnd(.05, .2) * (Math.random() < .5 ? -1 : 1) }));
     sparks = Array.from({ length: 36 }, () => ({ x: rnd(0, W), y: rnd(0, H), v: rnd(.1, .4), d: rnd(0, 6.28), c: SPARK[Math.floor(rnd(0, SPARK.length))] }));
   };
@@ -60,7 +62,7 @@ export function startBg() {
 }
 
 // ---- efekty odkrycia karty: trzęsienie i wybuch pikselowych iskier ----
-const PX = 3;   // 1 piksel iskry = 3 px ekranu
+let PX = 3;   // 1 piksel iskry w px CSS (całkowita liczba pikseli urządzenia)
 let top, tg, parts = [], running = false;
 const FLAME = ['#ffb347', '#ffe08a', '#ffffff', '#d8aa48'], BLOOD = ['#b3243a', '#e0506a', '#7a1c2c', '#ffffff'];
 
@@ -71,7 +73,10 @@ function ensureTop() {
 }
 const $phone = () => document.querySelector('#phone');
 
-function sizeTop() { const r = $phone().getBoundingClientRect(); top.width = Math.ceil(r.width / PX); top.height = Math.ceil(r.height / PX); return r; }
+function sizeTop() {
+  const r = $phone().getBoundingClientRect(), dpr = devicePixelRatio || 1; PX = Math.max(1, Math.round(3 * dpr)) / dpr;
+  top.width = Math.ceil(r.width / PX); top.height = Math.ceil(r.height / PX); top.style.width = top.width * PX + 'px'; top.style.height = top.height * PX + 'px'; return r;
+}
 
 function loopTop() {
   tg.clearRect(0, 0, top.width, top.height);
@@ -142,8 +147,10 @@ export function tiltCard(slot) {
   };
   const set = (dx, dy) => { ry = dx * 12; rx = -dy * 9; apply(); };   // dx, dy w zakresie -1..1
   const clamp = v => Math.max(-1, Math.min(1, v));
+  let idle;
   const move = e => {
     if (drag) return;
+    clearTimeout(idle); idle = setTimeout(() => { if (!drag) set(0, 0); }, 700);   // po chwili bez ruchu karta wraca do ostrego ułożenia
     const r = slot.getBoundingClientRect();
     set(clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
   };
@@ -166,7 +173,7 @@ export function tiltCard(slot) {
   slot.addEventListener('pointerdown', down); slot.addEventListener('pointermove', dmove); slot.addEventListener('pointerup', up); slot.addEventListener('pointercancel', up);
   document.addEventListener('pointermove', move); window.addEventListener('deviceorientation', gyro);
   return () => {
-    document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro);
+    document.removeEventListener('pointermove', move); window.removeEventListener('deviceorientation', gyro); clearTimeout(idle);
     slot.removeEventListener('pointerdown', down); slot.removeEventListener('pointermove', dmove); slot.removeEventListener('pointerup', up); slot.removeEventListener('pointercancel', up);
     ['--ry', '--rx'].forEach(p => slot.style.removeProperty(p)); slot.style.transition = ''; slot.classList.remove('behind');
   };

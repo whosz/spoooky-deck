@@ -1,5 +1,5 @@
 :root{--bg:#0b0d17;--s1:#161a2a;--s2:#222842;--gold:#d8aa48;--gold-d:#8a6a2e;--flame:#ffb347;--blood:#b3243a;--magic:#f4efe6;--text:#e8dcc0;
-  --pw:100vw;--ph:100dvh;--cw:calc(min(calc(var(--pw)*.78),340px,calc((var(--ph) - 400px)/1.5))*.8625);--fw:min(calc(var(--pw)*.46),200px)}
+  --pw:100vw;--ph:100dvh;--cw:216px;--fw:216px;--aw:144px;--iw:432px;--sw:504px;--u:1px}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 html,body{margin:0;min-height:100%;color:var(--text);font:18px/1.4 ui-monospace,Menlo,Consolas,monospace}
@@ -57,7 +57,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #more:not(.in){pointer-events:none}
 
 /* ekran wróżby */
-#artslot .card{--cw:min(calc(var(--pw)*.4),170px)}
+#artslot .card{--cw:var(--aw)}
 #rname{margin:0;font-size:36px;font-weight:400;color:var(--text)}
 .tabs{display:flex;justify-content:center;gap:8px;width:100%;border-bottom:2px solid #8a6a2e55}
 .tabs button{flex:1;min-height:48px;background:none;border:0;border-bottom:4px solid transparent;color:var(--text);font:inherit;font-size:22px;cursor:pointer;opacity:.7}
@@ -74,7 +74,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 /* desktop: okno wielkosci telefonu w ramie jak rama obrazu */
 @media(min-width:700px){
   :root{--pw:390px;--ph:min(844px,calc(100vh - 100px))}
-  #phone{position:relative;inset:auto;width:438px;height:calc(var(--ph) + 48px);border:24px solid transparent;border-image:url(../img/ui/picture-frame.png) 12 / 24px stretch;image-rendering:pixelated;box-shadow:0 0 60px #000}
+  #phone{position:relative;inset:auto;width:calc(390px + 48*var(--u));height:calc(var(--ph) + 48*var(--u));border:calc(24*var(--u)) solid transparent;border-image:url(../img/ui/picture-frame.png) 12 / calc(24*var(--u)) stretch;image-rendering:pixelated;box-shadow:0 0 60px #000}
   .bar{border-radius:0}
 }
 #s-card:not([hidden]){justify-content:center}
@@ -120,8 +120,8 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #music-hint.gone{opacity:0;animation:none;transition:opacity .4s}
 
 /* ekran startowy: pełnoekranowa ilustracja, tytuł u góry, hasło i przycisk u dołu */
-.intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:16px;align-items:stretch}
-.intro-bg{position:absolute;left:-16px;top:250px;width:calc(100% + 32px);height:calc(100% - 234px);object-fit:cover;object-position:center top;image-rendering:pixelated;z-index:0}
+.intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:16px;align-items:stretch;clip-path:inset(0 -16px -16px -16px)}
+.intro-bg{position:absolute;left:50%;margin-left:calc(var(--iw) / -2);top:250px;width:var(--iw);height:auto;image-rendering:pixelated;z-index:0}
 .intro::before,.intro::after{content:"";position:absolute;left:-16px;width:calc(100% + 32px);pointer-events:none;z-index:1;image-rendering:pixelated;background-repeat:repeat-x}
 .intro::before{top:250px;height:132px;background-size:48px 132px;background-image:url(../img/ui/fade-down.png)}
 .intro::after{bottom:-16px;height:240px;background-size:48px 240px;background-image:url(../img/ui/fade-up.png)}
@@ -134,7 +134,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 .intro-bottom .hint{font-size:15px;opacity:.8}
 
 /* tła kolejnych kroków: stonowane, pod treścią */
-#scene{position:absolute;inset:0;background-size:cover;background-position:center;image-rendering:pixelated;opacity:0;transition:opacity .5s ease;pointer-events:none}
+#scene{position:absolute;inset:0;background-size:var(--sw) auto;background-position:center top;background-repeat:no-repeat;image-rendering:pixelated;opacity:0;transition:opacity .5s ease;pointer-events:none}
 #scene.on{opacity:.4}
 #scene::after{content:"";position:absolute;inset:0;background:linear-gradient(#0b0d17 0,#0b0d1700 28%,#0b0d1700 55%,#0b0d17 100%)}
 @media(prefers-reduced-motion:reduce){#scene{transition:none}}

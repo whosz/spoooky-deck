@@ -3,7 +3,7 @@
 html,body{font-family:var(--px);cursor:var(--cur),auto}
 body{background:transparent}
 a,button,select,#fan{cursor:var(--cur),pointer}
-#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;image-rendering:pixelated}
+#bg{position:fixed;left:0;top:0;z-index:-1;image-rendering:pixelated}
 @media(min-width:700px){body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 45%,#000c 100%)}}
 h1{font-family:'Cross Stitch','Jacquard 12',serif;font-weight:400;font-size:min(72px,calc(var(--pw) * .122));line-height:1;margin:0;color:var(--gold);letter-spacing:2px;animation:flick 3.2s steps(1) infinite}
 @keyframes flick{0%,100%{text-shadow:0 0 18px var(--flame),0 4px 0 #000}45%{text-shadow:0 0 10px var(--flame),0 4px 0 #000}50%{text-shadow:0 0 22px var(--flame),0 4px 0 #000}}
@@ -11,8 +11,8 @@ h1{font-family:'Cross Stitch','Jacquard 12',serif;font-weight:400;font-size:min(
 #bar-title{font-size:24px}
 .hero h2{font-size:38px}
 .panel,.cta,.mini{image-rendering:pixelated;background:none;box-shadow:none;border-style:solid;border-color:transparent}
-.panel{border-width:16px;border-image:url(../img/ui/frame.png) 8 fill / 16px stretch;padding:12px 16px}
-.cta,.mini{font-size:22px;border-width:12px;border-image:url(../img/ui/btn.png) 8 fill / 12px stretch;padding:6px 14px;min-height:48px;color:#1a1204;text-shadow:0 1px 0 #ffe2a8;position:relative;animation:ember 2.4s steps(2) infinite}
+.panel{border-width:calc(16*var(--u));border-image:url(../img/ui/frame.png) 8 fill / calc(16*var(--u)) stretch;padding:12px 16px}
+.cta,.mini{font-size:22px;border-width:calc(16*var(--u));border-image:url(../img/ui/btn.png) 8 fill / calc(16*var(--u)) stretch;padding:0 10px;min-height:calc(48*var(--u));color:#1a1204;text-shadow:0 1px 0 #ffe2a8;position:relative;animation:ember 2.4s steps(2) infinite}
 .cta.alt,.mini{border-image-source:url(../img/ui/btn-alt.png);color:var(--text);text-shadow:0 2px 0 #000;animation:none}
 #offer{border-image-source:url(../img/ui/btn-white.png)}
 .mini{min-width:48px;padding:0 4px}
@@ -48,7 +48,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .card.rev .front{border-color:var(--gold);box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a99,0 0 0 12px #b3243a55,0 0 0 16px #b3243a22;animation:revglow 1.6s steps(1) infinite}
 @keyframes revglow{50%{box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a66,0 0 0 12px #b3243a33,0 0 0 16px #b3243a11}}
 @media(prefers-reduced-motion:reduce){.card.rev .front{animation:none}}
-.menu{border:16px solid transparent;border-image:url(../img/ui/frame.png) 8 fill / 16px stretch;image-rendering:pixelated}
+.menu{border:calc(16*var(--u)) solid transparent;border-image:url(../img/ui/frame.png) 8 fill / calc(16*var(--u)) stretch;image-rendering:pixelated}
 .menu h3{font-family:var(--gothic)}
 .menu .langs .cta,.menu #mute,.menu a.cta{font-family:var(--px);font-size:20px}
 .menu .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8}

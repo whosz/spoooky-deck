@@ -27,8 +27,9 @@
 .front::before{border-color:#8a6a2e99}
 
 /* ruch spoczynkowy: kołysanie + pochylenie za kursorem + połysk */
-#cardslot{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));animation:sway 4.5s ease-in-out infinite alternate;transition:transform .15s}
-@keyframes sway{from{rotate:-1.2deg}to{rotate:1.2deg}}
+#cardslot{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));animation:bob 3.6s steps(1) infinite;transition:transform .15s}
+/* spoczynek bez obrotu (obrót rozmywa piksele): unoszenie co 3 px, a pochylenie tylko podczas ruchu */
+@keyframes bob{0%{translate:0 0}25%{translate:0 -3px}50%{translate:0 -6px}75%{translate:0 -3px}100%{translate:0 0}}
 @media(prefers-reduced-motion:reduce){#cardslot{animation:none;transform:none}}
 #cardslot{touch-action:none;cursor:grab}
 #cardslot.grab{cursor:grabbing}
@@ -38,7 +39,7 @@
 
 /* nazwa karty w złotej ramce (9-slice), bez numeru u góry */
 .front{align-content:end;justify-items:center;padding-bottom:12px}
-.front .nm{width:calc(100% - 20px);border:8px solid transparent;border-image:url(../img/ui/frame.png) 8 fill / 8px stretch;image-rendering:pixelated;background:none;padding:4px 6px;font-family:'Jacquard 12',serif;font-size:11cqw;line-height:1.1;color:#f0d27a;text-shadow:0 2px 0 #000;font-weight:400}
+.front .nm{width:calc(100% - 20px);border:calc(8*var(--u)) solid transparent;border-image:url(../img/ui/frame.png) 8 fill / calc(8*var(--u)) stretch;image-rendering:pixelated;background:none;padding:4px 6px;font-family:'Jacquard 12',serif;font-size:11cqw;line-height:1.1;color:#f0d27a;text-shadow:0 2px 0 #000;font-weight:400}
 /* karty nie są zaznaczalne (nazwa, plakietka) */
 #cardslot,.card,.fcard,#artslot{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 
