@@ -93,5 +93,3 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
 .menu #mute{font-size:calc(1.4*var(--f) + 2px)}
 .menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
-.menu h3.lic{font-size:calc(.85*var(--f)*var(--gs));margin-top:30px;padding-bottom:2px}
-.menu p.lic{font-size:10px;line-height:1.35;opacity:.8}
