@@ -48,5 +48,11 @@
  "soundOff": "Off",
  "menuAuthor": "Creator",
  "authorText": "Mateusz Staniszewski, designer and front-end developer. For 15 years I have designed digital products, including for Egnyte, Zonal and nexos.ai. Today I make logos, brand identities and websites for startups and local businesses.",
- "menuClose": "Close menu"
+ "menuClose": "Close menu",
+ "update": "A new deck is ready.",
+ "refresh": "Refresh",
+ "shareImage": "Save image",
+ "menuLicenses": "Credits and licenses",
+ "licensesText": "Fonts: Jacquard 12 and Geist Pixel (OFL). Emoji: SerenityOS. Sound: ZzFX. Randomness: seedrandom. Readings: Tracery.",
+ "licensesLink": "Full licenses"
 }

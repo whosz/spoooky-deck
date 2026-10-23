@@ -1,0 +1,23 @@
+# Spooooky Deck: Apache (działa w głównej domenie i w podkatalogu, bo ścieżki są względne)
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType font/woff2 .woff2
+  AddType audio/mpeg .mp3
+  AddType application/javascript .js
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Strona, service worker, manifest i dane: zawsze sprawdzaj świeżość
+  <FilesMatch "(^sw\.js|\.html|\.webmanifest|\.json|\.css|\.js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Obrazki, fonty i muzyka: doba (service worker i tak trzyma kopię offline)
+  <FilesMatch "\.(png|woff2|mp3)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>

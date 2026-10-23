@@ -1,6 +1,7 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
 import { startBg, revealFx, tiltCard } from './fx.js';
+import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted } from './audio.js';
 
 const $ = s => document.querySelector(s);
@@ -176,6 +177,7 @@ document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => 
 
 // Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
 for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, startAudio, { capture: true });
+$('#share-img').onclick = () => cur && shareImage({ ...cur, company: $('#f-company').value, lang, ui });
 $('#menu-btn').onclick = toggleMenu; $('#menu-back').onclick = closeMenu;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
@@ -197,3 +199,21 @@ await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), 
 const loader = $('#loader');
 loader.classList.add('hide');
 setTimeout(() => loader.remove(), 700);
+
+// PWA: rejestracja service workera i komunikat o nowej wersji (odświeżenie tylko za zgodą użytkownika).
+if ('serviceWorker' in navigator) {
+  let wanted = false;
+  const prompt = w => {
+    const t = el('div', 'toast'); const b = el('button', 'cta', ui.refresh);
+    t.append(el('span', '', ui.update), b); $('#phone').append(t);
+    b.onclick = () => { wanted = true; w.postMessage('skipWaiting'); };
+  };
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (wanted) location.reload(); });
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    if (reg.waiting && navigator.serviceWorker.controller) prompt(reg.waiting);
+    reg.addEventListener('updatefound', () => {
+      const w = reg.installing;
+      w.addEventListener('statechange', () => { if (w.state === 'installed' && navigator.serviceWorker.controller) prompt(w); });
+    });
+  }).catch(() => {});
+}

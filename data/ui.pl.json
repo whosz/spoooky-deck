@@ -48,5 +48,11 @@
  "soundOff": "Wyłączony",
  "menuAuthor": "Twórca",
  "authorText": "Mateusz Staniszewski, projektant i front-end developer. Od 15 lat projektuję produkty cyfrowe, między innymi dla Egnyte, Zonal i nexos.ai. Dziś robię logo, identyfikacje i strony dla startupów i lokalnych firm.",
- "menuClose": "Zamknij menu"
+ "menuClose": "Zamknij menu",
+ "update": "Nowa talia jest gotowa.",
+ "refresh": "Odśwież",
+ "shareImage": "Zapisz obrazek",
+ "menuLicenses": "Autorzy i licencje",
+ "licensesText": "Fonty: Jacquard 12 i Geist Pixel (OFL). Emoji: SerenityOS. Dźwięk: ZzFX. Losowanie: seedrandom. Wróżby: Tracery.",
+ "licensesLink": "Pełne licencje"
 }
