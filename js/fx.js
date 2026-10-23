@@ -124,6 +124,16 @@ function glint(slot) {
   slot.append(g); setTimeout(() => g.remove(), 750);
 }
 
+// Złote błyski i pył na karcie w wachlarzu (rewers): wołane przy przesuwaniu wachlarza i okresowo na wybranej karcie
+export function sparkleCard(cardEl, n = 2) {
+  if (reduced || !cardEl) return;
+  const g = document.createElement('i'); g.className = 'glint';
+  const side = Math.floor(Math.random() * 4), t = (8 + Math.random() * 84).toFixed(0) + '%';
+  g.style.left = side === 1 ? '100%' : side === 3 ? '0' : t; g.style.top = side === 0 ? '0' : side === 2 ? '100%' : t;
+  cardEl.append(g); setTimeout(() => g.remove(), 750);
+  goldDust(cardEl, n);
+}
+
 // ---- pochylanie karty za kursorem lub żyroskopem i połysk ----
 let gyroOk = false;
 // Na iOS zgodę na ruch urządzenia trzeba wywołać w geście użytkownika (np. wysłanie formularza); na Androidzie nie jest potrzebna.

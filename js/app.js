@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme } from './fx.js';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
@@ -195,7 +195,10 @@ function pick() {
       setTimeout(() => { els.forEach(c => c.style.transitionDuration = ''); fan.classList.remove('shuffling'); deal(); }, 1250); }));
   }
   let lastTop = 0;
-  const go = v => { off = Math.max(-mid, Math.min(mid, v)); layout(); const t = Math.round(off); if (t !== lastTop) { lastTop = t; sfx('tick'); } };
+  let lastSp = 0;
+  const go = v => { const before = off; off = Math.max(-mid, Math.min(mid, v)); layout(); const t = Math.round(off); if (t !== lastTop) { lastTop = t; sfx('tick'); }
+    const now = performance.now(); if (Math.abs(off - before) > .03 && now - lastSp > 140) { lastSp = now; sparkleCard(els.find(c => c.classList.contains('top')), 2); } };
+  const ambientTimer = setInterval(() => { if (screen !== 's-pick') { clearInterval(ambientTimer); return; } sparkleCard(els.find(c => c.classList.contains('top')), 1); }, 1400);
   const glide = () => {   // bezwładność po puszczeniu: wachlarz dojeżdża i zatrzymuje się na najbliższej karcie
     cancelAnimationFrame(raf);
     const step = () => {
