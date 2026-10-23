@@ -85,3 +85,13 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* menu: większe marginesy po bokach, wszystkie linki jednakowe */
 .menu{padding:14px 28px 18px!important}
 .menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}
+
+/* hamburger: większe odstępy między sekcjami, przyciski +2 px, sekcja licencji 2x mniejsza */
+.menu{gap:12px}
+.menu h3{margin-top:22px}
+.menu h3:first-child{margin-top:0}
+.menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
+.menu #mute{font-size:calc(1.4*var(--f) + 2px)}
+.menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
+.menu h3.lic{font-size:calc(.85*var(--f)*var(--gs));margin-top:30px;padding-bottom:2px}
+.menu p.lic{font-size:10px;line-height:1.35;opacity:.8}
