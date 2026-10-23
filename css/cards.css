@@ -35,3 +35,7 @@
 #cardslot.behind .front{visibility:hidden}
 #cardslot.behind .back{backface-visibility:visible}
 .front::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(../img/ui/shine.png) var(--sx,30%) 0/300% 100% no-repeat;image-rendering:pixelated}
+
+/* nazwa karty w złotej ramce (9-slice), bez numeru u góry */
+.front{align-content:end;justify-items:center;padding-bottom:12px}
+.front .nm{width:calc(100% - 20px);border:8px solid transparent;border-image:url(../img/ui/frame.png) 8 fill / 8px stretch;image-rendering:pixelated;background:none;padding:4px 6px;font-family:'Jacquard 12',serif;font-size:11cqw;line-height:1.1;color:#f0d27a;text-shadow:0 2px 0 #000;font-weight:400}

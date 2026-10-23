@@ -59,7 +59,7 @@ function fillCard({ card, reversed }) {
   const f = c.querySelector('.front');
   const sym = el('div', 'sym'); sym.append(em(SYM[card.suit || 'major']));
   f.style.backgroundImage = `url(img/cards/${card.id}.png)`;
-  f.replaceChildren(el('div', 'num', card.arcana === 'major' ? ROMAN[card.number] : card.number), sym, el('div', 'nm', card.name[lang]));
+  f.replaceChildren(sym, el('div', 'nm', card.name[lang]));
 }
 
 function reveal() {
