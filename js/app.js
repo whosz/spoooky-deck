@@ -50,7 +50,7 @@ function pixelScale() {
   root.setProperty('--cw', snapDown(64, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
   root.setProperty('--fw', snapDown(64, Math.min(pw * .5, 216)) + 'px');
   root.setProperty('--aw', snapDown(64, Math.min(pw * .4, 170)) + 'px');
-  root.setProperty('--iw', snapDown(108, Math.min(pw - 32 - 36 * u, (vh - 380) * 108 / 192)) + 'px');   // splash 108x192: mieści się razem z tytułem i przyciskiem
+  root.setProperty('--iw', snapDown(108, Math.min(pw - 32 - 36 * u, (vh - 320) * 108 / 192)) + 'px');   // splash 108x192: mieści się razem z tytułem i przyciskiem
   root.setProperty('--sw', Math.max(snapUp(72, pw), snapUp(128, vh) * 72 / 128) + 'px');
 }
 addEventListener('resize', () => { pixelScale(); sizeCard(); });
