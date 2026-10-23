@@ -97,3 +97,9 @@ STYLE3 = ("16-bit video game pixel art tarot card illustration in classic Rider-
 def prompt3_for(card_id): return f"{STYLE3}. Scene: {SCENES[card_id]}."
 
 SCENES.setdefault('cu07', "Seven of Cups: a silhouette of a person looking at seven floating golden cups in clouds each holding a different vision: a castle, jewels, a dragon, a snake, a laurel wreath, a veiled figure and a face")
+
+# Styl 4 ("ziemisty, malarski pixel art"): opis słowami, bez obrazów referencyjnych
+STYLE4 = ("Detailed painterly pixel art tarot card illustration in classic Rider-Waite composition, muted earthy color palette of ochre, sepia brown, dusty teal, olive green, burgundy and cream, "
+          "soft warm lighting and gentle shading built from a limited palette, figures with simple expressive faces and clear hands, ornamental details and textures, "
+          "clean crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
+def prompt4_for(card_id): return f"{STYLE4}. Scene: {SCENES[card_id]}."

@@ -2,7 +2,7 @@
 Token: ~/.config/spooooky/replicate.env (REPLICATE_API_TOKEN). Koszt wypisywany na koniec (ok. 0,015 USD / obraz)."""
 import os, sys, json, time, urllib.request, urllib.error
 sys.path.insert(0, os.path.dirname(__file__))
-from prompts import prompt_for, aspect_for, refs_for, prompt2_for, prompt3_for
+from prompts import prompt_for, aspect_for, refs_for, prompt2_for, prompt3_for, prompt4_for
 import base64
 MODEL = 'black-forest-labs/flux-2-pro'
 env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/spooooky/replicate.env')) if '=' in l)
@@ -22,9 +22,10 @@ def call(url, data=None, headers=None):
 
 def generate(card_id, seed, resolution='0.5 MP'):
     style3 = os.environ.get('STYLE') == '3'
-    style2 = os.environ.get('STYLE') in ('2', '3')
+    style4 = os.environ.get('STYLE') == '4'
+    style2 = os.environ.get('STYLE') in ('2', '3', '4')
     if style2: resolution = os.environ.get('RES', '1 MP')
-    inp = {'prompt': (prompt3_for(card_id) if style3 else prompt2_for(card_id)) if style2 else prompt_for(card_id), 'aspect_ratio': aspect_for(card_id), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
+    inp = {'prompt': (prompt4_for(card_id) if style4 else prompt3_for(card_id) if style3 else prompt2_for(card_id)) if style2 else prompt_for(card_id), 'aspect_ratio': aspect_for(card_id), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
     refs = [f"data:image/png;base64,{base64.b64encode(open(r, 'rb').read()).decode()}" for r in refs_for(card_id)]   # styl 2 opisany wyłącznie słowami, bez obrazów referencyjnych cudzych prac
     if refs: inp['input_images'] = refs
     pred = call(f'https://api.replicate.com/v1/models/{MODEL}/predictions', {'input': inp}, {'Prefer': 'wait=60'})
@@ -32,7 +33,7 @@ def generate(card_id, seed, resolution='0.5 MP'):
         time.sleep(2); pred = call(pred['urls']['get'])
     if pred['status'] != 'succeeded': print(f"{card_id}/{seed}: {pred['status']} {str(pred.get('error'))[:90]}"); return None
     out = pred['output']; out = out[0] if isinstance(out, list) else out
-    os.makedirs('tools/ai/raw', exist_ok=True); path = f'tools/ai/raw/{card_id}_{seed}.png' if not style2 else (f'tools/ai/raw/s3_{card_id}_{seed}.png' if style3 else f'tools/ai/raw/s2_{card_id}_{seed}.png')
+    os.makedirs('tools/ai/raw', exist_ok=True); path = f'tools/ai/raw/{card_id}_{seed}.png' if not style2 else (f'tools/ai/raw/s4_{card_id}_{seed}.png' if style4 else f'tools/ai/raw/s3_{card_id}_{seed}.png' if style3 else f'tools/ai/raw/s2_{card_id}_{seed}.png')
     urllib.request.urlretrieve(out, path); return path
 
 if __name__ == '__main__':
