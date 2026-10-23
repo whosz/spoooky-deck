@@ -64,7 +64,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #artslot .front .nm{font-size:10.5cqw;border-width:calc(4*var(--u));border-image-width:calc(4*var(--u));padding:0 2px;width:calc(100% - 14px)}
 #artslot .front .num{font-size:calc(10*var(--u))}
 /* przyciski i zakładki: nieco mniejsze od nagłówków, żeby mieściły się w jednej linii */
-.cta,.tabs button,.intro-bottom .cta{font-size:calc(1.85*var(--f)*var(--gs));white-space:nowrap}
+.cta,.tabs button,.intro-bottom .cta{font-size:calc(1.74*var(--f)*var(--gs));white-space:nowrap}
 .tabs button{font-size:calc(1.7*var(--f)*var(--gs))}
 .quote{font-size:calc(2*var(--f)*var(--gs))}
 .quote{font-size:calc(1.55*var(--f)*var(--gs));line-height:1.3}
@@ -80,5 +80,8 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu .langs .cta[aria-pressed=true]{animation:ember 2.4s steps(2) infinite}
 .menu .langs .cta{font-family:var(--px);font-size:calc(1.6*var(--f))}
 .menu #mute{font-family:var(--px);font-size:calc(1.4*var(--f))}
-.menu #sayhi{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8;font-family:var(--gothic);animation:ember 2.4s steps(2) infinite}
+.menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}
+
+/* menu: większe marginesy po bokach, wszystkie linki jednakowe */
+.menu{padding:14px 28px 18px!important}
 .menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}

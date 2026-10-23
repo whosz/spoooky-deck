@@ -162,3 +162,7 @@ img{-webkit-user-drag:none;user-drag:none}
 .bar{z-index:6}
 .intro-top{pointer-events:none}
 .intro-top>*{pointer-events:auto}
+
+/* splash: PNG z przezroczystym, pikselowym zanikaniem krawędzi (bez maski CSS) */
+.intro.blend .intro-art img{-webkit-mask-image:none;mask-image:none}
+.intro.blend .intro-art{margin:-6px 0 -40px}
