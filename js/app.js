@@ -121,7 +121,7 @@ function pick() {
   let off = 0, startX = 0, startOff = 0, moved = false, down = false;
   const layout = () => els.forEach((c, i) => {
     const d = i - mid + off, top = Math.abs(d) < 0.5;
-    c.style.transform = `rotate(${d * STEP}deg)${top ? ' translateY(-24px)' : ''}`;
+    c.style.transform = `rotate(${d * STEP}deg)${top ? ' translateY(calc(var(--fw) * .4425 - 24px)) scale(1.15)' : ''}`;
     c.classList.toggle('top', top);
     c.style.zIndex = N - Math.round(Math.abs(d));
   });
