@@ -19,7 +19,7 @@ footer{padding:16px 0 8px;text-align:center;font-size:15px;opacity:.6}
 .hero p{margin:0 0 8px;opacity:.85}
 .sect{margin:8px 0 0;align-self:flex-start;font-weight:400;font-size:26px;color:var(--flame)}
 .rows{list-style:none;margin:0;padding:0;width:100%;text-align:left}
-.rows li{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:2px solid #8a6a2e55}
+.rows li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:2px solid #8a6a2e55}
 .rows li:last-child{border-bottom:0}
 .rows img{width:32px;height:32px;image-rendering:pixelated}
 .rows b{display:block;font-weight:400;font-size:22px}
