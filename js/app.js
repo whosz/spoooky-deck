@@ -54,7 +54,7 @@ function reveal() {
   const parts = compose({ seed, card, reversed, name: form.name, zodiac: zodiac.find(z => z.id === form.zodiac), company: form.company, lang, grammar, ui });
   show('s-read');
   const text = $('#text'), actions = $('#actions');
-  text.classList.remove('in'); actions.classList.remove('in'); actions.hidden = true;
+  text.classList.remove('in'); actions.classList.remove('in');
   text.textContent = parts.map(p => p.text).join(' ');
   cardEl(card, reversed);
   $('#bar-title').textContent = card.name[lang];
@@ -69,11 +69,10 @@ function reveal() {
     for (const [c, t] of [['ic', ic], ['lb', lb], ['vl', vl]]) { const e = document.createElement('span'); e.className = c; e.textContent = t; d.append(e); }
     info.append(d);
   }
-  // Całość max 2 s: obrót 0,6 s, tekst 0,5-1,3 s, przyciski 1,3-1,9 s.
+  // Całość max 2 s: obrót 0,6 s, potem tekst, info i przyciski razem (0,5-1,3 s). Miejsce jest zarezerwowane, więc nic nie skacze.
   const t = reduced ? 0 : 1;
   setTimeout(() => $('#card').classList.add('flip'), 50 * t);
-  setTimeout(() => { text.classList.add('in'); info.classList.add('in'); }, 500 * t);
-  setTimeout(() => { actions.hidden = false; requestAnimationFrame(() => actions.classList.add('in')); }, 1300 * t);
+  setTimeout(() => { text.classList.add('in'); info.classList.add('in'); actions.classList.add('in'); }, 500 * t);
   $('#offer').href = OFFER;
   $('#share').onclick = async () => {
     const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
