@@ -121,9 +121,11 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 
 /* ekran startowy: pełnoekranowa ilustracja, tytuł u góry, hasło i przycisk u dołu */
 .intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:16px;align-items:stretch}
-.intro-bg{position:absolute;left:-16px;top:190px;width:calc(100% + 32px);height:calc(100% - 174px);object-fit:cover;object-position:center top;image-rendering:pixelated;z-index:0}
-.intro::before{content:"";position:absolute;left:-16px;top:-64px;width:calc(100% + 32px);height:calc(100% + 80px);background:linear-gradient(#0b0d17 0,#0b0d17 24%,#0b0d1700 34%,#0b0d1700 56%,#0b0d17f2 90%);z-index:0;pointer-events:none}
-.intro-top,.intro-bottom{position:relative;z-index:1}
+.intro-bg{position:absolute;left:-16px;top:250px;width:calc(100% + 32px);height:calc(100% - 234px);object-fit:cover;object-position:center top;image-rendering:pixelated;z-index:0}
+.intro::before,.intro::after{content:"";position:absolute;left:-16px;width:calc(100% + 32px);pointer-events:none;z-index:1;image-rendering:pixelated;background-repeat:repeat-x}
+.intro::before{top:250px;height:132px;background-size:48px 132px;background-image:url(../img/ui/fade-down.png)}
+.intro::after{bottom:-16px;height:240px;background-size:48px 240px;background-image:url(../img/ui/fade-up.png)}
+.intro-top,.intro-bottom{position:relative;z-index:2}
 .intro-top{display:grid;justify-items:center;gap:6px;padding-top:6px}
 .emblem{image-rendering:pixelated;width:64px;height:64px}
 .intro-top .tag{font-size:19px;opacity:.95;text-shadow:0 2px 0 #000}
