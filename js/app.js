@@ -205,7 +205,10 @@ function openRead() {
   renderTab('fortune');
 }
 
+let pickTimers = [];   // timery tasowania; kasowane przy ponownym losowaniu, żeby stare nie psuły nowej animacji
 function pick() {
+  pickTimers.forEach(clearTimeout); pickTimers = [];
+  const later = (fn, ms) => pickTimers.push(setTimeout(fn, ms));
   show('s-pick'); startAmbient();
   $('#date').textContent = new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
   const fan = $('#fan'), N = 21, STEP = 9, mid = (N - 1) / 2;
@@ -222,14 +225,14 @@ function pick() {
   });
   // Rozdanie: karty wylatują ze stosu na środku po kolei
   // Tasowanie: stos kart na środku, dwie połowy przesuwają się na przemian w lewo i prawo (2 razy), potem rozdanie w wachlarz
-  const deal = () => { els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.opacity = ''; }); layout(); sfx('flip'); setTimeout(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); };
+  const deal = () => { els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.opacity = ''; }); layout(); sfx('flip'); later(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); };
   const stack = (dx, k) => els.forEach((c, i) => { c.style.transitionDelay = ''; c.style.transitionDuration = '.18s'; const side = (i % 2 ? 1 : -1) * k; c.style.transform = `translate(${side * dx}px, 0) rotate(${side * 3}deg) scale(.82)`; c.style.opacity = '1'; });
   els.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(40px) scale(.8)'; });
   if (reduced) deal(); else {
     fan.classList.add('shuffling');
     requestAnimationFrame(() => requestAnimationFrame(() => { stack(0, 0); sfx('flip');
-      [[150, 1], [250, -1], [150, -1], [250, 1], [0, 0]].forEach(([t, k], n) => setTimeout(() => { stack(n === 4 ? 0 : 46, k); if (n < 4) sfx('tick'); }, 200 + n * 190));
-      setTimeout(() => { els.forEach(c => c.style.transitionDuration = ''); fan.classList.remove('shuffling'); deal(); }, 1250); }));
+      [[150, 1], [250, -1], [150, -1], [250, 1], [0, 0]].forEach(([t, k], n) => later(() => { stack(n === 4 ? 0 : 46, k); if (n < 4) sfx('tick'); }, 200 + n * 190));
+      later(() => { els.forEach(c => c.style.transitionDuration = ''); fan.classList.remove('shuffling'); deal(); }, 1250); }));
   }
   let lastTop = 0;
   let lastSp = 0;
@@ -256,7 +259,7 @@ function pick() {
     if (picking) return; picking = true; sfx('pick'); fan.classList.add('picked'); $('#s-pick').classList.add('picking');   // tytuł, data i napisy gasną, gdy karta wzlatuje
     const t = els.find(c => c.classList.contains('top')) || els[mid];
     t.style.transform = 'translateY(calc(var(--fw) * -.3)) scale(1.35)'; t.style.transitionDuration = '.45s';
-    setTimeout(reveal, reduced ? 0 : 460);
+    later(reveal, reduced ? 0 : 460);
   };
   fan.onpointerup = () => { const tap = down && !moved; end(); if (tap) choose(); };
   fan.onpointercancel = end;
