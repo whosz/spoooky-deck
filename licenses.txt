@@ -64,3 +64,6 @@ Kate Compton. Pełny tekst licencji: https://www.apache.org/licenses/LICENSE-2.0
 
 === Cross Stitch (Levi Szekeres, dafont.com) ===
 Użyta w tytule "Spoooky Deck". Licencja: darmowa do projektów osobistych i organizacji non-profit; użycie komercyjne wymaga licencji (https://www.loremipsum.ro/). Plik fontu nie jest dołączony do repozytorium.
+
+=== Olde Tome (LadyLiefy) ===
+Użyta w nagłówkach, cytatach, przyciskach i na kartach. Licencja fontu nie jest podana w pliku; aplikacja jest przeznaczona do użytku prywatnego. Plik fontu nie jest dołączony do repozytorium.
