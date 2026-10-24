@@ -75,7 +75,7 @@ let sceneTimer;
 function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, rozjaśnienie)
   const el = $('#scene'), k = SCENES[id]; clearTimeout(sceneTimer);
   el.classList.remove('on');
-  if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.classList.add('on'); }, 260);
+  if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.dataset.scene = k; el.classList.add('on'); }, 260);
 }
 
 function show(id) {

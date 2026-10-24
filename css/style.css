@@ -189,3 +189,4 @@ img{-webkit-user-drag:none;user-drag:none}
 /* ekran startowy: większy odstęp od dołu i między przyciskiem a podpowiedzią o muzyce */
 .intro-bottom{gap:18px;padding-bottom:36px}
 .intro-bottom .hint{margin-top:6px}
+#scene[data-scene=intro].on{opacity:.34}   /* tło splasha o 15% ciemniejsze (0,4 x 0,85) */
