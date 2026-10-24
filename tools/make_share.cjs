@@ -16,8 +16,8 @@ const fs = require('fs');
   @font-face{font-family:CS;src:url(http://localhost:8123/fonts/CrossStitch-Regular.ttf)}
   @font-face{font-family:GP;src:url(http://localhost:8123/fonts/geistpixel-latin.woff2)}
   html,body{margin:0;width:1200px;height:630px;background:#0b0d17;overflow:hidden;font-family:GP;image-rendering:pixelated}
-  .bg{position:absolute;inset:0;background:url(http://localhost:8123/img/ui/bg-pick.png) center 30%/1224px auto no-repeat;image-rendering:pixelated}
-  .sh{position:absolute;inset:0;background:linear-gradient(90deg,#0b0d17f0 0,#0b0d17aa 45%,#0b0d1740 100%)}
+    .bg{position:absolute;inset:0;background:url(http://localhost:8123/img/ui/bg-intro.png) center 6%/1224px auto no-repeat;opacity:.95;image-rendering:pixelated}
+  .sh{position:absolute;inset:0;background:linear-gradient(90deg,#0b0d1799 0,#0b0d1766 45%,#0b0d1733 100%)}
   .card{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;image-rendering:pixelated;box-shadow:0 18px 0 #0008}
   .t{position:absolute;left:520px;top:150px;right:60px;color:#d8aa48}
   h1{font:400 112px/1 CS;margin:0 0 28px;text-shadow:0 6px 0 #000,0 0 40px #ffb34777}
