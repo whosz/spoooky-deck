@@ -53,7 +53,7 @@
  "refresh": "Refresh",
  "shareImage": "Save image",
  "menuLicenses": "Credits and licenses",
- "licensesText": "Music: generated with the ACE-Step model (MIT). Fonts: Olde Tome, Old English Gothic Pixel and Geist Pixel. Emoji: SerenityOS. Sound: ZzFX. Randomness: seedrandom. Readings: Tracery.",
+ "licensesText": "Music: generated with the MiniMax Music 2.6 model. Fonts: Olde Tome, Old English Gothic Pixel and Geist Pixel. Emoji: SerenityOS. Sound: ZzFX. Randomness: seedrandom. Readings: Tracery.",
  "licensesLink": "Full licenses",
  "musicHint": "Tap the screen to start the music",
  "introH1": "Discover the future",
