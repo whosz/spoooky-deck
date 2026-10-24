@@ -70,7 +70,7 @@ addEventListener('resize', () => { pixelScale(); sizeCard(); });
 
 const getJSON = u => fetch(u).then(r => r.json());
 
-const SCENES = { 's-form': 'form', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
+const SCENES = { 's-intro': 'intro', 's-form': 'form', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
 let sceneTimer;
 function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, rozjaśnienie)
   const el = $('#scene'), k = SCENES[id]; clearTimeout(sceneTimer);
@@ -278,8 +278,6 @@ document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .ta
 $('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
 
 pixelScale();
-// Podgląd wariantów ekranu startowego: ?intro=A|B|C|O
-{ const v = params.get('intro'); if (v) { $('.intro').classList.add('blend'); $('.intro-art img').src = `img/ui/intro-${v}.png`; } }
 startBg();
 await load();
 show('s-intro');
@@ -299,7 +297,7 @@ const PL = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
 const emojiImgs = [...Object.values(SIGN), ...Object.values(ELEM), ...Object.values(SYM), '1F53A', '1F53B'].map(cp => { const i = new Image(); i.src = `img/emoji/U+${cp}.png`; return i; });
 const ready = Promise.all([
   document.fonts.load('24px "Jacquard 12"', PL), document.fonts.load('18px "Geist Pixel"', PL),
-  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs, ...['form', 'pick', 'card', 'read'].map(k => { const i = new Image(); i.src = `img/ui/bg-${k}.png`; return i; })].map(i => i.decode().catch(() => {})),
+  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs, ...['intro', 'form', 'pick', 'card', 'read'].map(k => { const i = new Image(); i.src = `img/ui/bg-${k}.png`; return i; })].map(i => i.decode().catch(() => {})),
 ]);
 await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), new Promise(r => setTimeout(r, 4000))]);
 const loader = $('#loader');
