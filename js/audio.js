@@ -36,3 +36,19 @@ export function sfx(name) {
   if (muted || !started || typeof zzfx !== 'function') return;
   for (const p of PRESETS[name] || []) zzfx(...p);
 }
+
+// Muzyka i dźwięk milkną, gdy aplikacja znika z ekranu (przełączenie na inną aplikację, blokada ekranu, inna karta),
+// i wracają, gdy użytkownik wraca (o ile dźwięk nie jest wyciszony).
+let resumeMusic = false;
+function onHidden() {
+  if (music && !music.paused) { resumeMusic = true; music.pause(); }
+  try { zzfxX.suspend(); } catch {}
+}
+function onVisible() {
+  try { zzfxX.resume(); } catch {}
+  if (resumeMusic && !muted && music) music.play().catch(() => {});
+  resumeMusic = false;
+}
+document.addEventListener('visibilitychange', () => (document.hidden ? onHidden() : onVisible()));
+addEventListener('pagehide', onHidden);
+addEventListener('pageshow', e => { if (e.persisted && !document.hidden) onVisible(); });
