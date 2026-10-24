@@ -19,12 +19,10 @@ const fs = require('fs');
   .bg{position:absolute;inset:0;background:url(http://localhost:8123/img/ui/bg-pick.png) center 30%/1224px auto no-repeat;image-rendering:pixelated}
   .sh{position:absolute;inset:0;background:linear-gradient(90deg,#0b0d17f0 0,#0b0d17aa 45%,#0b0d1740 100%)}
   .card{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;image-rendering:pixelated;box-shadow:0 18px 0 #0008}
-  .c2,.c3{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;opacity:.55;filter:brightness(.6)}
-  .c2{transform:translate(70px,26px) rotate(0deg);left:140px}.c3{left:96px;transform:translate(-0px,0)}
   .t{position:absolute;left:520px;top:150px;right:60px;color:#d8aa48}
   h1{font:400 112px/1 CS;margin:0 0 28px;text-shadow:0 6px 0 #000,0 0 40px #ffb34777}
   p{font:400 42px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
-  </style><div class=bg></div><div class=sh></div><div class=c2></div><div class=card></div>
+  </style><div class=bg></div><div class=sh></div><div class=card></div>
   <div class=t><h1>Spoooky Deck</h1><p>Losuj · Czytaj · Zaufaj intuicji</p></div>`;
   fs.writeFileSync('tools/_share.html', html);
   const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1200, height: 630 } });
