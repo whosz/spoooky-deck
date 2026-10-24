@@ -192,3 +192,13 @@ img{-webkit-user-drag:none;user-drag:none}
 #scene[data-scene=intro].on{opacity:.374}   /* tło splasha o 10% jaśniejsze (0,34 x 1,1) */
 .intro-bottom .hint{margin-top:22px}   /* podpowiedź o muzyce dalej od przycisku */
 #music-hint{margin:26px 0 0}   /* ID-owa reguła wcześniej dawała -8px; teraz wyraźny odstęp od przycisku */
+/* loader: rewers karty drży jak płomień świecy (skoki co kilka pikseli, bez wygładzania, skala 2x) */
+#loader .flame{width:128px;height:192px;animation:cardflick .9s steps(1) infinite;filter:drop-shadow(0 0 0 transparent)}
+@keyframes cardflick{
+  0%{transform:translate(0,0);filter:brightness(1)}
+  20%{transform:translate(calc(2*var(--u)),calc(-4*var(--u)));filter:brightness(1.18)}
+  40%{transform:translate(calc(-2*var(--u)),calc(-2*var(--u)));filter:brightness(.95)}
+  60%{transform:translate(0,calc(-6*var(--u)));filter:brightness(1.22)}
+  80%{transform:translate(calc(2*var(--u)),calc(-2*var(--u)));filter:brightness(1.05)}
+}
+@media(prefers-reduced-motion:reduce){#loader .flame{animation:none}}
