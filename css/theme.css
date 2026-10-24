@@ -106,3 +106,6 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #install{font-family:var(--px);font-size:calc(1.4*var(--f) + 2px)}
 #install-hint{margin:0;text-align:center;font-size:18px;opacity:.9}
 #app-sec h3{margin-top:22px}
+/* cztery zakładki wróżby mieszczą się w jednym rzędzie */
+.tabs{gap:0;padding:0 4px}
+.tabs button{min-width:0;padding:0 2px;font-size:calc(1.28*var(--f)*var(--gs))!important;white-space:nowrap}

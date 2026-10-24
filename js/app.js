@@ -167,6 +167,16 @@ function renderTab(name) {
     p(side.keywords[lang].join(', '));
     side.sentences[lang].forEach(s => p(s));
     p(cur.card.business[lang]);
+  } else if (name === 'key') {
+    const c = cur.card, major = c.arcana === 'major', SUIT_EL = { wands: 'fire', cups: 'water', swords: 'air', pentacles: 'earth' };
+    p(ui.keyHow);
+    p(`${ui.keyArcana}: ${major ? ui.major : ui.minor}`, 'lead'); p(major ? ui.keyMajor : ui.keyMinor);
+    if (!major) p(ui['suit_' + c.suit]);
+    p(`${ui.keySign}: ${cur.z.name}`, 'lead'); p(ui.keySignText); p(`„${cur.parts[2].text}”`);
+    p(`${ui.keyElement}: ${ui[cur.z.element]}`, 'lead'); p(ui.keyElementText);
+    p(major ? ui.keyElMajor : (SUIT_EL[c.suit] === cur.z.element ? ui.keyElMatch : ui.keyElDiff));
+    p(`${ui.keyPos}: ${cur.reversed ? ui.reversed : ui.upright}`, 'lead'); p(cur.reversed ? ui.keyPosRev : ui.keyPosUp);
+    p(ui.keyService, 'lead'); p(ui.keyServiceText); p(c.services.map(x => ui['svc_' + x]).join(', '));
   } else {
     p(`${cur.z.name}, ${ui[cur.z.element]}`, 'lead');
     p(cur.parts[2].text);
