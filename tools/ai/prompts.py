@@ -148,3 +148,16 @@ INTROS = {
  'introC': _I + "A lone mysterious dark silhouette of a hill with an old tower under a swirling sky of stars, a giant moon, and tarot cards floating in the air glowing with golden light, no people.",
 }
 for _k, _v in INTROS.items(): ASSETS5[_k] = (_v, '9:16')
+
+# Nowe tła splasha (styl 5): mało inwazyjne, środek ciemny i pusty pod tytuł
+_S = ("Retro early-1990s pixel art atmospheric background, portrait orientation, chunky pixels, very limited palette of about 16 colors, flat colors, minimal dithering, "
+      "very dark and low contrast, no people, no text, no letters, no signature, no watermark. The center of the image is dark and mostly empty so a bright title can be read over it; "
+      "details only near the edges. ")
+SPLASH = {
+ 'splashA': _S + "A quiet starry night sky with soft deep purple nebula clouds, a thin crescent moon high in a corner, tiny scattered stars.",
+ 'splashB': _S + "Heavy dark purple theater curtains framing both sides, a faint starry window far behind, two small lit candles at the bottom corners.",
+ 'splashC': _S + "A dark silhouette of a pine forest along the bottom edge under a starry violet sky, a few glowing fireflies near the edges.",
+ 'splashD': _S + "A dark gothic stone arch window frame at the edges with faint moonlight glow, silhouettes of bookshelves at the sides and floating dust motes.",
+ 'splashE': _S + "Drifting violet fog and faint translucent silhouettes of floating tarot cards near the edges, a few golden sparkles.",
+}
+for _k, _v in SPLASH.items(): ASSETS5[_k] = (_v, '9:16')
