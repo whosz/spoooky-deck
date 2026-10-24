@@ -281,7 +281,8 @@ $('#back').onclick = () => { if (screen === 's-pick') show('s-form'); else if (s
 document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => renderTab(b.dataset.tab));
 $('#share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
-  if (navigator.share) { try { await navigator.share({ title: ui.title, url }); } catch {} } else { await navigator.clipboard.writeText(url); $('#share').textContent = ui.copied; }
+  const text = ui.shareText.replace('{card}', cur.card.name[lang]);   // jedno zdanie zachęcające, z nazwą wylosowanej karty
+  if (navigator.share) { try { await navigator.share({ title: ui.title, text, url }); } catch {} } else { await navigator.clipboard.writeText(`${text} ${url}`); $('#share').textContent = ui.copied; }
 };
 document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => {
   if (b.dataset.lang === lang) return;

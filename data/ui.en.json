@@ -89,5 +89,6 @@
  "svc_identity": "visual identity",
  "svc_uxui": "UX/UI design",
  "svc_website": "a website",
- "svc_startup": "a launch package"
+ "svc_startup": "a launch package",
+ "shareText": "My card: {card}. See what reading the deck has for your company."
 }

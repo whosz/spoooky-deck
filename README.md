@@ -1,5 +1,7 @@
 # Spoooky Deck
 
+![Spoooky Deck: rewers karty, tytuł i hasło](img/og.png)
+
 Mroczna, pikselowa wyrocznia tarota dla firm. Wpisujesz imię, znak zodiaku i firmę, wybierasz kartę z wachlarza 78 kart, a wróżba zawsze kończy się wnioskiem, że firmie przyda się projektant. Na końcu jest link do oferty [whosz.pl](https://whosz.pl/offer/).
 
 Działa na żywo: https://whosz.pl/tarot/

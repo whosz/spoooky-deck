@@ -89,5 +89,6 @@
  "svc_identity": "identyfikacja wizualna",
  "svc_uxui": "projektowanie UX/UI",
  "svc_website": "strona www",
- "svc_startup": "pakiet startowy"
+ "svc_startup": "pakiet startowy",
+ "shareText": "Wylosowana karta: {card}. Sprawdź, jaką wróżbę talia ma dla Twojej firmy."
 }
