@@ -73,17 +73,6 @@ def emblem(path):
     c.save(path)
 emblem('img/ui/emblem.png')
 
-# pikselowe gradienty (dither Bayera, 2 kolory: tło/przezroczystość): fade-down (kryje u góry), fade-up (kryje u dołu); 16x64, w CSS skalowane x3
-def fades():
-    for name, flip, rows in (('fade-down', False, 44), ('fade-up', True, 80)):
-        c = Canvas(16, rows)
-        for y in range(rows):
-            a = 1 - y / (rows - 1) if not flip else y / (rows - 1)
-            a = a ** 1.15
-            for x in range(16):
-                if a > (BAYER[y % 4][x % 4] + .5) / 16 or a > .97: c.set(x, y, BG)
-        c.save(f'img/ui/{name}.png')
-fades()
 
 # ramka przodu karty (siatka 64x96, nakładka): ciemny kontur, złota linia, przerwa, cienka złota linia wewnętrzna, ozdobne narożniki
 def cardframe(path):

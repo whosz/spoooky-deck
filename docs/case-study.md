@@ -54,10 +54,10 @@ Efekt to aplikacja PWA (instalacja na telefonie, praca offline), po polsku i ang
 - 78 kart, 2 języki, 125 commitów w 2 dni.
 - Około 730 linii własnego JavaScriptu (bez bibliotek) i 370 linii CSS, czyli aplikacja bez frameworka.
 - Talia waży 316 KB, całość grafik i danych około 1 MB (bez muzyki 4,6 MB), 166 plików w pamięci podręcznej do pracy offline.
-- Kilkanaście skryptów w `tools/` (walidacja, testy, generowanie grafik, wdrożenie).
+- Kilkanaście skryptów w `tools/` (walidacja, testy, test dymny, generowanie grafik, wdrożenie).
 
 ## Ograniczenia i dalsze kroki
 
-- Aplikację sprawdzałem na symulowanych urządzeniach i w przeglądarce headless. Instalacja na ekranie głównym, żyroskop i zatrzymywanie dźwięku wymagają potwierdzenia na prawdziwym telefonie.
+- Aplikację testowałem w przeglądarce headless (na symulowanych telefonach, także najwęższym, 320 px) skryptem dymnym, który przechodzi cały przepływ w obu językach i sprawdza błędy, odpowiedzi serwera, formularz, zakładki, menu i obrazek wróżby (104 sprawdzenia). Na prawdziwym telefonie przepływ, instalację i udostępnianie potwierdził Mateusz.
 - Muzyka wygenerowana w Suno oraz czcionki Cross Stitch i Olde Tome mają warunki użycia, które trzeba sprawdzić przy publikacji komercyjnej.
 - Pomysły na później: żywioł jako osobny wątek wróżby (zrobione w prostej formie), historia wróżb na urządzeniu, audyt dostępności.
