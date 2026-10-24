@@ -69,6 +69,10 @@ function pixelScale() {
   const snapDown = (grid, target) => grid * Math.max(1, Math.floor(target * dpr / grid + .25)) / dpr;   // rozmiar <= ~target, wielokrotność siatki
   const snapUp = (grid, target) => grid * Math.max(1, Math.ceil(target * dpr / grid)) / dpr;           // rozmiar >= target (pokrycie)
   snapFn = snapDown; cardAvail = { reveal: Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625, read: Math.min(pw * .4, 170) };
+  // Tytuł: font Old English Gothic Pixel ma siatkę 20 pikseli na em, więc rozmiar = 20 x (całkowita liczba pikseli urządzenia na piksel czcionki)
+  const fitTitle = (em, maxCss) => 20 * Math.max(1, Math.floor(maxCss * dpr / (em * 20))) / dpr + 'px';
+  root.setProperty('--ft1', fitTitle(3.35, pw * .88));   // ekran startowy: "Spoooky" nad "Deck"
+  root.setProperty('--ft2', fitTitle(5.6, pw * .84));    // ekran wyboru: jedna linia
   root.setProperty('--u', u + 'px');
   root.setProperty('--cw', snapDown(64, Math.min(pw * .78, 340, (vh - 400) / 1.5) * .8625) + 'px');
   const fwPx = snapDown(64, Math.min(pw * .5, 216)); root.setProperty('--fw', fwPx + 'px');

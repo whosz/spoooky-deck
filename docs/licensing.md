@@ -8,7 +8,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 
 | Element | Skąd | Użycie komercyjne | Co trzeba zrobić |
 |---|---|---|---|
-| Czcionka **Cross Stitch** (tytuł) | dafont, Levi Szekeres | **Nie bez licencji.** Darmowa tylko do projektów osobistych i organizacji non-profit. | Kupić licencję komercyjną (20 USD, bez opłat dodatkowych, na jedną osobę lub firmę) albo zmienić czcionkę tytułu. |
+| Czcionka **Old English Gothic Pixel** (tytuł) | FontSpace / FontStruct | Tak (SIL OFL 1.1). | Zachować tekst licencji (jest w `fonts/` i `licenses.txt`). Czcionka zastąpiła Cross Stitch. |
 | Czcionka **Olde Tome** (nagłówki, przyciski) | LadyLiefy (itch.io) | **Prawdopodobnie tak.** Strona autorki łączy znacznik CC0 z prośbą o dobrowolną opłatę przy użyciu komercyjnym. | Potwierdzić z autorką i najlepiej zapłacić dowolną kwotę. |
 | **Muzyka** (`spoooky-theme.mp3`) | ACE-Step 1.5 (Replicate), licencja MIT | **Tak.** Karta modelu stwierdza, że wygenerowanej muzyki można używać komercyjnie. | Zachować notę licencyjną (jest w `licenses.txt`). Poprzedni utwór z darmowego planu Suno został wycofany (rzeczywista sytuacja: tylko użycie niekomercyjne). |
 | **Karty, tła, rewers, splash** | Flux 2 Pro przez Replicate | **Do potwierdzenia.** Model jest przeznaczony do zastosowań komercyjnych, ale nie znalazłem w źródłach tekstu warunków dla wyników. | Przeczytać warunki API Black Forest Labs i regulamin Replicate. |
@@ -19,7 +19,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 
 ## Szczegóły
 
-**Cross Stitch.** Plik `Terms.txt` z paczki mówi wprost: darmowe dla projektów osobistych i organizacji non-profit, licencja komercyjna kosztuje 20 USD, jest bezterminowa i obejmuje jedną osobę lub firmę (kontakt: https://www.loremipsum.ro/, levi@loremipsum.ro). Strona z aplikacją na whosz.pl promuje firmę, więc to użycie komercyjne. Plik fontu nie jest w publicznym repozytorium, a tytuł działa tylko na serwerze.
+**Cross Stitch.** Czcionka została wycofana (tylko użytek osobisty), zastąpiona Old English Gothic Pixel na licencji OFL.
 
 **Olde Tome.** Autorka pozwala używać i modyfikować font za darmo w pracach osobistych. Przy użyciu komercyjnym prosi o dobrowolną opłatę („pay what you can”), a jednocześnie oznacza zasób licencją CC0, która sama w sobie nie wymaga zapłaty. Sprzeczność wynika z jej opisu, więc bezpiecznie jest zapytać autorkę o potwierdzenie na piśmie. Atrybucja nie jest wymagana. Plik fontu nie jest w repozytorium.
 
@@ -31,7 +31,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 
 ## Lista kroków przed publikacją komercyjną
 
-1. **Cross Stitch:** kup licencję (20 USD) albo zamień tytuł na czcionkę OFL (Geist Pixel lub Jacquard 12). To jedyny punkt, w którym użycie komercyjne wprost łamie warunki.
+1. **Cross Stitch:** zrobione (zamieniona na Old English Gothic Pixel, OFL).
 2. **Muzyka:** zrobione (ACE-Step, MIT).
 3. **Grafiki:** przeczytaj warunki wyników w API Black Forest Labs i w regulaminie Replicate, zapisz wynik w tym dokumencie.
 4. **Olde Tome:** napisz do autorki i zapłać dowolną kwotę (lub potwierdź CC0 na piśmie).

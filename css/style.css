@@ -184,7 +184,7 @@ img{-webkit-user-drag:none;user-drag:none}
 /* ekran startowy: ilustracja jako tło sceny (jak na innych ekranach), tytuł w dwóch liniach na środku ekranu */
 .intro{justify-content:flex-start}
 .intro-top{margin:auto 0!important;padding-top:0}
-.intro-top h1{width:min-content;max-width:100%;margin:0 auto;text-align:center;font-size:min(96px,calc(var(--pw)*.2))!important;line-height:1.02}
+.intro-top h1{width:min-content;max-width:100%;margin:0 auto;text-align:center;font-size:var(--ft1,80px)!important;line-height:1.02}
 .intro-bottom{margin-top:0;padding-bottom:12px}
 /* ekran startowy: większy odstęp od dołu i między przyciskiem a podpowiedzią o muzyce */
 .intro-bottom{gap:18px;padding-bottom:36px}

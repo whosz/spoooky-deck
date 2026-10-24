@@ -30,7 +30,7 @@ css/      style, cards, theme, fonts
 js/       app, deck, oracle, fx, audio, share (+ vendor: tracery, seedrandom, zzfx)
 data/     cards.json, grammar.{pl,en}.json, zodiac.{pl,en}.json, ui.{pl,en}.json
 img/      cards/ (78 PNG), ui/, emoji/, icons/, og.png
-fonts/    woff2 (OFL); Cross Stitch i Olde Tome tylko na serwerze (patrz niżej)
+fonts/    woff2/ttf (OFL); Olde Tome tylko na serwerze (patrz niżej)
 audio/    spoooky-theme.mp3
 schema/   schematy JSON kart, gramatyki i zodiaku
 tools/    generatory, walidatory i skrypty (deploy, service worker, grafika)
@@ -65,5 +65,5 @@ Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworz
 Autor: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Szczegóły licencji zależności, fontów i emoji: [licenses.txt](licenses.txt). Warunki użycia komercyjnego i lista kroków na później: [docs/licensing.md](docs/licensing.md). Licencje komercyjne (m.in. czcionki, plan Suno) świadomie odłożono do czasu, gdy projekt zyska zasięg.
 
 - Muzyka `audio/spoooky-theme.mp3` została wygenerowana modelem ACE-Step 1.5 (licencja MIT, komercyjne użycie wyników dozwolone według karty modelu). Skrypt: `tools/ai/music.py`.
-- Fonty Cross Stitch (dafont, tylko do użytku prywatnego i niekomercyjnego) i Olde Tome nie są dołączone do repozytorium. Bez nich tytuł i nagłówki używają fontów zastępczych.
+- Czcionka tytułu: Old English Gothic Pixel (OFL, dołączona w `fonts/`). Czcionka Olde Tome (nagłówki) nie jest dołączona do repozytorium, bez niej nagłówki używają fontu zastępczego.
 - Pikselowe emoji: SerenityOS (BSD-2). Teksty wróżb sprawdzano skillami humanizer (`.claude/skills/`).

@@ -43,7 +43,7 @@ async function drawCard(card, lang) {
 
 export async function makeShareImage({ card, reversed, quote, company, lang, ui }) {
   const glyphs = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
-  await Promise.all([document.fonts.load('52px "Olde Tome"', glyphs), document.fonts.load('96px "Cross Stitch"'), document.fonts.load('40px "Geist Pixel"', glyphs)]);
+  await Promise.all([document.fonts.load('52px "Olde Tome"', glyphs), document.fonts.load('120px "Old English Gothic Pixel"'), document.fonts.load('40px "Geist Pixel"', glyphs)]);
   const [cardCanvas, bg] = await Promise.all([drawCard(card, lang), loadImg('img/ui/bg-intro.png')]);
   const c = document.createElement('canvas'); c.width = 1080; c.height = 1920;
   const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
@@ -57,10 +57,10 @@ export async function makeShareImage({ card, reversed, quote, company, lang, ui 
   const q = lang === 'pl' ? `„${quote}”` : `“${quote}”`;
   g.font = '56px "Olde Tome"'; const qLines = wrap(g, q, 900).slice(0, 4);
   const co = (company || '').slice(0, 40);
-  const TITLE = 104, GAP1 = 56, CARD = cardCanvas.height, GAP2 = 70, POS = 44, GAP3 = 46, QH = qLines.length * 72, GAP4 = 64, FOOT = co ? 38 + 20 + 38 : 38;
+  const TITLE = 120, GAP1 = 56, CARD = cardCanvas.height, GAP2 = 70, POS = 44, GAP3 = 46, QH = qLines.length * 72, GAP4 = 64, FOOT = co ? 38 + 20 + 38 : 38;
   const total = TITLE + GAP1 + CARD + GAP2 + POS + GAP3 + QH + GAP4 + FOOT;
   let y = Math.round((1920 - total) / 2);
-  g.fillStyle = GOLD; g.font = `${TITLE}px "Cross Stitch"`; g.shadowColor = '#000'; g.shadowOffsetY = 6; g.fillText('Spoooky Deck', 540, y + TITLE - 18); g.shadowOffsetY = 0;
+  g.fillStyle = GOLD; g.font = `${TITLE}px "Old English Gothic Pixel"`; g.shadowColor = '#000'; g.shadowOffsetY = 6; g.fillText('Spoooky Deck', 540, y + TITLE - 18); g.shadowOffsetY = 0;
   y += TITLE + GAP1;
   // karta (po obrocie o 180 stopni, jeśli odwrócona) z pikselową czerwoną poświatą dla odwróconej
   const cx = (1080 - cardCanvas.width) / 2, cy = y;

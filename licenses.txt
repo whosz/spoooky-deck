@@ -62,8 +62,7 @@ Copyright 2019 David Bau. Licencja MIT (tekst jak w ZzFX powyżej, z innym wła�
 === Tracery (Apache-2.0) ===
 Kate Compton. Pełny tekst licencji: https://www.apache.org/licenses/LICENSE-2.0 , projekt: https://github.com/galaxykate/tracery
 
-=== Cross Stitch (Levi Szekeres, dafont.com) ===
-Użyta w tytule "Spoooky Deck". Licencja: darmowa do projektów osobistych i organizacji non-profit; użycie komercyjne wymaga licencji (https://www.loremipsum.ro/). Plik fontu nie jest dołączony do repozytorium.
-
+=== Old English Gothic Pixel (ColorSwitchFan25, FontStruct) ===
+Użyta w tytule "Spoooky Deck". Licencja SIL Open Font License 1.1 (pełny tekst: fonts/OldEnglishGothicPixel-OFL.txt), użycie komercyjne dozwolone. Czcionka ma 85 znaków (bez polskich liter), więc służy tylko do tytułu.
 === Olde Tome (LadyLiefy) ===
 Użyta w nagłówkach, cytatach, przyciskach i na kartach. Autorka (https://ladyliefy.itch.io/olde-tome) pozwala używać fontu za darmo w pracach osobistych, a przy użyciu komercyjnym prosi o dobrowolną opłatę; zasób jest oznaczony jako CC0. Szczegóły i kroki: docs/licensing.md. Plik fontu nie jest dołączony do repozytorium.

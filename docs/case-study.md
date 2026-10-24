@@ -59,5 +59,5 @@ Efekt to aplikacja PWA (instalacja na telefonie, praca offline), po polsku i ang
 ## Ograniczenia i dalsze kroki
 
 - Aplikację testowałem w przeglądarce headless (na symulowanych telefonach, także najwęższym, 320 px) skryptem dymnym, który przechodzi cały przepływ w obu językach i sprawdza błędy, odpowiedzi serwera, formularz, zakładki, menu i obrazek wróżby (104 sprawdzenia). Na prawdziwym telefonie przepływ, instalację i udostępnianie potwierdził Mateusz.
-- Czcionka Cross Stitch ma warunki użycia, które trzeba sprawdzić przy publikacji komercyjnej (patrz docs/licensing.md).
+- Szczegóły licencji w docs/licensing.md.
 - Pomysły na później: żywioł jako osobny wątek wróżby (zrobione w prostej formie), historia wróżb na urządzeniu, audyt dostępności.
