@@ -57,7 +57,7 @@ Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworz
 
 ## Autorzy i licencje
 
-Autor: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Szczegóły licencji zależności, fontów i emoji: [licenses.txt](licenses.txt).
+Autor: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Szczegóły licencji zależności, fontów i emoji: [licenses.txt](licenses.txt). Warunki użycia komercyjnego i lista kroków: [docs/licensing.md](docs/licensing.md).
 
 - Muzyka `audio/candlelit-tarot.mp3` (Candlelit Tarot) została wygenerowana przez Suno AI. Warunki użycia (np. komercyjne) zależą od planu Suno, z którego korzystał autor.
 - Fonty Cross Stitch (dafont, tylko do użytku prywatnego i niekomercyjnego) i Olde Tome nie są dołączone do repozytorium. Bez nich tytuł i nagłówki używają fontów zastępczych.
