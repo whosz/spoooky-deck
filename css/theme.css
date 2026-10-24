@@ -113,3 +113,24 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* ikony w nagłówkach zakładki Klucz (te same pikselowe emoji co w rzędzie pod kartą) */
 .text .lead{display:flex;align-items:center;gap:12px}
 .text .lead .emoji{height:30px;width:auto;flex:none}
+
+/* ---- animacje ---- */
+/* tytuł: gasnąca litera */
+#s-intro h1 span{transition:none}
+#s-intro h1 span.off{opacity:.18;text-shadow:none}
+/* wróżba: akapity wchodzą po kolei (krok po kroku, bez płynnego wygładzania) */
+.text p.stag{opacity:0;animation:pin .4s steps(5) forwards}
+@keyframes pin{from{opacity:0;transform:translateY(calc(5*var(--u)))}to{opacity:1;transform:none}}
+/* przejście przez mgłę po "Wejdź w mgłę" */
+.fog{position:absolute;inset:0;z-index:35;pointer-events:none;opacity:0;background:#0b0d17 url(../img/ui/bg-intro.png) center top/var(--sw) auto no-repeat;image-rendering:pixelated}
+.fog::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,#6b3a8588 0,#2a174099 45%,#0b0d17dd 100%)}
+.fog.in{opacity:1;transition:opacity .34s steps(6)}
+.fog.out{opacity:0;transition:opacity .5s steps(8)}
+/* menu: hamburger zamienia się w krzyżyk, głośnik podskakuje */
+.burger i{transition:transform .22s steps(4),opacity .22s steps(2)}
+#menu-btn[aria-expanded=true] .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#menu-btn[aria-expanded=true] .burger i:nth-child(2){opacity:0}
+#menu-btn[aria-expanded=true] .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mute img.bump{animation:bump .36s steps(4)}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.35) rotate(-8deg)}70%{transform:scale(.9) rotate(5deg)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.text p.stag{opacity:1;animation:none}.fog{display:none}.burger i{transition:none}#mute img.bump{animation:none}}

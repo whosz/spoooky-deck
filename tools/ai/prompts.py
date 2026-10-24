@@ -174,3 +174,16 @@ OGBG = {
  'ogE': _O + "An old observatory interior with a brass telescope and star charts on the left wall, a round dome opening showing the night sky.",
 }
 for _k, _v in OGBG.items(): ASSETS5[_k] = (_v, '16:9')
+
+# Nowe świece na desktop (styl 5, zgodne z kartami): zapalona świeca nie jest potrzebna, płomień jest rysowany w kodzie i animowany
+_C = ("Retro early-1990s pixel art sprite, chunky pixels, limited palette of about 16 colors, thick dark outlines, flat colors with a little ordered dithering, "
+      "a single unlit wax candle with a short black wick and NO flame, side view, centered, tall and slender, melted wax drips running down its sides, "
+      "small chunks of wax scattered around the base, standing in a small dark metal dish, on a plain solid pure bright green (#00ff00) background with nothing else, no shadow, no text, no signature. ")
+CANDLES = {
+ 'candleA': _C + "Warm cream and beige wax with orange-tinted drips, dark iron dish.",
+ 'candleB': _C + "Dusty purple and lavender wax with pale drips, dark green-black dish, a few tiny golden sparkles around.",
+ 'candleC': _C + "Thick pillar candle of grey-brown wax with golden highlights and large drips, tarnished brass dish.",
+ 'candleD': _C + "Tall tapered ivory candle with elegant drips, a small golden candlestick holder with a wide drip tray.",
+ 'candleE': _C + "Stubby melted candle of dark violet wax with glowing pink-orange drips and wax chunks, ornate dark dish.",
+}
+for _k, _v in CANDLES.items(): ASSETS5[_k] = (_v, '2:3')

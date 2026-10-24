@@ -20,10 +20,20 @@ export function startBg() {
     sparks = Array.from({ length: 36 }, () => ({ x: rnd(0, W), y: rnd(0, H), v: rnd(.1, .4), d: rnd(0, 6.28), c: SPARK[Math.floor(rnd(0, SPARK.length))] }));
   };
 
-  const candleImg = new Image(); candleImg.src = 'img/ui/candle.png';
+  const cq = new URLSearchParams(location.search).get('candle');   // ?candle=A..E: podgląd wariantów świecy
+  const candleImg = new Image(); candleImg.src = `img/ui/candle${cq ? '-' + cq : ''}.png`;
+  let wickDx = 0;   // przesunięcie knota względem środka sprite'a (wykrywane z ciemnych pikseli w górnych wierszach)
+  candleImg.onload = () => {
+    try {
+      const w = candleImg.naturalWidth, h = Math.min(12, candleImg.naturalHeight), cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const cg = cv.getContext('2d'); cg.drawImage(candleImg, 0, 0); const d = cg.getImageData(0, 0, w, h).data; let sx = 0, n = 0;
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = (y * w + x) * 4; if (d[i + 3] > 200 && d[i] + d[i + 1] + d[i + 2] < 150) { sx += x; n++; } }
+      wickDx = n ? Math.round(sx / n - w / 2) : 0;
+    } catch {}
+  };
   const candle = (x, t) => {   // sprite świecy (AI) + animowany płomień i poświata
     if (!candleImg.complete || !candleImg.naturalWidth) return;
-    const w = candleImg.naturalWidth, h = candleImg.naturalHeight, top = H - h, fx = x + Math.round(w * .05);
+    const w = candleImg.naturalWidth, h = candleImg.naturalHeight, top = H - h, fx = x + wickDx;
     const fl = Math.floor(2 + Math.sin(t / 130 + x) * 1 + Math.random());
     const glow = g.createRadialGradient(fx, top - 4, 2, fx, top - 4, 52);
     glow.addColorStop(0, 'rgba(255,179,71,.30)'); glow.addColorStop(1, 'rgba(255,179,71,0)');
@@ -65,6 +75,8 @@ export function startBg() {
 let PX = 3;   // 1 piksel iskry w px CSS (całkowita liczba pikseli urządzenia)
 let top, tg, parts = [], running = false;
 const FLAME = ['#ffb347', '#ffe08a', '#ffffff', '#d8aa48'], BLOOD = ['#b3243a', '#e0506a', '#7a1c2c', '#ffffff'];
+// Kolor impulsu odkrycia zależy od maści: ogień, woda, stal, złoto, a dla Wielkich Arkanów biel ze złotem
+const SUIT_COLORS = { wands: FLAME, cups: ['#3fd0c9', '#a8f0e8', '#ffffff', '#1f6b7a'], swords: ['#7fa8d8', '#c0d8f0', '#ffffff', '#506690'], pentacles: ['#d8aa48', '#f0d27a', '#fff6c8', '#8a6a2e'], major: ['#f4efe6', '#ffe08a', '#d8aa48', '#ffffff'] };
 
 function ensureTop() {
   if (top) return;
@@ -81,7 +93,7 @@ function sizeTop() {
 function loopTop() {
   tg.clearRect(0, 0, top.width, top.height);
   for (const p of parts) {
-    p.x += p.vx; p.y += p.vy; if (!p.amb) { p.vy += .05; p.vx *= .985; } else p.x += Math.sin((p.life + p.y) / 14) * .12; p.life--;
+    p.x += p.vx; p.y += p.vy; if (!p.amb && !p.ring) { p.vy += .05; p.vx *= .985; } else p.x += Math.sin((p.life + p.y) / 14) * .12; p.life--;
     tg.globalAlpha = Math.min(1, p.life / 20); tg.fillStyle = p.c;
     const s = Math.round(p.s), x = Math.round(p.x), y = Math.round(p.y);
     if (p.star) { tg.fillRect(x - s, y, 2 * s + 1, 1); tg.fillRect(x, y - s, 1, 2 * s + 1); } else tg.fillRect(x, y, s, s);
@@ -91,15 +103,17 @@ function loopTop() {
   if (parts.length) requestAnimationFrame(loopTop); else { running = false; tg.clearRect(0, 0, top.width, top.height); }
 }
 
-export function revealFx(reversed, cardEl) {
+export function revealFx(reversed, cardEl, suit) {
   if (reduced) return;
   ensureTop(); const pr = sizeTop(), cr = cardEl.getBoundingClientRect();
-  const cx = (cr.left + cr.width / 2 - pr.left) / PX, cy = (cr.top + cr.height / 2 - pr.top) / PX, cols = reversed ? BLOOD : FLAME;
+  const cx = (cr.left + cr.width / 2 - pr.left) / PX, cy = (cr.top + cr.height / 2 - pr.top) / PX, cols = reversed ? BLOOD : (SUIT_COLORS[suit || 'major'] || FLAME);
   for (let i = 0; i < 90; i++) {
     const a = Math.random() * Math.PI * 2, v = .6 + Math.random() * 2.4, edge = Math.random() < .5;
     const x = cx + (edge ? Math.cos(a) * cr.width / PX / 2 : (Math.random() - .5) * cr.width / PX), y = cy + (edge ? Math.sin(a) * cr.height / PX / 2 : (Math.random() - .5) * cr.height / PX);
     parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - .6, life: 35 + Math.random() * 45, s: Math.random() < .2 ? 2 : 1, star: Math.random() < .15, c: cols[Math.floor(Math.random() * cols.length)] });
   }
+  // fala uderzeniowa: pierścień iskier rozchodzący się równo od środka karty
+  for (let i = 0; i < 56; i++) { const a = i * Math.PI * 2 / 56; parts.push({ x: cx, y: cy, vx: Math.cos(a) * 2.1, vy: Math.sin(a) * 2.1, life: 30, s: 2, star: false, c: cols[i % cols.length], ring: true }); }
   if (!running) { running = true; requestAnimationFrame(loopTop); }
   const ph = $phone(); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => ph.classList.remove('shake'), 350);
 }
@@ -209,3 +223,39 @@ export function stopAmbient() { ambient = false; clearTimeout(ambTimer); }
 const THEMES = { wands: [200, 100, 40], cups: [40, 150, 170], swords: [110, 140, 190], pentacles: [190, 150, 60], major: [130, 70, 170], reversed: [180, 40, 60], base: [70, 84, 130] };
 export function setTheme(suit, reversed) { fogRGB = THEMES[reversed ? 'reversed' : (suit || 'major')] || THEMES.base; }
 export function resetTheme() { fogRGB = THEMES.base; }
+
+// ---- tytuł: pojedyncze litery gasną na chwilę jak w zepsutym neonie ----
+export function flickerTitle(h) {
+  if (reduced || !h) return;
+  if (!h.querySelector('span')) {   // owijamy litery w <span> (spacje zostają zwykłym tekstem, żeby tytuł się łamał)
+    const t = h.textContent; h.setAttribute('aria-label', t); h.replaceChildren();
+    for (const ch of t) { if (ch === ' ') h.append(' '); else { const sp = document.createElement('span'); sp.textContent = ch; sp.setAttribute('aria-hidden', 'true'); h.append(sp); } }
+  }
+  if (h._flick) return; h._flick = true;
+  const spans = () => [...h.querySelectorAll('span')];
+  const tick = () => {
+    const sp = spans(), intro = document.querySelector('#s-intro');
+    if (sp.length && intro && !intro.hidden && !document.hidden) {
+      const n = Math.random() < .3 ? 2 : 1;
+      for (let k = 0; k < n; k++) { const e = sp[Math.floor(Math.random() * sp.length)]; e.classList.add('off'); setTimeout(() => e.classList.remove('off'), 90 + Math.random() * 90); setTimeout(() => { e.classList.add('off'); setTimeout(() => e.classList.remove('off'), 60); }, 190 + Math.random() * 60); }
+    }
+    setTimeout(tick, 1100 + Math.random() * 2600);
+  };
+  setTimeout(tick, 1600);
+}
+
+// ---- iskry za kursorem (tylko mysz, w obrębie okna aplikacji) ----
+let sparkInit = false;
+export function cursorSparks() {
+  if (reduced || sparkInit || !matchMedia('(pointer: fine)').matches) return; sparkInit = true;
+  let last = 0;
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const now = performance.now(); if (now - last < 45) return; last = now;
+    const ph = $phone(), r = ph.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+    ensureTop(); if (!top.width || Math.abs(top.width * PX - r.width) > PX * 2) sizeTop();
+    for (let i = 0; i < 2; i++) parts.push({ x: (e.clientX - r.left) / PX + (Math.random() - .5) * 2, y: (e.clientY - r.top) / PX + (Math.random() - .5) * 2, vx: (Math.random() - .5) * .5, vy: .1 + Math.random() * .3, life: 18 + Math.random() * 14, s: 1, star: Math.random() < .12, c: GOLD[1 + Math.floor(Math.random() * 3)] });
+    if (!running) { running = true; requestAnimationFrame(loopTop); }
+  }, { passive: true });
+}

@@ -1,6 +1,6 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
 import { compose } from './oracle.js';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard } from './fx.js';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
 
@@ -160,7 +160,7 @@ function reveal() {
   const t = reduced ? 0 : 1;
   sfx('pick');
   setTimeout(() => { $('#card').classList.add('flip'); sfx('flip'); }, 50 * t);
-  setTimeout(() => { sfx(reversed ? 'hitRev' : 'hit'); revealFx(reversed, $('#card')); }, 300 * t);
+  setTimeout(() => { sfx(reversed ? 'hitRev' : 'hit'); revealFx(reversed, $('#card'), card.suit); }, 300 * t);
   setTimeout(() => fades.forEach(f => f.classList.add('in')), 500 * t);
 }
 
@@ -190,6 +190,7 @@ function renderTab(name) {
     lead(cur.reversed ? '1F53B' : '1F53A', `${ui.keyPos}: ${cur.reversed ? ui.reversed : ui.upright}`); p(cur.reversed ? ui.keyPosRev : ui.keyPosUp);
     lead('2728', ui.keyService); p(ui.keyServiceText); p(c.services.map(x => ui['svc_' + x]).join(', '));
   }
+  [...box.children].forEach((c, i) => { c.classList.add('stag'); c.style.animationDelay = Math.min(i, 12) * 95 + 'ms'; });   // akapity wchodzą po kolei
   box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
 }
 
@@ -264,7 +265,14 @@ function pick() {
 
 const restart = () => { resetTheme(); seed = null; history.replaceState(null, '', location.pathname + `?lang=${lang}`); $('#share').textContent = ui.share; show('s-form'); };
 
-$('#enter').onclick = () => show('s-form');
+// Przejście przez mgłę: ekran zasnuwa się mgłą, w jej szczycie zmieniamy ekran, potem mgła opada.
+function fogTo(fn) {
+  if (reduced) return fn();
+  const f = el('div', 'fog'); $('#phone').append(f);
+  requestAnimationFrame(() => requestAnimationFrame(() => f.classList.add('in')));
+  setTimeout(() => { fn(); f.classList.remove('in'); f.classList.add('out'); setTimeout(() => f.remove(), 520); }, 360);
+}
+$('#enter').onclick = () => fogTo(() => show('s-form'));
 $('#form').onsubmit = e => {
   e.preventDefault();
   // oba pola wymagane (także bez samych spacji): komunikat przeglądarki + podświetlenie pierwszego pustego
@@ -283,7 +291,7 @@ $('#share').onclick = async () => {
 };
 document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => {
   if (b.dataset.lang === lang) return;
-  lang = b.dataset.lang; cur = null; const was = screen; await load(); show(was === 's-intro' ? 's-intro' : 's-form'); toggleMenu();
+  lang = b.dataset.lang; cur = null; const was = screen; await load(); flickerTitle($('#s-intro h1')); show(was === 's-intro' ? 's-intro' : 's-form'); toggleMenu();
 });
 
 // Dźwięk startuje po pierwszym geście; przycisk wyciszenia pokazuje stan.
@@ -295,11 +303,12 @@ if (isMuted()) $('#music-hint').classList.add('gone');
 else for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, () => $('#music-hint').classList.add('gone'), { once: true, capture: true }); $('#menu-back').onclick = closeMenu;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 document.addEventListener('click', e => { if (e.target.closest('.cta, .mini, .tabs button') && !e.target.closest('#mute')) sfx('click'); });
-$('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); };
+$('#mute').onclick = () => { startAudio(); toggleMute(); paintMute(); const ic = $('#mute img'); ic.classList.remove('bump'); void ic.offsetWidth; ic.classList.add('bump'); if (!isMuted()) sfx('click'); };
 
 pixelScale();
-startBg();
+startBg(); cursorSparks();
 await load();
+flickerTitle($('#s-intro h1'));
 show('s-intro');
 // Podgląd karty do kontroli talii: ?card=ar00 (opcjonalnie &rev=1) od razu pokazuje wybraną kartę.
 {
