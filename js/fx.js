@@ -20,8 +20,7 @@ export function startBg() {
     sparks = Array.from({ length: 36 }, () => ({ x: rnd(0, W), y: rnd(0, H), v: rnd(.1, .4), d: rnd(0, 6.28), c: SPARK[Math.floor(rnd(0, SPARK.length))] }));
   };
 
-  const cq = new URLSearchParams(location.search).get('candle');   // ?candle=A..E: podgląd wariantów świecy
-  const candleImg = new Image(); candleImg.src = `img/ui/candle${cq ? '-' + cq : ''}.png`;
+  const candleImg = new Image(); candleImg.src = 'img/ui/candle.png';
   let wickDx = 0;   // przesunięcie knota względem środka sprite'a (wykrywane z ciemnych pikseli w górnych wierszach)
   candleImg.onload = () => {
     try {
