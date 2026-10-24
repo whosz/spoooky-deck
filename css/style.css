@@ -81,6 +81,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible,#fan:focus-visible
 #s-pick{overflow:hidden;margin:0 -16px -16px;width:calc(100% + 32px);padding:0 16px 16px}
 #view:has(#s-pick:not([hidden])) footer{display:none}
 .hint{position:relative;z-index:50;text-shadow:0 2px 0 #000,0 0 8px #000}
+body:has(#menu:not([hidden])) #s-pick .hint{visibility:hidden}
 #loader{position:absolute;inset:0;z-index:20;background:var(--bg);display:grid;place-items:center;transition:opacity .5s ease}
 #loader.hide{opacity:0;pointer-events:none}
 #loader .flame{width:64px;height:64px;image-rendering:pixelated;animation:lf .6s steps(2) infinite}
