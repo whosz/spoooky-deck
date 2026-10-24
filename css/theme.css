@@ -109,3 +109,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* cztery zakładki wróżby mieszczą się w jednym rzędzie */
 .tabs{gap:0;padding:0 4px}
 .tabs button{min-width:0;padding:0 2px;font-size:calc(1.5*var(--f)*var(--gs))!important;white-space:nowrap}
+#rname{font-size:calc(2.7*var(--f)*var(--gs))}   /* tytuł karty na ekranie wróżby o 10% mniejszy (3 -> 2,7) */
