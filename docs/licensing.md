@@ -10,7 +10,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 |---|---|---|---|
 | Czcionka **Cross Stitch** (tytuł) | dafont, Levi Szekeres | **Nie bez licencji.** Darmowa tylko do projektów osobistych i organizacji non-profit. | Kupić licencję komercyjną (20 USD, bez opłat dodatkowych, na jedną osobę lub firmę) albo zmienić czcionkę tytułu. |
 | Czcionka **Olde Tome** (nagłówki, przyciski) | LadyLiefy (itch.io) | **Prawdopodobnie tak.** Strona autorki łączy znacznik CC0 z prośbą o dobrowolną opłatę przy użyciu komercyjnym. | Potwierdzić z autorką i najlepiej zapłacić dowolną kwotę. |
-| **Muzyka** (Candlelit Tarot) | Suno AI | **Zależy od planu.** Plan darmowy: tylko niekomercyjnie. Plany Pro i Premier: prawa komercyjne, także po anulowaniu. | Sprawdzić, na jakim planie powstał utwór. Jeśli na darmowym, trzeba wygenerować go ponownie na płatnym. |
+| **Muzyka** (`spoooky-theme.mp3`) | ACE-Step 1.5 (Replicate), licencja MIT | **Tak.** Karta modelu stwierdza, że wygenerowanej muzyki można używać komercyjnie. | Zachować notę licencyjną (jest w `licenses.txt`). Poprzedni utwór z darmowego planu Suno został wycofany (rzeczywista sytuacja: tylko użycie niekomercyjne). |
 | **Karty, tła, rewers, splash** | Flux 2 Pro przez Replicate | **Do potwierdzenia.** Model jest przeznaczony do zastosowań komercyjnych, ale nie znalazłem w źródłach tekstu warunków dla wyników. | Przeczytać warunki API Black Forest Labs i regulamin Replicate. |
 | Czcionki **Geist Pixel**, **Jacquard 12** | Google Fonts | Tak (SIL Open Font License). | Zachować informację o licencji (jest w `licenses.txt`). |
 | Pikselowe emoji | SerenityOS | Tak (BSD 2-Clause). | Zachować tekst licencji (jest w `img/emoji/LICENSE` i `licenses.txt`). |
@@ -23,7 +23,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 
 **Olde Tome.** Autorka pozwala używać i modyfikować font za darmo w pracach osobistych. Przy użyciu komercyjnym prosi o dobrowolną opłatę („pay what you can”), a jednocześnie oznacza zasób licencją CC0, która sama w sobie nie wymaga zapłaty. Sprzeczność wynika z jej opisu, więc bezpiecznie jest zapytać autorkę o potwierdzenie na piśmie. Atrybucja nie jest wymagana. Plik fontu nie jest w repozytorium.
 
-**Muzyka (Suno).** Według oficjalnej pomocy Suno utwory z planu darmowego pozostają własnością Suno i można ich używać tylko niekomercyjnie. Użytkownik planu Pro lub Premier w chwili tworzenia utworu dostaje prawa komercyjne, które zostają po anulowaniu subskrypcji. Wykupienie planu później nie zmienia statusu utworów stworzonych wcześniej na darmowym planie. Suno zastrzega też, że nie gwarantuje, iż wynik będzie unikalny ani że powstanie prawo autorskie do wyniku. Utwór leży w repozytorium (`audio/candlelit-tarot.mp3`), więc przy niekomercyjnym statusie jego publiczna dostępność też jest ryzykiem.
+**Muzyka.** Pierwotny utwór pochodził z darmowego planu Suno (tylko użycie niekomercyjne), więc został zastąpiony nowym, wygenerowanym modelem ACE-Step 1.5 na licencji MIT; jego karta modelu dopuszcza komercyjne użycie wyników.
 
 **Grafiki (Flux 2 Pro).** Obrazy powstały z opisów słownych, bez obrazów referencyjnych cudzych prac. Model Flux 2 Pro jest dostępny wyłącznie przez API i opisywany jako komercyjny, ale w sprawdzonych źródłach nie znalazłem cytatu z warunków dotyczących wyników. Sprawdź w pierwszej kolejności warunki API Black Forest Labs, a potem regulamin Replicate. Należy też pamiętać, że według amerykańskiego urzędu praw autorskich dzieła wygenerowane w całości przez AI, bez istotnego wkładu twórczego człowieka, nie podlegają rejestracji. Wkład kierunku artystycznego (dobór wariantów, kolorów, układu, obróbka skryptami) może mieć znaczenie, ale nie jest to gwarancja.
 
@@ -32,7 +32,7 @@ To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stro
 ## Lista kroków przed publikacją komercyjną
 
 1. **Cross Stitch:** kup licencję (20 USD) albo zamień tytuł na czcionkę OFL (Geist Pixel lub Jacquard 12). To jedyny punkt, w którym użycie komercyjne wprost łamie warunki.
-2. **Muzyka:** sprawdź plan Suno z dnia generowania. Jeśli darmowy, wygeneruj utwór ponownie na płatnym planie albo wymień muzykę.
+2. **Muzyka:** zrobione (ACE-Step, MIT).
 3. **Grafiki:** przeczytaj warunki wyników w API Black Forest Labs i w regulaminie Replicate, zapisz wynik w tym dokumencie.
 4. **Olde Tome:** napisz do autorki i zapłać dowolną kwotę (lub potwierdź CC0 na piśmie).
 5. **Repozytorium:** wybierz licencję lub zostaw wszystkie prawa zastrzeżone.

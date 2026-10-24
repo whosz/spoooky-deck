@@ -9,7 +9,7 @@ const PRESETS = {  // parametry zzfx(volume, randomness, frequency, attack, sust
   hitRev: [[1, , 55, .02, .25, .6, 2, 3, -3, , , , , .3, , .2, , .9, .3], [.4, , 196, .02, .2, .6, 3, 1.5, -1, , , , , , , , .12, .7, .2]],
 };
 const get = () => { try { return localStorage.getItem('sd_mute') === '1'; } catch { return false; } };
-const MUSIC = 'audio/candlelit-tarot.mp3';
+const MUSIC = 'audio/spoooky-theme.mp3';
 let muted = get(), music = null, started = false, lastErr = '', cachedTried = false;
 
 // Muzyka offline: po kilku sekundach grania zapisujemy plik w osobnej pamięci (sd-audio, nie jest czyszczona przy aktualizacjach).
@@ -17,7 +17,8 @@ let muted = get(), music = null, started = false, lastErr = '', cachedTried = fa
 async function cacheMusic() {
   try {
     if (!('caches' in window) || (navigator.connection && navigator.connection.saveData)) return;
-    const c = await caches.open('sd-audio'); if (await c.match(MUSIC)) return;
+    const c = await caches.open('sd-audio'); await c.delete('audio/candlelit-tarot.mp3');   // sprzątanie po poprzednim utworze
+    if (await c.match(MUSIC)) return;
     const r = await fetch(MUSIC); if (r.ok) await c.put(MUSIC, r);
   } catch {}
 }

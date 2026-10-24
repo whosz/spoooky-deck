@@ -24,7 +24,7 @@ Efekt to aplikacja PWA (instalacja na telefonie, praca offline), po polsku i ang
 | Treść | 78 kart po polsku i angielsku, 312 zdań znaczeń, 48 omenów znaków. Pisały je agenty (Haiku, potem Sonnet) według schematu, a skrypt walidował każdą partię. Redakcja przez skille humanizer. |
 | Interfejs | Układ mobile first, na komputerze okno wielkości telefonu w ramie jak rama obrazu. Style: pikselowe ramki 9-slice, fonty, tła scen. |
 | Talia | Najpierw własne ilustracje z kodu, potem 78 kart z modelu graficznego (Flux 2 Pro), sprowadzone skryptem do siatki 64×96 i 16 kolorów. |
-| Animacje i dźwięk | Tasowanie, rozdanie, wachlarz z bezwładnością, iskry, połysk, pochylanie kursorem, żyroskopem i przeciąganiem, efekty ZzFX, muzyka z Suno AI. |
+| Animacje i dźwięk | Tasowanie, rozdanie, wachlarz z bezwładnością, iskry, połysk, pochylanie kursorem, żyroskopem i przeciąganiem, efekty ZzFX, muzyka generowana modelem ACE-Step (MIT). |
 | PWA i wdrożenie | Manifest, service worker, ikony, `.htaccess`, obrazek wróżby do zapisania, grafika do udostępniania linku. Testy na produkcji po każdym etapie. |
 
 ## Najważniejsze decyzje
@@ -59,5 +59,5 @@ Efekt to aplikacja PWA (instalacja na telefonie, praca offline), po polsku i ang
 ## Ograniczenia i dalsze kroki
 
 - Aplikację testowałem w przeglądarce headless (na symulowanych telefonach, także najwęższym, 320 px) skryptem dymnym, który przechodzi cały przepływ w obu językach i sprawdza błędy, odpowiedzi serwera, formularz, zakładki, menu i obrazek wróżby (104 sprawdzenia). Na prawdziwym telefonie przepływ, instalację i udostępnianie potwierdził Mateusz.
-- Muzyka wygenerowana w Suno oraz czcionki Cross Stitch i Olde Tome mają warunki użycia, które trzeba sprawdzić przy publikacji komercyjnej.
+- Czcionka Cross Stitch ma warunki użycia, które trzeba sprawdzić przy publikacji komercyjnej (patrz docs/licensing.md).
 - Pomysły na później: żywioł jako osobny wątek wróżby (zrobione w prostej formie), historia wróżb na urządzeniu, audyt dostępności.
