@@ -10,7 +10,7 @@
 .front .nm{font-size:9cqw;line-height:1.2}
 .card.rev .front{border-color:var(--blood)}
 
-#fan{position:relative;width:calc(100% + 32px);margin:0 -16px;height:calc(var(--fwt)*1.5 + 90px);overflow:visible;touch-action:none;cursor:grab;user-select:none}
+#fan{perspective:900px;position:relative;width:calc(100% + 32px);margin:0 -16px;height:calc(var(--fw)*1.5 + 80px);overflow:visible;touch-action:none;cursor:grab;user-select:none}
 #fan.drag{cursor:grabbing}
 .fcard{position:absolute;left:50%;top:48px;width:var(--fw);height:calc(var(--fw)*1.5);margin-left:calc(var(--fw)*-.5);transform-origin:50% calc(100% + var(--fw)*2.2);background:url(../img/ui/back.png) center/100% 100%;image-rendering:pixelated;filter:brightness(.45);transition:transform .25s cubic-bezier(.3,1.4,.5,1),filter .25s}
 .fcard.top{filter:brightness(1) drop-shadow(0 0 14px #ffb347cc)}
@@ -84,8 +84,3 @@
 #fan .fcard .glint,#fan .fcard.top .glint{z-index:5}
 .card .back{position:absolute}
 .card .back::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(../img/ui/shine.png) var(--sx,30%) 0/300% 100% no-repeat;image-rendering:pixelated}
-
-/* wachlarz bez obrotów: karty przesuwane w poziomie; wybrana ma własny, większy rozmiar (skala całkowita) */
-.fcard{left:50%;top:48px;margin-left:0!important;width:var(--fw);height:calc(var(--fw)*1.5);transform-origin:center;filter:brightness(.5)}
-.fcard.top{width:var(--fwt);height:calc(var(--fwt)*1.5);filter:none!important}
-#fan.picked .fcard:not(.top){transform:translate(-50%,60px)!important}

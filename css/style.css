@@ -1,5 +1,5 @@
 :root{--bg:#0b0d17;--s1:#161a2a;--s2:#222842;--gold:#d8aa48;--gold-d:#8a6a2e;--flame:#ffb347;--blood:#b3243a;--magic:#f4efe6;--text:#e8dcc0;
-  --pw:100vw;--ph:100dvh;--cw:216px;--fw:216px;--fwt:288px;--aw:144px;--iw:432px;--sw:504px;--u:1px}
+  --pw:100vw;--ph:100dvh;--cw:216px;--fw:216px;--aw:144px;--iw:432px;--sw:504px;--u:1px}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 html,body{margin:0;min-height:100%;color:var(--text);font:18px/1.4 ui-monospace,Menlo,Consolas,monospace}
@@ -167,7 +167,7 @@ img{-webkit-user-drag:none;user-drag:none}
 .intro.blend .intro-art img{-webkit-mask-image:none;mask-image:none}
 .intro.blend .intro-art{margin:-6px 0 -40px}
 
-#s-pick .mid{padding-bottom:calc((var(--fwt) - var(--fw)) * .75 + 28px)}   /* miejsce na uniesioną, powiększoną kartę, żeby nie zasłaniała linii pod napisem */
+#s-pick .mid{padding-bottom:calc(var(--fw) * .16 + 28px)}   /* miejsce na uniesioną, powiększoną kartę, żeby nie zasłaniała linii pod napisem */
 /* pasek nawigacji: bez tła na górze strony, ciemne tło dopiero po pierwszym przewinięciu */
 .bar{background:none;transition:background .25s ease}
 .bar.scrolled{background:linear-gradient(#0b0d17f2 60%,#0b0d1700)}

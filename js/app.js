@@ -205,24 +205,19 @@ function pick() {
   fan.replaceChildren(); fan.classList.remove('picked'); $('#s-pick').classList.remove('picking');
   const els = Array.from({ length: N }, () => { const c = el('div', 'fcard'); c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
   let off = 0, startX = 0, startOff = 0, moved = false, down = false, vel = 0, lastX = 0, lastT = 0, raf = 0, picking = false;
-  // Układ bez obrotów i skalowania: karty tylko się przesuwają (całe piksele urządzenia), więc ich piksele zostają ostre.
-  // Głębię dają: większa wybrana karta (osobny rozmiar --fwt), przyciemnienie sąsiadów, opadanie bocznych kart i kolejność warstw.
-  const css = n => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(n)) || 0, dpr = devicePixelRatio || 1;
-  const snap = v => Math.round(v * dpr) / dpr;
-  const near = () => css('--fwt') / 2 + css('--fw') * .22, far = () => css('--fw') * .34;
-  const layout = () => { const nr = near(), fr = far(); els.forEach((c, i) => {
-    const d = i - mid + off, a = Math.abs(d), top = a < 0.5, sg = Math.sign(d) || 1;
-    const x = snap(sg * (a < 1 ? a * nr : nr + (a - 1) * fr)), y = snap(Math.min(a, 4) * Math.min(a, 4) * 3);
-    c.style.transform = top ? `translate(calc(-50% + ${x}px), calc((var(--fw) - var(--fwt)) * .75 + ${y}px))` : `translate(calc(-50% + ${x}px), ${y}px)`;
+  // Głębia: karty dalej od środka są mniejsze i opadają łukiem, a środkowa wyskakuje do przodu.
+  const layout = () => els.forEach((c, i) => {
+    const d = i - mid + off, a = Math.abs(d), top = a < 0.5;
+    c.style.transform = `rotate(${d * STEP}deg) translateY(${(Math.min(a, 6) * Math.min(a, 6) * 1.2).toFixed(1)}px) scale(${(1 - Math.min(a, 8) * .018).toFixed(3)})${top ? ' translateY(calc(var(--fw) * .4425 - 24px)) scale(1.15)' : ''}`;
     c.classList.toggle('top', top);
     c.style.zIndex = N - Math.round(a);
-    c.style.opacity = a > 2.6 ? '0' : '';   // dalekie karty chowamy
-  }); };
+    c.style.opacity = a > 4.6 ? '0' : '';   // dalekie karty chowamy (ich dolne krawędzie tworzyły paski w tle)
+  });
   // Rozdanie: karty wylatują ze stosu na środku po kolei
   // Tasowanie: stos kart na środku, dwie połowy przesuwają się na przemian w lewo i prawo (2 razy), potem rozdanie w wachlarz
   const deal = () => { els.forEach((c, i) => { c.style.transitionDelay = (Math.abs(i - mid) * 40) + 'ms'; c.style.opacity = ''; }); layout(); sfx('flip'); setTimeout(() => els.forEach(c => c.style.transitionDelay = ''), 40 * mid + 700); };
-  const stack = (dx, k) => els.forEach((c, i) => { c.style.transitionDelay = ''; c.style.transitionDuration = '.18s'; const side = (i % 2 ? 1 : -1) * k; c.style.transform = `translate(calc(-50% + ${side * dx}px), 0)`; c.style.opacity = '1'; });
-  els.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translate(-50%, 40px)'; });
+  const stack = (dx, k) => els.forEach((c, i) => { c.style.transitionDelay = ''; c.style.transitionDuration = '.18s'; const side = (i % 2 ? 1 : -1) * k; c.style.transform = `translate(${side * dx}px, 0) rotate(${side * 3}deg) scale(.82)`; c.style.opacity = '1'; });
+  els.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(40px) scale(.8)'; });
   if (reduced) deal(); else {
     fan.classList.add('shuffling');
     requestAnimationFrame(() => requestAnimationFrame(() => { stack(0, 0); sfx('flip');
@@ -247,13 +242,13 @@ function pick() {
   fan.onpointerdown = e => { if (picking) return; cancelAnimationFrame(raf); fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = lastX = e.clientX; startOff = off; vel = 0; lastT = performance.now(); fan.classList.add('drag'); };
   fan.onpointermove = e => {
     if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true;
-    if (moved) { const now = performance.now(), dt = Math.max(1, now - lastT); vel = vel * .6 + (((e.clientX - lastX) / near()) / dt) * .4; lastX = e.clientX; lastT = now; go(startOff - dx / near()); }
+    if (moved) { const now = performance.now(), dt = Math.max(1, now - lastT); vel = vel * .6 + (((e.clientX - lastX) / 40) / dt) * .4; lastX = e.clientX; lastT = now; go(startOff + dx / 40); }
   };
   const end = () => { if (!down) return; down = false; fan.classList.remove('drag'); if (Math.abs(vel) > .003) glide(); else go(Math.round(off)); };
   const choose = () => {   // wybrana karta wzlatuje na środek, reszta opada i gaśnie, potem odkrycie
     if (picking) return; picking = true; sfx('pick'); fan.classList.add('picked'); $('#s-pick').classList.add('picking');   // tytuł, data i napisy gasną, gdy karta wzlatuje
     const t = els.find(c => c.classList.contains('top')) || els[mid];
-    t.style.transform = 'translate(-50%, calc(var(--fw) * -.35))'; t.style.transitionDuration = '.45s';
+    t.style.transform = 'translateY(calc(var(--fw) * -.3)) scale(1.35)'; t.style.transitionDuration = '.45s';
     setTimeout(reveal, reduced ? 0 : 460);
   };
   fan.onpointerup = () => { const tap = down && !moved; end(); if (tap) choose(); };
