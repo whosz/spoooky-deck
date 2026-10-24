@@ -3,7 +3,7 @@ const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
 const { chromium } = require('/home/matt/work/agency-portfolio/node_modules/playwright');
 const fs = require('fs');
 (async () => {
-  const BGF = process.env.BG, OUT = process.env.OUT;   // BG: własne tło 120x63 (skala 10), OUT: gdzie zapisać podgląd bez nadpisywania img/og.png
+  const BGF = process.env.BG || 'img/og-bg.png', OUT = process.env.OUT;   // BG: własne tło 120x63 (skala 10), OUT: gdzie zapisać podgląd bez nadpisywania img/og.png
   if (!OUT) {
   // favicon: środkowy kwadrat rewersu 64x64 (słońce), skalowany bez wygładzania
   const crop = await sharp('img/ui/back.png').extract({ left: 0, top: 16, width: 64, height: 64 }).toBuffer();
