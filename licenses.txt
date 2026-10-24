@@ -2,7 +2,7 @@ Spoooky Deck - Autorzy i licencje / Credits and licenses
 
 Aplikacja: Mateusz Staniszewski, https://whosz.pl
 Ilustracje kart, ikony interfejsu i tło: własne, generowane skryptami w tools/.
-Muzyka: audio/spoooky-theme-mm.mp3 wygenerowana modelem MiniMax Music 2.6 przez Replicate (https://replicate.com/minimax/music-2.6, wersja instrumentalna; warunki użycia komercyjnego wyników według regulaminu MiniMax, do potwierdzenia), dopracowana skryptem (pętla, głośność). Poprzednia muzyka z Suno (plan darmowy) została wycofana.
+Muzyka: audio/spoooky-theme-mm.mp3 wygenerowana modelem MiniMax Music 2.6 przez Replicate (https://replicate.com/minimax/music-2.6, wersja instrumentalna; treść oznaczona w aplikacji jako wygenerowana przez AI; warunki użycia komercyjnego wyników według regulaminu MiniMax, do potwierdzenia), dopracowana skryptem (pętla, głośność). Poprzednia muzyka z Suno (plan darmowy) została wycofana.
 
 === Fonty (SIL Open Font License 1.1, https://openfontlicense.org) ===
 Jacquard 12 - Sarah Cadigan-Fried; Geist Pixel - Vercel. Pobrane z Google Fonts.

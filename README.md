@@ -54,7 +54,7 @@ python3 tools/build_sw.py          # generuje sw.js (lista plików + wersja z ha
 node tools/smoke.cjs [adres]       # test dymny: cały przepływ w PL i EN, telefon 390 i 320 px (wymaga Playwrighta)
 ```
 
-Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworzona skryptami z `tools/ai/` (zmniejszenie do 64×96, paleta 16 kolorów). Surowe obrazy nie są w repozytorium.
+Muzyka i talia są wygenerowane przez AI (oznaczone w menu aplikacji). Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworzona skryptami z `tools/ai/` (zmniejszenie do 64×96, paleta 16 kolorów). Surowe obrazy nie są w repozytorium.
 
 ## Wdrożenie
 
@@ -64,6 +64,6 @@ Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworz
 
 Autor: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Szczegóły licencji zależności, fontów i emoji: [licenses.txt](licenses.txt). Warunki użycia komercyjnego i lista kroków na później: [docs/licensing.md](docs/licensing.md). Licencje komercyjne (m.in. czcionki, plan Suno) świadomie odłożono do czasu, gdy projekt zyska zasięg.
 
-- Muzyka `audio/spoooky-theme-mm.mp3` została wygenerowana modelem MiniMax Music 2.6 (Replicate). Warunki użycia komercyjnego wyników są mniej jednoznaczne niż w ACE-Step (MIT), patrz docs/licensing.md. Skrypty: `tools/ai/music2.py` (MiniMax), `tools/ai/music.py` (ACE-Step).
+- Muzyka `audio/spoooky-theme-mm.mp3` została wygenerowana modelem MiniMax Music 2.6 (Replicate). Wymóg MiniMax dotyczący oznaczania treści AI spełnia informacja w menu (Licencje). Warunki użycia komercyjnego wyników są mniej jednoznaczne niż w ACE-Step (MIT), patrz docs/licensing.md. Skrypty: `tools/ai/music2.py` (MiniMax), `tools/ai/music.py` (ACE-Step).
 - Czcionka tytułu: Old English Gothic Pixel (OFL, dołączona w `fonts/`). Czcionka Olde Tome (nagłówki) nie jest dołączona do repozytorium, bez niej nagłówki używają fontu zastępczego.
 - Pikselowe emoji: SerenityOS (BSD-2). Teksty wróżb sprawdzano skillami humanizer (`.claude/skills/`).
