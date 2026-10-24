@@ -190,3 +190,5 @@ img{-webkit-user-drag:none;user-drag:none}
 .intro-bottom{gap:18px;padding-bottom:36px}
 .intro-bottom .hint{margin-top:6px}
 #scene[data-scene=intro].on{opacity:.34}   /* tło splasha o 15% ciemniejsze (0,4 x 0,85) */
+.intro-bottom .hint{margin-top:22px}   /* podpowiedź o muzyce dalej od przycisku */
+#music-hint{margin:26px 0 0}   /* ID-owa reguła wcześniej dawała -8px; teraz wyraźny odstęp od przycisku */
