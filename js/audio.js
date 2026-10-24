@@ -9,7 +9,24 @@ const PRESETS = {  // parametry zzfx(volume, randomness, frequency, attack, sust
   hitRev: [[1, , 55, .02, .25, .6, 2, 3, -3, , , , , .3, , .2, , .9, .3], [.4, , 196, .02, .2, .6, 3, 1.5, -1, , , , , , , , .12, .7, .2]],
 };
 const get = () => { try { return localStorage.getItem('sd_mute') === '1'; } catch { return false; } };
-let muted = get(), music = null, started = false, lastErr = '';
+const MUSIC = 'audio/candlelit-tarot.mp3';
+let muted = get(), music = null, started = false, lastErr = '', cachedTried = false;
+
+// Muzyka offline: po kilku sekundach grania zapisujemy plik w osobnej pamięci (sd-audio, nie jest czyszczona przy aktualizacjach).
+// Gdy sieci brak i odtwarzacz zgłasza błąd, gramy z zapisanej kopii.
+async function cacheMusic() {
+  try {
+    if (!('caches' in window) || (navigator.connection && navigator.connection.saveData)) return;
+    const c = await caches.open('sd-audio'); if (await c.match(MUSIC)) return;
+    const r = await fetch(MUSIC); if (r.ok) await c.put(MUSIC, r);
+  } catch {}
+}
+async function playFromCache() {
+  try {
+    const c = await caches.open('sd-audio'), r = await c.match(MUSIC); if (!r) return false;
+    music.src = URL.createObjectURL(await r.blob()); await music.play(); return true;
+  } catch { return false; }
+}
 
 export const isMuted = () => muted;
 export const audioError = () => lastErr;   // do diagnozy w menu
@@ -18,9 +35,9 @@ export const audioError = () => lastErr;   // do diagnozy w menu
 export function start() {
   try { zzfxX.resume(); } catch {}
   if (!started) {
-    started = true; music = new Audio('audio/candlelit-tarot.mp3'); music.loop = true; music.volume = .45;
-    music.addEventListener('error', () => { lastErr = 'media error ' + (music.error && music.error.code); });
-    music.addEventListener('playing', () => { lastErr = ''; });
+    started = true; music = new Audio(MUSIC); music.loop = true; music.volume = .45;
+    music.addEventListener('error', async () => { if (!muted && !navigator.onLine && await playFromCache()) { lastErr = ''; return; } lastErr = 'media error ' + (music.error && music.error.code); });
+    music.addEventListener('playing', () => { lastErr = ''; if (!cachedTried) { cachedTried = true; setTimeout(cacheMusic, 8000); } });
   }
   if (!muted && music.paused) music.play().catch(e => { if (e.name !== 'NotAllowedError') lastErr = e.name; });
 }

@@ -4,10 +4,10 @@
   "name": "Aries",
   "element": "fire",
   "omens": [
-   "Aries wants to act now, so the company launched before anyone decided how it looks.",
-   "Aries feels the company racing ahead while its image lags behind.",
-   "Impatience burns in Aries: each day without a good site is a lost chance.",
-   "Aries starts and rarely finishes. The brand needs someone to close the details."
+   "Aries wants to act now, so the company launched before anyone decided how it should look.",
+   "The company races ahead while its image lags behind, and Aries knows the feeling.",
+   "Aries burns with impatience: every day without a decent site is a missed chance.",
+   "Aries starts faster than it finishes. The brand needs someone to close the details."
   ]
  },
  {
@@ -15,10 +15,10 @@
   "name": "Taurus",
   "element": "earth",
   "omens": [
-   "Taurus prizes what lasts, and the company has looked the same for years.",
-   "Taurus clings to the proven while clients look for something new.",
-   "Taurus sees quality in the product but not in how the company presents itself.",
-   "Taurus's calm hides a fear that the competition looks better."
+   "Taurus loves what lasts. The company has looked the same for years, and even Taurus is starting to feel it.",
+   "Taurus sticks to the tried and true while clients look for something fresh.",
+   "Taurus sees quality in the product but not in how the company shows itself.",
+   "Taurus stays calm, though quietly suspects the competition looks better."
   ]
  },
  {
@@ -26,10 +26,10 @@
   "name": "Gemini",
   "element": "air",
   "omens": [
-   "Gemini speaks to clients in two voices and neither sounds like the company.",
-   "Gemini has a thousand ideas, yet the brand still does not know who it is.",
-   "Gemini hears the company's message tangle like an echo in a crypt.",
-   "Gemini's duality shows in the materials: two logos, three typefaces."
+   "Gemini talks to clients in two voices and neither sounds like the company.",
+   "Gemini has a thousand ideas, and the brand still does not know who it is.",
+   "The company's message bounces off the walls like an echo in a crypt, and Gemini hears every bounce.",
+   "Gemini's duality has leaked into the materials: two logos and three typefaces."
   ]
  },
  {
@@ -37,9 +37,9 @@
   "name": "Cancer",
   "element": "water",
   "omens": [
-   "Cancer guards the company like a shell, yet clients cannot see what is inside.",
-   "Cancer feels more than it shows. The brand also hides its best sides.",
-   "Cancer fears change, and a change of look is what would refresh the company.",
+   "Cancer keeps the company in a shell, and clients have no idea what is inside.",
+   "Cancer feels more than it shows, and the brand hides its best sides too.",
+   "Cancer fears change, though a fresh look would do the company good.",
    "Cancer remembers every client, but the company gives them nothing worth remembering."
   ]
  },
@@ -48,10 +48,10 @@
   "name": "Leo",
   "element": "fire",
   "omens": [
-   "Leo wants to shine, yet nobody sees the company in the crowd.",
-   "Lion's pride is not enough: the brand's glow must be designed.",
-   "Leo roars and clients hear only noise. A striking image is missing.",
-   "Leo deserves a crown, but the company still wears a borrowed hat."
+   "Leo wants to shine, but nobody spots the company in the crowd.",
+   "A lion's pride is not enough. Someone has to design the brand's glow.",
+   "Leo roars and clients hear only noise, because the company lacks a striking image.",
+   "Leo deserves a crown, and the company is still wearing a borrowed hat."
   ]
  },
  {
@@ -59,10 +59,10 @@
   "name": "Virgo",
   "element": "earth",
   "omens": [
-   "Virgo has everything buttoned up, only clients get lost on the site.",
-   "Virgo spots every flaw in the company, including the one in the site layout.",
-   "Virgo orders the processes while the company's look waits in line for years.",
-   "Virgo knows the value of detail: misaligned margins hurt her more than the client."
+   "Virgo has everything buttoned up, except that clients get lost on the site.",
+   "Virgo notices every flaw in the company, so she will notice the one in the site layout too.",
+   "Virgo tidies the processes while the company's look has waited in line for years.",
+   "Virgo knows what detail is worth, and crooked margins bother her more than they bother the client."
   ]
  },
  {
@@ -70,10 +70,10 @@
   "name": "Libra",
   "element": "air",
   "omens": [
-   "Libra weighs options so long that the company still has no final look.",
-   "Libra craves harmony, yet the company's materials look like different eras.",
-   "Libra wants to please everyone. The brand needs one clear style.",
-   "Libra feels something is uneven in the company and is right: no coherent visual system."
+   "Libra weighs the options for so long that the company still has no final look.",
+   "Libra craves harmony, and the company's materials look like they come from different eras.",
+   "Libra wants to please everyone, while the brand needs one clear style.",
+   "Libra senses something uneven in the company and is right: there is no coherent visual system."
   ]
  },
  {
@@ -81,10 +81,10 @@
   "name": "Scorpio",
   "element": "water",
   "omens": [
-   "Scorpio sees beneath the surface and knows the company's image betrays it.",
-   "Scorpio holds a secret: more quality than the brand shows.",
-   "Scorpio distrusts appearances. So do clients when a site looks abandoned.",
-   "Scorpio senses the competition biting while the company has no image to defend with."
+   "Scorpio sees beneath the surface and knows the company's image gives it away.",
+   "Scorpio knows the company's secret: its quality is greater than the brand shows.",
+   "Scorpio distrusts appearances. So do clients, when a site looks abandoned.",
+   "Scorpio senses the competition biting, and the company has no image to defend itself with."
   ]
  },
  {
@@ -92,10 +92,10 @@
   "name": "Sagittarius",
   "element": "fire",
   "omens": [
-   "Sagittarius aims high, yet the company's site never reaches the client.",
+   "Sagittarius aims high, but the company's site never reaches the client.",
    "Sagittarius seeks adventure while clients seek a clear offer.",
-   "Sagittarius fires in every direction. The brand needs a single target.",
-   "Sagittarius promises a far journey, but the company has no map for its clients."
+   "Sagittarius shoots in every direction, and the brand needs a single target.",
+   "Sagittarius promises a far journey, yet the company has not given clients so much as a map."
   ]
  },
  {
@@ -103,10 +103,10 @@
   "name": "Capricorn",
   "element": "earth",
   "omens": [
-   "Capricorn climbs the ranks while the company still looks like a beginner.",
+   "Capricorn climbs the ladder while the company still looks like a beginner.",
    "Capricorn counts every penny, so the image keeps waiting for a budget.",
-   "Capricorn builds to last. The brand should show it, not only say it.",
-   "Capricorn is serious, yet the company's site speaks in the tone of a decade ago."
+   "Capricorn builds for decades. The brand should show it, not just claim it.",
+   "Capricorn is serious, yet the company's site speaks in the tone of ten years ago."
   ]
  },
  {
@@ -115,9 +115,9 @@
   "element": "air",
   "omens": [
    "Aquarius has a vision of the future while the company looks like the past.",
-   "Aquarius outruns the age, only clients have not noticed yet.",
-   "Aquarius prizes originality, so the company should not look like all the others.",
-   "Aquarius throws ideas into the ether and the brand has no vessel to catch them."
+   "Aquarius is ahead of its time, only clients have not noticed yet.",
+   "Aquarius prizes originality, so the company should not look like everyone else.",
+   "Aquarius tosses ideas into the ether, and the brand has no vessel to catch them."
   ]
  },
  {
@@ -125,10 +125,10 @@
   "name": "Pisces",
   "element": "water",
   "omens": [
-   "Pisces drifts with the current while the company has no image to show a direction.",
-   "Pisces feels the clients but cannot say the company in a single picture.",
-   "Pisces dreams, and the company lacks someone to draw those dreams.",
-   "Pisces drowns in the fog of its own ideas. A lighthouse is needed: a clear message."
+   "Pisces drifts with the current, and the company has no image to point the way.",
+   "Pisces senses the clients but cannot describe the company in a single picture.",
+   "Pisces dreams, and the company needs someone to draw those dreams.",
+   "Pisces drowns in the fog of its own ideas and needs a lighthouse in the form of a clear message."
   ]
  }
 ]
