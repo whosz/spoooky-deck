@@ -177,9 +177,6 @@ function renderTab(name) {
     p(major ? ui.keyElMajor : (SUIT_EL[c.suit] === cur.z.element ? ui.keyElMatch : ui.keyElDiff));
     p(`${ui.keyPos}: ${cur.reversed ? ui.reversed : ui.upright}`, 'lead'); p(cur.reversed ? ui.keyPosRev : ui.keyPosUp);
     p(ui.keyService, 'lead'); p(ui.keyServiceText); p(c.services.map(x => ui['svc_' + x]).join(', '));
-  } else {
-    p(`${cur.z.name}, ${ui[cur.z.element]}`, 'lead');
-    p(cur.parts[2].text);
   }
   box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
 }

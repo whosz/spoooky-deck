@@ -108,4 +108,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #app-sec h3{margin-top:22px}
 /* cztery zakładki wróżby mieszczą się w jednym rzędzie */
 .tabs{gap:0;padding:0 4px}
-.tabs button{min-width:0;padding:0 2px;font-size:calc(1.28*var(--f)*var(--gs))!important;white-space:nowrap}
+.tabs button{min-width:0;padding:0 2px;font-size:calc(1.5*var(--f)*var(--gs))!important;white-space:nowrap}
