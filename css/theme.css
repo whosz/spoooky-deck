@@ -6,7 +6,7 @@ a,button,select,#fan{cursor:var(--cur),pointer}
 #bg{position:fixed;left:0;top:0;z-index:-1;image-rendering:pixelated}
 @media(min-width:700px){body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 45%,#000c 100%)}}
 h1{font-family:'Old English Gothic Pixel','Jacquard 12',serif;font-weight:400;font-size:var(--ft2,40px);line-height:1;margin:0;color:var(--gold);letter-spacing:0;animation:flick 3.2s steps(1) infinite}
-@keyframes flick{0%,100%{text-shadow:0 0 18px var(--flame),0 4px 0 #000}45%{text-shadow:0 0 10px var(--flame),0 4px 0 #000}50%{text-shadow:0 0 22px var(--flame),0 4px 0 #000}}
+@keyframes flick{0%,100%{text-shadow:0 0 18px #ffb34780,0 4px 0 #000}45%{text-shadow:0 0 10px #ffb34780,0 4px 0 #000}50%{text-shadow:0 0 22px #ffb34780,0 4px 0 #000}}
 #bar-title,#rname,.hero h2{font-family:var(--gothic)}
 #bar-title{font-size:24px}
 .hero h2{font-size:38px}
