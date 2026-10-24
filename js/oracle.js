@@ -1,6 +1,7 @@
 // Składa wróżbę z gramatyki Tracery. Dane użytkownika są oczyszczone ze znaków specjalnych Tracery.
 const clean = s => s.replace(/[#\[\]]/g, '').trim();
 const pick = (r, a) => a[Math.floor(r() * a.length)];
+const SUIT_EL = { wands: 'fire', cups: 'water', swords: 'air', pentacles: 'earth' };   // żywioł koloru małych arkanów
 
 export function compose({ seed, card, reversed, name, zodiac, company, lang, grammar, ui }) {
   const r = new Math.seedrandom('o' + seed);
@@ -20,8 +21,13 @@ export function compose({ seed, card, reversed, name, zodiac, company, lang, gra
     business: [card.business[lang]],
     omen: [pick(r, zodiac.omens)],
     puenta: [`#puenta_${service}#`],
+    zywiol: [(ui[zodiac.element] || '').toLowerCase()],
   });
   g.addModifiers(tracery.baseEngModifiers);
-  const parts = ['wezwanie', 'znaczenie', 'omen', 'puenta', 'cta'].map(id => ({ id, text: g.flatten(`#${id}#`) }));
+  // Małe arkana dostają dodatkowe zdanie o zgodności żywiołu znaku z żywiołem koloru karty; Wielkie nie mają jednego żywiołu.
+  const ids = ['wezwanie', 'znaczenie', 'omen'];
+  if (card.suit) ids.push(SUIT_EL[card.suit] === zodiac.element ? 'zywiol_zgodny' : 'zywiol_rozny');
+  ids.push('puenta', 'cta');
+  const parts = ids.map(id => ({ id: id.startsWith('zywiol') ? 'zywiol' : id, text: g.flatten(`#${id}#`) }));
   return { parts, quote: meaning };
 }

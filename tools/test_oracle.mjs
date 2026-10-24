@@ -9,10 +9,12 @@ for (const lang of ['pl', 'en']) {
   for (const card of cards) for (const reversed of [false, true]) for (const z of zodiac) {
     const { parts } = compose({ seed: 'abc' + n, card, reversed, name: 'A#[x]', zodiac: z, company: 'Br#ow[ar]', lang, grammar, ui });
     const t = parts.map(p => p.text).join(' ');
-    assert(parts.length === 5, 'parts');
+    assert(parts.length === (card.suit ? 6 : 5), 'parts');
+    assert(parts.some(x => x.id === 'zywiol') === !!card.suit, 'zywiol only for minor arcana');
     assert(!/[#\[\]]|undefined/.test(t), t);
     assert(t.includes('Browar') && /\bAx?\b/.test(t), 'vars: ' + t);
-    assert(/projektant|designer/.test(parts[3].text), 'puenta: ' + parts[3].text);
+    const pu = parts.find(x => x.id === 'puenta'); assert(/projektant|designer/.test(pu.text), 'puenta: ' + pu.text);
+    const zy = parts.find(x => x.id === 'zywiol'); if (zy) assert(zy.text.toLowerCase().includes(ui[z.element].toLowerCase()), 'zywiol names the element: ' + zy.text);
     n++;
   }
 }

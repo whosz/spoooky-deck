@@ -53,5 +53,15 @@
 "Odwiedź ofertę whosz.pl. Talia zawsze ma jeszcze jedną kartę.",
 "Oferta whosz.pl czeka. Jeśli ciekawi cię inna przyszłość, wyciągnij następną kartę.",
 "Napisz do whosz.pl, a dla pewności zapytaj talię jeszcze raz."
+],
+"zywiol_zgodny": [
+"Żywioł znaku to #zywiol# i karta płynie w tę samą stronę, więc to, o czym mówi, jest Ci bliskie.",
+"Znak i karta mają ten sam żywioł (#zywiol#), więc razem wzmacniają przekaz.",
+"Twój znak i ta karta należą do jednego żywiołu: #zywiol#. Dlatego wróżba brzmi dziś wyjątkowo pewnie."
+],
+"zywiol_rozny": [
+"Żywioł znaku to #zywiol#, a karta należy do innego, więc stawia przed Tobą coś, co wymaga wysiłku.",
+"Znak ma żywioł #zywiol#, a karta inny, więc pokazuje to, czego firmie jeszcze brakuje.",
+"Karta pochodzi z innego żywiołu niż Twój znak (#zywiol#), więc patrzy na firmę z nieoczekiwanej strony."
 ]
 }

@@ -160,8 +160,7 @@ function renderTab(name) {
   const p = (t, cls) => box.append(el('p', cls, t));
   const side = cur.reversed ? cur.card.rev : cur.card.up;
   if (name === 'fortune') {
-    const [w, zn, om, pu, cta] = cur.parts.map(x => x.text);
-    p(w); p(zn); p(om); p(pu, 'lead'); p(cta);
+    cur.parts.forEach(x => p(x.text, x.id === 'puenta' ? 'lead' : undefined));
   } else if (name === 'card') {
     p(`${cur.card.name[lang]}, ${cur.reversed ? ui.reversed : ui.upright}`, 'lead');
     p(side.keywords[lang].join(', '));
