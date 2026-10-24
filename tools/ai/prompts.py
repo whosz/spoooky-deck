@@ -161,3 +161,16 @@ SPLASH = {
  'splashE': _S + "Drifting violet fog and faint translucent silhouettes of floating tarot cards near the edges, a few golden sparkles.",
 }
 for _k, _v in SPLASH.items(): ASSETS5[_k] = (_v, '9:16')
+
+# Tła do grafiki udostępniania (1200x630, styl 5): po lewej miejsce na kartę, po prawej spokojny, ciemny obszar pod tekst
+_O = ("Retro early-1990s pixel art atmospheric background, wide landscape orientation, chunky pixels, very limited palette of about 16 colors, flat colors, minimal dithering, "
+      "dark and moody, no people, no text, no letters, no signature, no watermark. Composition: the main details sit in the left third and along the edges, "
+      "while the right two thirds stay calm, dark and mostly empty so a title can be read over it. ")
+OGBG = {
+ 'ogA': _O + "A night sky with a violet nebula, a large pale crescent moon in the upper left, scattered stars and soft clouds along the bottom.",
+ 'ogB': _O + "A candlelit fortune teller's room: heavy dark purple curtains on the left, a small table with a glowing crystal ball and candles in the lower left, a starry window far behind.",
+ 'ogC': _O + "A quiet night desert with a distant temple silhouette and a big full moon low on the left horizon, thousands of stars above.",
+ 'ogD': _O + "Violet fog with faint translucent silhouettes of floating tarot cards and golden sparkles drifting through the left third.",
+ 'ogE': _O + "An old observatory interior with a brass telescope and star charts on the left wall, a round dome opening showing the night sky.",
+}
+for _k, _v in OGBG.items(): ASSETS5[_k] = (_v, '16:9')
