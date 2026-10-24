@@ -23,7 +23,7 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     await p.goto(`${base}index.html?lang=${lang}`); await p.waitForSelector('#loader', { state: 'detached', timeout: 15000 });
     check(`${tag}: ekran startowy widoczny`, await visible('#s-intro')); await noOverflow('start');
     check(`${tag}: przycisk wejścia w widocznym obszarze`, await p.evaluate(() => { const r = document.querySelector('#enter').getBoundingClientRect(); return r.bottom <= innerHeight && r.top >= 0; }));
-    await p.click('#enter'); check(`${tag}: formularz widoczny`, await visible('#s-form')); await noOverflow('formularz');
+    await p.click('#enter'); await p.waitForSelector('#s-form:not([hidden])', { timeout: 3000 }).catch(() => {}); await p.waitForTimeout(600); check(`${tag}: formularz widoczny`, await visible('#s-form')); await noOverflow('formularz');
     await p.fill('#f-company', 'Kruk'); await p.click('#form .cta'); await p.waitForTimeout(300);
     check(`${tag}: brak imienia blokuje formularz`, await visible('#s-form') && !(await visible('#s-pick')));
     await p.fill('#f-name', '   '); await p.click('#form .cta'); await p.waitForTimeout(300);
