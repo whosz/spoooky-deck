@@ -41,6 +41,18 @@ async function drawCard(card, lang) {
   return o;
 }
 
+// Tytuł jako złoty metal, jak na splashu: twarde pasy światła, ciemny obrys, cień i delikatna poświata (statycznie, bez animacji).
+function drawGoldTitle(g, text, x, baseline, px) {
+  g.save(); g.font = `${px}px "Old English Gothic Pixel"`; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+  const m = g.measureText(text), top = baseline - m.fontBoundingBoxAscent, h = m.fontBoundingBoxAscent + m.fontBoundingBoxDescent, d = Math.max(2, Math.round(px / 40));
+  g.shadowColor = '#ffb34766'; g.shadowBlur = px / 5; g.fillStyle = '#000'; g.fillText(text, x, baseline + d * 2.5); g.shadowBlur = 0;   // cień pod spodem i poświata
+  g.fillStyle = '#3a1604';
+  for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]]) g.fillText(text, x + dx * d, baseline + dy * d);   // obrys
+  const gr = g.createLinearGradient(0, top, 0, top + h);
+  [['#fff6b0', 0], ['#fff6b0', .16], ['#ffd84a', .16], ['#ffd84a', .38], ['#f2a31f', .38], ['#f2a31f', .6], ['#c9690e', .6], ['#c9690e', .82], ['#8a3a08', .82], ['#8a3a08', 1]].forEach(([c, o]) => gr.addColorStop(o, c));
+  g.fillStyle = gr; g.fillText(text, x, baseline); g.restore();
+}
+
 export async function makeShareImage({ card, reversed, quote, company, lang, ui }) {
   const glyphs = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
   await Promise.all([document.fonts.load('52px "Olde Tome"', glyphs), document.fonts.load('120px "Old English Gothic Pixel"'), document.fonts.load('40px "Geist Pixel"', glyphs)]);
@@ -57,10 +69,10 @@ export async function makeShareImage({ card, reversed, quote, company, lang, ui 
   const q = lang === 'pl' ? `„${quote}”` : `“${quote}”`;
   g.font = '56px "Olde Tome"'; const qLines = wrap(g, q, 900).slice(0, 4);
   const co = (company || '').slice(0, 40);
-  const TITLE = 120, GAP1 = 56, CARD = cardCanvas.height, GAP2 = 70, POS = 44, GAP3 = 46, QH = qLines.length * 72, GAP4 = 64, FOOT = co ? 38 + 20 + 38 : 38;
+  const TITLE = 120, GAP1 = 74, CARD = cardCanvas.height, GAP2 = 70, POS = 44, GAP3 = 46, QH = qLines.length * 72, GAP4 = 64, FOOT = co ? 38 + 20 + 38 : 38;
   const total = TITLE + GAP1 + CARD + GAP2 + POS + GAP3 + QH + GAP4 + FOOT;
   let y = Math.round((1920 - total) / 2);
-  g.fillStyle = GOLD; g.font = `${TITLE}px "Old English Gothic Pixel"`; g.shadowColor = '#000'; g.shadowOffsetY = 6; g.fillText('Spoooky Deck', 540, y + TITLE - 18); g.shadowOffsetY = 0;
+  drawGoldTitle(g, 'Spoooky Deck', 540, y + TITLE - 18, TITLE);
   y += TITLE + GAP1;
   // karta (po obrocie o 180 stopni, jeśli odwrócona) z pikselową czerwoną poświatą dla odwróconej
   const cx = (1080 - cardCanvas.width) / 2, cy = y;
