@@ -1,13 +1,117 @@
 {
-"origin":["#wezwanie# #znaczenie# #omen# #puenta# #cta#"],
-"aura":["Mgła rzednie, świece drżą.","Z kąta komnaty patrzy kruk.","Płomienie schylają się ku kartom.","W oknie gaśnie latarnia.","Gdzieś w mroku skrzypi stara szafa.","Knot trzaska, a cienie na ścianie robią się dłuższe."],
-"wezwanie":["#name#, #zodiac#. Talia budzi się nad firmą „#company#”. #aura#","#name#, cicho. Karty szepczą o firmie „#company#” i o znaku #zodiac#. #aura#","#name#, usiądź bliżej. Talia wyciąga firmę „#company#” z mroku. #aura#","Witaj, #name#. Znak #zodiac# i firma „#company#” obudziły dziś całą talię. #aura#","#name#, zapal świecę. Karty od dawna czekają na wieści o „#company#”, a znak #zodiac# im sprzyja. #aura#","#name#, #zodiac#. Powiedz tylko jedno słowo: „#company#”. Resztę zdradzą karty. #aura#"],
-"znaczenie":["Wypadła karta #card#, pozycja #pos#. Jej słowa to #keywords#. #meaning# #business#","Odkrywasz kartę #card#, pozycja #pos#. Towarzyszą jej słowa: #keywords#. #meaning# #business#","Na stole leży karta #card#, pozycja #pos#. Szepcze: #keywords#. #meaning# #business#","Talia wskazuje kartę #card#, pozycja #pos#. Jej hasła to #keywords#. #meaning# #business#"],
-"puenta_identity":["Wyjście jest jedno: projektant identyfikacji wizualnej, który da firmie twarz, na jaką zasługuje.","Rozwiązanie czeka u projektanta, który zbuduje markę od nowa, od logo po ostatni detal.","Karty są zgodne: potrzebny jest projektant, który z rozproszonych znaków zrobi jedną rozpoznawalną markę.","Ratunek ma twarz projektanta, który uczesze wizerunek firmy i nada mu wyrazisty rysunek."],
-"puenta_uxui":["Wyjście jest jedno: projektant UX/UI, który wyprowadzi klientów z labiryntu prosto do celu.","Rozwiązanie czeka u projektanta, który ułoży ścieżkę klienta tak, żeby nikt się już nie zgubił.","Karty są zgodne: potrzebny jest projektant UX/UI, który oszczędzi klientom szukania drogi.","Ratunek leży u projektanta, który przeprowadzi użytkownika przez firmę krok po kroku, bez potknięć."],
-"puenta_website":["Wyjście jest jedno: projektant stron www, który poprowadzi drogę od pierwszego kliknięcia do sprzedaży.","Rozwiązanie czeka u projektanta, który postawi stronę godną waszej firmy.","Karty są zgodne: potrzebny jest projektant, który da firmie stronę, a klientom powód, żeby zostać.","Ratunek jest blisko: projektant www zamieni zabłąkanych przechodniów w klientów."],
-"puenta_startup":["Wyjście jest jedno: projektant, który przygotuje pakiet startowy i da młodej firmie mocny początek.","Rozwiązanie czeka u projektanta, który zaprojektuje całą oprawę na dobry start.","Karty są zgodne: potrzebny jest projektant, który pomoże firmie wystartować z gotową marką.","Ratunek ma postać pakietu startowego, a narysuje go dla was projektant."],
-"cta":["Zajrzyj do oferty whosz.pl, a jeśli ciekawi cię inna przyszłość, wylosuj kolejną kartę.","Odwiedź ofertę whosz.pl. W talii zawsze została jeszcze jedna karta.","Oferta whosz.pl czeka. Jeśli chcesz zajrzeć w inną przyszłość, wyciągnij następną kartę.","Napisz do whosz.pl, a dla pewności zapytaj talię jeszcze raz."],
-"zywiol_zgodny":["Żywiołem znaku jest #zywiol#, a karta płynie w tę samą stronę, więc to, o czym mówi, jest ci bliskie.","Znak i karta mają ten sam żywioł (#zywiol#), więc wzmacniają się nawzajem.","Twój znak i ta karta należą do jednego żywiołu: #zywiol#. Dlatego wróżba brzmi dziś wyjątkowo pewnie."],
-"zywiol_rozny":["Żywiołem znaku jest #zywiol#, a karta pochodzi z innego, więc stawia przed tobą coś, co wymaga wysiłku.","Znak ma żywioł #zywiol#, a karta inny, więc pokazuje to, czego firmie jeszcze brakuje.","Karta pochodzi z innego żywiołu niż twój znak (#zywiol#), więc patrzy na firmę z nieoczekiwanej strony."]
+ "origin": [
+  "#wezwanie# #znaczenie# #omen# #puenta# #cta#"
+ ],
+ "aura": [
+  "Mgła rzednie, świece drżą.",
+  "Z kąta komnaty patrzy kruk.",
+  "Płomienie schylają się ku kartom.",
+  "W oknie gaśnie latarnia.",
+  "Gdzieś w mroku skrzypi stara szafa.",
+  "Knot trzaska, a cienie na ścianie robią się dłuższe."
+ ],
+ "wezwanie": [
+  "#name#, #zodiac#. Talia budzi się nad firmą „#company#”. #aura#",
+  "#name#, cicho. Karty szepczą o firmie „#company#” i o znaku #zodiac#. #aura#",
+  "#name#, usiądź bliżej. Talia wyciąga firmę „#company#” z mroku. #aura#",
+  "Witaj, #name#. Znak #zodiac# i firma „#company#” obudziły dziś całą talię. #aura#",
+  "#name#, zapal świecę. Karty od dawna czekają na wieści o „#company#”, a znak #zodiac# im sprzyja. #aura#",
+  "#name#, #zodiac#. Powiedz tylko jedno słowo: „#company#”. Resztę zdradzą karty. #aura#"
+ ],
+ "znaczenie": [
+  "Wypadła karta #card#, pozycja #pos#. Jej słowa to #keywords#. #meaning# #business#",
+  "Odkrywasz kartę #card#, pozycja #pos#. Towarzyszą jej słowa: #keywords#. #meaning# #business#",
+  "Na stole leży karta #card#, pozycja #pos#. Szepcze: #keywords#. #meaning# #business#",
+  "Talia wskazuje kartę #card#, pozycja #pos#. Jej hasła to #keywords#. #meaning# #business#"
+ ],
+ "puenta_identity": [
+  "Wyjście jest jedno: projektant identyfikacji wizualnej, który da firmie twarz, na jaką zasługuje.",
+  "Rozwiązanie czeka u projektanta, który zbuduje markę od nowa, od logo po ostatni detal.",
+  "Karty są zgodne: potrzebny jest projektant, który z rozproszonych znaków zrobi jedną rozpoznawalną markę.",
+  "Ratunek ma twarz projektanta, który uczesze wizerunek firmy i nada mu wyrazisty rysunek."
+ ],
+ "puenta_uxui": [
+  "Wyjście jest jedno: projektant UX/UI, który wyprowadzi klientów z labiryntu prosto do celu.",
+  "Rozwiązanie czeka u projektanta, który ułoży ścieżkę klienta tak, żeby nikt się już nie zgubił.",
+  "Karty są zgodne: potrzebny jest projektant UX/UI, który oszczędzi klientom szukania drogi.",
+  "Ratunek leży u projektanta, który przeprowadzi użytkownika przez firmę krok po kroku, bez potknięć."
+ ],
+ "puenta_website": [
+  "Wyjście jest jedno: projektant stron www, który poprowadzi drogę od pierwszego kliknięcia do sprzedaży.",
+  "Rozwiązanie czeka u projektanta, który postawi stronę godną waszej firmy.",
+  "Karty są zgodne: potrzebny jest projektant, który da firmie stronę, a klientom powód, żeby zostać.",
+  "Ratunek jest blisko: projektant www zamieni zabłąkanych przechodniów w klientów."
+ ],
+ "puenta_startup": [
+  "Wyjście jest jedno: projektant, który przygotuje pakiet startowy i da młodej firmie mocny początek.",
+  "Rozwiązanie czeka u projektanta, który zaprojektuje całą oprawę na dobry start.",
+  "Karty są zgodne: potrzebny jest projektant, który pomoże firmie wystartować z gotową marką.",
+  "Ratunek ma postać pakietu startowego, a narysuje go dla was projektant."
+ ],
+ "cta": [
+  "Zajrzyj do oferty whosz.pl, a jeśli ciekawi cię inna przyszłość, wylosuj kolejną kartę.",
+  "Odwiedź ofertę whosz.pl. W talii zawsze została jeszcze jedna karta.",
+  "Oferta whosz.pl czeka. Jeśli chcesz zajrzeć w inną przyszłość, wyciągnij następną kartę.",
+  "Napisz do whosz.pl, a dla pewności zapytaj talię jeszcze raz."
+ ],
+ "zywiol_zgodny": [
+  "Żywiołem znaku jest #zywiol#, a karta płynie w tę samą stronę, więc to, o czym mówi, jest ci bliskie.",
+  "Znak i karta mają ten sam żywioł (#zywiol#), więc wzmacniają się nawzajem.",
+  "Twój znak i ta karta należą do jednego żywiołu: #zywiol#. Dlatego wróżba brzmi dziś wyjątkowo pewnie."
+ ],
+ "zywiol_rozny": [
+  "Żywiołem znaku jest #zywiol#, a karta pochodzi z innego, więc stawia przed tobą coś, co wymaga wysiłku.",
+  "Znak ma żywioł #zywiol#, a karta inny, więc pokazuje to, czego firmie jeszcze brakuje.",
+  "Karta pochodzi z innego żywiołu niż twój znak (#zywiol#), więc patrzy na firmę z nieoczekiwanej strony."
+ ],
+ "branza_it": [
+  "W branży technologicznej klient ocenia produkt po pierwszym ekranie, a nie po liczbie funkcji.",
+  "Firmy z branży IT rzadko przegrywają jakością kodu. Częściej giną, bo nikt nie rozumie, co sprzedają.",
+  "Technologia „#company#” może być genialna, ale klient zobaczy ją tak, jak pokaże ją interfejs."
+ ],
+ "branza_handel": [
+  "W handlu liczy się chwila, w której ktoś staje przed półką albo ekranem, i „#company#” ma na to kilka sekund.",
+  "Sklep, który wygląda jak setka innych, konkuruje już tylko ceną.",
+  "Kupujący wybierają oczami, zanim przeczytają cennik, i dotyczy to także „#company#”."
+ ],
+ "branza_uslugi": [
+  "Usługi sprzedaje się zaufaniem, a zaufanie zaczyna się od tego, jak firma wygląda, zanim ktokolwiek się odezwie.",
+  "Klient nie widzi ani Twojej pracy, ani Twoich godzin, widzi tylko materiały, więc „#company#” ocenia po wyglądzie.",
+  "W usługach kompetencję trzeba pokazać, bo samo jej posiadanie nikogo nie przekona."
+ ],
+ "branza_produkcja": [
+  "Produkcja potrafi zrobić rzecz doskonałą i schować ją w opakowaniu, którego nikt nie zauważa.",
+  "Firmy przemysłowe często mają świetny wyrób i katalog z lat dziewięćdziesiątych.",
+  "Kupcy sprawdzają wygląd „#company#” wcześniej niż specyfikację techniczną."
+ ],
+ "branza_gastro": [
+  "W gastronomii i hotelarstwie je się oczami, a o lokalu decyduje wrażenie z progu.",
+  "Gość wybiera miejsce po zdjęciu, szyldzie i menu, zanim spróbuje czegokolwiek z kuchni „#company#”.",
+  "Smak jest obietnicą, którą trzeba złożyć wcześniej, i składa ją wygląd marki."
+ ],
+ "branza_inne": [
+  "Niezależnie od branży klienci zaczynają od wrażenia, a dopiero potem pytają o szczegóły.",
+  "Karty nie znają Twojej branży z nazwy, ale znają ludzi, a ci oceniają „#company#” po pierwszym wrażeniu.",
+  "W każdej branży wygrywa firma, którą łatwo zapamiętać."
+ ],
+ "etap_start": [
+  "Na starcie wszystko da się jeszcze tanio poprawić, więc dobre fundamenty marki zwracają się wielokrotnie.",
+  "Początek to czas na pierwsze wrażenie i tylko jedną szansę, żeby zrobić je dobrze.",
+  "Firma na starcie nie ma jeszcze historii, więc za nią mówi wygląd."
+ ],
+ "etap_rozwoj": [
+  "Rozwój wyciąga na wierzch wszystkie prowizorki: logo z pierwszego tygodnia, stronę sklejoną w weekend i trzy różne style.",
+  "Firma rośnie szybciej niż jej wizerunek, a ta różnica z każdym miesiącem jest lepiej widoczna.",
+  "W rozwoju przybywa klientów, którzy porównują „#company#” z konkurencją, i porównują wyglądem."
+ ],
+ "etap_dojrzala": [
+  "Dojrzała firma ma reputację, ale reputacja bez odświeżenia zaczyna pachnieć kurzem.",
+  "Lata na rynku to kapitał, jeśli wizerunek mówi to samo co doświadczenie.",
+  "Firmy z historią najczęściej wyglądają starzej, niż są."
+ ],
+ "etap_zmiana": [
+  "Przy zmianie kierunku klienci muszą od nowa zrozumieć, kim jest „#company#”, i pomaga w tym tylko spójny, nowy wizerunek.",
+  "Zmiana to moment, w którym stara marka przestaje pasować, a nowa jeszcze nie istnieje.",
+  "Kto zmienia kierunek, a zostawia stary wizerunek, wysyła klientom sprzeczny sygnał."
+ ]
 }

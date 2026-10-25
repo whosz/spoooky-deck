@@ -41,7 +41,7 @@
  "tabCard": "Card",
  "tabSign": "Sign",
  "formTitle": "Introduce yourself to the deck",
- "formText": "Give your name, zodiac sign and the company you work for. Your details stay on your device.",
+ "formText": "Give your name, zodiac sign, company, its industry and stage. Your details stay on your device.",
  "menuLang": "Language",
  "menuSound": "Sound",
  "soundOn": "On",
@@ -86,5 +86,17 @@
  "svc_uxui": "UX/UI design",
  "svc_website": "a website",
  "svc_startup": "a launch package",
- "shareText": "My card: {card}. See what reading the deck has for your company."
+ "shareText": "My card: {card}. See what reading the deck has for your company.",
+ "industry": "Company industry",
+ "stage": "Company stage",
+ "ind_it": "IT and technology",
+ "ind_handel": "Retail and e-commerce",
+ "ind_uslugi": "Services and consulting",
+ "ind_produkcja": "Manufacturing and industry",
+ "ind_gastro": "Food and hospitality",
+ "ind_inne": "Other industry",
+ "stg_start": "Start-up",
+ "stg_rozwoj": "Growing",
+ "stg_dojrzala": "Established",
+ "stg_zmiana": "Changing direction"
 }

@@ -3,7 +3,9 @@ const clean = s => s.replace(/[#\[\]]/g, '').trim();
 const pick = (r, a) => a[Math.floor(r() * a.length)];
 const SUIT_EL = { wands: 'fire', cups: 'water', swords: 'air', pentacles: 'earth' };   // żywioł koloru małych arkanów
 
-export function compose({ seed, card, reversed, name, zodiac, company, lang, grammar, ui }) {
+export const INDUSTRIES = ['it', 'handel', 'uslugi', 'produkcja', 'gastro', 'inne'], STAGES = ['start', 'rozwoj', 'dojrzala', 'zmiana'];
+
+export function compose({ seed, card, reversed, name, zodiac, company, industry = 'inne', stage = 'rozwoj', lang, grammar, ui }) {
   const r = new Math.seedrandom('o' + seed);
   tracery.setRng(r);
   const side = reversed ? card.rev : card.up;
@@ -21,13 +23,14 @@ export function compose({ seed, card, reversed, name, zodiac, company, lang, gra
     business: [card.business[lang]],
     omen: [pick(r, zodiac.omens)],
     puenta: [`#puenta_${service}#`],
+    kontekst: [`#branza_${INDUSTRIES.includes(industry) ? industry : 'inne'}# #etap_${STAGES.includes(stage) ? stage : 'rozwoj'}#`],   // zdania o branży i etapie firmy (nie zależą od karty)
     zywiol: [(ui[zodiac.element] || '').toLowerCase()],
   });
   g.addModifiers(tracery.baseEngModifiers);
   // Małe arkana dostają dodatkowe zdanie o zgodności żywiołu znaku z żywiołem koloru karty; Wielkie nie mają jednego żywiołu.
   const ids = ['wezwanie', 'znaczenie', 'omen'];
   if (card.suit) ids.push(SUIT_EL[card.suit] === zodiac.element ? 'zywiol_zgodny' : 'zywiol_rozny');
-  ids.push('puenta', 'cta');
+  ids.push('kontekst', 'puenta', 'cta');
   const parts = ids.map(id => ({ id: id.startsWith('zywiol') ? 'zywiol' : id, text: g.flatten(`#${id}#`) }));
   return { parts, quote: meaning };
 }

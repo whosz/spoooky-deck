@@ -41,7 +41,7 @@
  "tabCard": "Karta",
  "tabSign": "Znak",
  "formTitle": "Przedstaw się talii",
- "formText": "Podaj imię, znak zodiaku i firmę, w której pracujesz. Dane zostają na Twoim urządzeniu.",
+ "formText": "Podaj imię, znak zodiaku, firmę oraz jej branżę i etap. Dane zostają na Twoim urządzeniu.",
  "menuLang": "Język",
  "menuSound": "Dźwięk",
  "soundOn": "Włączony",
@@ -86,5 +86,17 @@
  "svc_uxui": "projektowanie UX/UI",
  "svc_website": "strona www",
  "svc_startup": "pakiet startowy",
- "shareText": "Wylosowana karta: {card}. Sprawdź, jaką wróżbę talia ma dla Twojej firmy."
+ "shareText": "Wylosowana karta: {card}. Sprawdź, jaką wróżbę talia ma dla Twojej firmy.",
+ "industry": "Branża firmy",
+ "stage": "Etap firmy",
+ "ind_it": "IT i technologie",
+ "ind_handel": "Handel i e-commerce",
+ "ind_uslugi": "Usługi i doradztwo",
+ "ind_produkcja": "Produkcja i przemysł",
+ "ind_gastro": "Gastronomia i hotelarstwo",
+ "ind_inne": "Inna branża",
+ "stg_start": "Start",
+ "stg_rozwoj": "Rozwój",
+ "stg_dojrzala": "Dojrzała firma",
+ "stg_zmiana": "Zmiana kierunku"
 }

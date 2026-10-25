@@ -28,6 +28,8 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     check(`${tag}: brak imienia blokuje formularz`, await visible('#s-form') && !(await visible('#s-pick')));
     await p.fill('#f-name', '   '); await p.click('#form .cta'); await p.waitForTimeout(300);
     check(`${tag}: samo spacje w imieniu blokują formularz`, await visible('#s-form'));
+    check(`${tag}: pola branża i etap mają opcje`, await p.evaluate(() => document.querySelector('#f-industry').options.length === 6 && document.querySelector('#f-stage').options.length === 4 && [...document.querySelectorAll('#f-industry option, #f-stage option')].every(o => o.text.trim())));
+    await p.selectOption('#f-industry', 'gastro'); await p.selectOption('#f-stage', 'zmiana');
     await p.fill('#f-name', 'Anna'); await p.click('#form .cta'); await p.waitForTimeout(2800);
     check(`${tag}: ekran wyboru karty`, await visible('#s-pick')); await noOverflow('wybór');
     const fb = await p.locator('#fan').boundingBox(); await p.mouse.click(fb.x + fb.width / 2, fb.y + fb.height * .4); await p.waitForTimeout(2300);
@@ -35,6 +37,7 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     check(`${tag}: ilustracja karty się wczytała`, await p.evaluate(async () => { const u = getComputedStyle(document.querySelector('#card .front')).backgroundImage.match(/url\("?(.*?)"?\)/); if (!u) return false; const i = new Image(); i.src = u[1]; await i.decode().catch(() => {}); return i.naturalWidth === 64; }));
     check(`${tag}: nazwa karty nie wystaje poza kartę`, await p.evaluate(() => { const n = document.querySelector('#card .nm'), c = document.querySelector('#card'); return n.scrollWidth <= c.clientWidth; }));
     await p.click('#more'); await p.waitForTimeout(700); check(`${tag}: ekran wróżby`, await visible('#s-read')); await noOverflow('wróżba');
+    check(`${tag}: wróżba ma zdania o branży i etapie, a wybór jest zapamiętany`, await p.evaluate(() => { const f = JSON.parse(localStorage.sd_form || '{}'); return f.industry === 'gastro' && f.stage === 'zmiana' && document.querySelectorAll('#tabtext p').length >= 6; }));
     check(`${tag}: trzy zakładki mieszczą się`, await p.evaluate(() => { const b = [...document.querySelectorAll('.tabs button')]; return b.length === 3 && b.every(x => x.scrollWidth <= x.clientWidth + 1); }));
     for (const t of ['fortune', 'card', 'key']) { await p.click(`[data-tab=${t}]`); await p.waitForTimeout(250); check(`${tag}: zakładka ${t} ma treść`, await p.evaluate(() => document.querySelectorAll('#tabtext p').length >= 3)); }
     const [dl] = await Promise.all([p.waitForEvent('download', { timeout: 15000 }).catch(() => null), p.click('#share-img')]);

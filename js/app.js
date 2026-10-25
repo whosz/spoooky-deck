@@ -1,5 +1,5 @@
 import { draw, loadHistory, saveHistory, newSeed } from './deck.js';
-import { compose } from './oracle.js';
+import { compose, INDUSTRIES, STAGES } from './oracle.js';
 import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js';
 import { shareImage } from './share.js';
 import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js';
@@ -109,10 +109,16 @@ async function load() {
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   paintMute();
   $('#f-zodiac').replaceChildren(...zodiac.map(z => new Option(z.name, z.id)));
+  $('#f-industry').replaceChildren(...INDUSTRIES.map(i => new Option(ui['ind_' + i], i)));
+  $('#f-stage').replaceChildren(...STAGES.map(s => new Option(ui['stg_' + s], s)));
   const saved = JSON.parse(store.get('sd_form') || '{}');
   $('#f-name').value = saved.name || '';
   $('#f-company').value = saved.company || '';
   if (saved.zodiac) $('#f-zodiac').value = saved.zodiac;
+  if (saved.industry) $('#f-industry').value = saved.industry;
+  if (saved.stage) $('#f-stage').value = saved.stage;
+  if (!$('#f-industry').value) $('#f-industry').value = 'inne';
+  if (!$('#f-stage').value) $('#f-stage').value = 'rozwoj';
 }
 
 const em = cp => { const i = document.createElement('img'); i.className = 'emoji'; i.src = `img/emoji/U+${cp}.png`; i.alt = ''; return i; };
@@ -128,14 +134,14 @@ function fillCard({ card, reversed }) {
 }
 
 function reveal() {
-  const form = { name: $('#f-name').value, zodiac: $('#f-zodiac').value, company: $('#f-company').value };
+  const form = { name: $('#f-name').value, zodiac: $('#f-zodiac').value, company: $('#f-company').value, industry: $('#f-industry').value, stage: $('#f-stage').value };
   store.set('sd_form', JSON.stringify(form));
   const hist = loadHistory();
   if (!seed) seed = newSeed(cards, hist);
   const { card, reversed } = preview ? { card: cards.find(c => c.id === preview.id), reversed: preview.rev } : draw(seed, cards);
   saveHistory([...hist, card.id]);
   const z = zodiac.find(z => z.id === form.zodiac);
-  const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, lang, grammar, ui });
+  const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, industry: form.industry, stage: form.stage, lang, grammar, ui });
   cur = { card, reversed, z, parts, quote };
 
   // Elementy .fade zerujemy bez przejścia PRZED pokazaniem ekranu (inaczej przy kolejnym losowaniu gasły i zapalały się ponownie).

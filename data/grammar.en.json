@@ -1,13 +1,117 @@
 {
-"origin":["#wezwanie# #znaczenie# #omen# #puenta# #cta#"],
-"aura":["The fog thins, the candles tremble.","A raven watches from the corner.","The flames lean toward the cards.","In the window a lantern goes out.","Somewhere in the dark an old wardrobe creaks.","The wick crackles and the shadows grow longer on the wall."],
-"wezwanie":["#name#, #zodiac#. The deck stirs over the company “#company#”. #aura#","Hush, #name#. The cards whisper about “#company#” and the sign of #zodiac#. #aura#","Come closer, #name#. The deck pulls “#company#” out of the dark. #aura#","Welcome, #name#. The sign of #zodiac# and the company “#company#” have woken the whole deck. #aura#","Light a candle, #name#. The cards have waited a long time for news of “#company#”, and #zodiac# is on their side. #aura#","#name#, #zodiac#. Say just one word: “#company#”. The cards will tell the rest. #aura#"],
-"znaczenie":["The card drawn is #card#, #pos#. Its words are #keywords#. #meaning# #business#","You turn up #card#, #pos#. Its words are #keywords#. #meaning# #business#","#card# lies on the table, #pos#. It murmurs: #keywords#. #meaning# #business#","The deck points to #card#, #pos#. Its watchwords are #keywords#. #meaning# #business#"],
-"puenta_identity":["There is one way out: a visual identity designer who will give the company the face it deserves.","The answer waits with a designer who will rebuild the brand from the logo to the last detail.","The cards agree: you need a designer who turns scattered marks into one recognizable brand.","Rescue comes in the shape of a designer who will comb the company's image into order and give it a sharp outline."],
-"puenta_uxui":["There is one way out: a UX/UI designer who will lead clients out of the maze and straight to the goal.","The answer waits with a designer who will lay out the client's path so nobody gets lost again.","The cards agree: you need a UX/UI designer to spare your clients the search for the way.","Rescue lies with a designer who will walk users through the company step by step, without a stumble."],
-"puenta_website":["There is one way out: a web designer who will lay the road from the first click to the sale.","The answer waits with a designer who will build a site worthy of your company.","The cards agree: you need a designer who gives the company a site and clients a reason to stay.","Rescue is near: a web designer will turn lost passersby into clients."],
-"puenta_startup":["There is one way out: a designer who will prepare a launch package and give a young company a strong start.","The answer waits with a designer who will shape the whole look for a good start.","The cards agree: you need a designer to help the company launch with a brand already in hand.","Rescue takes the shape of a launch package, and a designer will draw it for you."],
-"cta":["Look into the whosz.pl offer, and if another future tempts you, draw another card.","Visit the whosz.pl offer. The deck always has one more card.","The whosz.pl offer is waiting. If you wish to peek into another future, draw the next card.","Write to whosz.pl, and to be safe, ask the deck once more."],
-"zywiol_zgodny":["The element of your sign, #zywiol#, flows the same way as the card, so what it says is close to you.","Your sign carries #zywiol# and the card shares that element, so they strengthen each other.","This card has the same element as your sign (#zywiol#), so the reading sounds unusually sure today."],
-"zywiol_rozny":["Your sign has #zywiol# and the card belongs to a different element, so it sets before you something that takes effort.","The element of your sign (#zywiol#) differs from the card's, so this card shows what the company still lacks.","The card comes from a different element than your sign (#zywiol#), so it looks at the company from an unexpected side."]
+ "origin": [
+  "#wezwanie# #znaczenie# #omen# #puenta# #cta#"
+ ],
+ "aura": [
+  "The fog thins, the candles tremble.",
+  "A raven watches from the corner.",
+  "The flames lean toward the cards.",
+  "In the window a lantern goes out.",
+  "Somewhere in the dark an old wardrobe creaks.",
+  "The wick crackles and the shadows grow longer on the wall."
+ ],
+ "wezwanie": [
+  "#name#, #zodiac#. The deck stirs over the company “#company#”. #aura#",
+  "Hush, #name#. The cards whisper about “#company#” and the sign of #zodiac#. #aura#",
+  "Come closer, #name#. The deck pulls “#company#” out of the dark. #aura#",
+  "Welcome, #name#. The sign of #zodiac# and the company “#company#” have woken the whole deck. #aura#",
+  "Light a candle, #name#. The cards have waited a long time for news of “#company#”, and #zodiac# is on their side. #aura#",
+  "#name#, #zodiac#. Say just one word: “#company#”. The cards will tell the rest. #aura#"
+ ],
+ "znaczenie": [
+  "The card drawn is #card#, #pos#. Its words are #keywords#. #meaning# #business#",
+  "You turn up #card#, #pos#. Its words are #keywords#. #meaning# #business#",
+  "#card# lies on the table, #pos#. It murmurs: #keywords#. #meaning# #business#",
+  "The deck points to #card#, #pos#. Its watchwords are #keywords#. #meaning# #business#"
+ ],
+ "puenta_identity": [
+  "There is one way out: a visual identity designer who will give the company the face it deserves.",
+  "The answer waits with a designer who will rebuild the brand from the logo to the last detail.",
+  "The cards agree: you need a designer who turns scattered marks into one recognizable brand.",
+  "Rescue comes in the shape of a designer who will comb the company's image into order and give it a sharp outline."
+ ],
+ "puenta_uxui": [
+  "There is one way out: a UX/UI designer who will lead clients out of the maze and straight to the goal.",
+  "The answer waits with a designer who will lay out the client's path so nobody gets lost again.",
+  "The cards agree: you need a UX/UI designer to spare your clients the search for the way.",
+  "Rescue lies with a designer who will walk users through the company step by step, without a stumble."
+ ],
+ "puenta_website": [
+  "There is one way out: a web designer who will lay the road from the first click to the sale.",
+  "The answer waits with a designer who will build a site worthy of your company.",
+  "The cards agree: you need a designer who gives the company a site and clients a reason to stay.",
+  "Rescue is near: a web designer will turn lost passersby into clients."
+ ],
+ "puenta_startup": [
+  "There is one way out: a designer who will prepare a launch package and give a young company a strong start.",
+  "The answer waits with a designer who will shape the whole look for a good start.",
+  "The cards agree: you need a designer to help the company launch with a brand already in hand.",
+  "Rescue takes the shape of a launch package, and a designer will draw it for you."
+ ],
+ "cta": [
+  "Look into the whosz.pl offer, and if another future tempts you, draw another card.",
+  "Visit the whosz.pl offer. The deck always has one more card.",
+  "The whosz.pl offer is waiting. If you wish to peek into another future, draw the next card.",
+  "Write to whosz.pl, and to be safe, ask the deck once more."
+ ],
+ "zywiol_zgodny": [
+  "The element of your sign, #zywiol#, flows the same way as the card, so what it says is close to you.",
+  "Your sign carries #zywiol# and the card shares that element, so they strengthen each other.",
+  "This card has the same element as your sign (#zywiol#), so the reading sounds unusually sure today."
+ ],
+ "zywiol_rozny": [
+  "Your sign has #zywiol# and the card belongs to a different element, so it sets before you something that takes effort.",
+  "The element of your sign (#zywiol#) differs from the card's, so this card shows what the company still lacks.",
+  "The card comes from a different element than your sign (#zywiol#), so it looks at the company from an unexpected side."
+ ],
+ "branza_it": [
+  "In tech, customers judge a product by its first screen, not by its feature count.",
+  "IT companies seldom lose on code quality. They fade because nobody understands what they sell.",
+  "The technology behind “#company#” may be brilliant, but the customer will see it the way the interface shows it."
+ ],
+ "branza_handel": [
+  "In retail, everything happens in the moment someone faces a shelf or a screen, and “#company#” gets a few seconds for it.",
+  "A shop that looks like a hundred others competes on price alone.",
+  "Buyers choose with their eyes before they read the price list, and that includes “#company#”."
+ ],
+ "branza_uslugi": [
+  "Services sell on trust, and trust starts with how the company looks before anyone says a word.",
+  "Clients see neither your work nor your hours, only your materials, so they judge “#company#” by how it looks.",
+  "In services, competence has to be shown. Having it convinces nobody."
+ ],
+ "branza_produkcja": [
+  "Manufacturers can make a flawless thing and hide it in packaging nobody notices.",
+  "Industrial firms often have an excellent product and a catalogue from the nineties.",
+  "Buyers check how “#company#” looks long before they read the technical specification."
+ ],
+ "branza_gastro": [
+  "In food and hospitality people eat with their eyes, and the first impression at the door decides.",
+  "A guest picks a place by its photo, sign and menu before tasting anything from the kitchen of “#company#”.",
+  "Taste is a promise that must be made earlier, and the look of the brand makes it."
+ ],
+ "branza_inne": [
+  "Whatever the industry, customers begin with an impression and only then ask about details.",
+  "The cards do not know your industry by name, but they know people, and people judge “#company#” by a first impression.",
+  "In every industry the company that is easy to remember wins."
+ ],
+ "etap_start": [
+  "At the start everything is still cheap to fix, so solid brand foundations pay back many times.",
+  "A beginning is the time for a first impression, and there is only one chance to make it well.",
+  "A new company has no history yet, so its look speaks for it."
+ ],
+ "etap_rozwoj": [
+  "Growth drags every makeshift fix into view: the logo from week one, the site glued together over a weekend and three different styles.",
+  "The company grows faster than its image, and that gap becomes clearer every month.",
+  "Growth brings customers who compare “#company#” with the competition, and they compare by looks."
+ ],
+ "etap_dojrzala": [
+  "A mature company has a reputation, but a reputation without a refresh starts to smell of dust.",
+  "Years on the market are capital, provided the image says the same as the experience.",
+  "Companies with a history usually look older than they are."
+ ],
+ "etap_zmiana": [
+  "When a company changes direction, customers must work out again who “#company#” is, and only a consistent new image helps with that.",
+  "A change is the moment when the old brand stops fitting and the new one does not exist yet.",
+  "Whoever changes direction and keeps the old image sends customers a mixed signal."
+ ]
 }
