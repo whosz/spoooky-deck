@@ -1,8 +1,8 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=187';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=187';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=187';
-import { shareImage } from './share.js?v=187';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=187';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=188';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=188';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=188';
+import { shareImage } from './share.js?v=188';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=188';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -92,7 +92,7 @@ function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, ro
   const el = $('#scene'), k = SCENES[id]; clearTimeout(sceneTimer);
   if (k && el.dataset.scene === k && el.classList.contains('on')) return;   // to samo tło (formularz i wybór karty): bez migania
   el.classList.remove('on');
-  if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.dataset.scene = k; el.classList.add('on'); }, 360);
+  if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.dataset.scene = k; el.classList.add('on'); }, 260);
 }
 
 function show(id) {
