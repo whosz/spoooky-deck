@@ -16,8 +16,12 @@
   <FilesMatch "(^sw\.js|\.html|\.webmanifest|\.json|\.css|\.js)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  # Obrazki, fonty i muzyka: doba (service worker i tak trzyma kopię offline)
-  <FilesMatch "\.(png|woff2|ttf|mp3)$">
+  # Obrazki i fonty też zmieniają się w miejscu, więc rewalidacja (304, gdy bez zmian); service worker i tak trzyma kopię offline
+  <FilesMatch "\.(png|woff2|ttf)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Muzyka jest duża i dostaje nową nazwę przy zmianie utworu: doba
+  <FilesMatch "\.mp3$">
     Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
   Header always set X-Content-Type-Options "nosniff"

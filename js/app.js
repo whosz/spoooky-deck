@@ -19,7 +19,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lang = params.get('lang') || 'pl';
 if (!['pl', 'en'].includes(lang)) lang = 'pl';
 let untilt = () => {}, preview = null;
-let ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
+let appStale = false, ui, grammar, zodiac, cards, seed = params.get('s'), cur, screen = 's-intro', tab = 'fortune';
 
 $('#view').addEventListener('scroll', () => $('.bar').classList.toggle('scrolled', $('#view').scrollTop > 2), { passive: true });
 document.addEventListener('selectstart', e => { if (!e.target.closest?.('input, textarea, select')) e.preventDefault(); });
@@ -94,6 +94,7 @@ function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, ro
 }
 
 function show(id) {
+  if (appStale && (id === 's-intro' || id === 's-form')) return location.reload();   // czekała nowa wersja
   screen = id; setScene(id); if (id !== 's-pick') stopAmbient();
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
@@ -347,9 +348,14 @@ const loader = $('#loader');
 loader.classList.add('hide');
 setTimeout(() => loader.remove(), 700);
 
-// PWA: service worker przejmuje stronę od razu po aktualizacji; jednorazowo przeładowujemy, żeby załadować nowe pliki.
+// PWA: nowy service worker przejmuje stronę od razu. Przeładowujemy od razu tylko na ekranie startowym i formularzu; w trakcie losowania
+// czy wróżby czekamy do powrotu na te ekrany (patrz show), żeby nie zgubić wróżby. Aktualizacji szukamy przy każdym powrocie do aplikacji i co 30 min.
 if ('serviceWorker' in navigator) {
-  const had = !!navigator.serviceWorker.controller; let reloaded = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => { if (had && !reloaded) { reloaded = true; location.reload(); } });
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const had = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (!had) return; appStale = true; if (screen === 's-intro' || screen === 's-form') location.reload(); });
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    const check = () => reg.update().catch(() => {});
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+    setInterval(check, 30 * 60 * 1000);
+  }).catch(() => {});
 }
