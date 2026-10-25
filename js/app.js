@@ -212,7 +212,7 @@ function pick() {
   show('s-pick'); startAmbient();
   $('#date').textContent = new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
   const fan = $('#fan'), N = 21, STEP = 9, mid = (N - 1) / 2;
-  fan.replaceChildren(); fan.classList.remove('picked'); $('#s-pick').classList.remove('picking');
+  fan.replaceChildren(); fan.classList.remove('picked', 'drag', 'glide', 'shuffling'); $('#s-pick').classList.remove('picking');
   const els = Array.from({ length: N }, () => { const c = el('div', 'fcard'); c.setAttribute('aria-hidden', 'true'); fan.append(c); return c; });
   let off = 0, startX = 0, startOff = 0, moved = false, down = false, vel = 0, lastX = 0, lastT = 0, raf = 0, picking = false;
   // Głębia: karty dalej od środka są mniejsze i opadają łukiem, a środkowa wyskakuje do przodu.
@@ -249,7 +249,7 @@ function pick() {
     fan.classList.add('glide'); raf = requestAnimationFrame(step);
   };
   // Wybór karty na pointerup (nie na click): po przeciągnięciu pierwszy tap od razu otwiera kartę.
-  fan.onpointerdown = e => { if (picking) return; cancelAnimationFrame(raf); fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = lastX = e.clientX; startOff = off; vel = 0; lastT = performance.now(); fan.classList.add('drag'); };
+  fan.onpointerdown = e => { if (picking) return; cancelAnimationFrame(raf); fan.classList.remove('glide'); fan.setPointerCapture(e.pointerId); down = true; moved = false; startX = lastX = e.clientX; startOff = off; vel = 0; lastT = performance.now(); fan.classList.add('drag'); };
   fan.onpointermove = e => {
     if (!down) return; const dx = e.clientX - startX; if (Math.abs(dx) > 8) moved = true;
     if (moved) { const now = performance.now(), dt = Math.max(1, now - lastT); vel = vel * .6 + (((e.clientX - lastX) / 40) / dt) * .4; lastX = e.clientX; lastT = now; go(startOff + dx / 40); }
