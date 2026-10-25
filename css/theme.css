@@ -134,3 +134,8 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #mute img.bump{animation:bump .36s steps(4)}
 @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.35) rotate(-8deg)}70%{transform:scale(.9) rotate(5deg)}100%{transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.text p.stag{opacity:1;animation:none}.fog{display:none}.burger i{transition:none}#mute img.bump{animation:none}}
+/* zakładka Klucz: więcej powietrza między sekcjami i akapitami */
+#tabtext[data-tab=key] p{margin-bottom:20px}
+#tabtext[data-tab=key] p.lead{margin-top:44px;margin-bottom:16px}
+#tabtext[data-tab=key] p.lead:first-child{margin-top:0}
+#tabtext[data-tab=key] p:last-child{margin-bottom:0}

@@ -82,8 +82,6 @@
  "keyPos": "Pozycja",
  "keyPosUp": "Karta prosta pokazuje swoje główne, jasne znaczenie. Wybiera właśnie takie słowa kluczowe i zdania.",
  "keyPosRev": "Karta odwrócona pokazuje ciemniejszą stronę znaczenia: przeszkodę, zwłokę lub brak. Zmieniają się słowa kluczowe i zdania.",
- "keyService": "Puenta",
- "keyServiceText": "Każda karta wskazuje usługę, która pasuje do problemu, a wróżba kończy się wnioskiem, że potrzebny jest projektant. Dla tej karty:",
  "svc_identity": "identyfikacja wizualna",
  "svc_uxui": "projektowanie UX/UI",
  "svc_website": "strona www",

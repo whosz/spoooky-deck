@@ -28,9 +28,9 @@ document.addEventListener('dragstart', e => e.preventDefault());
 // Instalacja: Chrome/Android przez beforeinstallprompt, iOS i reszta przez podpowiedź; w zainstalowanej aplikacji przycisk jest ukryty.
 let installEvt = null;
 const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-if (standalone) $('#app-sec').hidden = true;
+if (standalone) $('#install').hidden = true;
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
-addEventListener('appinstalled', () => { $('#app-sec').hidden = true; installEvt = null; });
+addEventListener('appinstalled', () => { $('#install').hidden = true; $('#install-hint').hidden = true; installEvt = null; });
 $('#install').onclick = async () => {
   const hint = $('#install-hint');
   if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; return; }
@@ -171,7 +171,7 @@ function reveal() {
 function renderTab(name) {
   tab = name;
   document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name));
-  const box = $('#tabtext'); box.replaceChildren();
+  const box = $('#tabtext'); box.replaceChildren(); box.dataset.tab = name;
   const p = (t, cls) => box.append(el('p', cls, t));
   const side = cur.reversed ? cur.card.rev : cur.card.up;
   if (name === 'fortune') {
@@ -192,7 +192,6 @@ function renderTab(name) {
     lead(ELEM[cur.z.element], `${ui.keyElement}: ${ui[cur.z.element]}`); p(ui.keyElementText);
     p(major ? ui.keyElMajor : (SUIT_EL[c.suit] === cur.z.element ? ui.keyElMatch : ui.keyElDiff));
     lead(cur.reversed ? '1F53B' : '1F53A', `${ui.keyPos}: ${cur.reversed ? ui.reversed : ui.upright}`); p(cur.reversed ? ui.keyPosRev : ui.keyPosUp);
-    lead('2728', ui.keyService); p(ui.keyServiceText); p(c.services.map(x => ui['svc_' + x]).join(', '));
   }
   [...box.children].forEach((c, i) => { c.classList.add('stag'); c.style.animationDelay = Math.min(i, 12) * 95 + 'ms'; });   // akapity wchodzą po kolei
   box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
