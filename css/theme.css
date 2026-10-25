@@ -161,3 +161,6 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #s-pick h1{line-height:1;background-size:250% 100%,100% 1em}
 #s-pick h1::after{display:none}
 #fan:focus,#fan:focus-visible{outline:none}   /* wachlarz pokazuje wybraną kartę sam, ramka fokusu była zbędna */
+/* zmiana ekranu: nowy ekran szybko się rozjaśnia */
+.screen.fadein{animation:scrfade .22s ease-out}
+@keyframes scrfade{from{opacity:0}to{opacity:1}}

@@ -1,8 +1,8 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=181';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=181';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=181';
-import { shareImage } from './share.js?v=181';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=181';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=182';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=182';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=182';
+import { shareImage } from './share.js?v=182';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=182';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -98,6 +98,7 @@ function show(id) {
   if (appStale && (id === 's-intro' || id === 's-form')) return location.reload();   // czekała nowa wersja
   screen = id; setScene(id); if (id !== 's-pick') stopAmbient();
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== id);
+  if (!reduced) { const sc = $('#' + id); sc.classList.remove('fadein'); void sc.offsetWidth; sc.classList.add('fadein'); }   // szybkie pojawienie się nowego ekranu
   $('#back').style.visibility = ['s-pick', 's-card', 's-read'].includes(id) ? 'visible' : 'hidden';
   closeMenu();
   $('#bar-title').textContent = '';   // nazwa karty jest na plakietce, nie w nagłówku
