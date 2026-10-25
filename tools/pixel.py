@@ -1,4 +1,4 @@
-"""Minimalny rysownik pikseli (tylko stdlib): Canvas -> PNG RGBA. Pillow nie jest zainstalowany."""
+"""Minimal pixel canvas (stdlib only): Canvas -> RGBA PNG. Pillow is not installed."""
 import zlib, struct
 
 def rgb(h, a=255):
@@ -15,7 +15,7 @@ class Canvas:
     def frame(self, x, y, w, h, c):
         self.rect(x, y, w, 1, c); self.rect(x, y + h - 1, w, 1, c); self.rect(x, y, 1, h, c); self.rect(x + w - 1, y, 1, h, c)
     def art(self, x, y, rows, pal):
-        """rows: lista napisow, znak '.' = przezroczysty, inne wg pal."""
+        """rows: list of strings, '.' = transparent, other characters per pal."""
         for j, row in enumerate(rows):
             for i, ch in enumerate(row):
                 if ch != '.': self.set(x + i, y + j, pal[ch])
@@ -47,7 +47,7 @@ def _paste(self, other, ox, oy):
             if other.px[y][x][3]: self.set(ox + x, oy + y, other.px[y][x])
 
 def _rotated(self, deg, w, h):
-    """Obrot o deg stopni (najblizszy sasiad) do nowego plotna w x h, srodek w srodek."""
+    """Rotation by deg degrees (nearest neighbour) onto a new w x h canvas, centre to centre."""
     o = Canvas(w, h); a = math.radians(-deg); ca, sa = math.cos(a), math.sin(a)
     for y in range(h):
         for x in range(w):

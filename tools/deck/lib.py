@@ -1,11 +1,11 @@
-"""Biblioteka pixel art dla talii 144x216: paleta, dither Bayera 4x4, kształty, symbole kolorów, sylwetki.
-Używa tools/pixel.py (Canvas). Każda karta to funkcja draw(c) rysująca na Canvas(144, 216)."""
+"""Pixel art library for the 144x216 deck: palette, 4x4 Bayer dither, shapes, suit symbols, silhouettes.
+Uses tools/pixel.py (Canvas). Each card is a function draw(c) drawing on a Canvas(144, 216)."""
 import sys, math, random
 sys.path.insert(0, 'tools')
 from pixel import Canvas, rgb
 
 W, H = 144, 216
-# Wspólna paleta (nazwane odcienie, ciemne -> jasne w obrębie rodziny)
+# Shared palette (named shades, dark -> light within a family)
 P = {k: rgb(v) for k, v in dict(
     ink='#07080f', n1='#0b0d17', n2='#131a33', n3='#1c2750', n4='#2b3a73',
     v1='#2a1740', v2='#46245f', v3='#6b3a85',
@@ -23,18 +23,18 @@ BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
 def thr(x, y): return (BAYER[y % 4][x % 4] + .5) / 16
 
 def blend(c, x, y, col, t):
-    """Wstawia col z prawdopodobieństwem t (dither Bayera)."""
+    """Places col with probability t (Bayer dither)."""
     if t > thr(x, y): c.set(x, y, col)
 
 def ramp(c, x0, y0, x1, y1, names):
-    """Pionowy gradient przez kolejne kolory palety z ditheringiem między sąsiadami."""
+    """Vertical gradient through successive palette colours with dithering between neighbours."""
     n = len(names) - 1
     for y in range(y0, y1):
         f = (y - y0) / max(1, y1 - y0 - 1) * n; i = min(int(f), n - 1); t = f - i
         for x in range(x0, x1): c.set(x, y, P[names[i + 1]] if t > thr(x, y) else P[names[i]])
 
 def glow(c, cx, cy, r, name, power=1.6):
-    """Okrągła poświata: gęstość maleje od środka (dither)."""
+    """Round glow: density falls off from the centre (dither)."""
     for y in range(int(cy - r), int(cy + r) + 1):
         for x in range(int(cx - r), int(cx + r) + 1):
             d = math.hypot(x - cx, y - cy) / r
@@ -47,7 +47,7 @@ def vignette(c, name='ink', strength=.55):
             if d > .8: blend(c, x, y, P[name], min(1, (d - .8) / .2 * strength * 1.4))
 
 def poly(c, pts, name):
-    """Wypełniony wielokąt (scanline)."""
+    """Filled polygon (scanline)."""
     col = P[name] if isinstance(name, str) else name
     ys = [p[1] for p in pts]
     for y in range(int(min(ys)), int(max(ys)) + 1):
@@ -92,7 +92,7 @@ def clouds(c, y0, y1, names, seed=1, n=7):
         cx, cy, rx, ry = r.randrange(W), r.randrange(y0, y1), r.randrange(18, 40), r.randrange(5, 10)
         for k, nm in enumerate(names): c.ellipse(cx, cy - k * 2, rx - k * 3, ry - k, P[nm], True)
 
-# ---- symbole kolorów (środek cx, cy; s = skala 1.0 ~ 28 px wysokości) ----
+# ---- suit symbols (centre cx, cy; s = scale 1.0 ~ 28 px high) ----
 def pentacle(c, cx, cy, s=1.0, hi='g4', mid='g3', lo='g2'):
     r = 11 * s; glow(c, cx, cy, r * 1.9, 'g1', 1.8)
     disc(c, cx, cy, r + 1, 'ink'); disc(c, cx, cy, r, lo); disc(c, cx, cy, r - 2, mid); disc(c, cx, cy, r - 4, lo)
@@ -131,13 +131,13 @@ def wand(c, cx, cy, s=1.0, wood='b3', leaf='e4'):
 
 SYMBOL = dict(pentacles=pentacle, cups=cup, swords=sword, wands=wand)
 
-# ---- sylwetki ----
+# ---- silhouettes ----
 def figure(c, cx, base, h=60, robe='v2', trim='v3', hood=True, face='ink', arms='down', skin='k1', sym=None, hs=1.0):
-    """Zakapturzona sylwetka. cx = środek, base = linia stóp, h = wysokość. arms: down/up/out."""
+    """Hooded silhouette. cx = centre, base = foot line, h = height. arms: down/up/out."""
     w = h * .34; top = base - h
-    poly(c, [(cx - w * .45, top + h * .24), (cx + w * .45, top + h * .24), (cx + w, base), (cx - w, base)], 'ink')   # kontur
+    poly(c, [(cx - w * .45, top + h * .24), (cx + w * .45, top + h * .24), (cx + w, base), (cx - w, base)], 'ink')   # outline
     poly(c, [(cx - w * .4, top + h * .26), (cx + w * .4, top + h * .26), (cx + w * .9, base - 1), (cx - w * .9, base - 1)], robe)
-    rect(c, cx - w * .9, base - 3, w * 1.8, 2, trim)                      # lamówka
+    rect(c, cx - w * .9, base - 3, w * 1.8, 2, trim)                      # trim
     poly(c, [(cx - 1, top + h * .3), (cx + 1, top + h * .3), (cx + w * .2, base - 2), (cx - w * .2, base - 2)], trim)
     r = h * .13
     disc(c, cx, top + r + 1, r + 1, 'ink'); disc(c, cx, top + r + 1, r, robe if hood else skin)
@@ -179,17 +179,17 @@ def finish(c, accent=None, vig=.5):
 def card(): return Canvas(W, H, P['n1'])
 
 
-# ---- lepsze postacie: person() rysuje na przezroczystej warstwie, cieniuje, obrysowuje i składa na karcie ----
+# ---- better figures: person() draws on a transparent layer, shades, outlines and composites onto the card ----
 FAMILIES = [['n1', 'n2', 'n3', 'n4'], ['v1', 'v2', 'v3'], ['r1', 'r2', 'r3', 'r4'], ['o1', 'o2', 'o3', 'o4', 'o5'], ['g1', 'g2', 'g3', 'g4'],
             ['e1', 'e2', 'e3', 'e4'], ['t1', 't2', 't3', 't4'], ['s1', 's2', 's3', 's4'], ['b1', 'b2', 'b3'], ['y1', 'y2', 'y3'], ['k1', 'k2'], ['cream', 'white']]
 def tone(name, d):
-    """Odcień z tej samej rodziny: d=-1 ciemniejszy, +1 jaśniejszy."""
+    """A shade from the same family: d=-1 darker, +1 lighter."""
     for f in FAMILIES:
         if name in f: return f[max(0, min(len(f) - 1, f.index(name) + d))]
     return name
 
 def composite(c, lay, outline='ink'):
-    """Składa warstwę na karcie z 1 px obrysem."""
+    """Composites the layer onto the card with a 1 px outline."""
     for y in range(lay.h):
         for x in range(lay.w):
             if lay.px[y][x][3]: continue
@@ -205,15 +205,15 @@ def _limb(lay, x0, y0, x1, y1, name, t):
         lay.rect(round(x - t / 2), round(y - t / 2), round(t), round(t), P[name])
 
 def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=False, hood=False, lh=None, rh=None, hat=None, belt=True, eyes='o4'):
-    """Postać o wysokości h stojąca na linii base. lh/rh: pozycja dłoni (dx, dy) względem środka barków lewej/prawej ręki.
-    hat: None/'crown3'/'crown5'/'cap'/'mitre'. hood: kaptur z cieniem zamiast twarzy. Zwraca słownik z punktami dłoni i głowy."""
+    """A figure of height h standing on the base line. lh/rh: hand position (dx, dy) relative to the centre of the left/right shoulder.
+    hat: None/'crown3'/'crown5'/'cap'/'mitre'. hood: a hood with a shadow instead of a face. Returns a dict with hand and head points."""
     lay = Canvas(W, H)
     hh = max(8, round(h * .15)); neck = base - h + hh; sy = neck + round(hh * .3); sw = hh * 2.3
     wy = sy + h * .3; flare = sw * .85
     def pl(pts, name): poly(lay, pts, name)
-    # szata: barki -> talia -> rąbek
+    # robe: shoulders -> waist -> hem
     pl([(cx - sw / 2, sy), (cx + sw / 2, sy), (cx + sw * .4, wy), (cx + flare, base), (cx - flare, base), (cx - sw * .4, wy)], robe)
-    # szyja i głowa
+    # neck and head
     lay.rect(round(cx - 1), neck - 1, 3, 3, P[tone(skin, -1)])
     hr = round(hh * .5); hy = base - h + hr
     if hood:
@@ -223,7 +223,7 @@ def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=
     else:
         if hair: lay.ellipse(cx, hy - 1, hr + 1, hr + 1, P[hair], True)
         lay.ellipse(cx, hy + 1, hr - 1, hr, P[skin], True)
-        for yy in range(hy - hr, hy + hr + 1):          # cień po lewej stronie twarzy
+        for yy in range(hy - hr, hy + hr + 1):          # shadow on the left side of the face
             for xx in range(round(cx - hr), round(cx - hr * .35)):
                 if lay.px[yy][xx][3] and tuple(lay.px[yy][xx]) == tuple(P[skin]): lay.set(xx, yy, P[tone(skin, -1)])
         ey = hy; ex = max(2, round(hr * .45))
@@ -231,7 +231,7 @@ def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=
         lay.set(cx, ey + 2, P[tone(skin, -1)]); lay.rect(cx - 1, ey + hr // 2 + 1, 3, 1, P['r3'])
         if hair: lay.rect(round(cx - hr), hy - 1, 2, hr + 2, P[hair]); lay.rect(round(cx + hr - 1), hy - 1, 2, hr + 2, P[hair])
         if beard: pl([(cx - hr + 1, hy + round(hr * .6)), (cx + hr - 1, hy + round(hr * .6)), (cx + 1, hy + hr * 2 + 3), (cx - 1, hy + hr * 2 + 3)], hair or 'y3')
-    # ręce: rękaw (2 odcinki) + dłoń
+    # arms: sleeve (2 segments) + hand
     anchors = {}
     for side, tgt in ((-1, lh), (1, rh)):
         sx, sy2 = cx + side * sw / 2 * .9, sy + 2
@@ -241,7 +241,7 @@ def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=
         lay.ellipse(ex_, ey_, 2.2, 2.2, P[skin], True); anchors['l' if side < 0 else 'r'] = (round(ex_), round(ey_))
     if belt: lay.rect(round(cx - sw * .42), round(wy), round(sw * .84), 2, P[trim])
     lay.rect(round(cx - flare), base - 2, round(flare * 2), 2, P[trim])
-    # cieniowanie szaty: lewa strona ciemniejsza, prawa jaśniejsza, fałdy
+    # robe shading: left side darker, right side lighter, folds
     d, l = tone(robe, -1), tone(robe, 1)
     for y in range(sy, base):
         for x in range(round(cx - flare - 1), round(cx + flare + 2)):
@@ -249,7 +249,7 @@ def person(c, cx, base, h=70, robe='r3', trim='g3', skin='k2', hair=None, beard=
             rel = (x - cx) / max(1, flare * (.45 + .55 * (y - sy) / max(1, base - sy)))
             if rel < -.35 or (rel < -.15 and thr(x, y) < .5): lay.set(x, y, P[d])
             elif rel > .6 or (rel > .4 and thr(x, y) < .5): lay.set(x, y, P[l])
-    for k, fx in enumerate((-.5, -.15, .25, .6)):                     # fałdy
+    for k, fx in enumerate((-.5, -.15, .25, .6)):                     # folds
         x = round(cx + fx * flare); y0 = round(wy + 2 + k % 2 * 4)
         for y in range(y0, base - 3):
             if tuple(lay.px[y][x]) in (tuple(P[robe]), tuple(P[l])) and (y - y0) % 7 < 5: lay.set(x, y, P[d])

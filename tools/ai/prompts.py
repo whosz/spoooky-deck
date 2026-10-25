@@ -1,4 +1,4 @@
-"""Wspólny prompt stylu i sceny kart. Styl opisany słowami (bez nazwisk autorów)."""
+"""Shared style and scene prompt for the cards. The style is described in words (no artist names)."""
 STYLE = ("16-bit pixel art tarot card illustration, classic Rider-Waite tarot composition, very low resolution look with big chunky pixels, "
          "flat colors only, limited palette of black, white, light grey, cream, dark red, blue and green, thick black outlines around every shape, "
          "no gradients, no soft shading, simple blocky shapes, faces left blank or minimal, full-bleed scene, no text, no border, no frame, no letters, no numbers, no signature, no watermark")
@@ -13,7 +13,7 @@ def prompt_for(card_id):
 def aspect_for(card_id): return ASSETS[card_id][1] if card_id in ASSETS else '2:3'
 def refs_for(card_id): return (ASSETS[card_id][2] if card_id in ASSETS and len(ASSETS[card_id]) > 2 else [])
 
-# Zasoby specjalne: (pełny prompt, proporcje). Bez nazwisk autorów; styl opisany słowami.
+# Special assets: (full prompt, aspect ratio). No artist names; the style is described in words.
 ASSETS = {
     'back': ("16-bit pixel art tarot card back design, perfectly symmetrical, portrait orientation, deep navy blue background with a subtle star pattern, "
              "an ornate golden oval in the center containing a crescent moon on top, a mystical eye in the middle and a small sun at the bottom, "
@@ -61,7 +61,7 @@ SCENES.update({
 
 SCENES.update({'wa01': 'Ace of Wands: a hand coming out of a cloud holding a sprouting wooden staff with green leaves, a castle on a hill and a river valley below', 'wa02': 'Two of Wands: a man in a red robe standing on a castle wall holding a small globe in one hand and a wooden staff in the other, a second staff fixed beside him, sea and mountains in the distance', 'wa03': 'Three of Wands: a man in a green cloak seen from behind standing on a cliff with three wooden staffs planted in the ground, looking at ships on a golden sea at sunset', 'wa04': 'Four of Wands: four tall wooden staffs holding up a garland of flowers, two people celebrating with raised bouquets in front of a castle', 'wa06': 'Six of Wands: a rider on a white horse wearing a laurel wreath holding a staff with a wreath, a crowd of people with staffs around him', 'wa07': 'Seven of Wands: a man standing on a hilltop defending himself with one wooden staff against six staffs rising from below', 'wa08': 'Eight of Wands: eight wooden staffs flying diagonally through the sky over a green landscape and a river', 'wa09': 'Nine of Wands: a weary bandaged man leaning on a staff in front of a row of eight staffs, looking back warily', 'wa10': 'Ten of Wands: a man bent over carrying a heavy bundle of ten wooden staffs toward a village in the distance', 'wa11': 'Page of Wands: a young page in a tunic and feathered hat standing in a desert holding a tall staff and looking at its sprouting top, pyramids behind', 'wa12': 'Knight of Wands: a knight in armor with a plume riding a rearing horse and holding a staff, desert and pyramids behind', 'wa13': 'Queen of Wands: a queen on a throne decorated with lions holding a sunflower and a staff, a black cat at her feet, a crown', 'wa14': 'King of Wands: a king on a throne decorated with lions and salamanders, holding a flowering staff, red robes, a crown', 'cu02': 'Two of Cups: a man and a woman facing each other exchanging golden cups, a winged lion head above them, a house on a hill behind', 'cu03': 'Three of Cups: three women in colorful dresses with flower wreaths dancing in a circle raising golden cups, fruit and flowers at their feet', 'cu04': 'Four of Cups: a young man sitting under a tree with crossed arms looking at three cups on the ground, a hand from a cloud offering a fourth cup', 'cu06': 'Six of Cups: two children in the courtyard of an old village, a boy offering a cup full of white flowers to a girl, five more cups with flowers around', 'cu07': 'Seven of Cups: a silhouette of a person looking at seven floating golden cups in clouds each holding a different vision: a castle, jewels, a dragon, a snake, a laurel wreath, a veiled figure and a face', 'cu08': 'Eight of Cups: a cloaked figure with a staff walking away from eight stacked golden cups toward mountains under a moon and sun', 'cu09': 'Nine of Cups: a happy wealthy man seated on a bench with crossed arms in front of a curved table with nine golden cups on a blue cloth', 'cu10': 'Ten of Cups: a happy couple with two children dancing under a rainbow of ten golden cups, a cottage and trees', 'cu11': 'Page of Cups: a young page in a patterned tunic holding a golden cup with a little fish popping out, standing by the sea', 'cu12': 'Knight of Cups: a knight in a winged helmet and armor riding a calm white horse and holding out a golden cup, a river and mountains', 'cu14': 'King of Cups: a king on a throne floating on the sea holding a cup and a scepter, a fish leaping and a ship in the background', 'sw01': 'Ace of Swords: a hand from a cloud holding a sword upright with a crown and a laurel wreath on its tip, mountains below', 'sw02': 'Two of Swords: a woman in a white dress with a blindfold seated on a bench holding two crossed swords, a calm sea and a crescent moon', 'sw03': 'Three of Swords: a large red heart pierced by three swords against stormy clouds and rain', 'sw04': 'Four of Swords: a stone knight statue lying on a tomb in a church with three swords on the wall above and one below, a stained glass window', 'sw05': 'Five of Swords: a smug man in front holding a sword, two other men walking away dejected, two swords on the ground, windy sky', 'sw06': 'Six of Swords: a ferryman poling a boat carrying a cloaked woman and a child with six swords standing upright in the boat, calm water', 'sw08': 'Eight of Swords: a woman in a long dress with a cloth over her eyes standing among eight swords planted in wet ground, a castle on a cliff behind', 'sw09': 'Nine of Swords: a person sitting up in bed with face in hands in the dark, nine swords hanging on the wall behind, a quilt with roses', 'sw10': 'Ten of Swords: a figure lying on the ground in a red cloak with ten swords standing upright in the ground around them, a black sky giving way to dawn over a calm sea', 'sw11': 'Page of Swords: a young page standing on a windy hilltop holding a sword up with both hands, clouds and blowing hair', 'sw12': 'Knight of Swords: a knight in armor charging on a galloping white horse with his sword raised, trees bent by the wind, clouds', 'sw13': 'Queen of Swords: a queen seated on a throne with butterflies, holding a raised sword and one hand extended, clouds and birds', 'sw14': 'King of Swords: a king on a throne holding a sword upright, blue robes, carved butterflies on the throne, clouds behind', 'pe01': 'Ace of Pentacles: a hand from a cloud holding a golden pentacle coin, a garden with lilies and an arch of flowers leading to mountains', 'pe02': 'Two of Pentacles: a young man juggling two pentacle coins connected by an infinity loop of ribbon, ships on rough waves behind', 'pe03': 'Three of Pentacles: a craftsman working on a stone arch in a cathedral, two monks and an architect watching with plans, three pentacles carved in the arch', 'pe04': 'Four of Pentacles: a man seated wearing a crown, holding a pentacle against his chest with another on his head and two under his feet, a city behind him', 'pe06': 'Six of Pentacles: a rich merchant in a red robe holding scales and giving coins to two kneeling beggars', 'pe07': 'Seven of Pentacles: a farmer leaning on a hoe looking at a bush growing seven golden pentacles', 'pe08': 'Eight of Pentacles: a craftsman carving a pentacle at a bench, eight pentacles displayed on a post and on the ground, a town in the distance', 'pe09': 'Nine of Pentacles: an elegant woman in a vineyard with a falcon on her gloved hand, nine pentacles among the grapevines, a castle', 'pe10': 'Ten of Pentacles: an old man with dogs sitting under a stone arch, a couple and a child, ten pentacles arranged in a pattern, a town', 'pe11': 'Page of Pentacles: a young page standing in a green field holding up a golden pentacle and gazing at it, a plowed field and trees', 'pe12': 'Knight of Pentacles: a knight in dark armor on a calm black horse holding a pentacle, plowed fields', 'pe13': 'Queen of Pentacles: a queen on a throne in a garden of roses holding a pentacle in her lap, a small rabbit, a throne decorated with fruit', 'pe14': 'King of Pentacles: a king on a throne decorated with bulls surrounded by grapevines holding a scepter and a pentacle, a castle behind'})
 
-# Ekran startowy (pełny kadr 9:16) i tła kolejnych kroków (stonowane, niedominujące)
+# Intro screen (full 9:16 frame) and the backgrounds of the following steps (muted, not dominant)
 _PX = "chunky pixels, limited color palette, no text, no letters, no signature, no watermark"
 ASSETS['intro'] = ("16-bit pixel art illustration, portrait orientation: a mystical young woman with long dark wavy hair and closed eyes holding a fan of tarot cards in front of her, "
                    "behind her a large glowing full moon surrounded by an arc of moon phases, deep purple and violet night sky with stars and soft clouds, "
@@ -83,14 +83,14 @@ ASSETS['bg_card2'] = ("16-bit pixel art atmospheric background, portrait orienta
 ASSETS['bg_read2'] = ("16-bit pixel art atmospheric background, portrait orientation, dark and moody, soft low contrast, no people: an old observatory interior with a large brass telescope pointing through an open dome toward planets and stars, "
                       "astrolabes and star charts on the walls, deep navy and violet tones with small warm golden light accents, " + _PX, '9:16')
 
-# Styl 2 ("bogaty pixel art"): opis wyłącznie słowami (bez obrazów referencyjnych); wyższa rozdzielczość
+# Style 2 ("rich pixel art"): described in words only (no reference images); higher resolution
 STYLE2 = ("Rich detailed modern high-resolution pixel art illustration, painterly atmospheric lighting, a glowing light source with a soft luminous halo, "
           "dramatic dusk color palette of deep purple, magenta, pink, orange and gold, smooth color gradients built from many small pixel bands, "
           "layered dark silhouettes in the foreground for depth, fine pixel details, clean crisp pixel edges, renaissance tarot card composition filling the whole image, "
           "no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt2_for(card_id): return f"{STYLE2}. Scene: {SCENES[card_id]}."
 
-# Styl 3 ("16-bit z ditheringiem"): opis słowami, bez obrazów referencyjnych
+# Style 3 ("16-bit with dithering"): described in words, no reference images
 STYLE3 = ("16-bit video game pixel art tarot card illustration in classic Rider-Waite composition, bold saturated colors (orange, red, yellow, sky blue, purple, green), "
           "gradients and glowing light made with visible ordered dithering patterns of tiny dots, thick dark outlines around figures, figures with blank faceless skin-colored faces, "
           "rich detailed backgrounds, crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
@@ -98,14 +98,14 @@ def prompt3_for(card_id): return f"{STYLE3}. Scene: {SCENES[card_id]}."
 
 SCENES.setdefault('cu07', "Seven of Cups: a silhouette of a person looking at seven floating golden cups in clouds each holding a different vision: a castle, jewels, a dragon, a snake, a laurel wreath, a veiled figure and a face")
 
-# Styl 4 ("ziemisty, malarski pixel art"): opis słowami, bez obrazów referencyjnych
+# Style 4 ("earthy, painterly pixel art"): described in words, no reference images
 STYLE4 = ("Detailed painterly pixel art tarot card illustration in classic Rider-Waite composition, muted earthy color palette of ochre, sepia brown, dusty teal, olive green, burgundy and cream, "
           "soft warm lighting and gentle shading built from a limited palette, figures with simple expressive faces and clear hands, ornamental details and textures, "
           "clean crisp pixel edges, filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
 def prompt4_for(card_id): return f"{STYLE4}. Scene: {SCENES[card_id]}."
 SCENES['ar17'] = "The Star: a woman in a long flowing blue robe kneeling by a calm pond at night, pouring water from two jugs onto the land and into the pond, one huge eight-pointed golden star and seven smaller white stars in the night sky, a bird in a tree"
 
-# Styl 5 ("retro 16-kolorowy, jak gry z lat 90."): grube piksele, mała paleta, ciemne kontury, płaskie wypełnienia
+# Style 5 ("retro 16-colour, like 90s games"): chunky pixels, small palette, dark outlines, flat fills
 STYLE5 = ("Early 1990s retro video game pixel art tarot card illustration, chunky large pixels, very limited palette of about 16 colors, vivid saturated colors, "
           "thick dark outlines around shapes, flat color fills with only a little ordered dithering in the background, simple faces, bold readable shapes, "
           "Rider-Waite tarot composition filling the whole image, no text, no letters, no numbers, no border, no frame, no signature, no watermark")
@@ -114,7 +114,7 @@ def prompt5_for(card_id): return f"{STYLE5}. Scene: {SCENES[card_id]}."
 SCENES['ar01'] = ("The Magician: a young magician in a red robe standing behind a wooden table, one hand raising a wand to the sky and the other pointing down at the table, exactly one infinity symbol floating above his head, "
                   "on the table four items: a golden cup, a sword, a wand and a golden coin, red roses and white lilies growing around")
 
-# Zasoby interfejsu w stylu 5 (retro 16 kolorów)
+# Interface assets in style 5 (retro 16 colours)
 _R5 = "early 1990s retro pixel art, chunky large pixels, very limited palette of about 16 colors, flat colors, thick dark outlines, minimal dithering, no text, no letters, no signature, no watermark"
 ASSETS5 = {
     'intro': ("Retro pixel art illustration, portrait orientation: a huge glowing golden full moon surrounded by an arc of moon phases above a calm lake and dark mountains, a fan of tarot cards floating in the air in front of the moon, "
@@ -128,7 +128,7 @@ ASSETS5 = {
 }
 def prompt5_asset(i): return ASSETS5[i][0]
 
-# Warianty rewersu (styl 5): ożywienie, ta sama estetyka co karty
+# Card back variants (style 5): livelier, the same look as the cards
 _B = ("Retro early-1990s pixel art tarot card back design, portrait, perfectly symmetrical, chunky pixels, limited palette of about 16 colors, thick dark outlines, "
       "ornate golden frame border with corner ornaments, the card fills the whole image edge to edge, no text, no letters, no signature, no watermark. ")
 BACKS = {
@@ -139,7 +139,7 @@ BACKS = {
 }
 for _k, _v in BACKS.items(): ASSETS5[_k] = (_v, '2:3')
 
-# Warianty ekranu startowego (styl 5): ilustracja ma ciemne, rozmyte brzegi i wtapia się w granatowe tło #0b0d17
+# Intro screen variants (style 5): the illustration has dark, soft edges and blends into the navy background #0b0d17
 _I = ("Retro early-1990s pixel art, chunky pixels, limited palette of about 16 colors, thick dark outlines, no text, no letters, no signature, no watermark, portrait. "
       "The scene is vignetted: the top, bottom and side edges fade smoothly into solid very dark navy (#0b0d17) so it blends into a dark background, with no frame or border. ")
 INTROS = {
@@ -149,7 +149,7 @@ INTROS = {
 }
 for _k, _v in INTROS.items(): ASSETS5[_k] = (_v, '9:16')
 
-# Nowe tła splasha (styl 5): mało inwazyjne, środek ciemny i pusty pod tytuł
+# New splash backgrounds (style 5): unobtrusive, a dark empty centre for the title
 _S = ("Retro early-1990s pixel art atmospheric background, portrait orientation, chunky pixels, very limited palette of about 16 colors, flat colors, minimal dithering, "
       "very dark and low contrast, no people, no text, no letters, no signature, no watermark. The center of the image is dark and mostly empty so a bright title can be read over it; "
       "details only near the edges. ")
@@ -162,7 +162,7 @@ SPLASH = {
 }
 for _k, _v in SPLASH.items(): ASSETS5[_k] = (_v, '9:16')
 
-# Tła do grafiki udostępniania (1200x630, styl 5): po lewej miejsce na kartę, po prawej spokojny, ciemny obszar pod tekst
+# Backgrounds for the sharing image (1200x630, style 5): room for the card on the left, a calm dark area for text on the right
 _O = ("Retro early-1990s pixel art atmospheric background, wide landscape orientation, chunky pixels, very limited palette of about 16 colors, flat colors, minimal dithering, "
       "dark and moody, no people, no text, no letters, no signature, no watermark. Composition: the main details sit in the left third and along the edges, "
       "while the right two thirds stay calm, dark and mostly empty so a title can be read over it. ")
@@ -175,7 +175,7 @@ OGBG = {
 }
 for _k, _v in OGBG.items(): ASSETS5[_k] = (_v, '16:9')
 
-# Nowe świece na desktop (styl 5, zgodne z kartami): zapalona świeca nie jest potrzebna, płomień jest rysowany w kodzie i animowany
+# New candles for desktop (style 5, matching the cards): a lit candle is not needed, the flame is drawn in code and animated
 _C = ("Retro early-1990s pixel art sprite, chunky pixels, limited palette of about 16 colors, thick dark outlines, flat colors with a little ordered dithering, "
       "a single unlit wax candle with a short black wick and NO flame, side view, centered, tall and slender, melted wax drips running down its sides, "
       "small chunks of wax scattered around the base, standing in a small dark metal dish, on a plain solid pure bright green (#00ff00) background with nothing else, no shadow, no text, no signature. ")

@@ -1,11 +1,11 @@
-Spoooky Deck - Autorzy i licencje / Credits and licenses
+Spoooky Deck - Credits and licenses
 
-Aplikacja: Mateusz Staniszewski, https://whosz.pl
-Ilustracje kart, ikony interfejsu i tło: własne, generowane skryptami w tools/.
-Muzyka: audio/spoooky-theme-mm.mp3 wygenerowana modelem MiniMax Music 2.6 przez Replicate (https://replicate.com/minimax/music-2.6, wersja instrumentalna; treść oznaczona w aplikacji jako wygenerowana przez AI; warunki użycia komercyjnego wyników według regulaminu MiniMax, do potwierdzenia), dopracowana skryptem (pętla, głośność). Poprzednia muzyka z Suno (plan darmowy) została wycofana.
+App: Mateusz Staniszewski, https://whosz.pl
+Card illustrations, interface icons and backgrounds: AI-generated (Flux 2 Pro via Replicate) and processed by the scripts in tools/.
+Music: audio/spoooky-theme-mm.mp3, generated with MiniMax Music 2.6 via Replicate (https://replicate.com/minimax/music-2.6, instrumental version; labelled as AI-generated in the README; the commercial terms for outputs under the MiniMax terms are to be confirmed), processed with a script (loop, loudness). The earlier music from Suno (free plan) was withdrawn.
 
 === Fonty (SIL Open Font License 1.1, https://openfontlicense.org) ===
-Jacquard 12 - Sarah Cadigan-Fried; Geist Pixel - Vercel. Pobrane z Google Fonts.
+Jacquard 12 - Sarah Cadigan-Fried; Geist Pixel - Vercel. Downloaded from Google Fonts.
 
 === Pixel emoji: SerenityOS (BSD 2-Clause) ===
 BSD 2-Clause License
@@ -58,11 +58,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 === seedrandom (MIT) ===
-Copyright 2019 David Bau. Licencja MIT (tekst jak w ZzFX powyżej, z innym właścicielem praw): https://github.com/davidbau/seedrandom
+Copyright 2019 David Bau. MIT licence (same text as ZzFX above, with a different copyright holder): https://github.com/davidbau/seedrandom
 === Tracery (Apache-2.0) ===
-Kate Compton. Pełny tekst licencji: https://www.apache.org/licenses/LICENSE-2.0 , projekt: https://github.com/galaxykate/tracery
+Kate Compton. Full licence text: https://www.apache.org/licenses/LICENSE-2.0 , project: https://github.com/galaxykate/tracery
 
 === Old English Gothic Pixel (ColorSwitchFan25, FontStruct) ===
-Użyta w tytule "Spoooky Deck". Licencja SIL Open Font License 1.1 (pełny tekst: fonts/OldEnglishGothicPixel-OFL.txt), użycie komercyjne dozwolone. Czcionka ma 85 znaków (bez polskich liter), więc służy tylko do tytułu.
+Used in the "Spoooky Deck" title. SIL Open Font License 1.1 (full text: fonts/OldEnglishGothicPixel-OFL.txt), commercial use allowed. The font has 85 glyphs (no Polish letters), so it is used for the title only.
 === Olde Tome (LadyLiefy) ===
-Użyta w nagłówkach, cytatach, przyciskach i na kartach. Autorka (https://ladyliefy.itch.io/olde-tome) pozwala używać fontu za darmo w pracach osobistych, a przy użyciu komercyjnym prosi o dobrowolną opłatę; zasób jest oznaczony jako CC0. Szczegóły i kroki: docs/licensing.md. Plik fontu nie jest dołączony do repozytorium.
+Used in headings, quotes, buttons and on the cards. The author (https://ladyliefy.itch.io/olde-tome) allows free use in personal work and asks for a voluntary payment for commercial use; the asset is tagged CC0. Details and steps: docs/licensing.md. The font file is not included in the repository.

@@ -1,4 +1,4 @@
-"""python3 tools/validate_cards.py [plik.json] [--partial]: waliduje karty schematem; --partial pomija wymóg 78 kart."""
+"""python3 tools/validate_cards.py [plik.json] [--partial]: validates the cards against the schema; --partial skips the requirement of 78 cards."""
 import json, sys, re
 from jsonschema import Draft202012Validator
 path = next((a for a in sys.argv[1:] if not a.startswith('--')), 'data/cards.json')

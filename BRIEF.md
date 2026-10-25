@@ -1,12 +1,12 @@
-# BRIEF: Spoooky Deck
+# Brief: Spoooky Deck
 
-Mroczna pikselowa wyrocznia tarota dla firm. Wejście: imię (≤30 znaków), znak zodiaku (12), firma (≤60). Losowanie 1 z 78 kart, prosta lub odwrócona (~30%). Wróżba o firmie zawsze kończy się wnioskiem: potrzebny projektant. Na końcu link do https://whosz.pl/offer/ (UTM) i kolejne losowanie.
+A dark pixel-art tarot oracle for companies. Input: a name (≤30 characters), a zodiac sign (12), a company (≤60) and its industry and stage. The user draws one of 78 cards, upright or reversed (~30%). The reading about the company always ends with the conclusion that a designer is needed, followed by a link to https://whosz.pl/offer/ and another draw.
 
-Zasady:
-- Czyste pliki statyczne, ES modules, bez backendu i buildu. Ścieżki względne (działa w `whosz.pl/tarot/`).
-- PL i EN od razu. Teksty w `data/*.{pl,en}.json`, nigdy w kodzie.
-- Dane użytkownika tylko jako `textContent`, nic nie wychodzi na serwer ani do linku. Link ma tylko ziarno `?s=`.
-- Styl: Dead Cells (granat, złoto, świece), animacje jak Balatro (sprężyste, błysk). Paleta w `STYLE.md`.
-- Szanuj `prefers-reduced-motion`. Kontrast tekstu ≥ 4,5:1. Przyciski ≥ 44 px.
-- Teksty użytkowe sprawdzają skille: `humanizer-pl` dla polskich, `humanizer` dla angielskich (`.claude/skills/`). Bielik/Ollama pomijamy.
-- Muzyka: `audio/Candlelit Tarot.mp3`, start po pierwszym kliknięciu, przycisk wyciszenia.
+Rules:
+- Plain static files, ES modules, no backend and no build step. Relative paths (works at `whosz.pl/tarot/`).
+- Polish and English from day one. Texts live in `data/*.{pl,en}.json`, never in the code.
+- User input is only ever inserted as `textContent`. Nothing leaves the device and nothing but the seed (`?s=`) goes into the share link.
+- Style: Dead Cells (navy, gold, candles), Balatro-like animation (springy, shiny). The palette is in `STYLE.md`.
+- Respect `prefers-reduced-motion`. Text contrast ≥ 4.5:1. Buttons ≥ 44 px.
+- Texts are checked with the `humanizer-pl` skill for Polish and `humanizer` for English (`.claude/skills/`).
+- Music: an AI-generated loop (`audio/spoooky-theme-mm.mp3`), started after the first gesture, with a mute button.

@@ -1,5 +1,5 @@
-// Dźwięk: muzyka z pliku (pętla) po pierwszym geście użytkownika + efekty ZzFX (generowane, bez plików).
-// Wyciszenie jest zapamiętywane w localStorage.
+// Sound: music from a file (loop) after the first user gesture + ZzFX effects (generated, no files).
+// Mute is remembered in localStorage.
 const PRESETS = {  // parametry zzfx(volume, randomness, frequency, attack, sustain, release, shape, shapeCurve, slide, deltaSlide, pitchJump, pitchJumpTime, repeatTime, noise, modulation, bitCrush, delay, sustainVolume, decay, tremolo)
   click: [[.5, , 900, .01, .01, .03, 1, 1.5, , , , , , , , , , .8, .02]],
   tick: [[.25, , 1600, , .005, .01, 1, , , , , , , , , , , .6, .01]],
@@ -12,12 +12,12 @@ const get = () => { try { return localStorage.getItem('sd_mute') === '1'; } catc
 const MUSIC = 'audio/spoooky-theme-mm.mp3';
 let muted = get(), music = null, started = false, lastErr = '', cachedTried = false;
 
-// Muzyka offline: po kilku sekundach grania zapisujemy plik w osobnej pamięci (sd-audio, nie jest czyszczona przy aktualizacjach).
-// Gdy sieci brak i odtwarzacz zgłasza błąd, gramy z zapisanej kopii.
+// Offline music: after a few seconds of playback the file is saved in a separate cache (sd-audio, not cleared on updates).
+// When there is no network and the player reports an error, we play the saved copy.
 async function cacheMusic() {
   try {
     if (!('caches' in window) || (navigator.connection && navigator.connection.saveData)) return;
-    const c = await caches.open('sd-audio'); await Promise.all(['audio/candlelit-tarot.mp3', 'audio/spoooky-theme.mp3'].map(u => c.delete(u)));   // sprzątanie po poprzednim utworze
+    const c = await caches.open('sd-audio'); await Promise.all(['audio/candlelit-tarot.mp3', 'audio/spoooky-theme.mp3'].map(u => c.delete(u)));   // clean up after the previous track
     if (await c.match(MUSIC)) return;
     const r = await fetch(MUSIC); if (r.ok) await c.put(MUSIC, r);
   } catch {}
@@ -32,7 +32,7 @@ async function playFromCache() {
 export const isMuted = () => muted;
 export const audioError = () => lastErr;   // do diagnozy w menu
 
-// Wywoływane przy każdym geście: iOS/Safari wymaga play() wewnątrz click/touchend, więc ponawiamy, aż muzyka ruszy.
+// Called on every gesture: iOS/Safari requires play() inside click/touchend, so we retry until the music starts.
 export function start() {
   try { zzfxX.resume(); } catch {}
   if (!started) {
@@ -55,8 +55,8 @@ export function sfx(name) {
   for (const p of PRESETS[name] || []) zzfx(...p);
 }
 
-// Muzyka i dźwięk milkną, gdy aplikacja znika z ekranu (przełączenie na inną aplikację, blokada ekranu, inna karta),
-// i wracają, gdy użytkownik wraca (o ile dźwięk nie jest wyciszony).
+// Music and sound stop when the app leaves the screen (switching apps, locking the screen, another tab)
+// and resume when the user returns (unless sound is muted).
 let resumeMusic = false;
 function onHidden() {
   if (music && !music.paused) { resumeMusic = true; music.pause(); }

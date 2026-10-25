@@ -1,4 +1,4 @@
-"""python3 tools/ai/music2.py minimax|lyria <nazwa> [seed]: alternatywne modele muzyczne (MiniMax Music 2.6, Google Lyria 2) do tools/ai/music/<nazwa>.mp3. Uwaga: warunki komercyjne tych modeli są mniej jednoznaczne niż ACE-Step (MIT), patrz docs/licensing.md."""
+"""python3 tools/ai/music2.py minimax|lyria <name> [seed]: alternative music models (MiniMax Music 2.6, Google Lyria 2) to tools/ai/music/<name>.mp3. Note: the commercial terms of these models are less clear than ACE-Step's (MIT), see docs/licensing.md."""
 import os, sys, json, time, urllib.request, urllib.error
 env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/spooooky/replicate.env')) if '=' in l)
 TOKEN = env['REPLICATE_API_TOKEN']

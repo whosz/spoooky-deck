@@ -1,4 +1,4 @@
-"""Wielkie Arkana 12-17: Wisielec, Smierc, Umiarkowanie, Diabel, Wieza, Gwiazda."""
+"""Major arcana 12-17: The Hanged Man, Death, Temperance, The Devil, The Tower, The Star."""
 import sys; sys.path.insert(0, 'tools/deck'); sys.path.insert(0, 'tools')
 from lib import *
 
@@ -21,7 +21,7 @@ def _layer_person(**kw):
     t = Canvas(W, H); f = person(t, **kw); return t, f
 
 def paste_xf(c, t, fn):
-    """Wkleja warstwe t po przeksztalceniu fn(x,y)->(sx,sy) (mapowanie wsteczne)."""
+    """Pastes layer t after the transformation fn(x,y)->(sx,sy) (reverse mapping)."""
     o = Canvas(W, H)
     for y in range(H):
         for x in range(W):
@@ -42,7 +42,7 @@ def ar12():
     paste_xf(c, t, lambda x, y: (x, H - 1 - y))
     hx, hy = f['head']; hy = H - 1 - hy
     rect(c, 70, 66, 5, 3, 'cream'); rect(c, 63, 69, 7, 3, 'ink'); rect(c, 75, 69, 7, 3, 'ink'); rect(c, 64, 69, 5, 2, 'b2'); rect(c, 76, 69, 5, 2, 'b2')
-    for r in (13, 14): c.ellipse(hx, hy, r, r, P['g3'], False)   # aureola
+    for r in (13, 14): c.ellipse(hx, hy, r, r, P['g3'], False)   # halo
     return finish(c)
 
 # ---------------------------------------------------------------- 13
@@ -50,8 +50,8 @@ def ar13():
     c = card(); ramp(c, 0, 0, W, 150, ['ink', 'n2', 'v1', 'r1']); stars(c, 5, 70, 16, 13)
     glow(c, 72, 128, 62, 'o2', 2); disc(c, 72, 126, 22, 'o3'); disc(c, 72, 126, 18, 'o4'); disc(c, 72, 126, 12, 'o5')
     hills(c, 150, 6, 'n2', 3, .08); ground(c, 162, ['e1', 'ink'], 7)
-    # kosa
-    # kruk
+    # scythe
+    # raven
     raven(c, 100, 62, 1.2, 'up')
     f = person(c, 72, 182, 122, robe='v2', trim='g3', hood=True, eyes='o5', lh=(34, 38), rh=(-2, 12))
     line(c, 90, 40, 90, 182, 'ink', 3); line(c, 91, 40, 91, 182, 'b2')
@@ -68,7 +68,7 @@ def ar14():
     hills(c, 150, 4, 'e1', 2, .07); ramp(c, 0, 158, W, H, ['e1', 'e1', 'ink'])
     c.ellipse(72, 178, 46, 10, P['t1'], True); c.ellipse(72, 178, 36, 7, P['t2'], True)
     for x in range(40, 105, 3): blend(c, x, 176 + x % 3, P['t4'], .7)
-    # skrzydla
+    # wings
     for s in (-1, 1):
         poly(c, [(72 + s * 8, 66), (72 + s * 44, 38), (72 + s * 40, 70), (72 + s * 30, 100), (72 + s * 10, 110)], 'ink')
         poly(c, [(72 + s * 9, 68), (72 + s * 40, 43), (72 + s * 36, 70), (72 + s * 28, 96), (72 + s * 10, 106)], 's2')
@@ -86,7 +86,7 @@ def ar14():
 # ---------------------------------------------------------------- 15
 def ar15():
     c = card(); ramp(c, 0, 0, W, H, ['ink', 'r1', 'r1', 'ink']); glow(c, 72, 72, 56, 'r2', 1.6)
-    for s in (-1, 1):   # skrzydla
+    for s in (-1, 1):   # wings
         poly(c, [(72 + s * 12, 62), (72 + s * 64, 30), (72 + s * 52, 62), (72 + s * 60, 92), (72 + s * 40, 84), (72 + s * 30, 104), (72 + s * 14, 92)], 'ink')
         line(c, 72 + s * 14, 64, 72 + s * 62, 32, 'r2'); line(c, 72 + s * 16, 72, 72 + s * 54, 62, 'r2'); line(c, 72 + s * 16, 80, 72 + s * 58, 90, 'r2')
     rect(c, 46, 150, 52, 36, 'ink'); rect(c, 48, 152, 48, 32, 'n2'); rect(c, 48, 152, 48, 2, 'y1'); rect(c, 46, 150, 52, 1, 'r3')
@@ -96,7 +96,7 @@ def ar15():
         poly(c, [(hx + s * 5, hy - 5), (hx + s * 8, hy - 8), (hx + s * 13, hy - 22), (hx + s * 3, hy - 9)], 'ink'); poly(c, [(hx + s * 5, hy - 6), (hx + s * 8, hy - 9), (hx + s * 11, hy - 19), (hx + s * 5, hy - 9)], 'y2')
     star(c, 72, 116, 3, 'r3', 5, .4, 'r4')
     lx, ly = f['hand_l']; line(c, lx, ly + 10, lx, ly - 2, 'b2'); poly(c, [(lx - 2, ly - 2), (lx + 2, ly - 2), (lx, ly - 8)], 'o4'); c.set(lx, ly - 4, P['o5'])
-    for s in (-1, 1):   # lancuchy i malutkie postacie
+    for s in (-1, 1):   # chains and tiny figures
         px = 72 + s * 46; hx, hy = 72 + s * 24, 160
         for i in range(11):
             t = i / 10; c.set(round(hx + (px - hx) * t), round(hy + 6 * t + 3 * math.sin(t * 3.14)), P['y3'])
@@ -116,7 +116,7 @@ def ar16():
     poly(c, [(54, 74), (90, 74), (84, 56), (78, 62), (72, 42), (66, 60), (60, 54)], 'o2'); poly(c, [(60, 74), (84, 74), (78, 62), (72, 52), (66, 64)], 'o4'); poly(c, [(66, 74), (78, 74), (72, 62)], 'o5')
     poly(c, [(88, 70), (108, 62), (98, 52)], 'ink') if False else None
     crown(c, 100, 30, 12, 3, 'g3'); rect(c, 100, 33, 12, 1, 'g2'); c.set(96, 40, P['o5']); c.set(112, 38, P['o5']); c.set(104, 22, P['y3'])
-    pts = [(22, 0), (44, 22), (36, 24), (60, 46), (54, 48), (72, 68)]   # piorun: ostry zygzak w szczyt wiezy
+    pts = [(22, 0), (44, 22), (36, 24), (60, 46), (54, 48), (72, 68)]   # lightning: a sharp zigzag into the tower top
     for a, b in zip(pts, pts[1:]): line(c, a[0] - 1, a[1], b[0] - 1, b[1], 'y3', 5); line(c, a[0], a[1], b[0], b[1], 'white', 3)
     for x, y, a in ((28, 96, 1), (114, 132, -1)):
         t, _ = _layer_person(cx=x, base=y + 17, h=36, robe='r3', trim='g3', hair='b2', belt=False, lh=(-6, -14), rh=(6, -14))

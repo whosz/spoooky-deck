@@ -56,7 +56,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .fade.in{opacity:1}
 #more:not(.in){pointer-events:none}
 
-/* ekran wróżby */
+/* reading screen */
 #artslot .card{--cw:var(--aw)}
 #rname{margin:0;font-size:36px;font-weight:400;color:var(--text)}
 .tabs{display:flex;justify-content:center;gap:8px;width:100%;border-bottom:2px solid #8a6a2e55}
@@ -120,7 +120,7 @@ body:has(#menu:not([hidden])) #s-pick .hint{visibility:hidden}
 @media(prefers-reduced-motion:reduce){#music-hint{animation:none}}
 #music-hint.gone{opacity:0;animation:none;transition:opacity .4s}
 
-/* ekran startowy: pełnoekranowa ilustracja, tytuł u góry, hasło i przycisk u dołu */
+/* intro screen: full-screen illustration, title at the top, tagline and button at the bottom */
 .intro{position:relative;justify-content:space-between;min-height:calc(var(--ph) - 64px);padding:0;gap:14px;align-items:center;justify-content:flex-start}
 .intro-top,.intro-bottom{position:relative;z-index:2}
 .intro-top{display:grid;justify-items:center;gap:6px;padding-top:0;margin-top:-34px}
@@ -130,13 +130,13 @@ body:has(#menu:not([hidden])) #s-pick .hint{visibility:hidden}
 .intro-bottom p{margin:0;max-width:300px;font-size:19px;text-shadow:0 2px 0 #000;opacity:.95}
 .intro-bottom .hint{font-size:15px;opacity:.8}
 
-/* tła kolejnych kroków: stonowane, pod treścią */
+/* backgrounds of the following steps: muted, under the content */
 #scene{position:absolute;inset:0;background-size:var(--sw) auto;background-position:center top;background-repeat:no-repeat;image-rendering:pixelated;opacity:0;transition:opacity .5s ease;pointer-events:none}
 #scene.on{opacity:.4}
 #scene::after{content:"";position:absolute;inset:0;background:linear-gradient(#0b0d17 0,#0b0d1700 28%,#0b0d1700 55%,#0b0d17 100%)}
 @media(prefers-reduced-motion:reduce){#scene{transition:none}}
 
-/* ekran startowy: ilustracja w pikselowej ramce, bez nakładek; skala całkowita (--iw = wielokrotność 108 px) */
+/* intro screen: illustration in a pixel frame, no overlays; integer scale (--iw = multiple of 108 px) */
 .intro-art{padding:0!important;width:auto;overflow:hidden;line-height:0;display:block;background:var(--bg)}
 .intro-art img{display:block;width:var(--iw);height:auto;image-rendering:pixelated;}
 .intro-art{height:auto}
@@ -144,14 +144,14 @@ body:has(#menu:not([hidden])) #s-pick .hint{visibility:hidden}
 .intro-bottom .cta{font-size:25px;min-width:200px;min-height:calc(55*var(--u))}
 .intro-top .tag{margin-top:12px}
 
-/* nic na stronie nie jest zaznaczalne (poza polami formularza); bez niebieskiego podświetlenia przy dotknięciu */
+/* nothing on the page is selectable (except form fields); no blue tap highlight */
 *{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,textarea,select{-webkit-user-select:text;user-select:text}
 ::selection{background:transparent}
 input::selection{background:#d8aa4866}
 img{-webkit-user-drag:none;user-drag:none}
 
-/* wtopiony obraz startowy (bez ramki): obraz pod tytułem, pikselowe zanikanie do tła u góry i u dołu */
+/* blended intro image (no frame): image under the title, pixel fade into the background at the top and bottom */
 .intro.blend .intro-art{background:none;border:0;border-image:none;padding:0!important;overflow:visible;width:100%;display:grid;place-items:center;position:relative;margin:-10px 0 -50px}
 .intro.blend .intro-art img{width:var(--iw);margin:0;-webkit-mask-image:linear-gradient(#0000 0,#000 18%,#000 72%,#0000 100%);mask-image:linear-gradient(#0000 0,#000 18%,#000 72%,#0000 100%)}
 
@@ -164,34 +164,34 @@ img{-webkit-user-drag:none;user-drag:none}
 .intro-top{pointer-events:none}
 .intro-top>*{pointer-events:auto}
 
-/* splash: PNG z przezroczystym, pikselowym zanikaniem krawędzi (bez maski CSS) */
+/* splash: PNG with a transparent pixel fade at the edges (no CSS mask) */
 .intro.blend .intro-art img{-webkit-mask-image:none;mask-image:none}
 .intro.blend .intro-art{margin:-6px 0 -40px}
 
-#s-pick .mid{padding-bottom:calc(var(--fw) * .16 + 28px)}   /* miejsce na uniesioną, powiększoną kartę, żeby nie zasłaniała linii pod napisem */
-/* pasek nawigacji: bez tła na górze strony, ciemne tło dopiero po pierwszym przewinięciu */
+#s-pick .mid{padding-bottom:calc(var(--fw) * .16 + 28px)}   /* room for the raised, enlarged card so it does not cover the line under the caption */
+/* navigation bar: no background at the top of the page, dark background only after the first scroll */
 .bar{background:none;transition:background .25s ease}
 .bar.scrolled{background:linear-gradient(#0b0d17f2 60%,#0b0d1700)}
-/* splash: tytuł niżej i lekko nachodzi na grafikę */
+/* splash: title lower, slightly overlapping the artwork */
 .intro-top{margin-top:10px;position:relative;z-index:3}
 .intro.blend .intro-art{margin:-104px 0 -40px;position:relative;z-index:1}
-/* ciemny pas u góry ekranów z tłem sceny usunięty (wyglądał jak tło nagłówka); zostaje tylko zaciemnienie u dołu */
+/* dark band at the top of scene screens removed (it looked like a header background); only the darkening at the bottom remains */
 #scene::after{background:linear-gradient(#0b0d1700 0,#0b0d1700 58%,#0b0d17 100%)}
-/* po wybraniu karty tytuł, data, hasło i podpowiedź znikają, żeby nie przeświecały spod wzlatującej karty */
+/* after a card is chosen the title, date, tagline and hint fade out so they do not show through the flying card */
 #s-pick .head,#s-pick .mid,#s-pick .hint{transition:opacity .25s ease}
 #s-pick.picking .head,#s-pick.picking .mid,#s-pick.picking .hint{opacity:0}
 @media(prefers-reduced-motion:reduce){#s-pick .head,#s-pick .mid,#s-pick .hint{transition:none}}
 
-/* ekran startowy: ilustracja jako tło sceny (jak na innych ekranach), tytuł w dwóch liniach na środku ekranu */
+/* intro screen: illustration as the scene background (like on other screens), title on two lines in the middle of the screen */
 .intro{justify-content:flex-start}
 .intro-top{margin:auto 0!important;padding-top:0}
 .intro-top h1{width:min-content;max-width:100%;margin:0 auto;text-align:center;font-size:var(--ft1,80px)!important;line-height:1.02}
 .intro-bottom{margin-top:0;padding-bottom:12px}
-/* ekran startowy: większy odstęp od dołu i między przyciskiem a podpowiedzią o muzyce */
+/* intro screen: more space from the bottom and between the button and the music hint */
 .intro-bottom{gap:18px;padding-bottom:36px}
 .intro-bottom .hint{margin-top:6px}
-#scene[data-scene=intro].on{opacity:.374}   /* tło splasha o 10% jaśniejsze (0,34 x 1,1) */
-.intro-bottom .hint{margin-top:22px}   /* podpowiedź o muzyce dalej od przycisku */
-#music-hint{margin:26px 0 0}   /* ID-owa reguła wcześniej dawała -8px; teraz wyraźny odstęp od przycisku */
-#enter,#more{width:100%;max-width:320px}   /* przyciski u dołu ekranów: pełna szerokość jak na ekranie wróżby, z marginesami */
+#scene[data-scene=intro].on{opacity:.374}   /* splash background 10% brighter (0.34 x 1.1) */
+.intro-bottom .hint{margin-top:22px}   /* music hint further from the button */
+#music-hint{margin:26px 0 0}   /* an ID rule used to give -8px; now a clear gap from the button */
+#enter,#more{width:100%;max-width:320px}   /* buttons at the bottom of screens: full width like on the reading screen, with margins */
 .intro-bottom{width:100%;grid-template-columns:minmax(0,320px);justify-content:center}

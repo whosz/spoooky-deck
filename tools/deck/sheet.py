@@ -1,4 +1,4 @@
-"""Arkusz miniatur do przeglądu: render wielu kart do jednego PNG (cols kolumn)."""
+"""Thumbnail sheet for review: renders many cards into one PNG (cols columns)."""
 import sys; sys.path.insert(0, 'tools/deck'); sys.path.insert(0, 'tools')
 from lib import W, H, P
 from pixel import Canvas

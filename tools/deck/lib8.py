@@ -1,5 +1,5 @@
-"""Styl 'płaski 16-bit' (jak All Pixel Tarot Cards): kanwa 48x72, ~10 płaskich kolorów, gruby czarny obrys,
-bez ditheringu i poświat. Karty renderujemy w 48x72 i skalujemy w CSS całkowitą krotnością (pixelated)."""
+"""'Flat 16-bit' style (like All Pixel Tarot Cards): a 48x72 canvas, ~10 flat colours, a thick black outline,
+no dithering or glows. Cards are rendered at 48x72 and scaled in CSS by an integer multiple (pixelated)."""
 import sys, math
 sys.path.insert(0, 'tools')
 from pixel import Canvas, rgb
@@ -31,14 +31,14 @@ def poly(c, pts, col):
             for x in range(round(a), round(b) + 1): c.set(x, y, col)
 
 def sprite(c, x, y, rows, flip=False, pal=None):
-    """rows: napisy, '.' = przezroczyste; znaki wg PAL (K,W,L,M,C,R,B,N,Y,D)."""
+    """rows: strings, '.' = transparent; characters per PAL (K,W,L,M,C,R,B,N,Y,D)."""
     p = pal or PAL
     for j, row in enumerate(rows):
         for i, ch in enumerate(row[::-1] if flip else row):
             if ch != '.': c.set(x + i, y + j, p[ch])
 
 def outline_to(c, lay, col=K):
-    """Składa warstwę na kartę z 1 px czarnym obrysem (4-sąsiedztwo)."""
+    """Composites the layer onto the card with a 1 px black outline (4-neighbourhood)."""
     for y in range(lay.h):
         for x in range(lay.w):
             if lay.px[y][x][3]: continue
@@ -47,7 +47,7 @@ def outline_to(c, lay, col=K):
                 if 0 <= nx < lay.w and 0 <= ny < lay.h and lay.px[ny][nx][3]: c.set(x, y, col); break
     c.paste(lay, 0, 0)
 
-# ---- tło / krajobraz ----
+# ---- background / landscape ----
 def star4(c, x, y, r=2, col=WH):
     for d in range(-r, r + 1): c.set(x + d, y, col); c.set(x, y + d, col)
 def sun(c, x, y, r=5, col=Y, ray=K):
@@ -80,14 +80,14 @@ def arch(c, cx, y0, w, h, col=B):
 
 FONT = {'I': ['###', '.#.', '.#.', '.#.', '###'], 'V': ['#.#', '#.#', '#.#', '#.#', '.#.'], 'X': ['#.#', '#.#', '.#.', '#.#', '#.#']}
 def numeral(c, text, y=3, col=K):
-    """Rzymska liczba (I, V, X) wyśrodkowana u góry."""
+    """Roman numeral (I, V, X) centred at the top."""
     w = len(text) * 4 - 1; x0 = (W - w) // 2
     for k, ch in enumerate(text):
         for j, row in enumerate(FONT[ch]):
             for i, px in enumerate(row):
                 if px == '#': c.set(x0 + k * 4 + i, y + j, col)
 
-# ---- symbole kolorów ----
+# ---- suit symbols ----
 def pentacle(c, x, y, r=5):
     ell(c, x, y, r + 1, r + 1, K); ell(c, x, y, r, r, C)
     pts = [(x + (r - 1.5) * math.sin(i * 4 * math.pi / 5), y - (r - 1.5) * math.cos(i * 4 * math.pi / 5)) for i in range(6)]
@@ -110,29 +110,29 @@ def wand(c, x, y, ln=18):
         rect(c, x + dx * 2 - (1 if dx < 0 else 0), y - ln + k, 3, 2, K); rect(c, x + dx * 2 - (0 if dx < 0 else -1), y - ln + k, 2, 1, N)
 SYMBOL = dict(pentacles=pentacle, cups=cup, swords=sword, wands=wand)
 
-# ---- ludzie ----
+# ---- people ----
 def man(c, cx, base, h=36, robe=R, trim=WH, hat=None, hair=K, skin=C, lh=None, rh=None, legs=False, beard=False, hood=False, long_hair=False):
-    """Postać w stylu 16-bit: bez twarzy (jak we wzorze), włosy/kaptur/czapka, szata, ręce 2 px, obrys 1 px.
-    lh/rh = (dx, dy) położenie dłoni względem barku (None = opuszczona). Zwraca {'l':(x,y),'r':(x,y),'head':(x,y)}."""
+    """A 16-bit style figure: no face (as in the reference), hair/hood/cap, robe, 2 px arms, 1 px outline.
+    lh/rh = (dx, dy) hand position relative to the shoulder (None = lowered). Returns {'l':(x,y),'r':(x,y),'head':(x,y)}."""
     lay = layer()
     hh = 8; top = base - h; sy = top + hh + 1; sw = 11
-    # tułów/szata
+    # torso/robe
     if legs:
         rect(lay, cx - 5, sy, 11, int(h * .38), robe); rect(lay, cx - 4, sy + int(h * .38), 4, base - sy - int(h * .38), C); rect(lay, cx + 1, sy + int(h * .38), 4, base - sy - int(h * .38), C)
         rect(lay, cx - 4, base - 3, 4, 3, B if robe != B else R); rect(lay, cx + 1, base - 3, 4, 3, B if robe != B else R)
     else:
         poly(lay, [(cx - 5, sy), (cx + 6, sy), (cx + 9, base), (cx - 8, base)], robe)
         rect(lay, cx - 8, base - 2, 18, 2, trim)
-    rect(lay, cx - 5, sy + 5, 11, 1, trim)                                   # pas
-    line(lay, cx, sy, cx, sy + 9, trim)                                      # rozcięcie szaty / dekolt
-    # głowa
+    rect(lay, cx - 5, sy + 5, 11, 1, trim)                                   # belt
+    line(lay, cx, sy, cx, sy + 9, trim)                                      # robe slit / neckline
+    # head
     ell(lay, cx, top + 4, 3.5, 4, hood and robe or skin)
     if hood: rect(lay, cx - 2, top + 3, 5, 4, K)
     if hair is not None and not hood:
         rect(lay, cx - 3, top, 7, 2, hair); rect(lay, cx - 4, top + 1, 1, 5 if long_hair else 3, hair); rect(lay, cx + 4, top + 1, 1, 5 if long_hair else 3, hair)
     if beard: poly(lay, [(cx - 3, top + 6), (cx + 3, top + 6), (cx + 1, top + 11), (cx - 1, top + 11)], WH if hair is None else hair)
-    rect(lay, cx - 1, top + 8, 3, 2, skin)                                   # szyja
-    # ręce
+    rect(lay, cx - 1, top + 8, 3, 2, skin)                                   # neck
+    # arms
     out = {'head': (cx, top + 4)}
     for side, tgt, key in ((-1, lh, 'l'), (1, rh, 'r')):
         sx, sy2 = cx + side * 5, sy + 1

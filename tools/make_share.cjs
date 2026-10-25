@@ -1,11 +1,11 @@
-// node tools/make_share.cjs: favicon (16/32/48 + .ico) z rewersu karty oraz grafika do udostępniania linku (img/og.png 1200x630).
+// node tools/make_share.cjs: favicon (16/32/48 + .ico) from the card back and the link sharing image (img/og.png 1200x630).
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
 const { chromium } = require('/home/matt/work/agency-portfolio/node_modules/playwright');
 const fs = require('fs');
 (async () => {
-  const BGF = process.env.BG || 'img/og-bg.png', OUT = process.env.OUT, [W, H] = (process.env.SIZE || '1200x630').split('x').map(Number);   // SIZE: np. 1280x640 dla podglądu repozytorium na GitHubie   // BG: własne tło 120x63 (skala 10), OUT: gdzie zapisać podgląd bez nadpisywania img/og.png
+  const BGF = process.env.BG || 'img/og-bg.png', OUT = process.env.OUT, [W, H] = (process.env.SIZE || '1200x630').split('x').map(Number);   // SIZE: e.g. 1280x640 for the GitHub repository preview   // BG: custom 120x63 background (scale 10), OUT: where to save a preview without overwriting img/og.png
   if (!OUT) {
-  // favicon: środkowy kwadrat rewersu 64x64 (słońce), skalowany bez wygładzania
+  // favicon: the central 64x64 square of the card back (the sun), scaled without smoothing
   const crop = await sharp('img/ui/back.png').extract({ left: 0, top: 16, width: 64, height: 64 }).toBuffer();
   const sizes = [16, 32, 48], pngs = [];
   for (const s of sizes) { const b = await sharp(crop).resize(s, s, { kernel: 'nearest' }).png().toBuffer(); pngs.push(b); if (s === 32) fs.writeFileSync('img/icons/favicon-32.png', b); if (s === 16) fs.writeFileSync('img/icons/favicon-16.png', b); }
@@ -14,7 +14,7 @@ const fs = require('fs');
   pngs.forEach((b, i) => { const e = Buffer.alloc(16); e[0] = sizes[i]; e[1] = sizes[i]; e.writeUInt16LE(1, 4); e.writeUInt16LE(32, 6); e.writeUInt32LE(b.length, 8); e.writeUInt32LE(off, 12); dir.push(e); off += b.length; });
   fs.writeFileSync('favicon.ico', Buffer.concat([head, ...dir, ...pngs]));
   }
-  // grafika udostępniania: tło ekranu wyboru + rewers karty + tytuł i hasło (render w Chromium)
+  // sharing image: pick screen background + card back + title and tagline (rendered in Chromium)
   const html = `<!doctype html><meta charset=utf-8><style>
   @font-face{font-family:CS;src:url(http://localhost:8123/fonts/OldEnglishGothicPixel.ttf)}
   @font-face{font-family:GP;src:url(http://localhost:8123/fonts/geistpixel-latin.woff2)}
@@ -25,7 +25,7 @@ const fs = require('fs');
   .card{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;image-rendering:pixelated;box-shadow:0 18px 0 #0008}
   .t{position:absolute;left:520px;top:150px;right:60px}
   .stage{position:absolute;left:${(W - 1200) / 2}px;top:${(H - 630) / 2}px;width:1200px;height:630px}
-  /* tytuł jak w aplikacji: twarde pasy złota na wiersz, ciemny obrys i cień */
+  /* title as in the app: hard gold bands per line, dark outline and shadow */
   h1{font:400 120px/1.02 CS;margin:0 0 16px;padding-bottom:.12em;color:transparent;-webkit-background-clip:text;background-clip:text;
     background:linear-gradient(#fff6b0 0 6%,#ffd84a 6% 28%,#f2a31f 28% 50%,#c9690e 50% 72%,#8a3a08 72%) 0 .105em/100% 1.02em repeat-y;-webkit-background-clip:text;background-clip:text;
     filter:drop-shadow(3px 0 0 #3a1604) drop-shadow(-3px 0 0 #3a1604) drop-shadow(0 -3px 0 #3a1604) drop-shadow(0 3px 0 #3a1604) drop-shadow(0 8px 0 #000) drop-shadow(0 0 24px #ffb34766)}

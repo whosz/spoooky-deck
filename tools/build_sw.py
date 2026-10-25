@@ -1,4 +1,4 @@
-"""python3 tools/build_sw.py: generuje sw.js z listą plików do pamięci podręcznej (bez muzyki) i wersją z hasha zawartości."""
+"""python3 tools/build_sw.py: generates sw.js with the list of files to cache (without music) and a version taken from a content hash."""
 import os, json, hashlib
 ROOT = ['index.html', 'manifest.webmanifest']
 DIRS = ['css', 'js', 'data', 'fonts', 'img']
@@ -11,4 +11,4 @@ h = hashlib.sha1()
 for f in files: h.update(f.encode()); h.update(open(f, 'rb').read())
 src = open('tools/sw.template.js', encoding='utf8').read().replace('__VERSION__', h.hexdigest()[:10]).replace('__FILES__', json.dumps(['./'] + files))
 open('sw.js', 'w', encoding='utf8').write(src)
-print('sw.js', h.hexdigest()[:10], len(files), 'plików')
+print('sw.js', h.hexdigest()[:10], len(files), 'files')

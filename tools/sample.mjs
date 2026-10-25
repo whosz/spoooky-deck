@@ -1,4 +1,4 @@
-// node tools/sample.mjs [pl|en] [n]: wypisuje n losowych wrozb do przegladu.
+// node tools/sample.mjs [pl|en] [n]: prints n random readings for review.
 import fs from 'node:fs'; import vm from 'node:vm';
 for (const f of ['seedrandom.min.js', 'tracery.js']) vm.runInThisContext(fs.readFileSync(`js/vendor/${f}`, 'utf8') + (f === 'tracery.js' ? ';globalThis.tracery=tracery' : ''));
 const { compose } = await import('../js/oracle.js');

@@ -1,4 +1,4 @@
-// node tools/ai/alpha_fade.cjs <in.png> <out.png>: pikselowe (Bayer) zanikanie krawędzi do PRZEZROCZYSTOŚCI, więc obraz wtapia się w dowolne tło
+// node tools/ai/alpha_fade.cjs <in.png> <out.png>: pixel (Bayer) fade of the edges to TRANSPARENCY, so the image blends into any background
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
 const B = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]];
 (async () => {

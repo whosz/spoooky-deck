@@ -1,5 +1,5 @@
-"""python3 tools/bump_version.py: podnosi numer wersji ?v=N w index.html (css, js) i w importach modułów w js/app.js.
-Numer w adresie sprawia, że po aktualizacji przeglądarka nigdy nie miesza nowego app.js ze starymi modułami z cache. Uruchom przed deployem."""
+"""python3 tools/bump_version.py: bumps the ?v=N version in index.html (css, js) and in the module imports in js/app.js.
+The number in the URL means that after an update the browser never mixes the new app.js with old cached modules. Run it before deploying."""
 import re, sys
 html = open('index.html').read()
 n = int(re.search(r'app\.js\?v=(\d+)', html).group(1)) + 1

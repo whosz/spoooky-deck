@@ -1,4 +1,4 @@
-# Spoooky Deck: Apache (działa w głównej domenie i w podkatalogu, bo ścieżki są względne)
+# Spoooky Deck: Apache (works at a domain root and in a subdirectory because all paths are relative)
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType font/woff2 .woff2
@@ -12,15 +12,15 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Strona, service worker, manifest i dane: zawsze sprawdzaj świeżość
+  # Page, service worker, manifest and data: always revalidate
   <FilesMatch "(^sw\.js|\.html|\.webmanifest|\.json|\.css|\.js)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  # Obrazki i fonty też zmieniają się w miejscu, więc rewalidacja (304, gdy bez zmian); service worker i tak trzyma kopię offline
+  # Images and fonts also change in place, so revalidate (304 when unchanged); the service worker keeps an offline copy anyway
   <FilesMatch "\.(png|woff2|ttf)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  # Muzyka jest duża i dostaje nową nazwę przy zmianie utworu: doba
+  # Music is large and gets a new file name when the track changes: one day
   <FilesMatch "\.mp3$">
     Header set Cache-Control "public, max-age=86400"
   </FilesMatch>

@@ -1,5 +1,5 @@
-"""python3 tools/ai/run_all.py: generuje (wznawialnie) wszystkie karty i zasoby w stylu 5 (retro 16 kolorów, 0.5 MP, 1 wariant).
-Pomija istniejące pliki s5_<id>_1.png; przy 402 (brak środków) kończy z komunikatem; filtr bezpieczeństwa: ponawia z innym ziarnem (do 3 prób)."""
+"""python3 tools/ai/run_all.py: generates (resumably) all cards and assets in style 5 (retro 16 colours, 0.5 MP, 1 variant).
+Skips existing s5_<id>_1.png files; on 402 (no funds) it stops with a message; safety filter: retries with another seed (up to 3 tries)."""
 import os, sys, json
 sys.path.insert(0, 'tools/ai'); os.environ['STYLE'] = '5'; os.environ['RES'] = '0.5 MP'
 import gen, urllib.error

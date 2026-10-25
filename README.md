@@ -1,73 +1,76 @@
 # Spoooky Deck
 
-![Spoooky Deck: rewers karty, tytuł i hasło](img/og.png)
+![Spoooky Deck: a card back, the title and the tagline](img/og.png)
 
-Mroczna wyrocznia tarota dla firm. Wpisujesz imię, znak zodiaku i firmę, wybierasz kartę z wachlarza 78 kart, a wróżba zawsze kończy się wnioskiem, że firmie przyda się projektant. Na końcu jest link do oferty [whosz.pl](https://whosz.pl/offer/).
+A dark tarot oracle for companies. You enter a name, a zodiac sign, a company and its industry and stage, pick a card from a fan of 78, and the reading always ends with the conclusion that the company needs a designer. At the end there is a link to the [whosz.pl](https://whosz.pl/offer/) offer.
 
-Działa na żywo: https://whosz.pl/tarot/
+Live: https://whosz.pl/tarot/
 
-**Status:** projekt zamknięty na tym etapie (24.10.2026). Aplikacja jest kompletna i wdrożona; opis procesu: [docs/case-study.md](docs/case-study.md).
+**Status:** complete and deployed (24 Oct 2026), refined since. The process is described in [docs/case-study.md](docs/case-study.md).
 
-## Co to jest
+## What it is
 
-- Czyste pliki statyczne (HTML, CSS, ES modules), bez backendu i bez procesu budowania.
-- PWA: instalacja na ekranie głównym, praca offline (service worker, sieć najpierw).
-- Dwa języki od razu: polski i angielski.
-- 78 kart (22 Wielkie i 56 Małych Arkanów) w pikselowym stylu retro 16 kolorów, siatka 64×96, skalowana o całkowitą liczbę pikseli urządzenia.
-- Formularz: imię, znak zodiaku, firma oraz jej branża i etap (przycisk „Wyczyść formularz”). Branża i etap dodają do wróżby akapit dopasowany do firmy.
-- Wróżby składa gramatyka [Tracery](https://github.com/galaxykate/tracery) z losowością [seedrandom](https://github.com/davidbau/seedrandom). Karta, pozycja (prosta lub odwrócona), znak zodiaku i usługa decydują o treści, a puenta zawsze wskazuje projektanta. Małe arkana dostają dodatkowe zdanie o zgodności żywiołu znaku z kolorem karty.
-- Ekran wróżby ma trzy zakładki: **Wróżba**, **Karta** (znaczenie i słowa kluczowe) oraz **Klucz** (objaśnienie, jak arkana, znak, żywioł i pozycja wpływają na wróżbę).
-- Menu (hamburger): język, dźwięk, instalacja aplikacji, przycisk „Licencje” (prowadzi do tej sekcji README), informacje o twórcy.
-- Wachlarz kart z tasowaniem, bezwładnością i wyborem palcem lub myszą, odkrycie karty z iskrami, złoty połysk, pochylanie za kursorem, żyroskopem i przeciąganiem.
-- Dźwięk: muzyka w pętli (zatrzymywana, gdy aplikacja jest w tle, i zapisywana do pracy offline) oraz efekty generowane w przeglądarce ([ZzFX](https://github.com/KilledByAPixel/ZzFX)).
-- Udostępnianie: link z ziarnem losowania (bez imienia i firmy) z jednym zdaniem zachęcającym i nazwą karty oraz obrazek z wróżbą do zapisania lub udostępnienia. Link ma podgląd w komunikatorach (Open Graph).
-- Aktualizacje bez czyszczenia cache: moduły i dane mają numer wersji w adresie (`?v=N`), aplikacja sprawdza nową wersję przy powrocie i przeładowuje się, gdy nic się nie traci.
-- Prywatność: imię, firma, branża i etap zostają na urządzeniu. Nic nie jest wysyłane na serwer ani zapisywane w linku.
+- Plain static files (HTML, CSS, ES modules), no backend and no build step.
+- A PWA: installable on the home screen, works offline (service worker, network first).
+- Two languages from the start: Polish and English.
+- 78 cards (22 major and 56 minor arcana) in a 16-colour retro pixel style, a 64×96 grid scaled by a whole number of device pixels.
+- Form: name, zodiac sign, company, plus its industry and stage (and a "Clear form" button). Industry and stage add a paragraph tailored to the company.
+- Readings are composed by a [Tracery](https://github.com/galaxykate/tracery) grammar with [seedrandom](https://github.com/davidbau/seedrandom) randomness. The card, position (upright or reversed), zodiac sign, industry, stage and service decide the text, and the punchline always points to a designer. Minor arcana get an extra sentence about whether the sign's element matches the suit.
+- The reading screen has three tabs: **Reading**, **Card** (meaning and keywords) and **Key** (how the arcana, sign, element and position affect the reading).
+- Menu (hamburger): language, sound, app installation, a "Licenses" button (it leads to the licences section of this README) and creator info.
+- A fan of cards with shuffling, inertia and picking by finger or mouse, a card reveal with sparks, gold shine, and tilt following the cursor, the gyroscope or dragging.
+- Sound: a music loop (paused when the app is in the background and cached for offline use) and effects generated in the browser ([ZzFX](https://github.com/KilledByAPixel/ZzFX)).
+- Sharing: a link carrying only the draw seed (no name or company) with one inviting sentence and the card name, and a reading image to save or share. The link has a preview in messengers (Open Graph).
+- Updates without clearing the cache: modules and data have a version in their URL (`?v=N`), and the app checks for a new version when you return to it and reloads when nothing is lost.
+- Privacy: name, company, industry and stage stay on the device. Nothing is sent to a server or stored in the link.
 
-## Struktura
+## Structure
 
 ```
-index.html, manifest.webmanifest, sw.js (generowany), favicon.ico, .htaccess
+index.html, manifest.webmanifest, sw.js (generated), favicon.ico, .htaccess
 css/      style, cards, theme, fonts
 js/       app, deck, oracle, fx, audio, share (+ vendor: tracery, seedrandom, zzfx)
 data/     cards.json, grammar.{pl,en}.json, zodiac.{pl,en}.json, ui.{pl,en}.json
 img/      cards/ (78 PNG), ui/, emoji/, icons/, og.png
-fonts/    woff2/ttf (OFL); Olde Tome tylko na serwerze (patrz niżej)
+fonts/    woff2/ttf (OFL); Olde Tome is on the server only (see below)
 audio/    spoooky-theme-mm.mp3
-schema/   schematy JSON kart, gramatyki i zodiaku
-tools/    generatory, walidatory i skrypty (deploy, service worker, grafika)
+schema/   JSON schemas of cards, grammar and zodiac
+tools/    generators, validators and scripts (deploy, service worker, graphics)
+docs/     case study, licensing notes, previews
 ```
 
-## Uruchomienie lokalnie
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the module contracts, [BRIEF.md](BRIEF.md) for the product brief and [STYLE.md](STYLE.md) for the palette and fonts.
+
+## Running locally
 
 ```bash
 python3 -m http.server 8123
 # http://localhost:8123/
 ```
 
-Podgląd konkretnej karty: `?card=ar13` (Wielkie Arkana `ar00`–`ar21`; małe `wa`, `cu`, `sw`, `pe` + `01`–`14`), odwrócona: `&rev=1`. Język: `?lang=en`.
+Preview a specific card: `?card=ar13` (major arcana `ar00`-`ar21`; minor `wa`, `cu`, `sw`, `pe` + `01`-`14`), reversed: `&rev=1`. Language: `?lang=en`.
 
-## Testy i narzędzia
+## Tests and tools
 
 ```bash
-node tools/test_oracle.mjs         # wszystkie kombinacje karta x pozycja x znak x branża x etap x język (7488 wróżb)
-python3 tools/validate_cards.py    # schemat i zakazane znaki w cards.json
-python3 tools/build_sw.py          # generuje sw.js (lista plików + wersja z hasha)
-node tools/smoke.cjs [adres]       # test dymny i regresje: cały przepływ w PL i EN, telefon 390 i 320 px (wymaga Playwrighta)
-node tools/update_test.cjs         # aktualizacja bez czyszczenia cache, także ze starej wersji (wymaga Playwrighta)
-python3 tools/bump_version.py      # podnosi numer wersji ?v=N przed wdrożeniem (robi to też deploy.sh)
+node tools/test_oracle.mjs         # every card x position x sign x industry x stage x language (7488 readings)
+python3 tools/validate_cards.py    # schema and forbidden characters in cards.json
+python3 tools/build_sw.py          # generates sw.js (file list + a version from a hash)
+node tools/smoke.cjs [url]         # smoke test and regressions: the whole flow in PL and EN, phones 390 and 320 px (needs Playwright)
+node tools/update_test.cjs         # an update without clearing the cache, also from an old version (needs Playwright)
+python3 tools/bump_version.py      # bumps the ?v=N version before a deploy (deploy.sh does it too)
 ```
 
-Muzyka i talia są wygenerowane przez AI (informacja w sekcji o licencjach w README). Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworzona skryptami z `tools/ai/` (zmniejszenie do 64×96, paleta 16 kolorów). Surowe obrazy nie są w repozytorium.
+The deck, the backgrounds and the music are AI-generated (noted in the licences section below). The cards were made with an image model (Replicate, Flux 2 Pro) and processed with the scripts in `tools/ai/` (downscaled to 64×96, 16-colour palette). The raw images are not in the repository.
 
-## Wdrożenie
+## Deployment
 
-`tools/deploy.sh` wgrywa pliki na serwer przez SFTP. Dane dostępowe są w lokalnym pliku poza repozytorium. Serwer Apache, katalog `whosz.pl/tarot/`, ścieżki względne. `.htaccess` ustawia typy MIME i nagłówki cache.
+`tools/deploy.sh` uploads the files to the server over SFTP. Credentials are kept in a local file outside the repository. Apache, directory `whosz.pl/tarot/`, relative paths. `.htaccess` sets MIME types and cache headers.
 
-## Autorzy i licencje
+## Authors and licences
 
-Autor: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Szczegóły licencji zależności, fontów i emoji: [licenses.txt](licenses.txt). Warunki użycia komercyjnego i lista kroków na później: [docs/licensing.md](docs/licensing.md). Licencje komercyjne (m.in. czcionki, plan Suno) świadomie odłożono do czasu, gdy projekt zyska zasięg.
+Author: Mateusz Staniszewski, [whosz.pl](https://whosz.pl), 2026. Licence details of the dependencies, fonts and emoji: [licenses.txt](licenses.txt). Terms for commercial use and a checklist: [docs/licensing.md](docs/licensing.md).
 
-- Muzyka `audio/spoooky-theme-mm.mp3` została wygenerowana modelem MiniMax Music 2.6 (Replicate). MiniMax wymaga oznaczania treści AI; informacja jest tutaj w README (menu aplikacji tylko linkuje do tej sekcji). Warunki użycia komercyjnego wyników są mniej jednoznaczne niż w ACE-Step (MIT), patrz docs/licensing.md. Skrypty: `tools/ai/music2.py` (MiniMax), `tools/ai/music.py` (ACE-Step).
-- Czcionka tytułu: Old English Gothic Pixel (OFL, dołączona w `fonts/`). Czcionka Olde Tome (nagłówki) nie jest dołączona do repozytorium, bez niej nagłówki używają fontu zastępczego.
-- Pikselowe emoji: SerenityOS (BSD-2). Teksty wróżb sprawdzano skillami humanizer (`.claude/skills/`).
+- **AI-generated content.** The music (`audio/spoooky-theme-mm.mp3`) was generated with MiniMax Music 2.6 (via Replicate) and the card art and backgrounds with Flux 2 Pro (via Replicate). MiniMax requires AI-generated content to be labelled; this notice is that label (the app menu only links to this section). The commercial terms for MiniMax outputs are less clear than ACE-Step's (MIT), see [docs/licensing.md](docs/licensing.md). Scripts: `tools/ai/music2.py` (MiniMax), `tools/ai/music.py` (ACE-Step).
+- Title font: Old English Gothic Pixel (OFL, included in `fonts/`). The Olde Tome font (headings) is not included in the repository; without it the headings fall back to another font.
+- Pixel emoji: SerenityOS (BSD-2). The reading texts were checked with the humanizer skills (`.claude/skills/`).

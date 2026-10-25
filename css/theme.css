@@ -1,4 +1,4 @@
-/* Dead Cells: pikselowe ramki 9-slice, żar świec, font gotycki. */
+/* Dead Cells style: pixel 9-slice frames, candle embers, gothic font. */
 :root{--px:'Geist Pixel',ui-monospace,monospace;--gothic:'Olde Tome','Jacquard 12',serif;--cur:url(../img/ui/cursor.png) 0 0}
 html,body{font-family:var(--px);cursor:var(--cur),auto}
 body{background:transparent}
@@ -30,9 +30,9 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .tabs button{font-family:var(--px)}
 @media(prefers-reduced-motion:reduce){h1,.cta{animation:none}}
 
-/* Czcionki jak w The Cosmic Wheel Sisterhood: gotycki piksel (Jacquard 12) dla tytułów, cytatu, przycisków,
-   zakładek i "mówiącego" (pierwsza linia akapitu), a pikselowy font Geist Pixel dla długiego tekstu i etykiet.
-   Rozmiary Jacquard 12 są wielokrotnością 12 px. */
+/* Fonts as in The Cosmic Wheel Sisterhood: gothic pixel (Jacquard 12) for titles, the quote, buttons,
+   tabs and the "speaker" (first line of a paragraph), and the pixel font Geist Pixel for long text and labels.
+   Jacquard 12 sizes are multiples of 12 px. */
 .quote,.rows b,.cta,.tabs button,.sect,#rname,.text .lead{font-family:var(--gothic);font-weight:400}
 .quote{font-size:24px;line-height:1.35}
 .rows b{font-size:24px}
@@ -45,7 +45,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .mini{font-size:16px;letter-spacing:0}
 .mini{display:flex;align-items:center;justify-content:center;padding:0;line-height:1;text-align:center}
 .ftitle{font-family:var(--gothic)}
-/* odwrócona karta: złota ramka jak zawsze + pikselowa czerwona poświata z twardych pierścieni (bez rozmycia) */
+/* reversed card: gold frame as always + a pixel red glow made of hard rings (no blur) */
 .card.rev .front{border-color:var(--gold);box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a99,0 0 0 12px #b3243a55,0 0 0 16px #b3243a22;animation:revglow 1.6s steps(1) infinite}
 @keyframes revglow{50%{box-shadow:0 0 0 4px #b3243a,0 0 0 8px #b3243a66,0 0 0 12px #b3243a33,0 0 0 16px #b3243a11}}
 @media(prefers-reduced-motion:reduce){.card.rev .front{animation:none}}
@@ -53,18 +53,18 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu h3{font-family:var(--gothic)}
 .menu .langs .cta,.menu #mute{font-family:var(--px)}
 .menu .langs .cta[aria-pressed=true]{border-image-source:url(../img/ui/btn.png);color:#1a1204;text-shadow:0 1px 0 #ffe2a8}
-/* ikony w nagłówku bez tła i ramki */
+/* header icons without background and frame */
 .bar .mini{border:0;border-image:none;background:none;padding:0;box-shadow:none;font-size:28px;color:var(--text);text-shadow:0 2px 0 #000}
 .bar .mini:hover{filter:brightness(1.4) drop-shadow(0 0 6px var(--flame))}
 
-/* czyste piksele: rozmiary czcionki Jacquard 12 to całkowite wielokrotności jej siatki (12 px) w pikselach URZĄDZENIA */
-:root{--f:calc(12*var(--u));--gs:1.56}   /* --gs: skala dla Olde Tome (mniejsza bryła niż Jacquard 12); dla pikselowej Jacquard ustaw 1 */
+/* crisp pixels: Jacquard 12 font sizes are whole multiples of its grid (12 px) in DEVICE pixels */
+:root{--f:calc(12*var(--u));--gs:1.56}   /* --gs: scale for Olde Tome (smaller glyphs than Jacquard 12); set to 1 for the pixel Jacquard */
 #bar-title,.quote,.rows b,.cta,.tabs button,.sect,.text .lead,.menu h3,.intro-bottom .cta,.front .nm{font-size:calc(2*var(--f)*var(--gs))}
 #rname,.ftitle,.hero h2{font-size:calc(3*var(--f)*var(--gs))}
-/* mała karta na ekranie wróżby: mniejsza plakietka z nazwą */
+/* small card on the reading screen: a smaller name plate */
 #artslot .front .nm{font-size:10.5cqw;border-width:calc(4*var(--u));border-image-width:calc(4*var(--u));padding:0 2px;width:calc(100% - 14px)}
 #artslot .front .num{font-size:calc(10*var(--u))}
-/* przyciski i zakładki: nieco mniejsze od nagłówków, żeby mieściły się w jednej linii */
+/* buttons and tabs: slightly smaller than headings so they fit on one line */
 .cta,.tabs button,.intro-bottom .cta{font-size:calc(1.74*var(--f)*var(--gs));white-space:nowrap}
 .tabs button{font-size:calc(1.7*var(--f)*var(--gs))}
 .quote{font-size:calc(2*var(--f)*var(--gs))}
@@ -74,7 +74,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #artslot .front .nm{font-size:10cqw}
 .rows b,.menu h3,.sect,.text .lead{font-size:calc(1.7*var(--f)*var(--gs))}
 
-/* menu: pełna szerokość, przyciski jak w reszcie aplikacji (ramka 9-slice, żar) */
+/* menu: full width, buttons like in the rest of the app (9-slice frame, embers) */
 .menu{padding:10px 8px 14px}
 .menu .cta{font-family:var(--gothic);font-size:calc(1.7*var(--f)*var(--gs));animation:ember 2.4s steps(2) infinite}
 .menu .cta.alt{animation:none}
@@ -83,21 +83,21 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 .menu #mute{font-family:var(--px);font-size:calc(1.4*var(--f))}
 .menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}
 
-/* menu: większe marginesy po bokach, wszystkie linki jednakowe */
+/* menu: larger side margins, all links alike */
 .menu{padding:14px 28px 18px!important}
 .menu a.cta.alt{font-family:var(--px);font-size:calc(1.4*var(--f));animation:none}
 
-/* hamburger: większe odstępy między sekcjami, przyciski +2 px, sekcja licencji 2x mniejsza */
+/* hamburger: larger gaps between sections, buttons +2 px, the licence section 2x smaller */
 .menu{gap:12px}
 .menu h3{margin-top:22px}
 .menu h3:first-child{margin-top:0}
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
 .menu #mute{font-size:calc(1.4*var(--f) + 2px)}
 .menu a.cta.alt{font-size:calc(1.4*var(--f) + 2px)}
-/* nagłówek formularza o ok. 20% mniejszy */
+/* form heading about 20% smaller */
 .ftitle{font-size:calc(2.4*var(--f)*var(--gs))}
 
-/* przyciski (np. "Wylosuj kolejną") o 10% mniejsza czcionka */
+/* buttons (e.g. "Draw another") with a 10% smaller font */
 .cta,.intro-bottom .cta{font-size:calc(1.566*var(--f)*var(--gs))}
 .menu .cta{font-size:calc(1.53*var(--f)*var(--gs))}
 .menu .langs .cta{font-size:calc(1.6*var(--f) + 2px)}
@@ -107,27 +107,27 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #install{font-family:var(--px);font-size:calc(1.4*var(--f) + 2px)}
 #install-hint{margin:0;text-align:center;font-size:18px;opacity:.9}
 #app-sec h3{margin-top:22px}
-/* cztery zakładki wróżby mieszczą się w jednym rzędzie */
+/* four reading tabs fit in one row */
 .tabs{gap:0;padding:0 4px}
 .tabs button{min-width:0;padding:0 2px;font-size:calc(1.5*var(--f)*var(--gs))!important;white-space:nowrap}
-#rname{font-size:calc(2.7*var(--f)*var(--gs))}   /* tytuł karty na ekranie wróżby o 10% mniejszy (3 -> 2,7) */
-/* ikony w nagłówkach zakładki Klucz (te same pikselowe emoji co w rzędzie pod kartą) */
+#rname{font-size:calc(2.7*var(--f)*var(--gs))}   /* card title on the reading screen 10% smaller (3 -> 2.7) */
+/* icons in the Key tab headings (the same pixel emoji as in the row under the card) */
 .text .lead{display:flex;align-items:center;gap:12px}
 .text .lead .emoji{height:30px;width:auto;flex:none}
 
 /* ---- animacje ---- */
-/* tytuł: gasnąca litera */
+/* title: a flickering letter */
 #s-intro h1 span{transition:none}
 #s-intro h1 span.off{opacity:.18;text-shadow:none}
-/* wróżba: akapity wchodzą po kolei (krok po kroku, bez płynnego wygładzania) */
+/* reading: paragraphs come in one by one (stepped, no smooth easing) */
 .text p.stag{opacity:0;animation:pin .4s steps(5) forwards}
 @keyframes pin{from{opacity:0;transform:translateY(calc(5*var(--u)))}to{opacity:1;transform:none}}
-/* przejście przez mgłę po "Wejdź w mgłę" */
+/* fog transition after "Enter the fog" */
 .fog{position:absolute;inset:0;z-index:35;pointer-events:none;opacity:0;background:#0b0d17 url(../img/ui/bg-intro.png) center top/var(--sw) auto no-repeat;image-rendering:pixelated}
 .fog::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,#6b3a8588 0,#2a174099 45%,#0b0d17dd 100%)}
 .fog.in{opacity:1;transition:opacity .34s steps(6)}
 .fog.out{opacity:0;transition:opacity .5s steps(8)}
-/* menu: hamburger zamienia się w krzyżyk, głośnik podskakuje */
+/* menu: the hamburger turns into a cross, the speaker bounces */
 .burger i{transition:transform .22s steps(4),opacity .22s steps(2)}
 #menu-btn[aria-expanded=true] .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 #menu-btn[aria-expanded=true] .burger i:nth-child(2){opacity:0}
@@ -135,7 +135,7 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #mute img.bump{animation:bump .36s steps(4)}
 @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.35) rotate(-8deg)}70%{transform:scale(.9) rotate(5deg)}100%{transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.text p.stag{opacity:1;animation:none}.fog{display:none}.burger i{transition:none}#mute img.bump{animation:none}}
-/* zakładka Klucz: więcej powietrza między sekcjami i akapitami */
+/* Key tab: more space between sections and paragraphs */
 #tabtext[data-tab=key] p{margin-bottom:20px}
 #tabtext[data-tab=key] p.lead{margin-top:44px;margin-bottom:16px}
 #tabtext[data-tab=key] p.lead:first-child{margin-top:0}
@@ -143,10 +143,10 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #form .cta{margin-top:8px}
 .linkbtn{justify-self:center;background:none;border:0;padding:4px 8px;font:inherit;font-size:18px;color:var(--text);opacity:.75;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .linkbtn:hover,.linkbtn:focus-visible{opacity:1;color:var(--flame)}
-/* tytuł (splash i ekran wyboru karty) jako złoty metal (twarde pasy światła, ciemny obrys, błysk i gwiazdki) */
+/* title (splash and pick screens) as gold metal (hard light bands, dark outline, shine and glints) */
 #s-intro h1,#s-pick h1{position:relative;color:transparent;text-shadow:none;
   background:url(../img/ui/shine.png) 100% 0/250% 100% no-repeat,url(../img/ui/shine.png) 100% 0/250% 100% no-repeat,url(../img/ui/shine.png) 100% 0/250% 100% no-repeat,
-    linear-gradient(#fff6b0 0 6%,#ffd84a 6% 28%,#f2a31f 28% 50%,#c9690e 50% 72%,#8a3a08 72%) 0 .105em/100% 1.02em repeat-y;   /* pasy powtarzane co wiersz; brąz od linii pisma w dół, więc ogonki p i y są brązowe */
+    linear-gradient(#fff6b0 0 6%,#ffd84a 6% 28%,#f2a31f 28% 50%,#c9690e 50% 72%,#8a3a08 72%) 0 .105em/100% 1.02em repeat-y;   /* bands repeat per line; brown from the baseline down, so the descenders of p and y are brown */
   -webkit-background-clip:text;background-clip:text;
   filter:drop-shadow(calc(2*var(--u)) 0 0 #3a1604) drop-shadow(calc(-2*var(--u)) 0 0 #3a1604) drop-shadow(0 calc(-2*var(--u)) 0 #3a1604) drop-shadow(0 calc(2*var(--u)) 0 #3a1604) drop-shadow(0 calc(5*var(--u)) 0 #000) drop-shadow(0 0 12px #ffb34755)}
 #s-intro h1::after,#s-pick h1::after{content:"";position:absolute;left:14%;top:18%;width:calc(7*var(--u));height:calc(7*var(--u));margin:calc(-3.5*var(--u)) 0 0 calc(-3.5*var(--u));opacity:0;pointer-events:none;
@@ -161,10 +161,10 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #s-intro h1{--bp:.105em}
 #s-pick h1{--bp:.095em;line-height:1;background-size:250% 100%,250% 100%,250% 100%,100% 1.02em;background-position:100% 0,100% 0,100% 0,0 .095em}
 #s-pick h1::after{display:none}
-#fan:focus,#fan:focus-visible{outline:none}   /* wachlarz pokazuje wybraną kartę sam, ramka fokusu była zbędna */
-/* zmiana ekranu: nowy ekran szybko się rozjaśnia */
+#fan:focus,#fan:focus-visible{outline:none}   /* the fan shows the chosen card itself, a focus ring was redundant */
+/* screen change: the new screen fades in quickly */
 .screen.fadein{animation:scrfade .22s ease-out}
 @keyframes scrfade{from{opacity:0}to{opacity:1}}
-.ftitle,.fintro{text-shadow:0 2px 0 #000,0 0 8px #000,0 0 14px #000}   /* czytelność na jasnym księżycu */
-#s-intro h1,#s-pick h1{padding-bottom:.12em;margin-bottom:-.12em}   /* pole tła obejmuje ogonki liter p i y */
-#s-intro h1,#s-pick h1{image-rendering:pixelated}   /* błysk to ten sam pikselowy pas co na kartach */
+.ftitle,.fintro{text-shadow:0 2px 0 #000,0 0 8px #000,0 0 14px #000}   /* legibility on the bright moon */
+#s-intro h1,#s-pick h1{padding-bottom:.12em;margin-bottom:-.12em}   /* the background area covers the descenders of p and y */
+#s-intro h1,#s-pick h1{image-rendering:pixelated}   /* the shine is the same pixel band as on the cards */

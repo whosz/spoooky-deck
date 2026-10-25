@@ -1,4 +1,4 @@
-// node tools/ai/candles.cjs: zielone tło -> przezroczystość, przycięcie, kwantyzacja do 20 kolorów bez ditheringu, wysokość 64 px (skala całkowita) -> img/ui/candle-<A-E>.png
+// node tools/ai/candles.cjs: green background -> transparency, trim, quantisation to 20 colours without dithering, height 64 px (integer scale) -> img/ui/candle-<A-E>.png
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp'); const fs = require('fs');
 (async () => {
   for (const k of ['A', 'B', 'C', 'D', 'E']) {

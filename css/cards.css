@@ -20,15 +20,15 @@
 .front .sym{display:grid;place-items:center}
 .front .sym .emoji{height:36cqw}
 
-/* awers: ilustracja z img/cards/<id>.png (ustawiana w JS), nakładki z numerem i nazwą */
+/* front face: illustration from img/cards/<id>.png (set in JS), overlays with number and name */
 .front{background-size:100% 100%;background-position:center;image-rendering:pixelated}
 .front .sym{display:none}
 .front .num,.front .nm{background:#0b0d17cc;padding:2px 10px;line-height:1.2}
 .front::before{border-color:#8a6a2e99}
 
-/* ruch spoczynkowy: kołysanie + pochylenie za kursorem + połysk */
+/* idle motion: sway + tilt following the cursor + shine */
 #cardslot{animation:bob 3.6s steps(1) infinite;transition:transform .15s}
-/* spoczynek bez obrotu (obrót rozmywa piksele): unoszenie co 3 px, a pochylenie tylko podczas ruchu */
+/* idle without rotation (rotation blurs pixels): floating in 3 px steps, tilt only while moving */
 @keyframes bob{0%{translate:0 0}25%{translate:0 calc(-3*var(--u))}50%{translate:0 calc(-6*var(--u))}75%{translate:0 calc(-3*var(--u))}100%{translate:0 0}}
 @media(prefers-reduced-motion:reduce){#cardslot{animation:none;transform:none}}
 #cardslot{touch-action:none;cursor:grab}
@@ -37,16 +37,16 @@
 #cardslot.behind .back{backface-visibility:visible}
 .front::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(../img/ui/shine.png) var(--sx,30%) 0/300% 100% no-repeat;image-rendering:pixelated}
 
-/* nazwa karty w złotej ramce (9-slice), bez numeru u góry */
+/* card name in a gold frame (9-slice), no number on top */
 .front{align-content:end;justify-items:center;padding-bottom:12px}
 .front .nm{width:calc(100% - 20px);border:calc(8*var(--u)) solid transparent;border-image:url(../img/ui/frame.png) 8 fill / calc(8*var(--u)) stretch;image-rendering:pixelated;background:none;padding:4px 6px;font-family:var(--gothic);font-size:11cqw;line-height:1.1;color:#f0d27a;text-shadow:0 2px 0 #000;font-weight:400}
-/* karty nie są zaznaczalne (nazwa, plakietka) */
+/* cards are not selectable (name, plate) */
 #cardslot,.card,.fcard,#artslot{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 
-/* złoto: metaliczna folia na krawędzi karty przesuwa się z pochyleniem, błyski i złoty pył przy ruchu */
+/* gold: a metallic foil on the card edge moves with the tilt, gold dust when moving */
 #cardslot{position:relative}
 
-/* wybór karty: głębia (cień, perspektywa), rozdanie, bezwładność, wzlot wybranej karty */
+/* card pick: depth (shadow, perspective), dealing, inertia, the chosen card flying up */
 .fcard{box-shadow:0 14px 18px #000a;transition:transform .5s cubic-bezier(.2,1.3,.4,1),filter .3s,opacity .35s}
 .fcard.top{box-shadow:0 0 0 #0000,0 22px 26px #000c;animation:floatTop 2.4s steps(1) infinite}
 @keyframes floatTop{0%,100%{translate:0 0}50%{translate:0 -5px}}
@@ -57,23 +57,23 @@
 
 #cardslot.tilting{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
 
-/* ramka przodu: złota pikselowa ramka podwójna (nakładka 64x96, ta sama siatka co ilustracja) + mała cyfra rzymska w lewym górnym rogu */
+/* front frame: double gold pixel frame (64x96 overlay, same grid as the illustration) + a small Roman numeral in the top left corner */
 .front{border:0}
 .front::before{content:"";position:absolute;inset:0;background:url(../img/ui/cardframe.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;pointer-events:none;z-index:3}
 .card.rev .front{border:0}
 .front .num{position:absolute;left:5.2cqw;top:4.6cqw;z-index:4;padding:0 calc(3*var(--u));background:#0b0d17d9;color:#f0d27a;font-family:var(--gothic);font-size:calc(16*var(--u));line-height:1.1;text-shadow:0 var(--u) 0 #000}
-/* tasowanie: karty bez cieni, poświat i przyciemnienia (inaczej nakładające się cienie tworzą żółte paski) */
+/* shuffling: cards without shadows, glows and dimming (overlapping shadows would create yellow stripes) */
 #fan.shuffling .fcard{filter:none!important;box-shadow:none!important;animation:none!important}
-/* bez poświaty kart (filter/drop-shadow/gradient dawały żółte paski i ramki); wybraną kartę wyróżnia rozmiar, jasność i cień */
+/* no card glow (filter/drop-shadow/gradient produced yellow stripes and frames); the chosen card stands out by size, brightness and shadow */
 .fcard::before{content:none}
 .fcard.top,#fan.picked .fcard.top{filter:none;box-shadow:0 10px 0 #0006}
 .fcard{transition:transform .5s cubic-bezier(.2,1.3,.4,1),opacity .35s}
 
-/* złote efekty na plecach karty: pikselowy połysk (ten sam sprite co na awersie) i błyski; w wachlarzu połysk przebiega po wybranej karcie */
+/* gold effects on the card back: a pixel shine (same sprite as on the front); in the fan the shine sweeps over the chosen card */
 .fcard{overflow:visible}
 .fcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:url(../img/ui/shine.png) var(--shx,-120%) 0/300% 100% no-repeat;image-rendering:pixelated}
 .fcard.top::after{opacity:1;animation:shineSweep 3.2s steps(16) infinite}
-@keyframes shineSweep{0%{--shx:-120%;background-position:230% 0}60%,100%{background-position:-130% 0}}   /* błysk leci z lewego dolnego do prawego górnego rogu */
+@keyframes shineSweep{0%{--shx:-120%;background-position:230% 0}60%,100%{background-position:-130% 0}}   /* the shine travels from the bottom left to the top right corner */
 #fan.shuffling .fcard::after{opacity:0!important;animation:none}
 .card .back{position:absolute}
 .card .back::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(../img/ui/shine.png) var(--sx,30%) 0/300% 100% no-repeat;image-rendering:pixelated}

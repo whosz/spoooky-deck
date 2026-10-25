@@ -1,8 +1,8 @@
-"""Małe Arkana: 4 kolory x 14 kart z jednego generatora parametrycznego (tło zależne od koloru, pipsy, figury dworskie)."""
+"""Minor arcana: 4 suits x 14 cards from one parametric generator (suit-dependent background, pips, court figures)."""
 import sys; sys.path.insert(0, 'tools/deck'); sys.path.insert(0, 'tools')
 from lib import *
 
-SUITS = {  # prefix -> (nazwa, rampa nieba, kolor wzgórz, robe/trim figury, akcent glow)
+SUITS = {  # prefix -> (name, sky ramp, hill colour, figure robe/trim, glow accent)
     'wa': ('wands', ['v1', 'r2', 'o2', 'o4'], ('o1', 'r1'), ('r3', 'o4')),
     'cu': ('cups', ['n1', 'n3', 't1', 't2'], ('t1', 'n2'), ('t2', 't4')),
     'sw': ('swords', ['n1', 's1', 's2', 's3'], ('s1', 'y1'), ('s2', 's4')),
@@ -30,7 +30,7 @@ def pips(c, suit, n):
     name = SUITS[suit][0]; fn = SYMBOL[name]
     if n == 1:
         glow(c, 72, 100, 60, SUITS[suit][3][0], 2.2)
-        for i in range(24):   # promienie
+        for i in range(24):   # rays
             a = i * math.pi / 12; line(c, 72 + 22 * math.cos(a), 100 + 22 * math.sin(a), 72 + 52 * math.cos(a), 100 + 52 * math.sin(a), SUITS[suit][3][1])
         fn(c, 72, 100, 2.0 if name != 'swords' else 1.7); return
     s = {2: 1.35, 3: 1.2, 4: 1.2, 5: 1.1, 6: 1.0, 7: .95, 8: .9, 9: .9, 10: .85}[n]
@@ -43,7 +43,7 @@ def court(c, suit, n):
     if n >= 13: rect(c, 34, 40, 76, 136, 'ink'); rect(c, 37, 42, 70, 134, 'v1' if n == 14 else 'n3'); c.ellipse(72, 48, 35, 12, P['n3' if n == 13 else 'v1'], True)
     f = person(c, 72, 176, h, robe=robe, trim=trim, hair=hair, beard=(n == 14), hat=hat, skin='k2', rh=(17, -h * .2), lh=(-10, 14))
     hx, hy = f['hand_r']
-    if n == 12: poly(c, [(70, hy - h // 5), (78, hy - h // 4), (74, hy - h // 3 - 6)], 'r3')   # pióropusz
+    if n == 12: poly(c, [(70, hy - h // 5), (78, hy - h // 4), (74, hy - h // 3 - 6)], 'r3')   # plume
     SYMBOL[name](c, hx + 2, hy - 12, .9 if n < 13 else .85)
 
 def render(card_id):

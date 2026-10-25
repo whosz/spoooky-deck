@@ -1,4 +1,4 @@
-"""python3 tools/ai/music.py <nazwa> <seed> [czas_s=100] [bpm=72]: generuje instrumentalną muzykę (ACE-Step 1.5, licencja MIT, wyniki do użytku komercyjnego) do tools/ai/music/<nazwa>.mp3."""
+"""python3 tools/ai/music.py <name> <seed> [duration_s=100] [bpm=72]: generates instrumental music (ACE-Step 1.5, MIT licence, outputs usable commercially) to tools/ai/music/<name>.mp3."""
 import os, sys, json, time, urllib.request, urllib.error
 env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/spooooky/replicate.env')) if '=' in l)
 TOKEN = env['REPLICATE_API_TOKEN']

@@ -14,7 +14,7 @@ export function saveHistory(h) {
   try { localStorage.setItem('sd_hist', JSON.stringify(h.slice(-10))); } catch {}
 }
 
-// Nowe ziarno, którego karta nie powtarza ostatnich w historii (o ile talia na to pozwala).
+// A new seed whose card does not repeat the most recent ones in the history (as far as the deck allows).
 export function newSeed(cards, history) {
   const recent = history.slice(-Math.min(10, cards.length - 1));
   for (;;) {

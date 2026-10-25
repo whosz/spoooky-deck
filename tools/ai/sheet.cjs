@@ -1,4 +1,4 @@
-// node tools/ai/sheet.cjs <plik.png> id1 id2 ...: arkusz z wariantami (kolumna = karta, wiersze = ziarna 1,2,3)
+// node tools/ai/sheet.cjs <plik.png> id1 id2 ...: a sheet of variants (column = card, rows = seeds 1, 2, 3)
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp'); const fs = require('fs');
 (async () => {
   const [out, ...ids] = process.argv.slice(2), comps = [];

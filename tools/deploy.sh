@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Wgrywa projekt do ~/whosz/tarot/ przez SFTP (curl). Dane z ~/.config/spooooky/sftp.env.
+# Uploads the project to ~/whosz/tarot/ over SFTP (curl). Credentials come from ~/.config/spooooky/sftp.env.
 set -euo pipefail
 . ~/.config/spooooky/sftp.env
 cd "$(dirname "$0")/.."

@@ -1,5 +1,5 @@
-"""python3 tools/deck/build.py [id ...]: renderuje karty do img/cards/<id>.png i sprawdza rozmiar oraz liczbę kolorów.
-Małe Arkana z minors.py, Wielkie z majors_*.py (słownik CARDS). Dodatkowo arkusze przeglądowe tools/deck/_sheet_*.png."""
+"""python3 tools/deck/build.py [id ...]: renders cards to img/cards/<id>.png and checks the size and the number of colours.
+Minor arcana from minors.py, major from majors_*.py (CARDS dict). Also review sheets tools/deck/_sheet_*.png."""
 import sys, glob, importlib
 sys.path.insert(0, 'tools/deck'); sys.path.insert(0, 'tools')
 from lib import W, H

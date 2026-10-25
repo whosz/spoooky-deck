@@ -1,47 +1,47 @@
-# Licencje i warunki użycia: Spoooky Deck
+# Licences and terms of use: Spoooky Deck
 
-Stan na 24 października 2026. Ten dokument opisuje, na jakich warunkach można używać każdego elementu aplikacji, zwłaszcza przy użyciu komercyjnym. Aplikacja jest lead magnetem dla whosz.pl, więc przy publikacji na stronie firmowej warto traktować ją jako użycie komercyjne.
+Status as of 24 October 2026. This document describes the terms under which each element of the app can be used, especially for commercial use. The app is a lead magnet for whosz.pl, so when it is published on a business site it should be treated as commercial use.
 
-To nie jest porada prawna. Informacje o Suno, Olde Tome i Flux pochodzą ze stron producentów i źródeł wtórnych (lista na końcu). Warunki zmieniają się, więc przed publikacją sprawdź je jeszcze raz.
+This is not legal advice. The information about Suno, Olde Tome and Flux comes from the vendors' pages and secondary sources (listed at the end). Terms change, so check them again before publishing.
 
-## Podsumowanie
+## Summary
 
-| Element | Skąd | Użycie komercyjne | Co trzeba zrobić |
+| Element | Source | Commercial use | What to do |
 |---|---|---|---|
-| Czcionka **Old English Gothic Pixel** (tytuł) | FontSpace / FontStruct | Tak (SIL OFL 1.1). | Zachować tekst licencji (jest w `fonts/` i `licenses.txt`). Czcionka zastąpiła Cross Stitch. |
-| Czcionka **Olde Tome** (nagłówki, przyciski) | LadyLiefy (itch.io) | **Prawdopodobnie tak.** Strona autorki łączy znacznik CC0 z prośbą o dobrowolną opłatę przy użyciu komercyjnym. | Potwierdzić z autorką i najlepiej zapłacić dowolną kwotę. |
-| **Muzyka** (`spoooky-theme-mm.mp3`) | MiniMax Music 2.6 (Replicate), wersja instrumentalna | **Niepotwierdzone.** Sprawdzone 24.10.2026: „Music Creation Terms of Use” (minimax.io/audio/doc/terms-of-service-music.html) nie mówią nic o własności ani użyciu komercyjnym wyników, nie wspominają o API i wymagają oznaczania treści jako wygenerowanych przez AI. Ogólny regulamin daje MiniMax szeroką licencję na treści użytkownika. Wymóg oznaczania spełnia informacja o treściach AI w README; menu aplikacji tylko linkuje do tej sekcji. Nie rozwiązuje to kwestii praw do wyników. Źródła wtórne twierdzą, że warunki Open Platform zostawiają prawa klientowi, ale nie znalazłem tego w dokumencie pierwotnym. | Przeczytać regulamin MiniMax lub poprosić o potwierdzenie na piśmie. Bezpieczna alternatywa: poprzedni utwór ACE-Step 1.5 (MIT), jest w historii git (`audio/spoooky-theme.mp3`). |
-| **Karty, tła, rewers, splash** | Flux 2 Pro przez Replicate | **Prawdopodobnie tak.** Źródła wtórne i regulamin Replicate (przekazuje użytkownikowi prawa do wyników, także do użycia komercyjnego) to potwierdzają, ale strona pomocy BFL zwróciła 404, więc nie mam cytatu z warunków BFL. Model jest przeznaczony do zastosowań komercyjnych, ale nie znalazłem w źródłach tekstu warunków dla wyników. | Przeczytać warunki API Black Forest Labs i regulamin Replicate. |
-| Czcionki **Geist Pixel**, **Jacquard 12** | Google Fonts | Tak (SIL Open Font License). | Zachować informację o licencji (jest w `licenses.txt`). |
-| Pikselowe emoji | SerenityOS | Tak (BSD 2-Clause). | Zachować tekst licencji (jest w `img/emoji/LICENSE` i `licenses.txt`). |
-| Biblioteki: Tracery, seedrandom, ZzFX | GitHub | Tak (Apache-2.0, MIT, MIT). | Zachować noty licencyjne (są w `licenses.txt`). |
-| Kod aplikacji, teksty wróżb, skrypty | Autor | Własne. | Zdecydować o licencji repozytorium (patrz niżej). |
+| Font **Old English Gothic Pixel** (title) | FontSpace / FontStruct | Yes (SIL OFL 1.1). | Keep the licence text (it is in `fonts/` and `licenses.txt`). It replaced Cross Stitch. |
+| Font **Olde Tome** (headings, buttons) | LadyLiefy (itch.io) | **Probably yes.** The author's page combines a CC0 tag with a request for a voluntary payment for commercial use. | Confirm with the author and preferably pay any amount. |
+| **Music** (`spoooky-theme-mm.mp3`) | MiniMax Music 2.6 (Replicate), instrumental | **Unconfirmed.** Checked on 24 Oct 2026: the "Music Creation Terms of Use" (minimax.io/audio/doc/terms-of-service-music.html) say nothing about ownership or commercial use of the output, do not mention the API, and require AI-generated content to be labelled. The general terms give MiniMax a broad licence to user content. The labelling requirement is met by the AI notice in the README; the app menu only links to that section. This does not settle the rights to the output. Secondary sources claim that the Open Platform terms leave the rights with the customer, but I did not find this in a primary document. | Read the MiniMax terms or ask for written confirmation. A safe alternative: the previous ACE-Step 1.5 track (MIT), which is in the git history (`audio/spoooky-theme.mp3`). |
+| **Cards, backgrounds, card back, splash** | Flux 2 Pro via Replicate | **Probably yes.** Secondary sources and the Replicate terms (which pass the rights in the outputs to the user, including for commercial use) confirm it, but the BFL help page returned 404, so I have no quotation from the BFL terms. The model is meant for commercial use, but I did not find the wording on outputs in the sources. | Read the Black Forest Labs API terms and the Replicate terms. |
+| Fonts **Geist Pixel**, **Jacquard 12** | Google Fonts | Yes (SIL Open Font License). | Keep the licence notice (it is in `licenses.txt`). |
+| Pixel emoji | SerenityOS | Yes (BSD 2-Clause). | Keep the licence text (it is in `img/emoji/LICENSE` and `licenses.txt`). |
+| Libraries: Tracery, seedrandom, ZzFX | GitHub | Yes (Apache-2.0, MIT, MIT). | Keep the licence notices (they are in `licenses.txt`). |
+| App code, reading texts, scripts | Author | Own. | Decide on a repository licence (see below). |
 
-## Szczegóły
+## Details
 
-**Cross Stitch.** Czcionka została wycofana (tylko użytek osobisty), zastąpiona Old English Gothic Pixel na licencji OFL.
+**Cross Stitch.** The font was dropped (personal use only) and replaced by Old English Gothic Pixel under the OFL.
 
-**Olde Tome.** Autorka pozwala używać i modyfikować font za darmo w pracach osobistych. Przy użyciu komercyjnym prosi o dobrowolną opłatę („pay what you can”), a jednocześnie oznacza zasób licencją CC0, która sama w sobie nie wymaga zapłaty. Sprzeczność wynika z jej opisu, więc bezpiecznie jest zapytać autorkę o potwierdzenie na piśmie. Atrybucja nie jest wymagana. Plik fontu nie jest w repozytorium.
+**Olde Tome.** The author allows using and modifying the font for free in personal work. For commercial use she asks for a voluntary payment ("pay what you can") while also tagging the asset CC0, which by itself does not require payment. The contradiction comes from her description, so it is safest to ask the author for written confirmation. Attribution is not required. The font file is not in the repository.
 
-**Muzyka.** Pierwotny utwór pochodził z darmowego planu Suno (tylko użycie niekomercyjne), więc został zastąpiony utworem z ACE-Step 1.5 (MIT, komercyjne użycie dopuszczone), a następnie, na prośbę autora (bliższe brzmienie do Suno), utworem z MiniMax Music 2.6. Jego warunki komercyjne są mniej jednoznaczne, więc przed szerszą promocją trzeba je potwierdzić.
+**Music.** The original track came from Suno's free plan (non-commercial use only), so it was replaced by a track from ACE-Step 1.5 (MIT, commercial use allowed) and then, at the author's request (a sound closer to Suno), by a track from MiniMax Music 2.6. Its commercial terms are less clear, so they need to be confirmed before wider promotion.
 
-**Grafiki (Flux 2 Pro).** Obrazy powstały z opisów słownych, bez obrazów referencyjnych cudzych prac. Model Flux 2 Pro jest dostępny wyłącznie przez API i opisywany jako komercyjny, ale w sprawdzonych źródłach nie znalazłem cytatu z warunków dotyczących wyników. Sprawdź w pierwszej kolejności warunki API Black Forest Labs, a potem regulamin Replicate. Należy też pamiętać, że według amerykańskiego urzędu praw autorskich dzieła wygenerowane w całości przez AI, bez istotnego wkładu twórczego człowieka, nie podlegają rejestracji. Wkład kierunku artystycznego (dobór wariantów, kolorów, układu, obróbka skryptami) może mieć znaczenie, ale nie jest to gwarancja.
+**Artwork (Flux 2 Pro).** The images were made from text descriptions, with no reference images of other people's work. Flux 2 Pro is available only through an API and is described as commercial, but in the sources I checked there is no quotation of the terms on outputs. Check the Black Forest Labs API terms first, then the Replicate terms. Also note that, according to the US Copyright Office, works generated entirely by AI without meaningful human creative input cannot be registered. The art direction (choice of variants, colours, layout, script processing) may count, but there is no guarantee.
 
-**Repozytorium bez licencji.** Publiczne repozytorium na GitHubie bez pliku `LICENSE` oznacza, że wszystkie prawa pozostają przy autorze, a inni mogą je tylko oglądać i forkować w ramach regulaminu GitHuba. Jeśli chcesz, żeby kod można było wykorzystywać, dodaj licencję (np. MIT dla kodu, a dla grafik, tekstów i muzyki zastrzeż prawa). Nie dodawałem żadnej, bo to Twoja decyzja.
+**A repository without a licence.** A public GitHub repository without a `LICENSE` file means all rights stay with the author, and others may only view and fork it under GitHub's terms. If you want the code to be reusable, add a licence (for example MIT for the code, and reserve the rights to the graphics, texts and music). None was added, because that is the author's decision.
 
-## Lista kroków przed publikacją komercyjną
+## Checklist before commercial publication
 
-1. **Cross Stitch:** zrobione (zamieniona na Old English Gothic Pixel, OFL).
-2. **Muzyka:** utwór MiniMax Music 2.6, potwierdzić warunki komercyjne (albo wrócić do ACE-Step, MIT).
-3. **Grafiki:** przeczytaj warunki wyników w API Black Forest Labs i w regulaminie Replicate, zapisz wynik w tym dokumencie.
-4. **Olde Tome:** napisz do autorki i zapłać dowolną kwotę (lub potwierdź CC0 na piśmie).
-5. **Repozytorium:** wybierz licencję lub zostaw wszystkie prawa zastrzeżone.
+1. **Cross Stitch:** done (replaced by Old English Gothic Pixel, OFL).
+2. **Music:** the MiniMax Music 2.6 track; confirm the commercial terms (or go back to ACE-Step, MIT).
+3. **Artwork:** read the output terms in the Black Forest Labs API terms and in the Replicate terms, and record the result in this document.
+4. **Olde Tome:** write to the author and pay any amount (or get the CC0 status confirmed in writing).
+5. **Repository:** choose a licence or leave all rights reserved.
 
-## Źródła
+## Sources
 
-- Suno, oficjalna pomoc o prawach do utworów: https://help.suno.com/en/articles/2416769
-- Suno, zmiany regulaminu: https://about.suno.com/blog/suno-updates-tos
-- Przewodnik o prawach do wyników Suno: https://terms.law/ai-output-rights/suno/
+- Suno, official help on song rights: https://help.suno.com/en/articles/2416769
+- Suno, terms of service changes: https://about.suno.com/blog/suno-updates-tos
+- Guide to rights in Suno outputs: https://terms.law/ai-output-rights/suno/
 - Olde Tome (itch.io): https://ladyliefy.itch.io/olde-tome
 - Cross Stitch (dafont): https://www.dafont.com/cross-stitch-2.font
-- FLUX.2 pro w Replicate (opis modelu): https://replicate.com/black-forest-labs/flux-2-pro
+- FLUX.2 pro on Replicate (model description): https://replicate.com/black-forest-labs/flux-2-pro

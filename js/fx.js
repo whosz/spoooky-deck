@@ -1,7 +1,7 @@
-// Tło: canvas o niskiej rozdzielczości (wysokość 180 px) skalowany bez wygładzania:
-// mgła, dwie świece po bokach i unoszące się iskry. Przy reduced-motion jedna statyczna klatka.
+// Background: a low-resolution canvas (180 px high) scaled without smoothing:
+// fog, two candles at the sides and floating sparks. With reduced-motion a single static frame.
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let fogRGB = [70, 84, 130], H = 180;   // logiczna wysokość tła; dobierana tak, by 1 piksel = całkowita liczba pikseli urządzenia
+let fogRGB = [70, 84, 130], H = 180;   // logical background height; chosen so that 1 pixel = a whole number of device pixels
 const SPARK = ['#ffb347', '#ffb347', '#d8aa48', '#f4efe6'];
 
 export function startBg() {
@@ -13,7 +13,7 @@ export function startBg() {
   const rnd = (a, b) => a + Math.random() * (b - a);
 
   const size = () => {
-    const dpr = devicePixelRatio || 1, kd = Math.max(1, Math.round(innerHeight * dpr / 180));   // pikseli urządzenia na piksel tła
+    const dpr = devicePixelRatio || 1, kd = Math.max(1, Math.round(innerHeight * dpr / 180));   // device pixels per background pixel
     W = c.width = Math.max(100, Math.ceil(innerWidth * dpr / kd)); H = c.height = Math.ceil(innerHeight * dpr / kd);
     c.style.width = W * kd / dpr + 'px'; c.style.height = H * kd / dpr + 'px';
     fog = Array.from({ length: 7 }, () => ({ x: rnd(0, W), y: rnd(H * .4, H), r: rnd(40, 90), v: rnd(.05, .2) * (Math.random() < .5 ? -1 : 1) }));
@@ -21,7 +21,7 @@ export function startBg() {
   };
 
   const candleImg = new Image(); candleImg.src = 'img/ui/candle.png';
-  let wickDx = 0;   // przesunięcie knota względem środka sprite'a (wykrywane z ciemnych pikseli w górnych wierszach)
+  let wickDx = 0;   // wick offset from the sprite centre (detected from dark pixels in the top rows)
   candleImg.onload = () => {
     try {
       const w = candleImg.naturalWidth, h = Math.min(12, candleImg.naturalHeight), cv = document.createElement('canvas'); cv.width = w; cv.height = h;
@@ -30,7 +30,7 @@ export function startBg() {
       wickDx = n ? Math.round(sx / n - w / 2) : 0;
     } catch {}
   };
-  const candle = (x, t) => {   // sprite świecy (AI) + animowany płomień i poświata
+  const candle = (x, t) => {   // candle sprite (AI) + animated flame and glow
     if (!candleImg.complete || !candleImg.naturalWidth) return;
     const w = candleImg.naturalWidth, h = candleImg.naturalHeight, top = H - h, fx = x + wickDx;
     const fl = Math.floor(2 + Math.sin(t / 130 + x) * 1 + Math.random());
@@ -40,10 +40,10 @@ export function startBg() {
     g.drawImage(candleImg, Math.round(x - w / 2), top);
     const sway = Math.round(Math.sin(t / 260 + x)), tip = fl > 2 ? 1 : 0;
     const rows = (a, c, o) => a.forEach((hw, i) => { if (hw < 0) return; g.fillStyle = c; g.fillRect(fx - hw - o + (i < 2 ? sway : 0), top - 5 - tip + i - o, 2 * (hw + o) + 1, 1 + 2 * o * (i === 0 ? 1 : 0)); });
-    rows([0, 1, 2, 2, 2, 1], '#07080f', 1);                      // kontur płomienia
-    rows([0, 1, 2, 2, 2, 1], '#ff7a2e', 0);                      // zewnętrzny
-    rows([-1, 0, 1, 1, 1, 0], '#ffb347', 0);                     // środek
-    rows([-1, -1, 0, 0, 0, -1], '#fff0b0', 0);                   // rdzeń
+    rows([0, 1, 2, 2, 2, 1], '#07080f', 1);                      // flame outline
+    rows([0, 1, 2, 2, 2, 1], '#ff7a2e', 0);                      // outer
+    rows([-1, 0, 1, 1, 1, 0], '#ffb347', 0);                     // middle
+    rows([-1, -1, 0, 0, 0, -1], '#fff0b0', 0);                   // core
   };
 
   const frame = t => {
@@ -70,11 +70,11 @@ export function startBg() {
   if (!reduced) requestAnimationFrame(loop);
 }
 
-// ---- efekty odkrycia karty: trzęsienie i wybuch pikselowych iskier ----
-let PX = 3;   // 1 piksel iskry w px CSS (całkowita liczba pikseli urządzenia)
+// ---- card reveal effects: a shake and a burst of pixel sparks ----
+let PX = 3;   // 1 spark pixel in CSS px (a whole number of device pixels)
 let top, tg, parts = [], running = false;
 const FLAME = ['#ffb347', '#ffe08a', '#ffffff', '#d8aa48'], BLOOD = ['#b3243a', '#e0506a', '#7a1c2c', '#ffffff'];
-// Kolor impulsu odkrycia zależy od maści: ogień, woda, stal, złoto, a dla Wielkich Arkanów biel ze złotem
+// The reveal pulse colour depends on the suit: fire, water, steel, gold, and for major arcana white with gold
 const SUIT_COLORS = { wands: FLAME, cups: ['#3fd0c9', '#a8f0e8', '#ffffff', '#1f6b7a'], swords: ['#7fa8d8', '#c0d8f0', '#ffffff', '#506690'], pentacles: ['#d8aa48', '#f0d27a', '#fff6c8', '#8a6a2e'], major: ['#f4efe6', '#ffe08a', '#d8aa48', '#ffffff'] };
 
 function ensureTop() {
@@ -111,13 +111,13 @@ export function revealFx(reversed, cardEl, suit) {
     const x = cx + (edge ? Math.cos(a) * cr.width / PX / 2 : (Math.random() - .5) * cr.width / PX), y = cy + (edge ? Math.sin(a) * cr.height / PX / 2 : (Math.random() - .5) * cr.height / PX);
     parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - .6, life: 35 + Math.random() * 45, s: Math.random() < .2 ? 2 : 1, star: Math.random() < .15, c: cols[Math.floor(Math.random() * cols.length)] });
   }
-  // fala uderzeniowa: pierścień iskier rozchodzący się równo od środka karty
+  // shock wave: a ring of sparks spreading evenly from the card centre
   for (let i = 0; i < 56; i++) { const a = i * Math.PI * 2 / 56; parts.push({ x: cx, y: cy, vx: Math.cos(a) * 2.1, vy: Math.sin(a) * 2.1, life: 30, s: 2, star: false, c: cols[i % cols.length], ring: true }); }
   if (!running) { running = true; requestAnimationFrame(loopTop); }
   const ph = $phone(); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => ph.classList.remove('shake'), 350);
 }
 
-// ---- złote iskry i błyski na krawędziach karty podczas ruchu ----
+// ---- gold sparks along the card edges while moving ----
 const GOLD = ['#8a6a2e', '#d8aa48', '#f0d27a', '#fff6c8'];
 function goldDust(cardEl, n) {
   if (reduced || !cardEl) return;
@@ -130,15 +130,15 @@ function goldDust(cardEl, n) {
   }
   if (!running) { running = true; requestAnimationFrame(loopTop); }
 }
-// Złoty pył na karcie w wachlarzu (rewers): wołane przy przesuwaniu wachlarza i okresowo na wybranej karcie
+// Gold dust on a card in the fan (back): called while the fan moves and periodically on the chosen card
 export function sparkleCard(cardEl, n = 2) {
   if (reduced || !cardEl) return;
-  goldDust(cardEl, n);   // tylko drobny pył, bez plusików
+  goldDust(cardEl, n);   // fine dust only, no plus shapes
 }
 
-// ---- pochylanie karty za kursorem lub żyroskopem i połysk ----
+// ---- card tilt following the cursor or gyroscope, and shine ----
 let gyroOk = false;
-// Na iOS zgodę na ruch urządzenia trzeba wywołać w geście użytkownika (np. wysłanie formularza); na Androidzie nie jest potrzebna.
+// On iOS the device-motion permission must be requested inside a user gesture (e.g. submitting the form); Android does not need it.
 export async function enableGyro() {
   if (reduced || gyroOk || !('DeviceOrientationEvent' in window)) return;
   const D = window.DeviceOrientationEvent;
@@ -153,28 +153,28 @@ export function tiltCard(slot) {
   const apply = () => {
     const delta = Math.abs(ry - lastRy) + Math.abs(rx - lastRx), now = performance.now(); lastRy = ry; lastRx = rx;
     if (delta > 1.4 && now - lastGlint > 130) { lastGlint = now; goldDust(slot.querySelector('.card'), 3); }
-    slot.classList.toggle('tilting', Math.abs(ry) > .2 || Math.abs(rx) > .2);   // przy zerowym pochyleniu brak transformacji 3D = ostre piksele
+    slot.classList.toggle('tilting', Math.abs(ry) > .2 || Math.abs(rx) > .2);   // with zero tilt there is no 3D transform = sharp pixels
     slot.style.setProperty('--ry', ry.toFixed(1) + 'deg'); slot.style.setProperty('--rx', rx.toFixed(1) + 'deg');
     slot.style.setProperty('--sx', (50 - Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
-    const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // widok od tyłu: pokazujemy rewers
+    const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // seen from behind: show the back
   };
   const set = (dx, dy) => { ry = dx * 12; rx = -dy * 9; apply(); };   // dx, dy w zakresie -1..1
   const clamp = v => Math.max(-1, Math.min(1, v));
   let idle;
   const move = e => {
     if (drag) return;
-    clearTimeout(idle); idle = setTimeout(() => { if (!drag) set(0, 0); }, 700);   // po chwili bez ruchu karta wraca do ostrego ułożenia
+    clearTimeout(idle); idle = setTimeout(() => { if (!drag) set(0, 0); }, 700);   // after a moment without movement the card returns to its sharp position
     const r = slot.getBoundingClientRect();
     set(clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
   };
   let base = null, cx = 0, cy = 0;
-  const gyro = e => {   // pozycja neutralna = ułożenie telefonu przy odkryciu karty; wygładzanie
+  const gyro = e => {   // neutral position = how the phone was held when the card was revealed; smoothing
     if (drag || !gyroOk || e.gamma == null || e.beta == null) return;
     if (!base) base = { b: e.beta, g: e.gamma };
     const tx = clamp((e.gamma - base.g) / 30), ty = clamp((e.beta - base.b) / 30);
     cx += (tx - cx) * .25; cy += (ty - cy) * .25; set(cx, cy);
   };
-  // Przytrzymanie i przeciąganie obraca kartę swobodnie (także tyłem); po puszczeniu sprężyście wraca do najbliższego ułożenia.
+  // Press and drag rotates the card freely (also to its back); after release it springs back to the nearest position.
   const down = e => { drag = { x: e.clientX, y: e.clientY, ry, rx }; slot.setPointerCapture(e.pointerId); slot.classList.add('grab'); slot.style.transition = 'none'; };
   const dmove = e => { if (!drag) return; ry = drag.ry + (e.clientX - drag.x) * .6; rx = Math.max(-40, Math.min(40, drag.rx - (e.clientY - drag.y) * .4)); apply(); };
   const up = () => {
@@ -192,7 +192,7 @@ export function tiltCard(slot) {
   };
 }
 
-// ---- ambient: złote drobinki unoszące się za wachlarzem (ekran wyboru) ----
+// ---- ambient: gold specks floating behind the fan (pick screen) ----
 let ambient = false, ambTimer = 0;
 export function startAmbient() {
   if (reduced || ambient) return; ambient = true; ensureTop();
@@ -207,15 +207,15 @@ export function startAmbient() {
 }
 export function stopAmbient() { ambient = false; clearTimeout(ambTimer); }
 
-// Motyw tła zależny od karty: lekko zmienia kolor mgły (Buzdygany ogień, Kielichy woda, Miecze stal, Monety złoto, Wielkie fiolet, odwrócone czerwień)
+// Background theme depends on the card: slightly changes the fog colour (Wands fire, Cups water, Swords steel, Pentacles gold, major arcana violet, reversed red)
 const THEMES = { wands: [200, 100, 40], cups: [40, 150, 170], swords: [110, 140, 190], pentacles: [190, 150, 60], major: [130, 70, 170], reversed: [180, 40, 60], base: [70, 84, 130] };
 export function setTheme(suit, reversed) { fogRGB = THEMES[reversed ? 'reversed' : (suit || 'major')] || THEMES.base; }
 export function resetTheme() { fogRGB = THEMES.base; }
 
-// ---- tytuł: pojedyncze litery gasną na chwilę jak w zepsutym neonie ----
+// ---- title: single letters go out for a moment like a faulty neon sign ----
 export function flickerTitle(h) {
   if (reduced || !h) return;
-  if (!h.querySelector('span')) {   // owijamy litery w <span> (spacje zostają zwykłym tekstem, żeby tytuł się łamał)
+  if (!h.querySelector('span')) {   // wrap letters in <span> (spaces stay plain text so the title can wrap)
     const t = h.textContent; h.setAttribute('aria-label', t); h.replaceChildren();
     for (const ch of t) { if (ch === ' ') h.append(' '); else { const sp = document.createElement('span'); sp.textContent = ch; sp.setAttribute('aria-hidden', 'true'); h.append(sp); } }
   }
@@ -232,7 +232,7 @@ export function flickerTitle(h) {
   setTimeout(tick, 1600);
 }
 
-// ---- iskry za kursorem (tylko mysz, w obrębie okna aplikacji) ----
+// ---- sparks following the cursor (mouse only, within the app window) ----
 let sparkInit = false;
 export function cursorSparks() {
   if (reduced || sparkInit || !matchMedia('(pointer: fine)').matches) return; sparkInit = true;

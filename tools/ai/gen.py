@@ -1,5 +1,5 @@
-"""python3 tools/ai/gen.py <id> [seed ...]: generuje surowe obrazy karty przez Replicate (Flux 2 Pro) do tools/ai/raw/<id>_<seed>.png.
-Token: ~/.config/spooooky/replicate.env (REPLICATE_API_TOKEN). Koszt wypisywany na koniec (ok. 0,015 USD / obraz)."""
+"""python3 tools/ai/gen.py <id> [seed ...]: generates raw card images through Replicate (Flux 2 Pro) into tools/ai/raw/<id>_<seed>.png.
+Token: ~/.config/spooooky/replicate.env (REPLICATE_API_TOKEN). The cost is printed at the end (about 0.015 USD per image)."""
 import os, sys, json, time, urllib.request, urllib.error
 sys.path.insert(0, os.path.dirname(__file__))
 from prompts import prompt_for, aspect_for, refs_for, prompt2_for, prompt3_for, prompt4_for, prompt5_for
@@ -10,7 +10,7 @@ env = dict(l.strip().split('=', 1) for l in open(os.path.expanduser('~/.config/s
 TOKEN = env['REPLICATE_API_TOKEN']
 
 def call(url, data=None, headers=None):
-    for attempt in range(10):   # limit zapytań (429) przy małym saldzie: czekamy i ponawiamy
+    for attempt in range(10):   # rate limit (429) with a low balance: wait and retry
         req = urllib.request.Request(url, data=json.dumps(data).encode() if data else None, headers={'Authorization': f'Bearer {TOKEN}', 'Content-Type': 'application/json', **(headers or {})})
         try: return json.load(urllib.request.urlopen(req, timeout=120))
         except urllib.error.HTTPError as e:
@@ -28,7 +28,7 @@ def generate(card_id, seed, resolution='0.5 MP'):
     style2 = os.environ.get('STYLE') in ('2', '3', '4', '5')
     if style2: resolution = os.environ.get('RES', '1 MP')
     inp = {'prompt': ((_P.prompt5_asset(card_id) if card_id in _P.ASSETS5 else prompt5_for(card_id)) if style5 else prompt4_for(card_id) if style4 else prompt3_for(card_id) if style3 else prompt2_for(card_id)) if style2 else prompt_for(card_id), 'aspect_ratio': (_P.ASSETS5[card_id][1] if style5 and card_id in _P.ASSETS5 else aspect_for(card_id)), 'resolution': resolution, 'output_format': 'png', 'seed': seed}
-    refs = [f"data:image/png;base64,{base64.b64encode(open(r, 'rb').read()).decode()}" for r in refs_for(card_id)]   # styl 2 opisany wyłącznie słowami, bez obrazów referencyjnych cudzych prac
+    refs = [f"data:image/png;base64,{base64.b64encode(open(r, 'rb').read()).decode()}" for r in refs_for(card_id)]   # style 2 is described in words only, with no reference images of other people's work
     if refs: inp['input_images'] = refs
     pred = call(f'https://api.replicate.com/v1/models/{MODEL}/predictions', {'input': inp}, {'Prefer': 'wait=60'})
     while pred['status'] in ('starting', 'processing'):

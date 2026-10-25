@@ -1,4 +1,4 @@
-// node tools/ai/icons.cjs: ikony PWA z nowego rewersu (img/ui/back.png 72x108) na ciemnym tle ze złotą ramką.
+// node tools/ai/icons.cjs: PWA icons from the new card back (img/ui/back.png 72x108) on a dark background with a gold frame.
 const sharp = require('/home/matt/work/agency-portfolio/node_modules/sharp');
 const mk = async (size, cardH, border, out) => {
   const back = await sharp('img/ui/back.png').resize({ height: cardH, kernel: 'nearest' }).toBuffer();
@@ -9,7 +9,7 @@ const mk = async (size, cardH, border, out) => {
   await img.png().toFile(out);
 };
 (async () => {
-  const gold = async (size, out) => {   // ramka złota: złote tło + ciemny środek
+  const gold = async (size, out) => {   // gold frame: a gold background + a dark centre
     const bw = Math.round(size * .025), back = await sharp('img/ui/back.png').resize({ height: Math.round(size * .84), kernel: 'nearest' }).toBuffer();
     await sharp({ create: { width: size, height: size, channels: 4, background: '#d8aa48' } }).composite([{ input: { create: { width: size - 2 * bw, height: size - 2 * bw, channels: 4, background: '#0b0d17' } }, left: bw, top: bw }, { input: back, gravity: 'centre' }]).png().toFile(out);
   };

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "data/grammar.{pl,en}.json: gramatyka Tracery. oracle.js wstrzykuje: name, company, zodiac, card, pos, keywords, meaning, business, omen (z zodiac.json). Puenta wybierana po usludze karty: puenta_<service>. Zdania o firmie: branza_<it|handel|uslugi|produkcja|gastro|inne> i etap_<start|rozwoj|dojrzala|zmiana> (obowiazkowe, po min. 3 warianty).",
+  "description": "data/grammar.{pl,en}.json: a Tracery grammar. oracle.js injects: name, company, zodiac, card, pos, keywords, meaning, business, omen (from zodiac.json). The punchline is chosen by the card's service: puenta_<service>. Sentences about the company: branza_<it|handel|uslugi|produkcja|gastro|inne> and etap_<start|rozwoj|dojrzala|zmiana> (required, at least 3 variants each).",
   "type": "object",
   "required": [
     "origin",
