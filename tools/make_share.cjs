@@ -26,8 +26,8 @@ const fs = require('fs');
   .t{position:absolute;left:520px;top:150px;right:60px}
   .stage{position:absolute;left:${(W - 1200) / 2}px;top:${(H - 630) / 2}px;width:1200px;height:630px}
   /* tytuł jak w aplikacji: twarde pasy złota na wiersz, ciemny obrys i cień */
-  h1{font:400 120px/1 CS;margin:0 0 28px;color:transparent;-webkit-background-clip:text;background-clip:text;
-    background:linear-gradient(#fff6b0 0 16%,#ffd84a 16% 38%,#f2a31f 38% 60%,#c9690e 60% 82%,#8a3a08 82%) 0 0/100% 1em repeat-y;-webkit-background-clip:text;background-clip:text;
+  h1{font:400 120px/1.02 CS;margin:0 0 16px;padding-bottom:.12em;color:transparent;-webkit-background-clip:text;background-clip:text;
+    background:linear-gradient(#fff6b0 0 6%,#ffd84a 6% 28%,#f2a31f 28% 50%,#c9690e 50% 72%,#8a3a08 72%) 0 .105em/100% 1.02em repeat-y;-webkit-background-clip:text;background-clip:text;
     filter:drop-shadow(3px 0 0 #3a1604) drop-shadow(-3px 0 0 #3a1604) drop-shadow(0 -3px 0 #3a1604) drop-shadow(0 3px 0 #3a1604) drop-shadow(0 8px 0 #000) drop-shadow(0 0 24px #ffb34766)}
   p{font:400 42px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
   </style><div class=bg></div>${BGF ? '' : '<div class=fade></div>'}<div class=sh></div>

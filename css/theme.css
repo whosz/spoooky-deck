@@ -146,22 +146,24 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* tytuł (splash i ekran wyboru karty) jako złoty metal (twarde pasy światła, ciemny obrys, błysk i gwiazdki) */
 #s-intro h1,#s-pick h1{position:relative;color:transparent;text-shadow:none;
   background:linear-gradient(105deg,#0000 38%,#fff8 45%,#fff 50%,#fff8 55%,#0000 62%) 100% 0/250% 100% no-repeat,
-    linear-gradient(#fff6b0 0 16%,#ffd84a 16% 38%,#f2a31f 38% 60%,#c9690e 60% 82%,#8a3a08 82%) 0 0/100% 1.02em repeat-y;   /* pasy powtarzane co wiersz */
+    linear-gradient(#fff6b0 0 6%,#ffd84a 6% 28%,#f2a31f 28% 50%,#c9690e 50% 72%,#8a3a08 72%) 0 .105em/100% 1.02em repeat-y;   /* pasy powtarzane co wiersz; brąz od linii pisma w dół, więc ogonki p i y są brązowe */
   -webkit-background-clip:text;background-clip:text;
   filter:drop-shadow(calc(2*var(--u)) 0 0 #3a1604) drop-shadow(calc(-2*var(--u)) 0 0 #3a1604) drop-shadow(0 calc(-2*var(--u)) 0 #3a1604) drop-shadow(0 calc(2*var(--u)) 0 #3a1604) drop-shadow(0 calc(5*var(--u)) 0 #000) drop-shadow(0 0 12px #ffb34755)}
 #s-intro h1::after,#s-pick h1::after{content:"";position:absolute;left:14%;top:18%;width:calc(7*var(--u));height:calc(7*var(--u));margin:calc(-3.5*var(--u)) 0 0 calc(-3.5*var(--u));opacity:0;pointer-events:none;
   background:linear-gradient(#fff,#fff) center/100% calc(var(--u)) no-repeat,linear-gradient(#fff,#fff) center/calc(var(--u)) 100% no-repeat;
   transform:scale(2.4);animation:glint 5.6s steps(1) infinite}
 #s-intro h1,#s-pick h1{animation:goldshine 5.6s steps(26) infinite}
-@keyframes goldshine{0%{background-position:100% 0,0 0}40%,100%{background-position:0 0,0 0}}
+@keyframes goldshine{0%{background-position:100% 0,0 var(--bp)}40%,100%{background-position:0 0,0 var(--bp)}}   /* druga warstwa (pasy) zostaje na swoim miejscu */
 @keyframes glint{0%,100%{left:14%;top:18%;opacity:0}5%{opacity:1}12%{opacity:0}
   33%{left:60%;top:60%;opacity:0}38%{opacity:1}45%{opacity:0}
   66%{left:86%;top:14%;opacity:0}71%{opacity:1}78%{opacity:0}}
 @media(prefers-reduced-motion:reduce){#s-intro h1,#s-intro h1::after,#s-pick h1::after{animation:none}}
-#s-pick h1{line-height:1;background-size:250% 100%,100% 1em}
+#s-intro h1{--bp:.105em}
+#s-pick h1{--bp:.095em;line-height:1;background-size:250% 100%,100% 1.02em;background-position:100% 0,0 .095em}
 #s-pick h1::after{display:none}
 #fan:focus,#fan:focus-visible{outline:none}   /* wachlarz pokazuje wybraną kartę sam, ramka fokusu była zbędna */
 /* zmiana ekranu: nowy ekran szybko się rozjaśnia */
 .screen.fadein{animation:scrfade .22s ease-out}
 @keyframes scrfade{from{opacity:0}to{opacity:1}}
 .ftitle,.fintro{text-shadow:0 2px 0 #000,0 0 8px #000,0 0 14px #000}   /* czytelność na jasnym księżycu */
+#s-intro h1,#s-pick h1{padding-bottom:.12em;margin-bottom:-.12em}   /* pole tła obejmuje ogonki liter p i y */

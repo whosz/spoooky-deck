@@ -44,12 +44,12 @@ async function drawCard(card, lang) {
 // Tytuł jako złoty metal, jak na splashu: twarde pasy światła, ciemny obrys, cień i delikatna poświata (statycznie, bez animacji).
 function drawGoldTitle(g, text, x, baseline, px) {
   g.save(); g.font = `${px}px "Old English Gothic Pixel"`; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
-  const m = g.measureText(text), top = baseline - m.fontBoundingBoxAscent, h = m.fontBoundingBoxAscent + m.fontBoundingBoxDescent, d = Math.max(2, Math.round(px / 40));
+  const top = baseline - .76 * px, h = 1.02 * px, d = Math.max(2, Math.round(px / 40));   // pasy: od góry liter (0,75 em nad linią pisma), brąz od linii w dół, więc ogonki p i y są brązowe
   g.shadowColor = '#ffb34766'; g.shadowBlur = px / 5; g.fillStyle = '#000'; g.fillText(text, x, baseline + d * 2.5); g.shadowBlur = 0;   // cień pod spodem i poświata
   g.fillStyle = '#3a1604';
   for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]]) g.fillText(text, x + dx * d, baseline + dy * d);   // obrys
   const gr = g.createLinearGradient(0, top, 0, top + h);
-  [['#fff6b0', 0], ['#fff6b0', .16], ['#ffd84a', .16], ['#ffd84a', .38], ['#f2a31f', .38], ['#f2a31f', .6], ['#c9690e', .6], ['#c9690e', .82], ['#8a3a08', .82], ['#8a3a08', 1]].forEach(([c, o]) => gr.addColorStop(o, c));
+  [['#fff6b0', 0], ['#fff6b0', .06], ['#ffd84a', .06], ['#ffd84a', .28], ['#f2a31f', .28], ['#f2a31f', .5], ['#c9690e', .5], ['#c9690e', .72], ['#8a3a08', .72], ['#8a3a08', 1]].forEach(([c, o]) => gr.addColorStop(o, c));
   g.fillStyle = gr; g.fillText(text, x, baseline); g.restore();
 }
 
