@@ -14,13 +14,15 @@ Działa na żywo: https://whosz.pl/tarot/
 - PWA: instalacja na ekranie głównym, praca offline (service worker, sieć najpierw).
 - Dwa języki od razu: polski i angielski.
 - 78 kart (22 Wielkie i 56 Małych Arkanów) w pikselowym stylu retro 16 kolorów, siatka 64×96, skalowana o całkowitą liczbę pikseli urządzenia.
+- Formularz: imię, znak zodiaku, firma oraz jej branża i etap (przycisk „Wyczyść formularz”). Branża i etap dodają do wróżby akapit dopasowany do firmy.
 - Wróżby składa gramatyka [Tracery](https://github.com/galaxykate/tracery) z losowością [seedrandom](https://github.com/davidbau/seedrandom). Karta, pozycja (prosta lub odwrócona), znak zodiaku i usługa decydują o treści, a puenta zawsze wskazuje projektanta. Małe arkana dostają dodatkowe zdanie o zgodności żywiołu znaku z kolorem karty.
 - Ekran wróżby ma trzy zakładki: **Wróżba**, **Karta** (znaczenie i słowa kluczowe) oraz **Klucz** (objaśnienie, jak arkana, znak, żywioł i pozycja wpływają na wróżbę).
-- Menu (hamburger): język, dźwięk, instalacja aplikacji, informacje o twórcy i licencje.
+- Menu (hamburger): język, dźwięk, instalacja aplikacji, przycisk „Licencje” (prowadzi do tej sekcji README), informacje o twórcy.
 - Wachlarz kart z tasowaniem, bezwładnością i wyborem palcem lub myszą, odkrycie karty z iskrami, złoty połysk, pochylanie za kursorem, żyroskopem i przeciąganiem.
 - Dźwięk: muzyka w pętli (zatrzymywana, gdy aplikacja jest w tle, i zapisywana do pracy offline) oraz efekty generowane w przeglądarce ([ZzFX](https://github.com/KilledByAPixel/ZzFX)).
 - Udostępnianie: link z ziarnem losowania (bez imienia i firmy) z jednym zdaniem zachęcającym i nazwą karty oraz obrazek z wróżbą do zapisania lub udostępnienia. Link ma podgląd w komunikatorach (Open Graph).
-- Prywatność: imię i firma zostają na urządzeniu. Nic nie jest wysyłane na serwer ani zapisywane w linku.
+- Aktualizacje bez czyszczenia cache: moduły i dane mają numer wersji w adresie (`?v=N`), aplikacja sprawdza nową wersję przy powrocie i przeładowuje się, gdy nic się nie traci.
+- Prywatność: imię, firma, branża i etap zostają na urządzeniu. Nic nie jest wysyłane na serwer ani zapisywane w linku.
 
 ## Struktura
 
@@ -48,10 +50,12 @@ Podgląd konkretnej karty: `?card=ar13` (Wielkie Arkana `ar00`–`ar21`; małe `
 ## Testy i narzędzia
 
 ```bash
-node tools/test_oracle.mjs         # wszystkie kombinacje karta x pozycja x znak x język
+node tools/test_oracle.mjs         # wszystkie kombinacje karta x pozycja x znak x branża x etap x język (7488 wróżb)
 python3 tools/validate_cards.py    # schemat i zakazane znaki w cards.json
 python3 tools/build_sw.py          # generuje sw.js (lista plików + wersja z hasha)
-node tools/smoke.cjs [adres]       # test dymny: cały przepływ w PL i EN, telefon 390 i 320 px (wymaga Playwrighta)
+node tools/smoke.cjs [adres]       # test dymny i regresje: cały przepływ w PL i EN, telefon 390 i 320 px (wymaga Playwrighta)
+node tools/update_test.cjs         # aktualizacja bez czyszczenia cache, także ze starej wersji (wymaga Playwrighta)
+python3 tools/bump_version.py      # podnosi numer wersji ?v=N przed wdrożeniem (robi to też deploy.sh)
 ```
 
 Muzyka i talia są wygenerowane przez AI (informacja w sekcji o licencjach w README). Talia powstała w modelu graficznym (Replicate, Flux 2 Pro) i została przetworzona skryptami z `tools/ai/` (zmniejszenie do 64×96, paleta 16 kolorów). Surowe obrazy nie są w repozytorium.
