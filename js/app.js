@@ -1,8 +1,8 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=182';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=182';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=182';
-import { shareImage } from './share.js?v=182';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=182';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=184';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=184';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=184';
+import { shareImage } from './share.js?v=184';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=184';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -86,10 +86,11 @@ addEventListener('resize', () => { pixelScale(); sizeCard(); });
 const VQ = new URL(import.meta.url).search;   // ?v=NNN z adresu tego modułu: dane też dostają wersję, więc nie zostają w cache po aktualizacji
 const getJSON = u => fetch(u + VQ).then(r => r.json());
 
-const SCENES = { 's-intro': 'intro', 's-form': 'form', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
+const SCENES = { 's-intro': 'intro', 's-form': 'pick', 's-pick': 'pick', 's-card': 'card', 's-read': 'read' };
 let sceneTimer;
 function setScene(id) {   // tło kroku: płynna zmiana (zgaszenie, podmiana, rozjaśnienie)
   const el = $('#scene'), k = SCENES[id]; clearTimeout(sceneTimer);
+  if (k && el.dataset.scene === k && el.classList.contains('on')) return;   // to samo tło (formularz i wybór karty): bez migania
   el.classList.remove('on');
   if (k) sceneTimer = setTimeout(() => { el.style.backgroundImage = `url(img/ui/bg-${k}.png)`; el.dataset.scene = k; el.classList.add('on'); }, 260);
 }

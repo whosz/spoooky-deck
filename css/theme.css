@@ -164,3 +164,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 /* zmiana ekranu: nowy ekran szybko się rozjaśnia */
 .screen.fadein{animation:scrfade .22s ease-out}
 @keyframes scrfade{from{opacity:0}to{opacity:1}}
+.ftitle,.fintro{text-shadow:0 2px 0 #000,0 0 8px #000,0 0 14px #000}   /* czytelność na jasnym księżycu */
