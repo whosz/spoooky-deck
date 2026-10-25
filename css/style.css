@@ -131,8 +131,8 @@ body:has(#menu:not([hidden])) #s-pick .hint{visibility:hidden}
 .intro-bottom .hint{font-size:15px;opacity:.8}
 
 /* tła kolejnych kroków: stonowane, pod treścią */
-#scene{position:absolute;inset:0;background-size:var(--sw) auto;background-position:center top;background-repeat:no-repeat;image-rendering:pixelated;opacity:0;transition:opacity .5s ease;pointer-events:none}
-#scene.on{opacity:.4}
+#scene{position:absolute;inset:0;background-size:var(--sw) auto;background-position:center top;background-repeat:no-repeat;image-rendering:pixelated;opacity:0;transition:opacity .35s ease;pointer-events:none}
+#scene.on{opacity:.4;transition:opacity .9s ease}   /* gasi się szybko, a nowe tło pojawia się wolno */
 #scene::after{content:"";position:absolute;inset:0;background:linear-gradient(#0b0d17 0,#0b0d1700 28%,#0b0d1700 55%,#0b0d17 100%)}
 @media(prefers-reduced-motion:reduce){#scene{transition:none}}
 
