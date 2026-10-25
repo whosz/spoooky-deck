@@ -22,6 +22,18 @@ const results = []; const check = (n, ok) => { results.push(ok); console.log(`${
   check('nowa wersja w trakcie losowania: bez przerywania', await p.evaluate(() => window.__old === 1 && !document.querySelector('#s-pick').hidden));
   await p.click('#back'); await p.waitForTimeout(2500);
   check('po powrocie do formularza strona się przeładowuje', await p.evaluate(() => window.__old === undefined));
+  // Użytkownik ze starą wersją (commit sprzed zmian) przeładowuje stronę po wdrożeniu nowej: nie może zostać mieszanki starych i nowych modułów.
+  const OLD = '286a626', D2 = fs.mkdtempSync(path.join(os.tmpdir(), 'sd-old-')), P2 = PORT + 1;
+  try {
+    execSync(`git archive ${OLD} | tar -x -C ${D2}`, { shell: '/bin/bash' }); execSync('python3 tools/build_sw.py', { cwd: D2 });
+    const srv2 = spawn('python3', ['-m', 'http.server', String(P2)], { cwd: D2, stdio: 'ignore' }); await new Promise(r => setTimeout(r, 1000));
+    const q = await (await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true })).newPage(), U2 = `http://localhost:${P2}/index.html?lang=pl`;
+    await q.goto(U2); await q.waitForSelector('#loader', { state: 'detached', timeout: 15000 }); await q.waitForTimeout(1500); await q.reload(); await q.waitForSelector('#loader', { state: 'detached', timeout: 15000 }); await q.waitForTimeout(800);
+    execSync(`git ls-files -z | tar --null -T - -cf - | tar -x -C ${D2}`, { shell: '/bin/bash' }); execSync('python3 tools/build_sw.py', { cwd: D2 });
+    await q.reload(); await q.waitForTimeout(5000);
+    check(`stara wersja (${OLD}) po jednym przeładowaniu ładuje nową bez zawieszenia`, await q.evaluate(() => !document.querySelector('#loader') && !!document.querySelector('#clear-form')));
+    srv2.kill();
+  } finally { fs.rmSync(D2, { recursive: true, force: true }); }
   await b.close(); srv.kill(); fs.rmSync(D, { recursive: true, force: true });
   const failed = results.filter(x => !x).length; console.log(`\n${results.length - failed}/${results.length} testów przeszło`); process.exit(failed ? 1 : 0);
 })();
