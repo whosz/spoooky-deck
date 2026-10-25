@@ -160,3 +160,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 @media(prefers-reduced-motion:reduce){#s-intro h1,#s-intro h1::after,#s-pick h1::after{animation:none}}
 #s-pick h1{line-height:1;background-size:250% 100%,100% 1em}
 #s-pick h1::after{display:none}
+#fan:focus,#fan:focus-visible{outline:none}   /* wachlarz pokazuje wybraną kartę sam, ramka fokusu była zbędna */
