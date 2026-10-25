@@ -54,6 +54,38 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     check(`${tag}: brak odpowiedzi 4xx/5xx`, bad.length === 0, bad.join(' | '));
     await ctx.close();
   }
+  // Regresje: błędy naprawione wcześniej, które łatwo przywrócić przez przypadek.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    const p = await ctx.newPage(); const errs = [];
+    p.on('pageerror', e => errs.push(e.message)); p.on('console', m => m.type() === 'error' && errs.push(m.text()));
+    const cls = () => p.evaluate(() => document.querySelector('#fan').className);
+    const trans = () => p.evaluate(() => getComputedStyle(document.querySelector('.fcard')).transitionProperty);
+    const toForm = async () => { if (await p.evaluate(() => !document.querySelector('#s-intro').hidden)) await p.click('#enter'); await p.waitForSelector('#s-form:not([hidden])'); await p.waitForTimeout(600); await p.fill('#f-name', 'Anna'); await p.fill('#f-company', 'Kruk'); };
+    await p.goto(`${base}index.html?lang=pl`); await p.waitForSelector('#loader', { state: 'detached', timeout: 15000 });
+    check('regresja: przycisk oferty ma złote tło (nie białe)', await p.evaluate(() => /btn\.png/.test(getComputedStyle(document.querySelector('#offer')).borderImageSource) && !/white/.test(getComputedStyle(document.querySelector('#offer')).borderImageSource)));
+    check('regresja: menu ma przycisk Licencje w sekcji Aplikacja, prowadzi do GitHuba', await p.evaluate(() => { const a = document.querySelector('#app-sec a[data-ui=licensesLink]'); return !!a && /github\.com\/whosz\/spoooky-deck/.test(a.href) && !document.querySelector('.lic'); }));
+    await toForm(); await p.click('#form .cta'); await p.waitForTimeout(2800);
+    // szybkie przeciągnięcie wachlarza i dotknięcie w trakcie inercji
+    const fb = await p.locator('#fan').boundingBox(), y = fb.y + fb.height * .5;
+    await p.mouse.move(fb.x + 30, y); await p.mouse.down(); for (let i = 1; i <= 6; i++) { await p.mouse.move(fb.x + 30 + i * 50, y); await p.waitForTimeout(12); } await p.mouse.up(); await p.waitForTimeout(20);
+    await p.mouse.move(fb.x + fb.width / 2, y); await p.mouse.down(); await p.mouse.up(); await p.waitForTimeout(3200);
+    await p.click('#more'); await p.waitForTimeout(800); await p.click('#again'); await p.waitForTimeout(800); await toForm(); await p.click('#form .cta'); await p.waitForTimeout(400);
+    check('regresja: po dotknięciu w trakcie inercji kolejne tasowanie ma przejścia', !/drag|glide/.test(await cls()) && (await trans()) !== 'none', await cls() + ' ' + await trans());
+    // cofnięcie w trakcie tasowania i ponowne losowanie: klasa shuffling nie może zniknąć przed końcem animacji
+    await p.waitForTimeout(2200); await p.click('#back'); await p.waitForTimeout(700); await p.click('#form .cta'); await p.waitForTimeout(950);
+    check('regresja: cofnięcie w trakcie tasowania nie przerywa nowego tasowania', (await cls()).includes('shuffling'), await cls());
+    await p.waitForTimeout(1800);
+    check('regresja: napis o przeciąganiu jest widoczny, a przy otwartym menu ukryty', await p.evaluate(async () => { const h = document.querySelector('#s-pick .hint'), v = () => getComputedStyle(h).visibility; const a = v(); document.querySelector('#menu-btn').click(); await new Promise(r => setTimeout(r, 150)); const b = v(); return a === 'visible' && b === 'hidden'; }));
+    check('regresja: brak błędów w konsoli', errs.length === 0, errs.join(' | '));
+    await ctx.close();
+    // zainstalowana aplikacja (tryb standalone): przycisk instalacji ukryty, Licencje zostają
+    const c2 = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true }); const q = await c2.newPage();
+    await q.addInitScript(() => { const mm = matchMedia.bind(window); window.matchMedia = x => /standalone/.test(x) ? { matches: true, media: x, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} } : mm(x); });
+    await q.goto(`${base}index.html?lang=pl`); await q.waitForSelector('#loader', { state: 'detached', timeout: 15000 });
+    check('regresja: w zainstalowanej aplikacji chowa się tylko przycisk instalacji', await q.evaluate(() => document.querySelector('#install').hidden && !document.querySelector('#app-sec').hidden && !document.querySelector('#app-sec a[data-ui=licensesLink]').hidden));
+    await c2.close();
+  }
   await browser.close();
   const failed = results.filter(x => !x).length;
   console.log(`\n${results.length - failed}/${results.length} testów przeszło${failed ? `, ${failed} nie` : ''}`);
