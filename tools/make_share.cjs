@@ -25,9 +25,9 @@ const fs = require('fs');
   .card{position:absolute;left:96px;top:75px;width:320px;height:480px;background:url(http://localhost:8123/img/ui/back.png) 0 0/100% 100%;image-rendering:pixelated;box-shadow:0 18px 0 #0008}
   .t{position:absolute;left:520px;top:150px;right:60px}
   .stage{position:absolute;left:${(W - 1200) / 2}px;top:${(H - 630) / 2}px;width:1200px;height:630px}
-  /* tytuł jak w aplikacji: twarde pasy złota na wiersz, ciemny obrys, cień i statyczny błysk */
+  /* tytuł jak w aplikacji: twarde pasy złota na wiersz, ciemny obrys i cień */
   h1{font:400 120px/1 CS;margin:0 0 28px;color:transparent;-webkit-background-clip:text;background-clip:text;
-    background:linear-gradient(105deg,#0000 22%,#fff8 29%,#fff 33%,#fff8 37%,#0000 44%) 0 0/100% 100% no-repeat,linear-gradient(#fff6b0 0 16%,#ffd84a 16% 38%,#f2a31f 38% 60%,#c9690e 60% 82%,#8a3a08 82%) 0 0/100% 1em repeat-y;-webkit-background-clip:text;background-clip:text;
+    background:linear-gradient(#fff6b0 0 16%,#ffd84a 16% 38%,#f2a31f 38% 60%,#c9690e 60% 82%,#8a3a08 82%) 0 0/100% 1em repeat-y;-webkit-background-clip:text;background-clip:text;
     filter:drop-shadow(3px 0 0 #3a1604) drop-shadow(-3px 0 0 #3a1604) drop-shadow(0 -3px 0 #3a1604) drop-shadow(0 3px 0 #3a1604) drop-shadow(0 8px 0 #000) drop-shadow(0 0 24px #ffb34766)}
   p{font:400 42px/1.3 GP;margin:0;color:#e8dcc0;text-shadow:0 4px 0 #000}
   </style><div class=bg></div>${BGF ? '' : '<div class=fade></div>'}<div class=sh></div>
