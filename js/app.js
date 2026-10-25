@@ -1,8 +1,8 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=184';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=184';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=184';
-import { shareImage } from './share.js?v=184';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=184';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=185';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=185';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=185';
+import { shareImage } from './share.js?v=185';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=185';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -344,7 +344,7 @@ const PL = 'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ';
 const emojiImgs = [...Object.values(SIGN), ...Object.values(ELEM), ...Object.values(SYM), '1F53A', '1F53B'].map(cp => { const i = new Image(); i.src = `img/emoji/U+${cp}.png`; return i; });
 const ready = Promise.all([
   document.fonts.load('24px "Jacquard 12"', PL), document.fonts.load('18px "Geist Pixel"', PL),
-  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs, ...['intro', 'form', 'pick', 'card', 'read'].map(k => { const i = new Image(); i.src = `img/ui/bg-${k}.png`; return i; })].map(i => i.decode().catch(() => {})),
+  ...[...document.querySelectorAll('#s-intro img'), ...emojiImgs, ...['intro', 'pick', 'card', 'read'].map(k => { const i = new Image(); i.src = `img/ui/bg-${k}.png`; return i; })].map(i => i.decode().catch(() => {})),
 ]);
 await Promise.race([Promise.all([ready, new Promise(r => setTimeout(r, 400))]), new Promise(r => setTimeout(r, 4000))]);
 const loader = $('#loader');
