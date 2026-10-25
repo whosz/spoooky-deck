@@ -159,3 +159,4 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
   66%{left:86%;top:14%;opacity:0}71%{opacity:1}78%{opacity:0}}
 @media(prefers-reduced-motion:reduce){#s-intro h1,#s-intro h1::after,#s-pick h1::after{animation:none}}
 #s-pick h1{line-height:1;background-size:250% 100%,100% 1em}
+#s-pick h1::after{transform:scale(1.2)}
