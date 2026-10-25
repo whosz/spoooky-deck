@@ -143,3 +143,19 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #form .cta{margin-top:8px}
 .linkbtn{justify-self:center;background:none;border:0;padding:4px 8px;font:inherit;font-size:18px;color:var(--text);opacity:.75;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .linkbtn:hover,.linkbtn:focus-visible{opacity:1;color:var(--flame)}
+/* tytuł (splash i ekran wyboru karty) jako złoty metal (twarde pasy światła, ciemny obrys, błysk i gwiazdki) */
+#s-intro h1,#s-pick h1{position:relative;color:transparent;text-shadow:none;
+  background:linear-gradient(105deg,#0000 38%,#fff8 45%,#fff 50%,#fff8 55%,#0000 62%) 100% 0/250% 100% no-repeat,
+    linear-gradient(#fff6b0 0 16%,#ffd84a 16% 38%,#f2a31f 38% 60%,#c9690e 60% 82%,#8a3a08 82%) 0 0/100% 1.02em repeat-y;   /* pasy powtarzane co wiersz */
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(calc(2*var(--u)) 0 0 #3a1604) drop-shadow(calc(-2*var(--u)) 0 0 #3a1604) drop-shadow(0 calc(-2*var(--u)) 0 #3a1604) drop-shadow(0 calc(2*var(--u)) 0 #3a1604) drop-shadow(0 calc(5*var(--u)) 0 #000) drop-shadow(0 0 12px #ffb34755)}
+#s-intro h1::after,#s-pick h1::after{content:"";position:absolute;left:14%;top:18%;width:calc(7*var(--u));height:calc(7*var(--u));margin:calc(-3.5*var(--u)) 0 0 calc(-3.5*var(--u));opacity:0;pointer-events:none;
+  background:linear-gradient(#fff,#fff) center/100% calc(var(--u)) no-repeat,linear-gradient(#fff,#fff) center/calc(var(--u)) 100% no-repeat;
+  transform:scale(2.4);animation:glint 5.6s steps(1) infinite}
+#s-intro h1,#s-pick h1{animation:goldshine 5.6s steps(26) infinite}
+@keyframes goldshine{0%{background-position:100% 0,0 0}40%,100%{background-position:0 0,0 0}}
+@keyframes glint{0%,100%{left:14%;top:18%;opacity:0}5%{opacity:1}12%{opacity:0}
+  33%{left:60%;top:60%;opacity:0}38%{opacity:1}45%{opacity:0}
+  66%{left:86%;top:14%;opacity:0}71%{opacity:1}78%{opacity:0}}
+@media(prefers-reduced-motion:reduce){#s-intro h1,#s-intro h1::after,#s-pick h1::after{animation:none}}
+#s-pick h1{line-height:1;background-size:250% 100%,100% 1em}
