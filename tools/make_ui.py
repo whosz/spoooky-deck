@@ -19,7 +19,6 @@ def frame9(path, size, fill, accent):
 frame9('img/ui/frame.png', 24, S1, G)
 frame9('img/ui/btn.png', 24, FL, G)
 frame9('img/ui/btn-alt.png', 24, S2, GD)
-frame9('img/ui/btn-white.png', 24, MG, G)
 
 # kursor: strzalka 12x12 skalowana x2 (24x24)
 cur = Canvas(12, 12)
