@@ -115,10 +115,8 @@ async function load() {
   $('#f-name').value = saved.name || '';
   $('#f-company').value = saved.company || '';
   if (saved.zodiac) $('#f-zodiac').value = saved.zodiac;
-  if (saved.industry) $('#f-industry').value = saved.industry;
-  if (saved.stage) $('#f-stage').value = saved.stage;
-  if (!$('#f-industry').value) $('#f-industry').value = 'inne';
-  if (!$('#f-stage').value) $('#f-stage').value = 'rozwoj';
+  $('#f-industry').value = INDUSTRIES.includes(saved.industry) ? saved.industry : 'inne';   // bez zapisanych danych: neutralne ustawienia
+  $('#f-stage').value = STAGES.includes(saved.stage) ? saved.stage : 'rozwoj';
 }
 
 const em = cp => { const i = document.createElement('img'); i.className = 'emoji'; i.src = `img/emoji/U+${cp}.png`; i.alt = ''; return i; };
@@ -291,6 +289,10 @@ $('#form').onsubmit = e => {
   const empty = ['#f-name', '#f-company'].map($).find(i => !i.value.trim());
   if (empty) { empty.setCustomValidity(ui.required); empty.reportValidity(); empty.oninput = () => empty.setCustomValidity(''); return; }
   enableGyro(); pick();
+};
+$('#clear-form').onclick = () => {   // czyści pola i zapamiętane dane
+  $('#form').reset(); store.set('sd_form', '{}');
+  $('#f-industry').value = 'inne'; $('#f-stage').value = 'rozwoj'; $('#f-name').focus();
 };
 $('#more').onclick = openRead;
 $('#again').onclick = restart;

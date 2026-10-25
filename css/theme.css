@@ -142,3 +142,5 @@ input:focus,select:focus{border-color:var(--flame);outline:none;box-shadow:inset
 #tabtext[data-tab=key] p.lead:first-child{margin-top:0}
 #tabtext[data-tab=key] p:last-child{margin-bottom:0}
 #form .cta{margin-top:8px}
+.linkbtn{justify-self:center;background:none;border:0;padding:4px 8px;font:inherit;font-size:18px;color:var(--text);opacity:.75;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.linkbtn:hover,.linkbtn:focus-visible{opacity:1;color:var(--flame)}

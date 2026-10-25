@@ -29,7 +29,11 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     await p.fill('#f-name', '   '); await p.click('#form .cta'); await p.waitForTimeout(300);
     check(`${tag}: samo spacje w imieniu blokują formularz`, await visible('#s-form'));
     check(`${tag}: pola branża i etap mają opcje`, await p.evaluate(() => document.querySelector('#f-industry').options.length === 6 && document.querySelector('#f-stage').options.length === 4 && [...document.querySelectorAll('#f-industry option, #f-stage option')].every(o => o.text.trim())));
+    check(`${tag}: domyślnie Inna branża i Rozwój`, await p.evaluate(() => document.querySelector('#f-industry').value === 'inne' && document.querySelector('#f-stage').value === 'rozwoj'));
     await p.selectOption('#f-industry', 'gastro'); await p.selectOption('#f-stage', 'zmiana');
+    await p.fill('#f-name', 'Tymczas'); await p.click('#clear-form');
+    check(`${tag}: przycisk Wyczyść formularz czyści pola i ustawia domyślne`, await p.evaluate(() => ['#f-name', '#f-company'].every(i => !document.querySelector(i).value) && document.querySelector('#f-industry').value === 'inne' && document.querySelector('#f-stage').value === 'rozwoj' && localStorage.sd_form === '{}'));
+    await p.fill('#f-company', 'Kruk'); await p.selectOption('#f-industry', 'gastro'); await p.selectOption('#f-stage', 'zmiana');
     await p.fill('#f-name', 'Anna'); await p.click('#form .cta'); await p.waitForTimeout(2800);
     check(`${tag}: ekran wyboru karty`, await visible('#s-pick')); await noOverflow('wybór');
     const fb = await p.locator('#fan').boundingBox(); await p.mouse.click(fb.x + fb.width / 2, fb.y + fb.height * .4); await p.waitForTimeout(2300);
