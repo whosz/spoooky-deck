@@ -162,7 +162,7 @@ export function tiltCard(slot) {
     if (delta > 1.4 && now - lastGlint > 130) { lastGlint = now; glint(slot); goldDust(slot.querySelector('.card'), 3); }
     slot.classList.toggle('tilting', Math.abs(ry) > .2 || Math.abs(rx) > .2);   // przy zerowym pochyleniu brak transformacji 3D = ostre piksele
     slot.style.setProperty('--ry', ry.toFixed(1) + 'deg'); slot.style.setProperty('--rx', rx.toFixed(1) + 'deg');
-    slot.style.setProperty('--sx', (50 + Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
+    slot.style.setProperty('--sx', (50 - Math.sin(ry * Math.PI / 180) * 60).toFixed(0) + '%');
     const m = ((ry % 360) + 360) % 360; slot.classList.toggle('behind', m > 90 && m < 270);   // widok od tyłu: pokazujemy rewers
   };
   const set = (dx, dy) => { ry = dx * 12; rx = -dy * 9; apply(); };   // dx, dy w zakresie -1..1

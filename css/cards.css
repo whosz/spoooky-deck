@@ -79,7 +79,7 @@
 .fcard{overflow:visible}
 .fcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:url(../img/ui/shine.png) var(--shx,-120%) 0/300% 100% no-repeat;image-rendering:pixelated}
 .fcard.top::after{opacity:1;animation:shineSweep 3.2s steps(16) infinite}
-@keyframes shineSweep{0%{--shx:-120%;background-position:-130% 0}60%,100%{background-position:230% 0}}
+@keyframes shineSweep{0%{--shx:-120%;background-position:230% 0}60%,100%{background-position:-130% 0}}   /* błysk leci z lewego dolnego do prawego górnego rogu */
 #fan.shuffling .fcard::after{opacity:0!important;animation:none}
 #fan .fcard .glint,#fan .fcard.top .glint{z-index:5}
 .card .back{position:absolute}

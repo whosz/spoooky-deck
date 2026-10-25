@@ -1,8 +1,8 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=185';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=185';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=185';
-import { shareImage } from './share.js?v=185';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=185';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=186';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=186';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=186';
+import { shareImage } from './share.js?v=186';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=186';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
