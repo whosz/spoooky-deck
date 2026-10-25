@@ -76,7 +76,9 @@ export async function makeShareImage({ card, reversed, quote, company, lang, ui 
   y += TITLE + GAP1;
   // karta (po obrocie o 180 stopni, jeśli odwrócona) z pikselową czerwoną poświatą dla odwróconej
   const cx = (1080 - cardCanvas.width) / 2, cy = y;
-  if (reversed) [[40, '#b3243a'], [30, '#b3243a99'], [20, '#b3243a55'], [10, '#b3243a22']].forEach(([d, col]) => { g.fillStyle = col; g.fillRect(cx - d, cy - d, cardCanvas.width + 2 * d, cardCanvas.height + 2 * d); });
+  if (reversed) [[20, '#b3243a'], [30, '#b3243a99'], [40, '#b3243a55'], [50, '#b3243a22']].forEach(([d, col]) => {   // pasy po 10 px: najmocniejszy przy karcie, na zewnątrz coraz słabsze (jak ramka w aplikacji)
+    g.fillStyle = col; g.beginPath(); g.rect(cx - d, cy - d, cardCanvas.width + 2 * d, cardCanvas.height + 2 * d); g.rect(cx - d + 10, cy - d + 10, cardCanvas.width + 2 * d - 20, cardCanvas.height + 2 * d - 20); g.fill('evenodd');
+  });
   g.fillStyle = '#0b0d17'; g.fillRect(cx - 10, cy - 10, cardCanvas.width + 20, cardCanvas.height + 20);
   g.save(); g.translate(cx + cardCanvas.width / 2, cy + cardCanvas.height / 2); if (reversed) g.rotate(Math.PI); g.drawImage(cardCanvas, -cardCanvas.width / 2, -cardCanvas.height / 2); g.restore();
   y += CARD + GAP2;
