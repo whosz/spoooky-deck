@@ -119,14 +119,14 @@ export function revealFx(reversed, cardEl, suit) {
 
 // ---- złote iskry i błyski na krawędziach karty podczas ruchu ----
 const GOLD = ['#8a6a2e', '#d8aa48', '#f0d27a', '#fff6c8'];
-function goldDust(cardEl, n) {
+function goldDust(cardEl, n, stars = true) {
   if (reduced || !cardEl) return;
   ensureTop(); const pr = sizeTop(), cr = cardEl.getBoundingClientRect();
   for (let i = 0; i < n; i++) {
     const side = Math.floor(Math.random() * 4), t = Math.random();
     const x = (side === 0 ? cr.left + t * cr.width : side === 1 ? cr.right : side === 2 ? cr.left + t * cr.width : cr.left) - pr.left;
     const y = (side === 0 ? cr.top : side === 1 ? cr.top + t * cr.height : side === 2 ? cr.bottom : cr.top + t * cr.height) - pr.top;
-    parts.push({ x: x / PX, y: y / PX, vx: (Math.random() - .5) * .8, vy: -Math.random() * .6, life: 28 + Math.random() * 22, s: 1, star: Math.random() < .2, c: GOLD[1 + Math.floor(Math.random() * 3)] });
+    parts.push({ x: x / PX, y: y / PX, vx: (Math.random() - .5) * .8, vy: -Math.random() * .6, life: 28 + Math.random() * 22, s: 1, star: stars && Math.random() < .2, c: GOLD[1 + Math.floor(Math.random() * 3)] });
   }
   if (!running) { running = true; requestAnimationFrame(loopTop); }
 }
@@ -137,14 +137,10 @@ function glint(slot) {
   slot.append(g); setTimeout(() => g.remove(), 750);
 }
 
-// Złote błyski i pył na karcie w wachlarzu (rewers): wołane przy przesuwaniu wachlarza i okresowo na wybranej karcie
+// Złoty pył na karcie w wachlarzu (rewers): wołane przy przesuwaniu wachlarza i okresowo na wybranej karcie
 export function sparkleCard(cardEl, n = 2) {
   if (reduced || !cardEl) return;
-  const g = document.createElement('i'); g.className = 'glint';
-  const side = Math.floor(Math.random() * 4), t = (8 + Math.random() * 84).toFixed(0) + '%';
-  g.style.left = side === 1 ? '100%' : side === 3 ? '0' : t; g.style.top = side === 0 ? '0' : side === 2 ? '100%' : t;
-  cardEl.append(g); setTimeout(() => g.remove(), 750);
-  goldDust(cardEl, n);
+  goldDust(cardEl, n, false);   // tylko drobny pył, bez plusików
 }
 
 // ---- pochylanie karty za kursorem lub żyroskopem i połysk ----
