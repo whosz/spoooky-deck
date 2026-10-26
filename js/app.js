@@ -1,9 +1,9 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=202';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=202';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=202';
-import { initAnalytics, track, enabled as gaEnabled, consent as gaConsent, setConsent as gaSetConsent } from './analytics.js?v=202';
-import { shareImage } from './share.js?v=202';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=202';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=203';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=203';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=203';
+import { initAnalytics, track, enabled as gaEnabled, consent as gaConsent, setConsent as gaSetConsent } from './analytics.js?v=203';
+import { shareImage } from './share.js?v=203';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=203';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';

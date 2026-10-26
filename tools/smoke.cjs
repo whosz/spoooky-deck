@@ -91,7 +91,7 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     // Analytics: nothing is loaded without a measurement ID or without consent; events carry no personal data.
     const gaPage = async (withId, pre) => {
       const c = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true }), g = await c.newPage(), reqs = [];
-      await c.addInitScript(([w, v]) => { if (w) window.SD_GA_ID = 'G-TEST123'; try { if (v) localStorage.setItem('sd_consent', v); } catch {} }, [withId, pre]);
+      await c.addInitScript(([w, v]) => { window.SD_GA_ID = w ? 'G-TEST123' : ''; try { if (v) localStorage.setItem('sd_consent', v); } catch {} }, [withId, pre]);
       await g.route('**googletagmanager.com**', r => { reqs.push(r.request().url()); r.fulfill({ contentType: 'application/javascript', body: '' }); });
       await g.goto(`${base}index.html?lang=pl`); await g.waitForSelector('#loader', { state: 'detached', timeout: 15000 }); await g.waitForTimeout(500);
       return { c, g, reqs };
