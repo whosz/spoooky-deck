@@ -99,5 +99,10 @@
  "stg_start": "Start-up",
  "stg_rozwoj": "Growing",
  "stg_dojrzala": "Established",
- "stg_zmiana": "Changing direction"
+ "stg_zmiana": "Changing direction",
+ "consentText": "We use Google Analytics for anonymous statistics. Your name and company are never sent. You can change this in the menu.",
+ "consentYes": "I agree",
+ "consentNo": "No, thanks",
+ "analyticsOn": "Analytics: on",
+ "analyticsOff": "Analytics: off"
 }

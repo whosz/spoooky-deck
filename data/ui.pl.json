@@ -99,5 +99,10 @@
  "stg_start": "Start",
  "stg_rozwoj": "Rozwój",
  "stg_dojrzala": "Dojrzała firma",
- "stg_zmiana": "Zmiana kierunku"
+ "stg_zmiana": "Zmiana kierunku",
+ "consentText": "Używamy Google Analytics do anonimowych statystyk. Imię i firma nigdy nie są wysyłane. Zmienisz to w menu.",
+ "consentYes": "Zgadzam się",
+ "consentNo": "Nie, dziękuję",
+ "analyticsOn": "Analityka: włączona",
+ "analyticsOff": "Analityka: wyłączona"
 }

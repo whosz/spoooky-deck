@@ -22,7 +22,7 @@ Live: https://whosz.pl/tarot/
 - Sound: a music loop (paused when the app is in the background and cached for offline use) and effects generated in the browser ([ZzFX](https://github.com/KilledByAPixel/ZzFX)).
 - Sharing: a link carrying only the draw seed (no name or company) with one inviting sentence and the card name, and a reading image to save or share. The link has a preview in messengers (Open Graph).
 - Updates without clearing the cache: modules and data have a version in their URL (`?v=N`), and the app checks for a new version when you return to it and reloads when nothing is lost.
-- Privacy: name, company, industry and stage stay on the device. Nothing is sent to a server or stored in the link.
+- Privacy: name, company, industry and stage stay on the device and are never put in the link or in analytics events. Optional Google Analytics 4 (`js/analytics.js`) runs only after the visitor accepts a consent banner (Consent Mode v2, nothing is loaded before that), can be withdrawn in the menu, and is dormant until a measurement ID is set in that file. Events: `draw`, `offer_click`, `share`, `install`, `language_change`.
 
 ## Structure
 

@@ -1,8 +1,9 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=199';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=199';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=199';
-import { shareImage } from './share.js?v=199';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=199';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=202';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=202';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=202';
+import { initAnalytics, track, enabled as gaEnabled, consent as gaConsent, setConsent as gaSetConsent } from './analytics.js?v=202';
+import { shareImage } from './share.js?v=202';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=202';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -30,7 +31,7 @@ let installEvt = null;
 const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 if (standalone) $('#install').hidden = true;
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
-addEventListener('appinstalled', () => { $('#install').hidden = true; $('#install-hint').hidden = true; installEvt = null; });
+addEventListener('appinstalled', () => { $('#install').hidden = true; $('#install-hint').hidden = true; installEvt = null; track('install'); });
 $('#install').onclick = async () => {
   const hint = $('#install-hint');
   if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; return; }
@@ -142,6 +143,7 @@ function reveal() {
   if (!seed) seed = newSeed(cards, hist);
   const { card, reversed } = preview ? { card: cards.find(c => c.id === preview.id), reversed: preview.rev } : draw(seed, cards);
   saveHistory([...hist, card.id]);
+  track('draw', { card_id: card.id, reversed: reversed ? 1 : 0, industry: form.industry, stage: form.stage, language: lang });
   const z = zodiac.find(z => z.id === form.zodiac);
   const { parts, quote } = compose({ seed, card, reversed, name: form.name, zodiac: z, company: form.company, industry: form.industry, stage: form.stage, lang, grammar, ui });
   cur = { card, reversed, z, parts, quote };
@@ -167,7 +169,7 @@ function reveal() {
   }
   void document.body.offsetWidth;
   fades.forEach(f => f.style.transition = '');
-  $('#offer').href = OFFER;
+  $('#offer').href = OFFER; $('#offer').onclick = () => track('offer_click', { card_id: card.id, language: lang });
   // Everything within 2 s: flip 0.6 s, then quote, info and button together (0.5-1.3 s). Space is reserved, nothing jumps.
   const t = reduced ? 0 : 1;
   sfx('pick');
@@ -305,16 +307,17 @@ document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => renderT
 $('#share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
   const text = ui.shareText.replace('{card}', cur.card.name[lang]);   // one inviting sentence with the name of the drawn card
+  track('share', { method: 'link', card_id: cur.card.id });
   if (navigator.share) { try { await navigator.share({ title: ui.title, text, url }); } catch {} } else { await navigator.clipboard.writeText(`${text} ${url}`); $('#share').textContent = ui.copied; }
 };
 document.querySelectorAll('.langs button').forEach(b => b.onclick = async () => {
   if (b.dataset.lang === lang) return;
-  lang = b.dataset.lang; cur = null; const was = screen; await load(); flickerTitle($('#s-intro h1')); show(was === 's-intro' ? 's-intro' : 's-form'); toggleMenu();
+  lang = b.dataset.lang; track('language_change', { language: lang }); cur = null; const was = screen; await load(); paintConsent(); flickerTitle($('#s-intro h1')); show(was === 's-intro' ? 's-intro' : 's-form'); toggleMenu();
 });
 
 // Sound starts after the first gesture; the mute button shows the state.
 for (const ev of ['pointerup', 'click', 'touchend', 'keydown']) document.addEventListener(ev, startAudio, { capture: true });
-$('#share-img').onclick = () => cur && shareImage({ ...cur, company: $('#f-company').value, lang, ui });
+$('#share-img').onclick = () => { if (!cur) return; track('share', { method: 'image', card_id: cur.card.id }); shareImage({ ...cur, company: $('#f-company').value, lang, ui }); };
 $('#menu-btn').onclick = toggleMenu;
 // The music hint fades after the first gesture (it stays in the layout so nothing jumps under the finger; browsers do not allow earlier playback) or when sound is muted.
 if (isMuted()) $('#music-hint').classList.add('gone');
@@ -362,3 +365,14 @@ if ('serviceWorker' in navigator) {
     setInterval(check, 30 * 60 * 1000);
   }).catch(() => {});
 }
+
+// Analytics consent: a banner on the first visit (only when a measurement ID is set) and a switch in the menu to change the choice.
+function paintConsent() {
+  const b = $('#consent-btn'); b.hidden = !gaEnabled(); b.textContent = gaConsent() === 'granted' ? ui.analyticsOn : ui.analyticsOff;
+  $('#consent').hidden = !gaEnabled() || gaConsent() !== null;
+}
+const askConsent = v => { gaSetConsent(v); paintConsent(); if (v === 'granted') track('consent_granted'); };
+$('#consent-yes').onclick = () => askConsent('granted');
+$('#consent-no').onclick = () => askConsent('denied');
+$('#consent-btn').onclick = () => askConsent(gaConsent() === 'granted' ? 'denied' : 'granted');
+initAnalytics(); paintConsent();

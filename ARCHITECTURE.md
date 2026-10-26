@@ -12,6 +12,7 @@ A static site: `index.html`, `css/`, `js/`, `data/`, `img/`, `fonts/`, `audio/`,
 | `js/oracle.js` | `compose({seed, card, reversed, name, zodiac, company, industry, stage, lang, grammar, ui})` | `{parts: [{id, text}], quote}`; the last two parts are the punchline (always recommends a designer) and the call to action |
 | | `INDUSTRIES`, `STAGES` | allowed form values, each with a grammar rule `branza_<id>` / `etap_<id>` |
 | `js/app.js` | none | screens, form, `?s=` (seed) and `?lang=`, PL/EN switch, fan, tabs, menu, install flow, service worker registration and update handling |
+| `js/analytics.js` | `initAnalytics()`, `track(name, params)`, `setConsent(v)`, `consent()`, `enabled()` | optional GA4 behind a consent banner; does nothing without a measurement ID (`GA_ID`) or without consent; events never contain the name or the company |
 | `js/fx.js` | background canvas, reveal effects, tilt, sparkles, title flicker | respects `prefers-reduced-motion` |
 | `js/audio.js` | `start()`, `sfx(name)`, `toggleMute()` | starts after a user gesture, pauses in the background, caches the music offline |
 | `js/share.js` | `shareImage(data)` | draws a 1080×1920 image on a canvas; the name never goes on the image, the company does |

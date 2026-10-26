@@ -5,7 +5,7 @@ A dark pixel-art tarot oracle for companies. Input: a name (≤30 characters), a
 Rules:
 - Plain static files, ES modules, no backend and no build step. Relative paths (works at `whosz.pl/tarot/`).
 - Polish and English from day one. Texts live in `data/*.{pl,en}.json`, never in the code.
-- User input is only ever inserted as `textContent`. Nothing leaves the device and nothing but the seed (`?s=`) goes into the share link.
+- User input is only ever inserted as `textContent`. Nothing personal leaves the device (optional analytics only after consent, with no name or company) and nothing but the seed (`?s=`) goes into the share link.
 - Style: Dead Cells (navy, gold, candles), Balatro-like animation (springy, shiny). The palette is in `STYLE.md`.
 - Respect `prefers-reduced-motion`. Text contrast ≥ 4.5:1. Buttons ≥ 44 px.
 - Texts are checked with the `humanizer-pl` skill for Polish and `humanizer` for English (`.claude/skills/`).
