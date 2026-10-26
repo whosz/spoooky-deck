@@ -1,8 +1,10 @@
 // node tools/make_promo.cjs [out=docs/promo/linkedin-1080x1350.png]: a promotional image (LinkedIn, 4:5) in the style of the app.
+// With ART=<scene.png> the card layout is replaced by an AI-generated scene (tools/ai/promo.py).
 // Needs a server on :8123 (python3 -m http.server 8123) and Playwright. The Olde Tome font is only on the author's machine.
 const { chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright');
 const fs = require('fs');
 const OUT = process.argv[2] || 'docs/promo/linkedin-1080x1350.png', W = 1080, H = 1350, U = 'http://localhost:8123/';
+const ART = process.env.ART;   // optional: a pixelated 1080x1350 scene (tools/ai/pixelate_promo.cjs) used instead of the card layout
 const html = `<!doctype html><meta charset=utf-8><style>
 @font-face{font-family:OE;src:url(${U}fonts/OldEnglishGothicPixel.ttf)}
 @font-face{font-family:OT;src:url(${U}fonts/OldeTome.ttf)}
@@ -32,12 +34,11 @@ h1{position:absolute;left:0;right:0;top:56px;margin:0;text-align:center;font:400
 .cta{position:absolute;left:110px;right:110px;top:1160px;height:132px;border:32px solid transparent;border-image:url(${U}img/ui/btn.png) 8 fill/32px stretch;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;color:#1a1204;font:400 44px/1 JQ;text-shadow:0 2px 0 #ffe2a8;filter:drop-shadow(0 0 22px #ffb347aa)}
 .cta small{font:400 26px/1 GP;color:#3a2606;text-shadow:none}
 </style>
-<div class=bg></div><div class=shade></div><div class=glow></div>
+${ART ? `<div style="position:absolute;inset:0;background:url(${U}${ART}) 0 0/1080px 1350px"></div><div style="position:absolute;inset:0;background:linear-gradient(#0b0d17f0 0,#0b0d17aa 17%,#0b0d1700 34%,#0b0d1700 64%,#0b0d17cc 84%,#0b0d17f5 100%)"></div>` : '<div class=bg></div><div class=shade></div><div class=glow></div>'}
 ${[[40,240],[1020,230],[160,420],[930,430],[50,1020],[1030,1010],[70,1170],[1010,1160],[540,36],[40,1300],[1030,1310]].map(([x,y]) => `<i class=dot style="left:${x}px;top:${y}px"></i>`).join('')}
 <h1>Spoooky Deck</h1>
 <div class=hook>Co karty mówią o <b>Twojej firmie?</b></div>
-<div class=ring></div><div class="back b1"></div><div class="back b2"></div>
-<div class=card><div class=art></div><div class=fr></div><div class=num>XVI</div><div class=nm style="display:flex;align-items:center;justify-content:center">Wieża</div></div>
+${ART ? '' : '<div class=ring></div><div class="back b1"></div><div class="back b2"></div><div class=card><div class=art></div><div class=fr></div><div class=num>XVI</div><div class=nm style="display:flex;align-items:center;justify-content:center">Wieża</div></div>'}
 <div class=cta>Wylosuj kartę dla swojej firmy<small>whosz.pl/tarot</small></div>`;
 (async () => {
   fs.mkdirSync('docs/promo', { recursive: true }); fs.writeFileSync('tools/_promo.html', html);
