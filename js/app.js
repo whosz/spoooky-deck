@@ -1,9 +1,9 @@
-import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=204';
-import { compose, INDUSTRIES, STAGES } from './oracle.js?v=204';
-import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=204';
-import { initAnalytics, track, enabled as gaEnabled, consent as gaConsent, setConsent as gaSetConsent } from './analytics.js?v=204';
-import { shareImage } from './share.js?v=204';
-import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=204';
+import { draw, loadHistory, saveHistory, newSeed } from './deck.js?v=205';
+import { compose, INDUSTRIES, STAGES } from './oracle.js?v=205';
+import { startBg, revealFx, tiltCard, enableGyro, startAmbient, stopAmbient, setTheme, resetTheme, sparkleCard, flickerTitle, cursorSparks } from './fx.js?v=205';
+import { initAnalytics, track, enabled as gaEnabled, consent as gaConsent, setConsent as gaSetConsent } from './analytics.js?v=205';
+import { shareImage } from './share.js?v=205';
+import { start as startAudio, sfx, toggleMute, isMuted, audioError } from './audio.js?v=205';
 
 const $ = s => document.querySelector(s);
 const OFFER = 'https://whosz.pl/offer/?utm_source=tarot&utm_medium=app&utm_campaign=wrozba';
@@ -304,9 +304,16 @@ $('#more').onclick = openRead;
 $('#again').onclick = restart;
 $('#back').onclick = () => { if (screen === 's-pick') show('s-form'); else if (screen === 's-card') restart(); else { show('s-card'); $('#cardslot').append($('#card')); sizeCard(); } };
 document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => renderTab(b.dataset.tab));
+// Share text: one of several templates, filled with the card, its position, its first two keywords and the meaning sentence.
+// Privacy: nothing personal goes in (no name, company, industry or stage).
+function shareText() {
+  const side = cur.reversed ? cur.card.rev : cur.card.up, kw = side.keywords[lang].slice(0, 2).join(` ${ui.and} `);
+  const fill = { card: cur.card.name[lang], pos: cur.reversed ? ui.reversed : ui.upright, kw, quote: cur.quote };
+  return ui.shareTemplates[Math.floor(Math.random() * ui.shareTemplates.length)].replace(/\{(\w+)\}/g, (m, k) => fill[k] ?? m);
+}
 $('#share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?s=${seed}&lang=${lang}`;
-  const text = ui.shareText.replace('{card}', cur.card.name[lang]);   // one inviting sentence with the name of the drawn card
+  const text = shareText();
   track('share', { method: 'link', card_id: cur.card.id });
   if (navigator.share) { try { await navigator.share({ title: ui.title, text, url }); } catch {} } else { await navigator.clipboard.writeText(`${text} ${url}`); $('#share').textContent = ui.copied; }
 };

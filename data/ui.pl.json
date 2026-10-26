@@ -87,7 +87,6 @@
  "svc_uxui": "projektowanie UX/UI",
  "svc_website": "strona www",
  "svc_startup": "pakiet startowy",
- "shareText": "Wylosowana karta: {card}. Sprawdź, jaką wróżbę talia ma dla Twojej firmy.",
  "industry": "Branża firmy",
  "stage": "Etap firmy",
  "ind_it": "IT i technologie",
@@ -104,5 +103,12 @@
  "consentYes": "Zgadzam się",
  "consentNo": "Nie, dziękuję",
  "analyticsOn": "Analityka: włączona",
- "analyticsOff": "Analityka: wyłączona"
+ "analyticsOff": "Analityka: wyłączona",
+ "and": "i",
+ "shareTemplates": [
+  "🔮 Wylosowana karta: {card} ({pos}), czyli {kw}. „{quote}” Sprawdź, co talia ma dla Twojej firmy:",
+  "🔮 Talia wskazała kartę {card}, pozycja {pos}: {kw}. „{quote}” A co powie Twojej firmie?",
+  "🔮 {card}, {pos}. Hasła karty: {kw}. „{quote}” Wylosuj własną wróżbę dla firmy:",
+  "🔮 Wypadła karta {card} ({pos}) z hasłami: {kw}. „{quote}” Sprawdź, jaką wróżbę talia ma dla Twojej firmy:"
+ ]
 }

@@ -88,6 +88,22 @@ const check = (name, ok, extra = '') => { results.push(ok); console.log(`${ok ? 
     await q.goto(`${base}index.html?lang=pl`); await q.waitForSelector('#loader', { state: 'detached', timeout: 15000 });
     check('regression: in the installed app only the install button is hidden', await q.evaluate(() => document.querySelector('#install').hidden && !document.querySelector('#app-sec').hidden && !document.querySelector('#app-sec a[data-ui=licensesLink]').hidden));
     await c2.close();
+    // Share text: filled templates with the card details, varied between clicks, nothing personal in them or in the link.
+    {
+      const c = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true }); await c.addInitScript(() => { try { localStorage.setItem('sd_consent', 'denied'); } catch {} });
+      const g = await c.newPage(); await g.addInitScript(() => { window.__shared = []; navigator.share = async d => { window.__shared.push(d); }; });
+      await g.goto(`${base}index.html?lang=pl`); await g.waitForSelector('#loader', { state: 'detached', timeout: 15000 });
+      await g.click('#enter'); await g.waitForSelector('#s-form:not([hidden])'); await g.waitForTimeout(600); await g.fill('#f-name', 'Anna'); await g.fill('#f-company', 'Tajna Firma');
+      await g.selectOption('#f-industry', 'gastro'); await g.selectOption('#f-stage', 'zmiana'); await g.click('#form .cta'); await g.waitForTimeout(2800);
+      const fan = await g.locator('#fan').boundingBox(); await g.mouse.click(fan.x + fan.width / 2, fan.y + fan.height * .4); await g.waitForTimeout(2500); await g.click('#more'); await g.waitForTimeout(800);
+      for (let i = 0; i < 24; i++) await g.evaluate(() => document.querySelector('#share').click());
+      const sh = await g.evaluate(() => window.__shared), cardName = await g.evaluate(() => document.querySelector('#rname').textContent.trim());
+      const texts = sh.map(d => d.text);
+      check('share text: every message names the card, its position and a quote, with the link kept separate', sh.length === 24 && texts.every(t => t.includes(cardName) && /prosta|odwrócona/.test(t) && /„.+”/.test(t) && !/[{}]/.test(t)) && sh.every(d => /\?s=[a-z0-9]+&lang=pl$/i.test(d.url)));
+      check('share text: several templates are used at random', new Set(texts.map(t => t.split(cardName)[0] + t.slice(-30))).size >= 2);
+      check('share text: no name, company, industry or stage anywhere', !/Anna|Tajna|Firma|gastro|Gastronomia|zmiana|Zmiana kierunku/i.test(JSON.stringify(sh)));
+      await c.close();
+    }
     // Analytics: nothing is loaded without a measurement ID or without consent; events carry no personal data.
     const gaPage = async (withId, pre) => {
       const c = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true }), g = await c.newPage(), reqs = [];

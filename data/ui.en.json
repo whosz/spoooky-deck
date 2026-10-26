@@ -87,7 +87,6 @@
  "svc_uxui": "UX/UI design",
  "svc_website": "a website",
  "svc_startup": "a launch package",
- "shareText": "My card: {card}. See what reading the deck has for your company.",
  "industry": "Company industry",
  "stage": "Company stage",
  "ind_it": "IT and technology",
@@ -104,5 +103,12 @@
  "consentYes": "I agree",
  "consentNo": "No, thanks",
  "analyticsOn": "Analytics: on",
- "analyticsOff": "Analytics: off"
+ "analyticsOff": "Analytics: off",
+ "and": "and",
+ "shareTemplates": [
+  "🔮 My card: {card} ({pos}), meaning {kw}. “{quote}” See what the deck has for your company:",
+  "🔮 The deck drew {card}, {pos}: {kw}. “{quote}” What will it say to your company?",
+  "🔮 {card}, {pos}. Keywords: {kw}. “{quote}” Draw your own reading for your company:",
+  "🔮 I drew {card} ({pos}) with {kw}. “{quote}” See what reading the deck has for your company:"
+ ]
 }
