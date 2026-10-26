@@ -66,3 +66,7 @@ Kate Compton. Full licence text: https://www.apache.org/licenses/LICENSE-2.0 , p
 Used in the "Spoooky Deck" title. SIL Open Font License 1.1 (full text: fonts/OldEnglishGothicPixel-OFL.txt), commercial use allowed. The font has 85 glyphs (no Polish letters), so it is used for the title only.
 === Olde Tome (LadyLiefy) ===
 Used in headings, quotes, buttons and on the cards. The author (https://ladyliefy.itch.io/olde-tome) allows free use in personal work and asks for a voluntary payment for commercial use; the asset is tagged CC0. Details and steps: docs/licensing.md. The font file is not included in the repository.
+
+=== Tarot sources and inspiration ===
+- NTielman/Tarot-Reader (https://github.com/NTielman/Tarot-Reader) and ekelen/tarot-api (https://github.com/ekelen/tarot-api): the idea of a tarot reader built on a 78-card dataset (card ids such as ar01 and the major/minor arcana and suit structure follow that dataset). Neither repository has a licence file, so no code, text or images were copied; the card data in data/cards.json is our own wording.
+- A. E. Waite, "The Pictorial Key to the Tarot" (1910), the traditional Rider-Waite meanings: public domain (the author died in 1942). The card meanings are our own paraphrase of this tradition.

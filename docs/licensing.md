@@ -14,6 +14,7 @@ This is not legal advice. The information about Suno, Olde Tome and Flux comes f
 | **Cards, backgrounds, card back, splash** | Flux 2 Pro via Replicate | **Probably yes.** Secondary sources and the Replicate terms (which pass the rights in the outputs to the user, including for commercial use) confirm it, but the BFL help page returned 404, so I have no quotation from the BFL terms. The model is meant for commercial use, but I did not find the wording on outputs in the sources. | Read the Black Forest Labs API terms and the Replicate terms. |
 | Fonts **Geist Pixel**, **Jacquard 12** | Google Fonts | Yes (SIL Open Font License). | Keep the licence notice (it is in `licenses.txt`). |
 | Pixel emoji | SerenityOS | Yes (BSD 2-Clause). | Keep the licence text (it is in `img/emoji/LICENSE` and `licenses.txt`). |
+| Card list and traditional meanings | [NTielman/Tarot-Reader](https://github.com/NTielman/Tarot-Reader) and [ekelen/tarot-api](https://github.com/ekelen/tarot-api) (idea and dataset structure), A. E. Waite, *The Pictorial Key to the Tarot* (1910) | Yes. No code or text was copied from the two repositories (neither has a licence file); the meanings are our own wording based on Waite's public-domain text. | Keep the acknowledgement (it is in `licenses.txt` and the README). |
 | Libraries: Tracery, seedrandom, ZzFX | GitHub | Yes (Apache-2.0, MIT, MIT). | Keep the licence notices (they are in `licenses.txt`). |
 | App code, reading texts, scripts | Author | Own. | Decide on a repository licence (see below). |
 
@@ -26,6 +27,8 @@ This is not legal advice. The information about Suno, Olde Tome and Flux comes f
 **Music.** The original track came from Suno's free plan (non-commercial use only), so it was replaced by a track from ACE-Step 1.5 (MIT, commercial use allowed) and then, at the author's request (a sound closer to Suno), by a track from MiniMax Music 2.6. Its commercial terms are less clear, so they need to be confirmed before wider promotion.
 
 **Artwork (Flux 2 Pro).** The images were made from text descriptions, with no reference images of other people's work. Flux 2 Pro is available only through an API and is described as commercial, but in the sources I checked there is no quotation of the terms on outputs. Check the Black Forest Labs API terms first, then the Replicate terms. Also note that, according to the US Copyright Office, works generated entirely by AI without meaningful human creative input cannot be registered. The art direction (choice of variants, colours, layout, script processing) may count, but there is no guarantee.
+
+**Tarot sources.** The idea of a tarot reader on a 78-card dataset, and the structure of the data (card ids such as `ar01`, major and minor arcana, suits), come from NTielman/Tarot-Reader and its data source ekelen/tarot-api. Neither has a licence file (checked on 26 Oct 2026), which under copyright law means all rights are reserved, so we copied none of their code, text or images: `data/cards.json` is our own wording and the card images are our own. The traditional meanings go back to A. E. Waite's *The Pictorial Key to the Tarot* (1910), which is in the public domain because Waite died in 1942. Giving credit is good practice even where it is not required.
 
 **A repository without a licence.** A public GitHub repository without a `LICENSE` file means all rights stay with the author, and others may only view and fork it under GitHub's terms. If you want the code to be reusable, add a licence (for example MIT for the code, and reserve the rights to the graphics, texts and music). None was added, because that is the author's decision.
 
@@ -45,3 +48,5 @@ This is not legal advice. The information about Suno, Olde Tome and Flux comes f
 - Olde Tome (itch.io): https://ladyliefy.itch.io/olde-tome
 - Cross Stitch (dafont): https://www.dafont.com/cross-stitch-2.font
 - FLUX.2 pro on Replicate (model description): https://replicate.com/black-forest-labs/flux-2-pro
+- NTielman/Tarot-Reader: https://github.com/NTielman/Tarot-Reader
+- ekelen/tarot-api: https://github.com/ekelen/tarot-api
