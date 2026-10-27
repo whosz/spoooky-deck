@@ -10,6 +10,9 @@ SCENES = {
  'a': "a mysterious round fortune teller's table in the middle of a dark room, a glowing crystal ball and a fan of tarot cards on it, tall melting candles on both sides, a huge pale full moon in a round window behind, a small black cat sitting on the table",
  'b': "a dark cozy start-up office at night, a laptop and a coffee mug on a wooden desk, five glowing golden tarot cards floating in the air above the desk, candles on the desk, a huge pale full moon outside a big window, mysterious purple fog",
  'c': "a hooded fortune teller without a visible face sitting at a table and holding up one glowing golden tarot card towards the viewer, swirling purple fog, tall candles, stars and a crescent moon in the dark sky behind",
+ 'd': "a designer's desk in a dark cozy room at night: a monitor showing a colorful website layout, a sketchbook, a coffee mug and a pencil jar, five glowing golden tarot cards floating in an arc above the desk, tall candles on both sides, a huge pale full moon in the window behind",
+ 'e': "a hooded fortune teller without a visible face seen from the front, hands spread over a table with a fan of glowing golden tarot cards, a lit crystal ball, candles, swirling purple fog and a starry sky with a crescent moon behind",
+ 'f': "a small pixel town at night with a tall glowing company building in the middle, a gigantic glowing golden tarot card rising in the sky above the building like a sun, rays of golden light, a huge pale full moon beside it, purple clouds, small lit windows",
 }
 def call(url, data=None):
     for _ in range(10):
